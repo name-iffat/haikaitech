@@ -82,6 +82,17 @@ export const PROJECTS: Project[] = [
     image: 'assets/rumahpizza.png',
     accentColor: 'border-red-600 text-red-600',
     theme: 'pizza'
+  },
+  {
+    id: 'clarity-learncentre',
+    name: 'Clarity Learn Centre',
+    purpose: 'Web platform for learning Quran and ebooks',
+    tags: ['React', 'Education', 'Quran Learning'],
+    skills: ['React', 'Educational Platform', 'Content Management', 'UX Design'],
+    link: 'https://clarity-learncentre.netlify.app/',
+    image: 'assets/clarity-learncentre.png',
+    accentColor: 'border-green-600 text-green-600',
+    theme: 'hijrah'
   }
 ];
 
