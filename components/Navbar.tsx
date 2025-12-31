@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Terminal, User, Mail, Wrench, Home } from 'lucide-react';
+import { Menu, X, Terminal, User, Mail, Wrench, Home, Calendar } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,6 +19,7 @@ const Navbar: React.FC = () => {
     { name: 'Workshop', href: '#skills', icon: Wrench },
     { name: 'About', href: '#about', icon: User },
     { name: 'Contact', href: '#contact', icon: Mail },
+    { name: 'Book', href: '#booking', icon: Calendar },
   ];
 
   return (

@@ -2,6 +2,7 @@ import React from 'react';
 import { PROJECTS, SKILLS, CONTACTS, getIconForCategory, getIconForContact, getSkillIcon } from './constants';
 import ProjectCard from './components/ProjectCard';
 import Navbar from './components/Navbar';
+import CalBooking from './components/CalBooking';
 import { ScribbleUnderline, ArrowSketch, StylizedCorner, Tape, Sticker, DoodleStar, HandCircle } from './components/Decorations';
 import { ChevronRight, Terminal, User, Sparkles } from 'lucide-react';
 
@@ -211,7 +212,7 @@ const App: React.FC = () => {
                 </section>
 
                 {/* ================= CONTACT SECTION ================= */}
-                <section id="contact" className="mb-12 scroll-mt-28">
+                <section id="contact" className="mb-32 scroll-mt-28">
                     <div className="bg-slate-900 text-slate-100 p-8 md:p-16 rounded-2xl relative overflow-hidden text-center md:text-left">
                         {/* Background effects */}
                         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
@@ -254,6 +255,34 @@ const App: React.FC = () => {
                                         </a>
                                     ))}
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* ================= BOOKING SECTION ================= */}
+                <section id="booking" className="mb-12 scroll-mt-28">
+                    <div className="bg-white p-8 md:p-16 rounded-2xl border border-slate-200 shadow-sm text-center relative">
+                        {/* Background Grid */}
+                        <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none"></div>
+
+                        {/* Decorative Elements */}
+                        <DoodleStar className="top-8 left-8 text-blue-200 hidden lg:block" />
+                        <DoodleStar className="top-16 right-16 text-yellow-200 hidden lg:block" />
+                        <Tape className="-top-4 right-1/2 translate-x-1/2 w-48 rotate-2" />
+                        <Tape className="bottom-4 -left-4 w-32 -rotate-12 hidden md:block" />
+                        <Sticker className="top-6 right-6 w-20 h-20 rotate-12 bg-blue-300 border-slate-900 text-center text-xs leading-tight p-2 z-10">
+                            Book <br /> Now!
+                        </Sticker>
+                        <ArrowSketch className="hidden md:block text-slate-300 bottom-8 left-8 transform rotate-45" />
+
+                        <div className="relative z-10">
+                            <h2 className="text-3xl font-bold text-slate-900 mb-6 font-sans">Book a Call</h2>
+                            <p className="text-slate-600 mb-8 max-w-2xl mx-auto font-hand text-lg">
+                                Schedule a 30-minute call to discuss your project ideas, collaboration opportunities, or just chat about tech.
+                            </p>
+                            <div className="max-w-4xl mx-auto rounded-xl overflow-hidden border-2 border-slate-200 shadow-lg" style={{height: "600px"}}>
+                                <CalBooking />
                             </div>
                         </div>
                     </div>
