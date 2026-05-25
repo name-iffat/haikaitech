@@ -93,6 +93,17 @@ export const PROJECTS: Project[] = [
     image: 'assets/clarity-learncentre.png',
     accentColor: 'border-green-600 text-green-600',
     theme: 'hijrah'
+  },
+  {
+    id: 'medin',
+    name: 'Médin Fragrances',
+    purpose: 'Shopify e-commerce store for premium fragrance brand',
+    tags: ['Shopify', 'E-commerce', 'Brand Design'],
+    skills: ['Shopify', 'E-commerce Strategy', 'Brand Design', 'Product Showcase', 'UX Design'],
+    link: 'https://medin-frag.myshopify.com/',
+    image: 'assets/medin-fragrances.png',
+    accentColor: 'border-amber-700 text-amber-700',
+    theme: 'medin'
   }
 ];
 
@@ -211,6 +222,7 @@ const SKILL_ICONS: Record<string, string> = {
   'Visual Studio': 'visualstudio',
   'Git': 'git',
   'Excel Automation (VBA)': 'microsoftexcel',
+  'Shopify': 'shopify',
   'Cloudflare Pages': 'cloudflarepages',
   'Google Sheets API': 'googlesheets',
   'UX Research': 'uxpin', // Fallback or related
