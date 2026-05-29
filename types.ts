@@ -20,7 +20,7 @@ export interface ContactLink {
   label: string;
   value: string;
   href: string;
-  type: 'email' | 'github' | 'linkedin' | 'threads' | 'contribution';
+  type: 'email' | 'github' | 'linkedin' | 'threads' | 'contribution' | 'whatsapp';
   description: string;
 }
 

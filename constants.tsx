@@ -12,7 +12,8 @@ import {
   AtSign,
   GitPullRequest,
   Layout,
-  Box
+  Box,
+  MessageCircle
 } from 'lucide-react';
 import React from 'react';
 
@@ -144,7 +145,19 @@ export const SKILLS: SkillGroup[] = [
   }
 ];
 
+const WHATSAPP_NUMBER = '60147533499';
+const WHATSAPP_TEXT = encodeURIComponent(
+  'Hi HaikaiTech! I came across your portfolio (haikaitech.my) and would love to discuss a project.'
+);
+
 export const CONTACTS: ContactLink[] = [
+  {
+    label: 'WhatsApp',
+    value: '+60 14-753 3499',
+    href: `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_TEXT}`,
+    type: 'whatsapp',
+    description: 'Reply within a few hours.'
+  },
   {
     label: 'Email',
     value: 'iffathaikal7@gmail.com',
@@ -192,6 +205,7 @@ export const getIconForCategory = (category: string) => {
 
 export const getIconForContact = (type: string) => {
   switch (type) {
+    case 'whatsapp': return <MessageCircle className="w-5 h-5" />;
     case 'github': return <Github className="w-5 h-5" />;
     case 'linkedin': return <Linkedin className="w-5 h-5" />;
     case 'threads': return <AtSign className="w-5 h-5" />;
