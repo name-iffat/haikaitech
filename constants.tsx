@@ -19,11 +19,11 @@ import React from 'react';
 export const PROJECTS: Project[] = [
   {
     id: 'murtajiz',
-    name: 'Al Murtajiz Travel',
+    name: 'Murtajiz Travel',
     purpose: 'Modern travel agency platform with CMS-driven content',
     tags: ['React', 'Cloudflare', 'Google Sheets CMS'],
     skills: ['React', 'TailwindCSS', 'Cloudflare Pages', 'Google Sheets API', 'UX Design'],
-    link: 'https://al-murtajiz-travel.pages.dev/',
+    link: 'https://murtazjiumrah.haikaitech.my/',
     image: 'assets/al-murtajiz-travel.png',
     accentColor: 'border-emerald-600 text-emerald-600',
     theme: 'murtajiz'
@@ -41,11 +41,11 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 'hijrah',
-    name: 'Hijrah Al Haramain HQ',
+    name: 'Hijrah Umrah',
     purpose: 'Cultural HQ site focusing on client trust',
     tags: ['React', 'Tailwind', 'UX Sensitivity'],
     skills: ['React', 'TailwindCSS', 'UX Research', 'Content Structuring', 'Client-focused Design'],
-    link: 'https://hijrahalharamainhq.netlify.app/',
+    link: 'https://hijrahumrah.haikaitech.my/',
     image: 'assets/hijrahalharamainhq.png',
     accentColor: 'border-stone-600 text-stone-600',
     theme: 'hijrah'
