@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar';
+import HeroSection from '../../components/Sections/HeroSection';
+import ProjectsSection from '../../components/Sections/ProjectsSection';
+import SkillsSection from '../../components/Sections/SkillsSection';
+import AboutSection from '../../components/Sections/AboutSection';
+import ContactSection from '../../components/Sections/ContactSection';
+import BookingSection from '../../components/Sections/BookingSection';
+import FooterSection from '../../components/FooterSection';
+import StickyBooking from '../../components/StickyBooking';
+import { DoodleStar } from '../../components/Decorations';
+---
+
+<BaseLayout>
+  <div class="min-h-screen relative font-sans bg-paper bg-grid-pattern selection:bg-yellow-200 selection:text-slate-900">
+    <Navbar client:load />
+
+    <main class="max-w-5xl mx-auto px-6 py-20 md:py-32 relative">
+      <DoodleStar class="top-20 left-10 text-slate-300 animate-pulse hidden lg:block" />
+      <DoodleStar class="top-40 right-20 text-blue-200 hidden lg:block" />
+      <DoodleStar class="bottom-20 left-1/4 text-orange-200 hidden lg:block" />
+
+      <HeroSection client:load />
+      <ProjectsSection client:load />
+      <SkillsSection />
+      <AboutSection />
+      <ContactSection client:load />
+      <BookingSection client:load />
+      <FooterSection />
+    </main>
+
+    <StickyBooking client:load />
+  </div>
+</BaseLayout>
