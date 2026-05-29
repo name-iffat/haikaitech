@@ -16,6 +16,15 @@ import {
 } from 'lucide-react';
 import React from 'react';
 
+import murtajizImg from './src/assets/projects/al-murtajiz-travel.webp';
+import bearsplitImg from './src/assets/projects/bear-split-waitlist.webp';
+import hijrahImg from './src/assets/projects/hijrahalharamainhq.webp';
+import dentexImg from './src/assets/projects/dentex-clinic.webp';
+import tahuImg from './src/assets/projects/tahu-kripto.webp';
+import pizzaImg from './src/assets/projects/rumahpizza.webp';
+import clarityImg from './src/assets/projects/clarity-learncentre.webp';
+import medinImg from './src/assets/projects/medin-fragrances.webp';
+
 export const PROJECTS: Project[] = [
   {
     id: 'murtajiz',
@@ -24,7 +33,7 @@ export const PROJECTS: Project[] = [
     tags: ['React', 'Cloudflare', 'Google Sheets CMS'],
     skills: ['React', 'TailwindCSS', 'Cloudflare Pages', 'Google Sheets API', 'UX Design'],
     link: 'https://murtazjiumrah.haikaitech.my/',
-    image: '/assets/al-murtajiz-travel.webp',
+    image: murtajizImg.src,
     accentColor: 'border-emerald-600 text-emerald-600',
     theme: 'murtajiz'
   },
@@ -35,7 +44,7 @@ export const PROJECTS: Project[] = [
     tags: ['React Native', 'Expo', 'Product Design'],
     skills: ['React Native', 'Expo', 'UI/UX Design', 'Product Thinking', 'State Management', 'Hand-drawn Identity'],
     link: 'https://bear-split-waitlist.vercel.app/',
-    image: '/assets/bear-split-waitlist.webp',
+    image: bearsplitImg.src,
     accentColor: 'border-orange-900 text-orange-900',
     theme: 'bear'
   },
@@ -46,7 +55,7 @@ export const PROJECTS: Project[] = [
     tags: ['React', 'Tailwind', 'UX Sensitivity'],
     skills: ['React', 'TailwindCSS', 'UX Research', 'Content Structuring', 'Client-focused Design'],
     link: 'https://hijrahumrah.haikaitech.my/',
-    image: '/assets/hijrahalharamainhq.webp',
+    image: hijrahImg.src,
     accentColor: 'border-stone-600 text-stone-600',
     theme: 'hijrah'
   },
@@ -57,7 +66,7 @@ export const PROJECTS: Project[] = [
     tags: ['React', 'Clarity', 'Performance'],
     skills: ['React', 'Clean UI Systems', 'Medical Layouts', 'Performance', 'Clarity'],
     link: 'https://dentex-clinic.netlify.app/',
-    image: '/assets/dentex-clinic.webp',
+    image: dentexImg.src,
     accentColor: 'border-blue-600 text-blue-600',
     theme: 'dentex'
   },
@@ -68,7 +77,7 @@ export const PROJECTS: Project[] = [
     tags: ['React', 'Blueprint UI', 'Dark Mode'],
     skills: ['React', 'Blueprint Visuals', 'Technical Design', 'Dark-mode UI'],
     link: 'https://tahu-kripto.netlify.app/',
-    image: '/assets/tahu-kripto.webp',
+    image: tahuImg.src,
     accentColor: 'border-cyan-600 text-cyan-600',
     theme: 'crypto'
   },
@@ -79,7 +88,7 @@ export const PROJECTS: Project[] = [
     tags: ['React', 'Fun UI', 'Branding'],
     skills: ['React', 'Branding', 'Playful UI', 'Marketing Layouts'],
     link: 'https://rumahpizza.netlify.app/',
-    image: '/assets/rumahpizza.webp',
+    image: pizzaImg.src,
     accentColor: 'border-red-600 text-red-600',
     theme: 'pizza'
   },
@@ -90,7 +99,7 @@ export const PROJECTS: Project[] = [
     tags: ['React', 'Education', 'Quran Learning'],
     skills: ['React', 'Educational Platform', 'Content Management', 'UX Design'],
     link: 'https://clarity-learncentre.netlify.app/',
-    image: '/assets/clarity-learncentre.webp',
+    image: clarityImg.src,
     accentColor: 'border-green-600 text-green-600',
     theme: 'hijrah'
   },
@@ -101,7 +110,7 @@ export const PROJECTS: Project[] = [
     tags: ['Shopify', 'E-commerce', 'Brand Design'],
     skills: ['Shopify', 'E-commerce Strategy', 'Brand Design', 'Product Showcase', 'UX Design'],
     link: 'https://medin-frag.myshopify.com/',
-    image: '/assets/medin-fragrances.webp',
+    image: medinImg.src,
     accentColor: 'border-amber-700 text-amber-700',
     theme: 'medin'
   }

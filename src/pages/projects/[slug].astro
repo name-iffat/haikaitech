@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../../components/Navbar';
 import StickyBooking from '../../../components/StickyBooking';
@@ -6,6 +7,26 @@ import { Tape, ArrowSketch } from '../../../components/Decorations';
 import { Calendar, ExternalLink, Hash, ArrowLeft } from 'lucide-react';
 import { PROJECTS } from '../../../constants';
 import type { Project } from '../../../types';
+
+import murtajizImg from '../../../src/assets/projects/al-murtajiz-travel.webp';
+import bearsplitImg from '../../../src/assets/projects/bear-split-waitlist.webp';
+import hijrahImg from '../../../src/assets/projects/hijrahalharamainhq.webp';
+import dentexImg from '../../../src/assets/projects/dentex-clinic.webp';
+import tahuImg from '../../../src/assets/projects/tahu-kripto.webp';
+import pizzaImg from '../../../src/assets/projects/rumahpizza.webp';
+import clarityImg from '../../../src/assets/projects/clarity-learncentre.webp';
+import medinImg from '../../../src/assets/projects/medin-fragrances.webp';
+
+const projectImages: Record<string, any> = {
+  murtajiz: murtajizImg,
+  bearsplit: bearsplitImg,
+  hijrah: hijrahImg,
+  dentex: dentexImg,
+  tahu: tahuImg,
+  pizza: pizzaImg,
+  'clarity-learncentre': clarityImg,
+  medin: medinImg,
+};
 
 export function getStaticPaths() {
   return PROJECTS.map((project) => ({
@@ -15,6 +36,7 @@ export function getStaticPaths() {
 }
 
 const { project } = Astro.props as { project: Project };
+const projectImg = projectImages[project.id];
 const related = PROJECTS.filter(p => p.id !== project.id).slice(0, 3);
 ---
 
@@ -45,7 +67,7 @@ const related = PROJECTS.filter(p => p.id !== project.id).slice(0, 3);
 
           <!-- Screenshot -->
           <div class="w-full md:w-80 lg:w-96 rounded-xl overflow-hidden border-2 border-slate-200 shadow-lg -rotate-1 hover:rotate-0 transition-transform">
-            <img src={project.image} alt={project.name} class="w-full h-56 object-cover" />
+            <Image src={projectImg} alt={project.name} class="w-full h-56 object-cover" widths={[400, 800, 1200]} />
           </div>
         </div>
       </div>
@@ -97,16 +119,19 @@ const related = PROJECTS.filter(p => p.id !== project.id).slice(0, 3);
       <div>
         <h2 class="text-2xl font-bold text-slate-900 mb-6 font-sans">Other Projects</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {related.map(p => (
-            <a href={`/projects/${p.id}`}
-              class="group block p-6 bg-white border border-slate-200 rounded-xl hover:shadow-lg hover:-translate-y-1 transition-all">
-              <div class="h-32 rounded-lg overflow-hidden bg-slate-100 mb-4">
-                <img src={p.image} alt={p.name} class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" />
-              </div>
-              <h3 class="font-bold text-slate-900 group-hover:text-blue-600 transition-colors">{p.name}</h3>
-              <p class="text-sm text-slate-500 mt-1">{p.purpose}</p>
-            </a>
-          ))}
+          {related.map(p => {
+            const relatedImg = projectImages[p.id];
+            return (
+              <a href={`/projects/${p.id}`}
+                class="group block p-6 bg-white border border-slate-200 rounded-xl hover:shadow-lg hover:-translate-y-1 transition-all">
+                <div class="h-32 rounded-lg overflow-hidden bg-slate-100 mb-4">
+                  <Image src={relatedImg} alt={p.name} class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" widths={[200, 400]} />
+                </div>
+                <h3 class="font-bold text-slate-900 group-hover:text-blue-600 transition-colors">{p.name}</h3>
+                <p class="text-sm text-slate-500 mt-1">{p.purpose}</p>
+              </a>
+            );
+          })}
         </div>
       </div>
 
