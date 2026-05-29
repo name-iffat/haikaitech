@@ -2,8 +2,17 @@ import React from 'react';
 import { PROJECTS } from '../../constants';
 import ProjectCard from '../ProjectCard';
 import { ScribbleUnderline } from '../Decorations';
+import type { Project } from '../../types';
 
-const ProjectsSection: React.FC = () => {
+interface Props {
+  projectImages?: Record<string, string>;
+}
+
+const ProjectsSection: React.FC<Props> = ({ projectImages = {} }) => {
+  const projects: Project[] = PROJECTS.map(p =>
+    projectImages[p.id] ? { ...p, image: projectImages[p.id] } : p
+  );
+
   return (
     <section id="projects" className="mb-32 scroll-mt-28 relative">
       <div className="flex items-end justify-between mb-12 relative">
@@ -21,7 +30,7 @@ const ProjectsSection: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
-        {PROJECTS.map((project, idx) => (
+        {projects.map((project, idx) => (
           <div key={project.id} className={idx % 2 === 0 ? 'md:translate-y-4' : ''}>
             <ProjectCard project={project} />
           </div>

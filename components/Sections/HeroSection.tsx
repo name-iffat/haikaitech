@@ -2,9 +2,12 @@ import React from 'react';
 import { ArrowSketch, StylizedCorner, Tape, Sticker, HandCircle } from '../Decorations';
 import { Calendar, Terminal } from 'lucide-react';
 import { track } from '../track';
-import avatarImg from '../../src/assets/projects/3D-me.webp';
 
-const HeroSection: React.FC = () => {
+interface Props {
+  avatarSrc?: string;
+}
+
+const HeroSection: React.FC<Props> = ({ avatarSrc }) => {
   return (
     <header id="home" className="mb-32 relative pt-10">
       <div className="absolute -top-16 -left-16 text-slate-200/50 font-mono text-9xl font-bold select-none pointer-events-none animate-float">
@@ -63,7 +66,7 @@ const HeroSection: React.FC = () => {
           <div className="absolute inset-0 bg-white border-2 border-slate-800 rounded-sm transform -rotate-3 transition-transform duration-500 group-hover:-rotate-6 z-10 shadow-lg"></div>
           <div className="absolute inset-2 z-20 overflow-hidden rounded-sm bg-slate-100 border border-slate-200">
             <img
-              src={avatarImg.src}
+              src={avatarSrc}
               alt="Iffat Haikal 3D Avatar with IH Cap"
               className="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-110"
             />
