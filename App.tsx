@@ -4,7 +4,7 @@ import ProjectCard from './components/ProjectCard';
 import Navbar from './components/Navbar';
 import CalBooking from './components/CalBooking';
 import { ScribbleUnderline, ArrowSketch, StylizedCorner, Tape, Sticker, DoodleStar, HandCircle } from './components/Decorations';
-import { ChevronRight, Terminal, User, Sparkles } from 'lucide-react';
+import { ChevronRight, Terminal, User, Sparkles, Calendar, ArrowUp } from 'lucide-react';
 
 declare global {
   interface Window { dataLayer: unknown[]; }
@@ -17,6 +17,8 @@ const track = (action: string, label?: string) => {
 };
 
 const App: React.FC = () => {
+    const [showSticky, setShowSticky] = React.useState(false);
+
     React.useEffect(() => {
       const el = document.getElementById('booking');
       if (!el) return;
@@ -28,6 +30,12 @@ const App: React.FC = () => {
       }, { threshold: 0.3 });
       obs.observe(el);
       return () => obs.disconnect();
+    }, []);
+
+    React.useEffect(() => {
+      const onScroll = () => setShowSticky(window.scrollY > 500);
+      window.addEventListener('scroll', onScroll, { passive: true });
+      return () => window.removeEventListener('scroll', onScroll);
     }, []);
 
     return (
@@ -68,8 +76,8 @@ const App: React.FC = () => {
                             </div>
 
                             <h1 className="text-slate-900 font-bold tracking-tight mb-8 text-5xl md:text-7xl leading-[1.1]">
-                                Building clarity <br className="hidden md:block" />
-                                from complexity.
+                                Freelance software engineer <br className="hidden md:block" />
+                                building clarity from complexity.
                             </h1>
 
                             <div className="relative inline-block max-w-2xl mb-12">
@@ -84,9 +92,9 @@ const App: React.FC = () => {
                             </div>
 
                             <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-                                <a href="#contact" onClick={() => track('cta_clicked', 'say_hello_hero')} className="group relative inline-flex items-center gap-2 px-8 py-4 bg-slate-900 text-white font-medium rounded-md hover:bg-slate-800 transition-all hover:-translate-y-1 hover:shadow-lg">
-                                    <User className="w-4 h-4 group-hover:animate-bounce" />
-                                    <span className="font-hand text-xl">Say Hello</span>
+                                <a href="#booking" onClick={() => track('cta_clicked', 'book_call_hero')} className="group relative inline-flex items-center gap-2 px-8 py-4 bg-slate-900 text-white font-medium rounded-md hover:bg-slate-800 transition-all hover:-translate-y-1 hover:shadow-lg">
+                                    <Calendar className="w-4 h-4 group-hover:animate-bounce" />
+                                    <span className="font-hand text-xl">Book a Free Call</span>
                                     <StylizedCorner className="text-white/20 bottom-1 right-1 w-3 h-3" />
                                 </a>
                                 <a href="#projects" onClick={() => track('cta_clicked', 'view_work_hero')} className="group inline-flex items-center gap-2 px-8 py-4 border-2 border-slate-200 text-slate-700 font-medium rounded-md hover:border-slate-400 hover:bg-white transition-all bg-white/50 backdrop-blur-sm">
@@ -321,6 +329,17 @@ const App: React.FC = () => {
                 </footer>
 
             </main>
+
+            {/* Sticky Booking Button */}
+            <a
+              href="#booking"
+              onClick={() => track('cta_clicked', 'sticky_book_call')}
+              className={`fixed bottom-6 right-6 z-50 flex items-center gap-2 px-5 py-3 bg-slate-900 text-white font-medium rounded-full shadow-lg hover:bg-slate-800 hover:-translate-y-1 transition-all duration-300 font-hand text-lg ${showSticky ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}`}
+            >
+              <Calendar className="w-5 h-5" />
+              Book a Call
+              <ArrowUp className="w-4 h-4 rotate-45" />
+            </a>
         </div>
     );
 };

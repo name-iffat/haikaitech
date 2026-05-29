@@ -1,7 +1,17 @@
 import React from 'react';
 import { Project } from '../types';
-import { ExternalLink, Hash, Pin } from 'lucide-react';
+import { ExternalLink, Hash, Pin, Calendar } from 'lucide-react';
 import { Tape } from './Decorations';
+
+declare global {
+  interface Window { dataLayer: unknown[]; }
+}
+
+const track = (action: string, label?: string) => {
+  if (typeof gtag !== 'undefined') {
+    gtag('event', action, { event_label: label });
+  }
+};
 
 interface ProjectCardProps {
   project: Project;
@@ -70,6 +80,18 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             ))}
           </div>
         </div>
+      </div>
+
+      {/* Bottom CTA */}
+      <div className="relative z-20 mt-2 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <a
+          href="#booking"
+          onClick={(e) => { e.stopPropagation(); track('cta_clicked', 'project_to_booking', project.id); }}
+          className="inline-flex items-center gap-1.5 text-xs font-medium text-blue-600 hover:text-blue-800 transition-colors"
+        >
+          <Calendar className="w-3 h-3" />
+          Need something like this? Let's talk.
+        </a>
       </div>
 
       {/* View Project Overlay Link */}
