@@ -1,46 +1,47 @@
 # AGENTS.md — HaikaiTech Portfolio
 
 ## Quick start
-- `npm install` (Node 20, npm only)
-- `npm run dev` — dev server on port 3000
+- `npm install` (Node 22+, npm only — verified in `.node-version`)
+- `npm run dev` — dev server on port 4321 (Astro default)
 - `npm run build` — output to `dist/`
 - `npm run preview` — preview production build
 
 ## Architecture
-- **Vite 6 + React 19 SPA** (no SSR, no Next.js, no monorepo)
-- Entry: `index.html` -> `index.tsx` -> `App.tsx`
-- Types in `types.ts`, data in `constants.tsx`, components in `components/`
-- Path alias `@/*` maps to project root (configured in both `tsconfig.json` and `vite.config.ts`)
+- **Astro 6 + React 19 SSG** (client islands, no Next.js, no SSR)
+- Pages: `src/pages/index.astro` (home), `src/pages/projects/[slug].astro` (detail)
+- React components in `components/` — loaded as `client:load` islands
+- Shared types in `types.ts`, data in `constants.tsx`
+- Path alias `@/*` maps to project root (configured in `tsconfig.json`)
 
-## Styling quirks
-- **TailwindCSS via CDN** (`index.html`), not PostCSS — inline tailwind config lives in `index.html` (custom fonts: Inter, JetBrains Mono, Patrick Hand, VT323; custom colors: paper, charcoal, blueprint)
+## Styling
+- **TailwindCSS v3 via PostCSS** (`postcss.config.mjs`, `tailwind.config.mjs`)
 - Custom CSS in `index.css` (paper texture, grid pattern, scrollbar)
 - SVG decorations in `components/Decorations.tsx`
-- To add or change Tailwind classes, you may need to update the inline config in `index.html`
+- Custom fonts: Inter, JetBrains Mono, Patrick Hand, VT323
+- Custom colors: paper, charcoal, blueprint
 
-## Dual resolution (React deps)
-- npm-installed `react`/`react-dom`/`lucide-react` in `package.json` are used by Vite for bundling and TS types
-- Browser runtime loads them from **esm.sh CDN** via importmap in `index.html`
-- `@calcom/embed-react` is npm-only (no CDN importmap entry)
+## Image pipeline (critical — Astro quirk)
+- React islands (`ProjectCard`, `HeroSection`) CANNOT use `<Image />` or `getImage()` — they live in `.astro` only
+- **Dual pipeline**: `getImage()` in `index.astro` frontmatter (single fixed width per image) passes `.src` string props to React islands; `<Image />` in `[slug].astro` handles responsive srcset (200/400 for thumbs, 400/800/1200 for hero)
+- `getImage()` returns `{ src, attributes }` — always use `.src` to get the URL string; never pass raw `ImageMetadata` objects across the Astro↔React boundary (causes `[object Object]` in SSR)
+- 3 image import locations: `constants.tsx` (`.src` for React data), `index.astro` (`getImage()` calls), `[slug].astro` (`<Image />`)
 
 ## Deployment (Cloudflare Pages)
 - Build: `npm run build`, output dir: `dist/`
-- SPA routing: `public/_redirects` contains `/* /index.html 200`
-- Node 20 required (`.node-version`)
-- No `wrangler.toml` — this is a static Pages site, not a Worker
+- SPA fallback: `public/_redirects` contains `/* /index.html 200`
+- Node 22+ required (Astro 6 constraint, `.node-version`)
+- No `wrangler.toml` — static Pages site, not a Worker
 - Manual deploy via Cloudflare dashboard (no CI/CD configured)
+- Live at: **haikaitech.my**
 
-## Env vars
-- `GEMINI_API_KEY` in `.env.local` — injected into `process.env` by Vite `define` but **not referenced in app source** (vestigial / for future use)
+## External services
+- Cal.com booking via `@calcom/embed-react` in `components/CalBooking.tsx`
+- Skill icons from `https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/` (mapped in `constants.tsx`)
 
 ## What's NOT here
 - No tests, no test framework, no test files
 - No linter, no formatter, no lint/format scripts
 - No CI/CD workflows (`.github/` doesn't exist)
-
-## External services
-- Cal.com booking via `@calcom/embed-react` in `components/CalBooking.tsx`
-- Skill icons from `https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/` (mapped in `constants.tsx`)
 
 ## OpenCode context
 - Cloudflare skill references live in `.agents/skills/` (installed by OpenCode, not app code)
