@@ -122,7 +122,7 @@ const App: React.FC = () => {
                             {/* Image Container */}
                             <div className="absolute inset-2 z-20 overflow-hidden rounded-sm bg-slate-100 border border-slate-200">
                                 <img
-                                    src="assets/3D-me.png"
+                                    src="assets/3D-me.webp"
                                     alt="Iffat Haikal 3D Avatar with IH Cap"
                                     className="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-110"
                                 />
