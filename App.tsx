@@ -6,7 +6,30 @@ import CalBooking from './components/CalBooking';
 import { ScribbleUnderline, ArrowSketch, StylizedCorner, Tape, Sticker, DoodleStar, HandCircle } from './components/Decorations';
 import { ChevronRight, Terminal, User, Sparkles } from 'lucide-react';
 
+declare global {
+  interface Window { dataLayer: unknown[]; }
+}
+
+const track = (action: string, label?: string) => {
+  if (typeof gtag !== 'undefined') {
+    gtag('event', action, { event_label: label });
+  }
+};
+
 const App: React.FC = () => {
+    React.useEffect(() => {
+      const el = document.getElementById('booking');
+      if (!el) return;
+      const obs = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) {
+          track('section_viewed', 'booking');
+          obs.disconnect();
+        }
+      }, { threshold: 0.3 });
+      obs.observe(el);
+      return () => obs.disconnect();
+    }, []);
+
     return (
         <div className="min-h-screen relative font-sans bg-paper bg-grid-pattern selection:bg-yellow-200 selection:text-slate-900">
 
@@ -61,12 +84,12 @@ const App: React.FC = () => {
                             </div>
 
                             <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-                                <a href="#contact" className="group relative inline-flex items-center gap-2 px-8 py-4 bg-slate-900 text-white font-medium rounded-md hover:bg-slate-800 transition-all hover:-translate-y-1 hover:shadow-lg">
+                                <a href="#contact" onClick={() => track('cta_clicked', 'say_hello_hero')} className="group relative inline-flex items-center gap-2 px-8 py-4 bg-slate-900 text-white font-medium rounded-md hover:bg-slate-800 transition-all hover:-translate-y-1 hover:shadow-lg">
                                     <User className="w-4 h-4 group-hover:animate-bounce" />
                                     <span className="font-hand text-xl">Say Hello</span>
                                     <StylizedCorner className="text-white/20 bottom-1 right-1 w-3 h-3" />
                                 </a>
-                                <a href="#projects" className="group inline-flex items-center gap-2 px-8 py-4 border-2 border-slate-200 text-slate-700 font-medium rounded-md hover:border-slate-400 hover:bg-white transition-all bg-white/50 backdrop-blur-sm">
+                                <a href="#projects" onClick={() => track('cta_clicked', 'view_work_hero')} className="group inline-flex items-center gap-2 px-8 py-4 border-2 border-slate-200 text-slate-700 font-medium rounded-md hover:border-slate-400 hover:bg-white transition-all bg-white/50 backdrop-blur-sm">
                                     <Terminal className="w-4 h-4 text-slate-400 group-hover:text-slate-800" />
                                     <span className="font-mono text-sm">./view_work.sh</span>
                                 </a>
@@ -240,6 +263,7 @@ const App: React.FC = () => {
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             title={contact.description}
+                                            onClick={() => track('contact_clicked', contact.type)}
                                             className="group flex items-center justify-between p-4 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all rounded-xl relative overflow-hidden"
                                         >
                                             <div className="flex items-center gap-4 relative z-10">
@@ -277,7 +301,7 @@ const App: React.FC = () => {
                         <ArrowSketch className="hidden md:block text-slate-300 bottom-8 left-8 transform rotate-45" />
 
                         <div className="relative z-10">
-                            <h2 className="text-3xl font-bold text-slate-900 mb-6 font-sans">Book a Call</h2>
+                            <h2 className="text-3xl font-bold text-slate-900 mb-6 font-sans" onClick={() => track('cta_clicked', 'book_a_call_heading')}>Book a Call</h2>
                             <p className="text-slate-600 mb-8 max-w-2xl mx-auto font-hand text-lg">
                                 Schedule a 30-minute call to discuss your project ideas, collaboration opportunities, or just chat about tech.
                             </p>
