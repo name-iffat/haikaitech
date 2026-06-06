@@ -9,6 +9,7 @@
     "preview": "astro preview"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^13.6.1",
     "@astrojs/markdoc": "^1.0.6",
     "@astrojs/react": "^5.0.6",
     "@calcom/embed-react": "^1.5.3",
