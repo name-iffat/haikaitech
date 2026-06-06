@@ -9,8 +9,12 @@
     "preview": "astro preview"
   },
   "dependencies": {
+    "@astrojs/markdoc": "^1.0.6",
     "@astrojs/react": "^5.0.6",
     "@calcom/embed-react": "^1.5.3",
+    "@keystatic/astro": "^5.1.0",
+    "@keystatic/core": "^0.5.50",
+    "@markdoc/markdoc": "^0.5.7",
     "astro": "^6.4.2",
     "lucide-react": "^0.561.0",
     "react": "^19.2.3",
