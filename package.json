@@ -21,7 +21,10 @@
     "react-dom": "^19.2.3"
   },
   "devDependencies": {
+    "@react-spectrum/provider": "^3.11.1",
     "@types/node": "^22.14.0",
+    "@types/react": "^19.2.3",
+    "@types/react-dom": "^19.2.3",
     "autoprefixer": "^10.5.0",
     "postcss": "^8.5.15",
     "tailwindcss": "^3.4.17",
