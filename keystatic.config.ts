@@ -4,7 +4,7 @@ export default config({
   storage: process.env.NODE_ENV === 'production' 
     ? {
         kind: 'github',
-        repo: 'name-iffat/haikaitech-portfolio',
+        repo: 'name-iffat/haikaitech',
         branch: 'feat/keystatic-integration',
       }
     : {
