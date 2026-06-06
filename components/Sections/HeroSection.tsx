@@ -68,6 +68,8 @@ const HeroSection: React.FC<Props> = ({ avatarSrc }) => {
             <img
               src={avatarSrc}
               alt="Iffat Haikal 3D Avatar with IH Cap"
+              loading="eager"
+              decoding="async"
               className="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-110"
             />
           </div>

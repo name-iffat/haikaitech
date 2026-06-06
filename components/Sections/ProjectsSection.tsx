@@ -1,18 +1,13 @@
 import React from 'react';
-import { PROJECTS } from '../../constants';
 import ProjectCard from '../ProjectCard';
 import { ScribbleUnderline } from '../Decorations';
 import type { Project } from '../../types';
 
 interface Props {
-  projectImages?: Record<string, string>;
+  projects: Project[];
 }
 
-const ProjectsSection: React.FC<Props> = ({ projectImages = {} }) => {
-  const projects: Project[] = PROJECTS.map(p =>
-    projectImages[p.id] ? { ...p, image: projectImages[p.id] } : p
-  );
-
+const ProjectsSection: React.FC<Props> = ({ projects }) => {
   return (
     <section id="projects" className="mb-32 scroll-mt-28 relative">
       <div className="flex items-end justify-between mb-12 relative">
@@ -24,7 +19,7 @@ const ProjectsSection: React.FC<Props> = ({ projectImages = {} }) => {
         </div>
         <div className="hidden md:block text-right">
           <span className="text-sm font-hand text-slate-500 block rotate-3 bg-white px-2 border border-slate-200 shadow-sm">
-            Total: {PROJECTS.length} items
+            Total: {projects.length} items
           </span>
         </div>
       </div>

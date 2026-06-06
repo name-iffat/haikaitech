@@ -1,5 +1,6 @@
 ---
 import { getImage } from 'astro:assets';
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Navbar from '../../components/Navbar';
 import HeroSection from '../../components/Sections/HeroSection';
@@ -11,37 +12,25 @@ import BookingSection from '../../components/Sections/BookingSection';
 import FooterSection from '../../components/FooterSection';
 import StickyBooking from '../../components/StickyBooking';
 import { DoodleStar } from '../../components/Decorations';
-import { PROJECTS } from '../../constants';
 
-import murtajizImg from '../../src/assets/projects/al-murtajiz-travel.webp';
-import bearsplitImg from '../../src/assets/projects/bear-split-waitlist.webp';
-import hijrahImg from '../../src/assets/projects/hijrahalharamainhq.webp';
-import dentexImg from '../../src/assets/projects/dentex-clinic.webp';
-import tahuImg from '../../src/assets/projects/tahu-kripto.webp';
-import pizzaImg from '../../src/assets/projects/rumahpizza.webp';
-import clarityImg from '../../src/assets/projects/clarity-learncentre.webp';
-import medinImg from '../../src/assets/projects/medin-fragrances.webp';
 import avatarImg from '../../src/assets/projects/3D-me.webp';
 
-const projectImgMeta: Record<string, any> = {
-  murtajiz: murtajizImg,
-  bearsplit: bearsplitImg,
-  hijrah: hijrahImg,
-  dentex: dentexImg,
-  tahu: tahuImg,
-  pizza: pizzaImg,
-  'clarity-learncentre': clarityImg,
-  medin: medinImg,
-};
+const allProjects = await getCollection('projects');
 
-const projectImages: Record<string, string> = {};
-for (const project of PROJECTS) {
-  const img = projectImgMeta[project.id];
-  if (img) {
-    const optimized = await getImage({ src: img, width: 600, format: 'webp' });
-    projectImages[project.id] = optimized.src;
-  }
-}
+const projects = await Promise.all(
+  allProjects.map(async (p) => {
+    const optimizedImage = await getImage({
+      src: p.data.image,
+      width: 600,
+      format: 'webp',
+    });
+    return {
+      id: p.id,
+      ...p.data,
+      image: optimizedImage.src,
+    };
+  })
+);
 
 const heroAvatar = await getImage({ src: avatarImg, width: 400, format: 'webp' });
 ---
@@ -56,7 +45,7 @@ const heroAvatar = await getImage({ src: avatarImg, width: 400, format: 'webp' }
       <DoodleStar class="bottom-20 left-1/4 text-orange-200 hidden lg:block" />
 
       <HeroSection client:load avatarSrc={heroAvatar.src} />
-      <ProjectsSection client:load projectImages={projectImages} />
+      <ProjectsSection client:load projects={projects} />
       <SkillsSection />
       <AboutSection />
       <ContactSection client:load />

@@ -1,46 +1,24 @@
----
 import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../../components/Navbar';
 import StickyBooking from '../../../components/StickyBooking';
 import { Tape, ArrowSketch } from '../../../components/Decorations';
 import { Calendar, ExternalLink, Hash, ArrowLeft } from 'lucide-react';
-import { PROJECTS } from '../../../constants';
-import type { Project } from '../../../types';
 
-import murtajizImg from '../../../src/assets/projects/al-murtajiz-travel.webp';
-import bearsplitImg from '../../../src/assets/projects/bear-split-waitlist.webp';
-import hijrahImg from '../../../src/assets/projects/hijrahalharamainhq.webp';
-import dentexImg from '../../../src/assets/projects/dentex-clinic.webp';
-import tahuImg from '../../../src/assets/projects/tahu-kripto.webp';
-import pizzaImg from '../../../src/assets/projects/rumahpizza.webp';
-import clarityImg from '../../../src/assets/projects/clarity-learncentre.webp';
-import medinImg from '../../../src/assets/projects/medin-fragrances.webp';
-
-const projectImages: Record<string, any> = {
-  murtajiz: murtajizImg,
-  bearsplit: bearsplitImg,
-  hijrah: hijrahImg,
-  dentex: dentexImg,
-  tahu: tahuImg,
-  pizza: pizzaImg,
-  'clarity-learncentre': clarityImg,
-  medin: medinImg,
-};
-
-export function getStaticPaths() {
-  return PROJECTS.map((project) => ({
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
     params: { slug: project.id },
-    props: { project },
+    props: { project, allProjects: projects },
   }));
 }
 
-const { project } = Astro.props as { project: Project };
-const projectImg = projectImages[project.id];
-const related = PROJECTS.filter(p => p.id !== project.id).slice(0, 3);
+const { project, allProjects } = Astro.props;
+const related = allProjects.filter(p => p.id !== project.id).slice(0, 3);
 ---
 
-<BaseLayout title={`${project.name} — HaikaiTech Portfolio`} description={project.purpose}>
+<BaseLayout title={`${project.data.name} — HaikaiTech Portfolio`} description={project.data.purpose}>
   <div class="min-h-screen relative font-sans bg-paper bg-grid-pattern selection:bg-yellow-200 selection:text-slate-900">
     <Navbar client:load />
 
@@ -61,20 +39,20 @@ const related = PROJECTS.filter(p => p.id !== project.id).slice(0, 3);
               </span>
               <span class="text-sm font-mono text-slate-400 uppercase tracking-wider">Fig. {project.id}</span>
             </div>
-            <h1 class="text-4xl md:text-6xl font-bold text-slate-900 tracking-tight mb-4">{project.name}</h1>
-            <p class="text-xl text-slate-600 font-light leading-relaxed">{project.purpose}</p>
+            <h1 class="text-4xl md:text-6xl font-bold text-slate-900 tracking-tight mb-4">{project.data.name}</h1>
+            <p class="text-xl text-slate-600 font-light leading-relaxed">{project.data.purpose}</p>
           </div>
 
           <!-- Screenshot -->
           <div class="w-full md:w-80 lg:w-96 rounded-xl overflow-hidden border-2 border-slate-200 shadow-lg -rotate-1 hover:rotate-0 transition-transform">
-            <Image src={projectImg} alt={project.name} class="w-full h-56 object-cover" widths={[400, 800, 1200]} />
+            <Image src={project.data.image} alt={project.data.name} class="w-full h-56 object-cover" widths={[400, 800, 1200]} loading="eager" />
           </div>
         </div>
       </div>
 
       <!-- Tags -->
       <div class="flex flex-wrap gap-3 mb-12">
-        {project.tags.map(tag => (
+        {project.data.tags.map(tag => (
           <span class="px-3 py-1.5 text-sm font-mono bg-slate-100 border border-slate-200 text-slate-600 rounded-full flex items-center gap-1">
             <Hash class="w-3 h-3 opacity-40" />
             {tag}
@@ -86,7 +64,7 @@ const related = PROJECTS.filter(p => p.id !== project.id).slice(0, 3);
       <div class="mb-16">
         <h2 class="text-2xl font-bold text-slate-900 mb-6 font-sans">Tech Stack</h2>
         <div class="flex flex-wrap gap-3">
-          {project.skills.map(skill => (
+          {project.data.skills.map(skill => (
             <span class="px-4 py-2 text-sm font-medium bg-white border border-slate-200 rounded-lg shadow-sm text-slate-700">
               {skill}
             </span>
@@ -101,7 +79,7 @@ const related = PROJECTS.filter(p => p.id !== project.id).slice(0, 3);
 
         <div class="relative z-10">
           <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
-            <a href={project.link} target="_blank" rel="noopener noreferrer"
+            <a href={project.data.link} target="_blank" rel="noopener noreferrer"
               class="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white font-medium rounded-md hover:bg-slate-800 transition-all hover:-translate-y-0.5">
               <ExternalLink class="w-4 h-4" />
               View Live Project
@@ -120,15 +98,14 @@ const related = PROJECTS.filter(p => p.id !== project.id).slice(0, 3);
         <h2 class="text-2xl font-bold text-slate-900 mb-6 font-sans">Other Projects</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           {related.map(p => {
-            const relatedImg = projectImages[p.id];
             return (
               <a href={`/projects/${p.id}`}
                 class="group block p-6 bg-white border border-slate-200 rounded-xl hover:shadow-lg hover:-translate-y-1 transition-all">
                 <div class="h-32 rounded-lg overflow-hidden bg-slate-100 mb-4">
-                  <Image src={relatedImg} alt={p.name} class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" widths={[200, 400]} />
+                  <Image src={p.data.image} alt={p.data.name} class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" widths={[200, 400]} loading="lazy" />
                 </div>
-                <h3 class="font-bold text-slate-900 group-hover:text-blue-600 transition-colors">{p.name}</h3>
-                <p class="text-sm text-slate-500 mt-1">{p.purpose}</p>
+                <h3 class="font-bold text-slate-900 group-hover:text-blue-600 transition-colors">{p.data.name}</h3>
+                <p class="text-sm text-slate-500 mt-1">{p.data.purpose}</p>
               </a>
             );
           })}
