@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ArrowSketch, StylizedCorner, Tape, Sticker } from '../Decorations';
-import { Calendar, Terminal, Send, CheckCircle } from 'lucide-react';
+import { Calendar, Terminal, Send } from 'lucide-react';
 import { track } from '../track';
 
 interface Props {
@@ -8,16 +8,6 @@ interface Props {
 }
 
 const HeroSection: React.FC<Props> = ({ avatarSrc }) => {
-  const [email, setEmail] = useState('');
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleLeadSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-    track('lead_captured', 'hero_email');
-    setSubmitted(true);
-  };
-
   return (
     <header id="home" className="mb-32 relative pt-10">
       <div className="absolute -top-16 -left-16 text-slate-200/50 font-mono text-9xl font-bold select-none pointer-events-none animate-float">
@@ -64,29 +54,24 @@ const HeroSection: React.FC<Props> = ({ avatarSrc }) => {
 
           {/* Low-friction lead capture */}
           <div className="mt-8 max-w-md">
-            {submitted ? (
-              <div className="flex items-center gap-2 text-green-600 font-medium">
-                <CheckCircle className="w-5 h-5" />
-                <span>Thanks! I&apos;ll reply within 24 hours.</span>
-              </div>
-            ) : (
-              <form onSubmit={handleLeadSubmit} className="flex gap-2">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Not ready for a call? Enter your email for a rough estimate"
-                  className="flex-1 px-4 py-3 border-2 border-slate-200 rounded-md text-sm focus:outline-none focus:border-slate-400 bg-white/70"
-                  required
-                />
-                <button
-                  type="submit"
-                  className="px-5 py-3 bg-slate-900 text-white rounded-md hover:bg-slate-800 transition-colors"
-                >
-                  <Send className="w-4 h-4" />
-                </button>
-              </form>
-            )}
+            <form action="https://api.web3forms.com/submit" method="POST" className="flex gap-2">
+              <input type="hidden" name="access_key" value="516d8b43-084b-4a54-a5b4-c5d4790ca317" />
+              <input type="hidden" name="subject" value="New lead from haikaitech.my" />
+              <input type="hidden" name="from_name" value="HaikaiTech Lead" />
+              <input
+                type="email"
+                name="email"
+                placeholder="Not ready for a call? Enter your email for a rough estimate"
+                className="flex-1 px-4 py-3 border-2 border-slate-200 rounded-md text-sm focus:outline-none focus:border-slate-400 bg-white/70"
+                required
+              />
+              <button
+                type="submit"
+                className="px-5 py-3 bg-slate-900 text-white rounded-md hover:bg-slate-800 transition-colors"
+              >
+                <Send className="w-4 h-4" />
+              </button>
+            </form>
           </div>
 
           {/* Trusted-by strip */}
