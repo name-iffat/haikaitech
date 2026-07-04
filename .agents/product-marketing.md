@@ -1,16 +1,16 @@
 # Product Marketing Context
 
-*Last updated: May 29, 2026*
+*Last updated: July 5, 2026*
 
 ## Product Overview
-**One-liner:** Freelance software engineer building web apps, dashboards, and interactive systems.
+**One-liner:** Custom web apps and dashboards for businesses that outgrew templates.
 **What it does:** Full-stack development services from React frontends to .NET backends, Unity visual tools, and production systems.
 **Product category:** Freelance Software Engineering / Web Development
 **Product type:** Service (agency-of-one)
 **Business model:** Custom per-feature / per-project pricing
 
 ## Target Audience
-**Target companies:** Small-to-mid businesses, startups, and agencies in Malaysia needing web app development
+**Target companies:** Small-to-mid businesses, startups, and agencies in the UK and globally needing web app development
 **Decision-makers:** Founders, CTOs, product managers, agency owners
 **Primary use case:** Building custom web apps, dashboards, and visual tools
 **Jobs to be done:**
@@ -32,7 +32,7 @@
 **Emotional tension:** Uncertainty about whether a freelancer can deliver quality work on time, fear of hiring someone who can't communicate technically.
 
 ## Competitive Landscape
-**Direct:** Local Malaysian freelancers and small agencies
+**Direct:** UK-based freelancers and small agencies
 **Secondary:** Upwork / Freelancer.com generalists
 **Indirect:** Hiring in-house junior devs
 
@@ -47,7 +47,7 @@
 | Objection | Response |
 |-----------|----------|
 | Price — "Why should I pay your rate?" | Custom per-feature pricing — you only pay for what you need. No agency markup. |
-| | |
+| Timezone — "You're in Malaysia, I'm in the UK" | 7-8 hour difference means your work gets done while you sleep. I communicate async-first, reply within 12 hours. |
 
 **Anti-persona:** Clients looking for cheap, quick one-page sites; enterprises needing full-time dedicated teams.
 

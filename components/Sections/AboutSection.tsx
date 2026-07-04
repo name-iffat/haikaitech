@@ -14,13 +14,13 @@ const AboutSection: React.FC = () => {
           </h2>
           <div className="prose prose-slate prose-lg font-light text-slate-600">
             <p>
-              I work across frontend, backend, and interactive systems, from React and .NET dashboards to Unity-based visual tools.
+              Based in Malaysia, I work with clients worldwide. I own the entire build — from database to API to UI — so you don't need to manage multiple freelancers.
               <span className="font-hand text-xl text-slate-800 block my-2 transform -rotate-1">
                 "I care about structure, but I also care about how things feel."
               </span>
             </p>
             <p>
-              I like turning complex problems into calm interfaces, and serious systems into products people actually enjoy using.
+              I turn complex problems into calm interfaces, and serious systems into products people actually enjoy using.
               My approach is grounded in engineering fundamentals but elevated by a visual-first mindset.
             </p>
           </div>

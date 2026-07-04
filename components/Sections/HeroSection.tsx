@@ -1,6 +1,6 @@
-import React from 'react';
-import { ArrowSketch, StylizedCorner, Tape, Sticker, HandCircle } from '../Decorations';
-import { Calendar, Terminal } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowSketch, StylizedCorner, Tape, Sticker } from '../Decorations';
+import { Calendar, Terminal, Send, CheckCircle } from 'lucide-react';
 import { track } from '../track';
 
 interface Props {
@@ -8,6 +8,16 @@ interface Props {
 }
 
 const HeroSection: React.FC<Props> = ({ avatarSrc }) => {
+  const [email, setEmail] = useState('');
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleLeadSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    track('lead_captured', 'hero_email');
+    setSubmitted(true);
+  };
+
   return (
     <header id="home" className="mb-32 relative pt-10">
       <div className="absolute -top-16 -left-16 text-slate-200/50 font-mono text-9xl font-bold select-none pointer-events-none animate-float">
@@ -22,24 +32,20 @@ const HeroSection: React.FC<Props> = ({ avatarSrc }) => {
             </span>
             <div className="flex items-baseline gap-2">
               <span className="hidden md:inline text-slate-400 font-ascii text-2xl relative top-1">@</span>
-              <h2 className="text-5xl md:text-6xl font-ascii text-slate-800 tracking-tight leading-none">
-                HaikaiTech<span className="text-blue-600 animate-pulse">_</span>
+              <h2 className="text-4xl md:text-5xl font-ascii text-slate-800 tracking-tight leading-none">
+                HAIKAITECH SOLUTIONS<span className="text-blue-600 animate-pulse">_</span>
               </h2>
             </div>
           </div>
 
           <h1 className="text-slate-900 font-bold tracking-tight mb-8 text-5xl md:text-7xl leading-[1.1]">
-            Freelance software engineer <br className="hidden md:block" />
-            building clarity from complexity.
+            Custom web apps and dashboards <br className="hidden md:block" />
+            for businesses that outgrew templates.
           </h1>
 
-          <div className="relative inline-block max-w-2xl mb-12">
+          <div className="relative inline-block max-w-2xl mb-8">
             <p className="text-slate-600 leading-relaxed text-xl md:text-2xl font-light">
-              I build dashboards, visual tools, and production systems that feel
-              <span className="relative inline-block mx-2 font-medium text-slate-900 font-hand text-3xl">
-                human.
-                <HandCircle className="text-blue-500/30 -top-2 -left-4 w-[140%] h-[150%]" />
-              </span>
+              Full-stack development with React, .NET, and Unity — no agency markup.
             </p>
             <ArrowSketch className="hidden md:block text-slate-300 absolute -bottom-10 -right-10 rotate-[20deg]" />
           </div>
@@ -54,6 +60,47 @@ const HeroSection: React.FC<Props> = ({ avatarSrc }) => {
               <Terminal className="w-4 h-4 text-slate-400 group-hover:text-slate-800" />
               <span className="font-mono text-sm">./view_work.sh</span>
             </a>
+          </div>
+
+          {/* Low-friction lead capture */}
+          <div className="mt-8 max-w-md">
+            {submitted ? (
+              <div className="flex items-center gap-2 text-green-600 font-medium">
+                <CheckCircle className="w-5 h-5" />
+                <span>Thanks! I&apos;ll reply within 24 hours.</span>
+              </div>
+            ) : (
+              <form onSubmit={handleLeadSubmit} className="flex gap-2">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Not ready for a call? Enter your email for a rough estimate"
+                  className="flex-1 px-4 py-3 border-2 border-slate-200 rounded-md text-sm focus:outline-none focus:border-slate-400 bg-white/70"
+                  required
+                />
+                <button
+                  type="submit"
+                  className="px-5 py-3 bg-slate-900 text-white rounded-md hover:bg-slate-800 transition-colors"
+                >
+                  <Send className="w-4 h-4" />
+                </button>
+              </form>
+            )}
+          </div>
+
+          {/* Trusted-by strip */}
+          <div className="mt-10 pt-6 border-t border-slate-100">
+            <p className="text-xs font-mono text-slate-400 uppercase tracking-wider mb-3">
+              TRUSTED BY
+            </p>
+            <div className="flex flex-wrap gap-x-6 gap-y-1 text-sm font-medium text-slate-500">
+              <span>Al Murtajiz Travel</span>
+              <span>Hijrah Al Haramain HQ</span>
+              <span>Dentex Clinic</span>
+              <span>Médin Fragrances</span>
+              <span className="text-slate-300 font-normal">+ 5 more projects</span>
+            </div>
           </div>
         </div>
 

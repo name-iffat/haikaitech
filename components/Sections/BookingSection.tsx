@@ -34,7 +34,7 @@ const BookingSection: React.FC = () => {
         <div className="relative z-10">
           <h2 className="text-3xl font-bold text-slate-900 mb-6 font-sans" onClick={() => track('cta_clicked', 'book_a_call_heading')}>Book a Call</h2>
           <p className="text-slate-600 mb-8 max-w-2xl mx-auto font-hand text-lg">
-            Schedule a 30-minute call to discuss your project ideas, collaboration opportunities, or just chat about tech.
+            Not sure if you need a full web app or just a dashboard? Book a 30-minute call — no pitch, just a conversation about what you&apos;re building and whether I can help.
           </p>
           <div className="max-w-4xl mx-auto rounded-xl overflow-hidden border-2 border-slate-200 shadow-lg" style={{height: "600px"}}>
             <CalBooking />
