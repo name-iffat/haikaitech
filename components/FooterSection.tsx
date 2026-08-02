@@ -44,6 +44,7 @@ const FooterSection: React.FC = () => {
           🔒 Secure payments powered by Stripe
         </a>
         <span className="inline-flex items-center gap-1.5">🌍 Serving clients worldwide</span>
+        <a href="/toolkit/" className="inline-flex items-center gap-1.5 font-medium text-slate-500 hover:text-slate-600 transition-colors">🧰 Business Toolkit</a>
         <a href="/privacy-policy/" className="hover:text-slate-600 transition-colors">Privacy Policy</a>
         <a href="/terms-of-service/" className="hover:text-slate-600 transition-colors">Terms of Service</a>
         <a href="/refund-cancellation-policy/" className="hover:text-slate-600 transition-colors">Refund Policy</a>

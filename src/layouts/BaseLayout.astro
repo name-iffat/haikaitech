@@ -2,11 +2,12 @@
 interface Props {
   title?: string;
   description?: string;
+  canonical?: string;
 }
 
 import '../styles/global.css';
 
-const { title = 'HAIKAITECH SOLUTIONS | Software Engineering Studio Malaysia', description = 'HAIKAITECH SOLUTIONS — registered software engineering studio in Malaysia. We build custom web apps, dashboards, and interactive systems with React, .NET, and Unity. Book a free call.' } = Astro.props;
+const { title = 'HAIKAITECH SOLUTIONS | Software Engineering Studio Malaysia', description = 'HAIKAITECH SOLUTIONS — registered software engineering studio in Malaysia. We build custom web apps, dashboards, and interactive systems with React, .NET, and Unity. Book a free call.', canonical = 'https://haikaitech.my/' } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -16,13 +17,13 @@ const { title = 'HAIKAITECH SOLUTIONS | Software Engineering Studio Malaysia', d
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <meta name="description" content={description} />
-  <link rel="canonical" href="https://haikaitech.my/" />
+  <link rel="canonical" href={canonical} />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="apple-touch-icon" href="/favicon.png" />
   <!-- Open Graph -->
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
-  <meta property="og:url" content="https://haikaitech.my/" />
+  <meta property="og:url" content={canonical} />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://haikaitech.my/og-image.png" />
   <meta name="twitter:card" content="summary" />

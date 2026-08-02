@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Terminal, User, Mail, Wrench, Home, Calendar } from 'lucide-react';
+import { Menu, X, Terminal, User, Mail, Wrench, Home, Calendar, Briefcase } from 'lucide-react';
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  prefix?: string;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ prefix = '' }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -20,7 +24,10 @@ const Navbar: React.FC = () => {
     { name: 'About', href: '#about', icon: User },
     { name: 'Contact', href: '#contact', icon: Mail },
     { name: 'Book', href: '#booking', icon: Calendar },
+    { name: 'Tools', href: '/toolkit/', icon: Briefcase, page: true },
   ];
+
+  const linkHref = (item: { href: string; page?: boolean }) => (item.page ? item.href : `${prefix}${item.href}`);
 
   return (
     <>
@@ -28,10 +35,10 @@ const Navbar: React.FC = () => {
       <nav className={`fixed top-4 left-0 right-0 z-50 flex justify-center px-4 transition-transform duration-300 ${scrolled ? 'translate-y-0' : 'translate-y-2'}`}>
         
         {/* The Navbar Pill */}
-        <div className="relative bg-white/90 backdrop-blur-md border border-slate-200 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-2xl px-2 py-2 md:px-6 md:py-3 flex items-center justify-between gap-4 md:gap-8 max-w-2xl w-full mx-auto">
+        <div className="relative bg-white/90 backdrop-blur-md border border-slate-200 shadow-[0_8px_30px_rgb(0,0,0,0.04)] rounded-2xl px-2 py-2 md:px-6 md:py-3 flex items-center justify-between gap-4 md:gap-8 max-w-3xl w-full mx-auto">
            
            {/* Logo / Home Mobile */}
-           <a href="#home" className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-slate-100 transition-colors md:hidden">
+           <a href={prefix ? '/' : '#home'} className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-slate-100 transition-colors md:hidden">
               <div className="font-hand font-bold text-xl text-slate-800">IH</div>
            </a>
 
@@ -40,8 +47,8 @@ const Navbar: React.FC = () => {
               {navItems.map((item) => (
                 <a 
                   key={item.name}
-                  href={item.href}
-                  className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-mono text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-all group relative overflow-hidden"
+                  href={linkHref(item)}
+                  className="flex items-center gap-2 px-2 lg:px-3 py-2 rounded-lg text-sm font-mono text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-all group relative overflow-hidden"
                 >
                   <item.icon className="w-4 h-4 text-slate-400 group-hover:text-blue-600 transition-colors" />
                   <span className="relative z-10">{item.name}</span>
@@ -68,7 +75,7 @@ const Navbar: React.FC = () => {
           {navItems.map((item, idx) => (
             <a 
               key={item.name}
-              href={item.href}
+              href={linkHref(item)}
               onClick={() => setIsOpen(false)}
               className="text-2xl font-bold font-sans text-slate-800 hover:text-blue-600 transition-colors flex items-center justify-center gap-3"
               style={{ transitionDelay: `${idx * 50}ms` }}
