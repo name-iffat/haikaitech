@@ -18,7 +18,7 @@ const Navbar: React.FC<NavbarProps> = ({ prefix = '' }) => {
   }, []);
 
   const navItems = [
-    { name: 'Start', href: '#home', icon: Home },
+    { name: 'Home', href: '#home', icon: Home },
     { name: 'Work', href: '#projects', icon: Terminal },
     { name: 'Workshop', href: '#skills', icon: Wrench },
     { name: 'About', href: '#about', icon: User },
@@ -70,7 +70,7 @@ const Navbar: React.FC<NavbarProps> = ({ prefix = '' }) => {
       </nav>
 
       {/* Mobile Menu Overlay */}
-      <div className={`fixed inset-0 z-40 bg-paper/95 backdrop-blur-sm transition-opacity duration-300 md:hidden flex flex-col items-center justify-center ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+      <div className={`fixed inset-0 z-40 bg-paper/95 backdrop-blur-sm transition-opacity duration-300 md:hidden flex flex-col items-center justify-center ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none invisible'}`}>
         <div className="flex flex-col gap-6 text-center">
           {navItems.map((item, idx) => (
             <a 
