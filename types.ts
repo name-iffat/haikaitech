@@ -7,7 +7,7 @@ export interface Project {
   link: string;
   image: string;
   accentColor: string; // Tailwind class for border/text
-  theme: 'bear' | 'hijrah' | 'dentex' | 'crypto' | 'pizza' | 'murtajiz' | 'medin';
+  theme: 'bear' | 'hijrah' | 'dentex' | 'crypto' | 'pizza' | 'murtajiz' | 'medin' | 'avsbina' | 'adyumrah' | 'fuzzfloor' | 'atone' | 'binamaju' | 'binapro' | 'hawkerrewards';
 }
 
 export interface SkillGroup {

@@ -25,8 +25,59 @@ import tahuImg from './src/assets/projects/tahu-kripto.webp';
 import pizzaImg from './src/assets/projects/rumahpizza.webp';
 import clarityImg from './src/assets/projects/clarity-learncentre.webp';
 import medinImg from './src/assets/projects/medin-fragrances.webp';
+import avsbinaImg from './src/assets/projects/avsbina.webp';
+import adyumrahImg from './src/assets/projects/adyumrah.webp';
+import fuzzfloorImg from './src/assets/projects/fuzzfloor.webp';
+import atoneImg from './src/assets/projects/atone.webp';
+import binamajuImg from './src/assets/projects/binamaju.webp';
+import binaproImg from './src/assets/projects/binapro.webp';
+import hawkerrewardsImg from './src/assets/projects/hawkerrewards.webp';
 
 export const PROJECTS: Project[] = [
+  {
+    id: 'avsbina',
+    name: 'AVS Design & Construction',
+    purpose: 'Premium design & build contractor platform with a 3D-first consultation flow',
+    tags: ['Astro', 'Premium UI', 'Design & Build'],
+    skills: ['Astro', 'TailwindCSS', 'UX Storytelling', 'Motion Design', 'Quote Forms', 'Content Strategy'],
+    link: 'https://avsbina.com.my',
+    image: avsbinaImg.src,
+    accentColor: 'border-amber-700 text-amber-700',
+    theme: 'avsbina'
+  },
+  {
+    id: 'adyumrah',
+    name: 'Ady Umrah Hajj',
+    purpose: 'Umrah travel agency platform with package catalogue & admin dashboard',
+    tags: ['React', 'Package Catalogue', 'Admin Dashboard'],
+    skills: ['React', 'Admin Dashboard', 'SEO', 'CRO', 'Content Management'],
+    link: 'https://adyumrahajj.com',
+    image: adyumrahImg.src,
+    accentColor: 'border-purple-600 text-purple-600',
+    theme: 'adyumrah'
+  },
+  {
+    id: 'fuzzfloor',
+    name: 'Fuzzfloor',
+    purpose: 'Flooring specialist site with service-led UX & project proof',
+    tags: ['Astro', 'Local SEO', 'Service Site'],
+    skills: ['Astro', 'TailwindCSS', 'Local SEO', 'Content Strategy', 'Premium Editorial UI'],
+    link: 'https://fuzzfloor.com',
+    image: fuzzfloorImg.src,
+    accentColor: 'border-teal-600 text-teal-600',
+    theme: 'fuzzfloor'
+  },
+  {
+    id: 'atone',
+    name: 'AT One Construction',
+    purpose: 'Bilingual lead-gen site for a pagar, awning & grill contractor in KL',
+    tags: ['Lead Generation', 'Bilingual MS/EN', 'Local SEO'],
+    skills: ['Landing Page', 'Local SEO', 'Bilingual Content', 'Quote Forms', 'Mobile-first UI'],
+    link: 'https://atoneconstruction.com.my',
+    image: atoneImg.src,
+    accentColor: 'border-slate-700 text-slate-700',
+    theme: 'atone'
+  },
   {
     id: 'murtajiz',
     name: 'Murtajiz Travel',
@@ -37,17 +88,6 @@ export const PROJECTS: Project[] = [
     image: murtajizImg.src,
     accentColor: 'border-emerald-600 text-emerald-600',
     theme: 'murtajiz'
-  },
-  {
-    id: 'bearsplit',
-    name: 'BearSplit Waitlist',
-    purpose: 'Waitlist app with playful UX & product thinking',
-    tags: ['React Native', 'Expo', 'Product Design'],
-    skills: ['React Native', 'Expo', 'UI/UX Design', 'Product Thinking', 'State Management', 'Hand-drawn Identity'],
-    link: 'https://bear-split-waitlist.vercel.app/',
-    image: bearsplitImg.src,
-    accentColor: 'border-orange-900 text-orange-900',
-    theme: 'bear'
   },
   {
     id: 'hijrah',
@@ -72,26 +112,15 @@ export const PROJECTS: Project[] = [
     theme: 'dentex'
   },
   {
-    id: 'tahu',
-    name: 'TahuKripto',
-    purpose: 'Experimental blueprint visual systems',
-    tags: ['React', 'Blueprint UI', 'Dark Mode'],
-    skills: ['React', 'Blueprint Visuals', 'Technical Design', 'Dark-mode UI'],
-    link: 'https://tahu-kripto.netlify.app/',
-    image: tahuImg.src,
-    accentColor: 'border-cyan-600 text-cyan-600',
-    theme: 'crypto'
-  },
-  {
-    id: 'pizza',
-    name: 'Rumah Pizza',
-    purpose: 'Branding and casual web experience',
-    tags: ['React', 'Fun UI', 'Branding'],
-    skills: ['React', 'Branding', 'Playful UI', 'Marketing Layouts'],
-    link: 'https://rumahpizza.netlify.app/',
-    image: pizzaImg.src,
-    accentColor: 'border-red-600 text-red-600',
-    theme: 'pizza'
+    id: 'medin',
+    name: 'Médin Fragrances',
+    purpose: 'Shopify e-commerce store for premium fragrance brand',
+    tags: ['Shopify', 'E-commerce', 'Brand Design'],
+    skills: ['Shopify', 'E-commerce Strategy', 'Brand Design', 'Product Showcase', 'UX Design'],
+    link: 'https://medin-frag.myshopify.com/',
+    image: medinImg.src,
+    accentColor: 'border-amber-700 text-amber-700',
+    theme: 'medin'
   },
   {
     id: 'clarity-learncentre',
@@ -105,15 +134,70 @@ export const PROJECTS: Project[] = [
     theme: 'hijrah'
   },
   {
-    id: 'medin',
-    name: 'Médin Fragrances',
-    purpose: 'Shopify e-commerce store for premium fragrance brand',
-    tags: ['Shopify', 'E-commerce', 'Brand Design'],
-    skills: ['Shopify', 'E-commerce Strategy', 'Brand Design', 'Product Showcase', 'UX Design'],
-    link: 'https://medin-frag.myshopify.com/',
-    image: medinImg.src,
-    accentColor: 'border-amber-700 text-amber-700',
-    theme: 'medin'
+    id: 'binamaju',
+    name: 'Binamaju Construction',
+    purpose: 'Digital presence demo for a CIDB G3 contractor — Malay-first with WhatsApp lead flow',
+    tags: ['Demo', 'Malay', 'WhatsApp Lead Flow'],
+    skills: ['Landing Page', 'Malay Content', 'WhatsApp Integration', 'Reviews', 'Local SEO'],
+    link: 'https://binamaju-demoweb.pages.dev/ms',
+    image: binamajuImg.src,
+    accentColor: 'border-emerald-700 text-emerald-700',
+    theme: 'binamaju'
+  },
+  {
+    id: 'binapro',
+    name: 'BinaPro — Contractor Blueprint',
+    purpose: 'Blueprint concept page for a corporate engineering & construction contractor',
+    tags: ['Blueprint', 'Concept', 'Contractor'],
+    skills: ['UI Design', 'Brand Concept', 'Landing Page'],
+    link: 'https://binapro-contractor-blueprint.pages.dev/',
+    image: binaproImg.src,
+    accentColor: 'border-blue-700 text-blue-700',
+    theme: 'binapro'
+  },
+  {
+    id: 'hawkerrewards',
+    name: 'HawkerRewards',
+    purpose: 'Solana-powered loyalty demo for hawker stalls with a playable match-3 game',
+    tags: ['Web3', 'Solana', 'Gamified Demo'],
+    skills: ['Product Design', 'Web3 Landing', 'Interactive Game', 'Token UX'],
+    link: 'https://hawkerrewards.pages.dev/',
+    image: hawkerrewardsImg.src,
+    accentColor: 'border-yellow-600 text-yellow-600',
+    theme: 'hawkerrewards'
+  },
+  {
+    id: 'bearsplit',
+    name: 'BearSplit Waitlist',
+    purpose: 'Waitlist app with playful UX & product thinking',
+    tags: ['React Native', 'Expo', 'Product Design'],
+    skills: ['React Native', 'Expo', 'UI/UX Design', 'Product Thinking', 'State Management', 'Hand-drawn Identity'],
+    link: 'https://bear-split-waitlist.vercel.app/',
+    image: bearsplitImg.src,
+    accentColor: 'border-orange-900 text-orange-900',
+    theme: 'bear'
+  },
+  {
+    id: 'pizza',
+    name: 'Rumah Pizza',
+    purpose: 'Branding and casual web experience',
+    tags: ['React', 'Fun UI', 'Branding'],
+    skills: ['React', 'Branding', 'Playful UI', 'Marketing Layouts'],
+    link: 'https://rumahpizza.netlify.app/',
+    image: pizzaImg.src,
+    accentColor: 'border-red-600 text-red-600',
+    theme: 'pizza'
+  },
+  {
+    id: 'tahu',
+    name: 'TahuKripto',
+    purpose: 'Experimental blueprint visual systems',
+    tags: ['React', 'Blueprint UI', 'Dark Mode'],
+    skills: ['React', 'Blueprint Visuals', 'Technical Design', 'Dark-mode UI'],
+    link: 'https://tahu-kripto.netlify.app/',
+    image: tahuImg.src,
+    accentColor: 'border-cyan-600 text-cyan-600',
+    theme: 'crypto'
   }
 ];
 
