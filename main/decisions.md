@@ -20,6 +20,24 @@
 - AI Studio express server (@google/genai): incompatible with static Cloudflare Pages; AI features, if wanted later, belong in a Function
 **Consequences**: haikaitech-invoice migrates to Astro; express/dotenv/genai and fix scripts removed; invoice.haikaitech.my subdomain; lead form posts to /api/leads which writes D1 and emails via Resend.
 
+## 2026-08-05 -- GA4 server-side beacon via Pages Function proxy (portfolio)
+**Context**: Client-side gtag.js was the only render-blocking script left on the portfolio (986ms main-thread eval / 2 long tasks / 66KiB unused JS), capping Lighthouse Performance at ~69 and letting deprecated gtag warnings leak into Best-Practices. User's research framed this as the "traditional" path in a zero-click world — server-side tracking + Self-Reported Attribution (SRA) are the modern answer for the AI-search era.
+**Decision**:
+- Remove gtag.js entirely from `src/layouts/BaseLayout.astro`; replace with a tiny inline Measurement Protocol beacon that keeps the existing `window.gtag` shim (all 5 call sites in App.tsx / track.ts / ProjectCard.tsx / CalBooking.tsx unchanged)
+- Beacon posts same-origin to `functions/api/track.ts` (Pages Function) which validates origin/JSON and forwards to `https://www.google-analytics.com/mp/collect?measurement_id=G-82BQD8BX9G&api_secret=…` server-side
+- GA4 API secret (`GA4_API_SECRET`) lives only as a Pages production secret — never in client JS
+- `client_id` from `_ga` cookie else `localStorage 'hktk_cid'` UUID; `session_id` from `sessionStorage 'hktk_sid'`
+- Keep GA4 property G-82BQD8BX9G (zero re-setup); add Self-Reported Attribution via a "How did you hear about us?" custom question on the Cal.com 30-min event (no code, answer joins booking record)
+**Rationale**:
+- MP `mp/collect` is CORS-blocked from the browser (preflight fails, `errors-in-console`, BP 96) — the same-origin proxy function is the confirmed fix
+- Removes the only render-blocking script and the deprecated gtag.js surface: local Lighthouse Perf 69 -> 90, Best-Practices -> 100, zero console errors
+- Server-side + SRA surfaces which AI assistant referred a visitor, closing the "zero-click / AI search" visibility gap
+**Rejected alternatives**:
+- Keep gtag.js (Perf ~69 forever, deprecated API surface)
+- Cloudflare Web Analytics (user chose the proxy fix over backtracking)
+- Client-side `mp/collect` direct (CORS-blocked)
+**Consequences**: static architecture stays except the one proxy function; MP event-level only (no Enhanced Measurement / auto-session / cross-domain); deployed to Cloudflare Pages Production env (branch **main** — `--branch production` lands in Preview and silently lacks env secrets). User dashboard steps remain: disable Email Address Obfuscation (drops email-decode.min.js ~816ms), create AI Assistant channel group regex.
+
 ## 2026-05-30 -- Dual image optimization: <Image /> + getImage()
 **Context**: React island images (ProjectCards, HeroSection) could only get Vite content-hashing, bypassing Astro's Sharp pipeline. [slug].astro pages already used <Image /> for responsive optimization.
 **Decision**: Use <Image /> with responsive widths in [slug].astro for detail pages, and getImage() at fixed width in index.astro to feed Sharp-optimized URLs as props to React islands.

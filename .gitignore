@@ -28,3 +28,6 @@ dist-ssr
 
 # Astro dev cache
 .astro/
+
+# Wrangler local cache
+.wrangler/

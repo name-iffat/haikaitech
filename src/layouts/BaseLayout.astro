@@ -64,14 +64,74 @@ const { title = 'HAIKAITECH SOLUTIONS | Software Engineering Studio Malaysia', d
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Patrick+Hand&family=VT323&display=swap"
       rel="stylesheet">
   </noscript>
-  <!-- Google tag (gtag.js) -->
-  <link rel="preconnect" href="https://www.google-analytics.com">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-82BQD8BX9G"></script>
+  <!-- GA4 Measurement Protocol beacon (no gtag.js) -->
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-82BQD8BX9G', { send_page_view: true });
+    (function () {
+      function getClientId() {
+        try {
+          var m = document.cookie.match(/(?:^|;\s*)_ga=GA\d\.\d+\.([\d.]+)/);
+          if (m) return m[1];
+        } catch (e) {}
+        try {
+          var id = localStorage.getItem('hktk_cid');
+          if (!id) {
+            id = Math.random().toString(36).slice(2) + '.' + Date.now().toString(36);
+            localStorage.setItem('hktk_cid', id);
+          }
+          return id;
+        } catch (e) {
+          return 'XXXXXXXXXXXXXXX.' + Date.now();
+        }
+      }
+
+      var clientId = getClientId();
+      var sessionId = null;
+      try {
+        sessionId = sessionStorage.getItem('hktk_sid');
+        if (!sessionId) {
+          sessionId = Date.now().toString(36);
+          sessionStorage.setItem('hktk_sid', sessionId);
+        }
+      } catch (e) {
+        sessionId = Date.now().toString(36);
+      }
+
+      function send(name, params) {
+        try {
+          var payload = {
+            client_id: clientId,
+            events: [{
+              name: name,
+              params: Object.assign({
+                session_id: sessionId,
+                page_location: window.location.href,
+                page_title: document.title,
+                page_referrer: document.referrer
+              }, params || {})
+            }]
+          };
+          var url = '/api/track';
+          var body = new Blob([JSON.stringify(payload)], { type: 'application/json' });
+          if (navigator.sendBeacon) {
+            navigator.sendBeacon(url, body);
+          } else {
+            fetch(url, { method: 'POST', keepalive: true, body: body });
+          }
+        } catch (e) {}
+      }
+
+      window.gtag = function (cmd, name, params) {
+        if (cmd === 'event' && typeof name === 'string') {
+          send(name, params);
+        }
+      };
+
+      if (document.readyState === 'complete') {
+        send('page_view');
+      } else {
+        window.addEventListener('load', function () { send('page_view'); }, { once: true });
+      }
+    })();
   </script>
 </head>
 <body>
