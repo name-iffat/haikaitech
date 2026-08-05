@@ -1,6 +1,6 @@
 # HaikaiTech Solutions
 
-HaikaiTech Solutions is a registered software engineering studio in Penang, Malaysia (SSM: 202603149868, CA0422517-K), run by Iffat Haikal. We build business websites, custom web apps, dashboards, and interactive systems for clients worldwide.
+HaikaiTech Solutions is a registered software engineering studio in Penang, Malaysia (SSM: 202603149868, CA0422517-K), run by Iffat Haikal. We build business websites, custom web apps, dashboards, and interactive systems for clients across Malaysia — most of our clients are based in Kuala Lumpur — and worldwide.
 
 ## What we do
 
@@ -41,7 +41,17 @@ Quotation-based work: custom web apps, business dashboards, .NET/Blazor systems,
 
 - Email: hq@haikaitech.my
 - WhatsApp: +60 14-753 3499
-- Location: Penang, Malaysia (serving clients worldwide)
+- Location: Penang, Malaysia (serving clients across all of Malaysia — most in Kuala Lumpur — and worldwide)
+
+## Blog
+
+Guides and field notes for Malaysian businesses:
+
+- https://haikaitech.my/blog/how-much-does-a-business-website-cost-in-malaysia/ — How Much Does a Business Website Cost in Malaysia? (2026 Guide)
+- https://haikaitech.my/blog/website-siap-malaysian-sme-website/ — Website Siap: A Complete Malaysian SME Website for RM1,500
+- https://haikaitech.my/blog/rm199-managed-website-plan-malaysia/ — The RM199/Month Managed Website Plan — What You Get
+- https://haikaitech.my/blog/how-to-choose-a-web-developer-in-kuala-lumpur/ — How to Choose a Web Developer for Your KL Business (Malaysia-Wide)
+- https://haikaitech.my/blog/custom-software-malaysia-web-apps-and-dashboards/ — Custom Software in Malaysia: Web Apps, Dashboards, .NET, and Unity
 
 ## Toolbox
 

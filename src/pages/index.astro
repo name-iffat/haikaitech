@@ -12,6 +12,7 @@ import FooterSection from '../../components/FooterSection';
 import StickyBooking from '../../components/StickyBooking';
 import { DoodleStar } from '../../components/Decorations';
 import { PROJECTS } from '../../constants';
+import { getCollection } from 'astro:content';
 
 import murtajizImg from '../../src/assets/projects/al-murtajiz-travel.webp';
 import bearsplitImg from '../../src/assets/projects/bear-split-waitlist.webp';
@@ -58,6 +59,13 @@ for (const project of PROJECTS) {
 }
 
 const heroAvatar = await getImage({ src: avatarImg, width: 400, format: 'webp' });
+
+const blogPosts = (await getCollection('blog'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+const formatPostDate = (date: Date) =>
+  new Date(date).toLocaleDateString('en-GB', { month: 'short', year: 'numeric' });
 ---
 
 <BaseLayout>
@@ -73,6 +81,30 @@ const heroAvatar = await getImage({ src: avatarImg, width: 400, format: 'webp' }
       <ProjectsSection client:load projectImages={projectImages} />
       <SkillsSection />
       <AboutSection />
+      <section class="relative py-16">
+        <div class="flex items-end justify-between gap-4 mb-10">
+          <div>
+            <p class="font-mono text-xs text-slate-500 uppercase tracking-widest">Field Notes</p>
+            <h2 class="mt-2 font-hand text-4xl md:text-5xl text-slate-800">Latest from the blog</h2>
+          </div>
+          <a href="/blog/" class="hidden sm:inline-flex items-center gap-2 font-mono text-sm text-blue-700 hover:gap-3 transition-all whitespace-nowrap">
+            All posts →
+          </a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {blogPosts.map((p) => (
+            <a
+              href={`/blog/${p.slug}/`}
+              class="group block bg-white border border-slate-200 rounded-2xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:-translate-y-1 hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] transition-all"
+            >
+              <p class="font-mono text-xs text-slate-500 mb-3">{formatPostDate(p.data.pubDate)}</p>
+              <h3 class="font-bold text-slate-800 group-hover:text-blue-700 transition-colors leading-snug">{p.data.title}</h3>
+              <p class="mt-2 text-sm text-slate-500 line-clamp-2">{p.data.description}</p>
+              <span class="mt-4 inline-flex items-center gap-2 font-mono text-sm text-blue-700 group-hover:gap-3 transition-all">Read →</span>
+            </a>
+          ))}
+        </div>
+      </section>
       <ContactSection client:load />
       <BookingSection client:load />
       <FooterSection />

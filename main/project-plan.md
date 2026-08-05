@@ -64,8 +64,22 @@ Brand architecture:
 - [x] Build clean, Lighthouse >= 95 on toolkit page — UNBLOCKED 2026-08-05 via GA4 server-side beacon: gtag.js replaced by a same-origin Measurement Protocol beacon through `functions/api/track.ts` (proxy -> mp/collect, secret server-side as Pages `GA4_API_SECRET`). Local Lighthouse (function-served content): Perf 90, A11y 100, Best-Practices 100, SEO 100, zero console errors. Only remaining cap: CF Email Obfuscation (email-decode.min.js ~816ms) — user disables in dashboard; after that re-run Lighthouse for full 95+.
 
 ### Phase 3: Deferred
-- [~] Portfolio expansion (Services, Pricing, Case Studies, Blog) - deferred, do after toolkit exists
+- [x] Services & Pricing page (/services/) — live 2026-08-06, full confirmed pricing + Service/FAQPage JSON-LD
+- [x] Blog engine + 5 seed posts (/blog/) — live 2026-08-06, BlogPosting JSON-LD, homepage section
+- [~] Case Studies (enrich project detail pages) - deferred
 - [~] haikaitech-ui shared library + haikaitech-quotation - deferred until 2nd tool starts
+
+### Phase 4: AI-Search Visibility Layer
+- [x] public/llms.txt + llms-full.txt (AI context for LLM crawlers)
+- [x] public/okf/ OKF v0.1 bundle (index, organization, person, services, toolkit, projects, blog, contact)
+- [x] Organization JSON-LD in BaseLayout (SSM, address, founding date, knowsAbout)
+- [x] FooterSection "Last updated" freshness line
+- [x] Geo positioning aligned site-wide: "serving businesses across all of Malaysia — most clients in Kuala Lumpur" (llms, OKF, /services/)
+- [x] robots.txt allows all AI bots (Allow: /)
+- [x] Services page A11y 95 -> 100 (text-slate-400 -> 500 contrast) + Lighthouse verified: Perf 81 / A11y 100 / SEO 100 / BP 81 (CF Web Analytics deprecations)
+- [~] Submit llms.txt to llmstxt.org - user action
+- [~] GSC: request indexing of /services/, /blog/, llms.txt/OKF
+- [~] AI-visibility baseline audit (5 queries across ChatGPT/Perplexity/Gemini/Claude) - user action
 
 ## Progress Log
 
@@ -76,3 +90,5 @@ Brand architecture:
 2026-08-03 - Resend live: API key stored as Pages secret, recipient set to haikaitechsolutions@gmail.com (admin@haikaitech.my permanently bounces — Email Routing has no forwarding rule), deployed, E2E verified (POST /api/leads 201 -> D1 row -> email delivered). Test data cleaned (0 leads). Domain mail.haikaitech.my fully VERIFIED in Resend (triggered re-check via POST /domains/67e1208c.../verify — DKIM/SPF/Receiving/Tracking all pass).
 2026-08-03 - Lighthouse Phase 2 fixes: SEO 92->100 (nav "Start"->"Home" for descriptive link-text; closed mobile overlay now visibility-hidden, not in a11y tree), Accessibility 89->100 (toolkit "In development" badges text-slate-400->slate-600; footer bottom-row links +py-2 tap targets), Best-Practices 81->100 locally (gtag deprecations fire inconsistently — live can still flag them), Performance 62->69 (Google Fonts stylesheet now preload+onload non-blocking, removed 864ms render-blocking; +preconnect www.google-analytics.com). Remaining render-blocking: only BaseLayout.css (176ms). Perf capped at ~69: user chose to KEEP GA4 (986ms main-thread script eval / 2 long tasks / 66KiB unused JS) and KEEP CF Email Obfuscation (email-decode.min.js 816ms). Local Lighthouse 13.4.1: P69 A100 BP100 SEO100; metrics FCP 3.0s / LCP 5.2s / TBT 260ms / SI 3.8s / CLS 0.008. Not committed — awaiting deploy to Cloudflare Pages.
 2026-08-05 - Analytics revamp (portfolio): gtag.js removed -> inline MP beacon (window.gtag shim, /api/track same-origin) + functions/api/track.ts proxy (origin allow-list, GA4_API_SECRET server-side, forwards to mp/collect, returns 204). MP secret Aqzz9uzyRBeB71sLZ5wfiw set as Pages production secret GA4_API_SECRET. Local Lighthouse vs function-served content: Perf 90 / A11y 100 / BP 100 / SEO 100, console-errors 0 (CORS error fixed by proxy). Deployed to Cloudflare Pages — CRITICAL: `--branch production` lands in the PREVIEW env (no secrets); this project's Production env is branch **main** (git-integration deployments), so deploy with `--branch main`. Live verified on haikaitech.my: gtag.js gone, /api/track beacon present, POST /api/track -> 204 (forwards to GA4). email-decode.min.js still present (obfuscation ON — user disables in CF dashboard). Pending user steps: disable Email Address Obfuscation, create AI Assistant channel group (chatgpt\.com|chat\.openai\.com|claude\.ai|perplexity\.ai|gemini\.google\.com|copilot\.microsoft\.com|meta\.ai), add SRA question to Cal 30-min event. Commits: 8e67f1d (sitemap), ed1fbd9 (7 projects) already deployed; analytics changes pending commit+push.
+2026-08-06 - AI-search visibility layer (portfolio): public/llms.txt + llms-full.txt, public/okf/ OKF v0.1 bundle (8 files incl. blog.md), Organization JSON-LD in BaseLayout, FooterSection "Last updated" freshness, /services/ page (confirmed pricing + Service/FAQPage JSON-LD), Services nav item + sitemap entry. Geo positioning aligned to "serving across Malaysia — most clients in KL". Live verified (all routes 200). Commits d6aec02 + dba4bff pushed -> auto-deploy.
+2026-08-06 - Phase A verify + Phase B blog: /services/ Lighthouse Perf 81 / A11y 95 -> 100 (contrast text-slate-400 -> 500) / SEO 100 / BP 81 (CF Web Analytics deprecations, known). Schema validator: no errors. Blog engine built (content collections, /blog/ + /blog/[slug], BlogPosting JSON-LD, reading time, related, CTA), 5 seed posts drafted (cost guide, Website Siap, RM199 plan, KL dev choice, custom software), homepage "Latest from the blog" section, llms/OKF/sitemap wired, geo copy aligned. Pending: build+verify+commit+push, user baseline audit + dashboard tasks.

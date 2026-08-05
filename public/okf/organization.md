@@ -8,12 +8,12 @@ tags: [haikaitech, organization, malaysia, software]
 
 # HaikaiTech Solutions
 
-HaikaiTech Solutions is a registered software engineering studio based in Penang, Malaysia.
+HaikaiTech Solutions is a registered software engineering studio based in Penang, Malaysia, serving businesses across all of Malaysia — most of our clients are based in Kuala Lumpur — and worldwide.
 
 - Registration: SSM 202603149868 (CA0422517-K)
 - Registered address: 2-U, Jalan Sultan Azlan Shah, Bandar Bayan Baru, 11950 Bayan Lepas, Pulau Pinang, Malaysia
 - Scope: business websites, custom web apps, dashboards, .NET/Blazor systems, Unity visualizations, and AI-search modernization
-- Service area: clients worldwide, Malaysian SME focus
+- Service area: serving businesses across all of Malaysia — most clients are based in Kuala Lumpur — plus worldwide
 
 ## Brand
 

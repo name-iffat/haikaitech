@@ -8,6 +8,8 @@ tags: [haikaitech, services, pricing, websites, malaysia]
 
 # Services & Pricing
 
+We serve businesses across all of Malaysia — most of our clients are based in Kuala Lumpur — with everything handled remotely.
+
 ## Website Siap — One-Time
 
 - Price: from RM1,500
@@ -58,3 +60,4 @@ Custom web apps, business dashboards, .NET/Blazor systems, Unity visualizations,
 - [Organization](organization.md)
 - [Contact](contact.md)
 - [Toolkit](toolkit.md)
+- [Blog](blog.md)

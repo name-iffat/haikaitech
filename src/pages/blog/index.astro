@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../../components/Navbar';
+import FooterSection from '../../../components/FooterSection';
+import { getCollection } from 'astro:content';
+import { DoodleStar, Tape, ScribbleUnderline } from '../../../components/Decorations';
+
+const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const formatDate = (date: Date) =>
+  new Date(date).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
+
+const readingTime = (body: string) => Math.max(1, Math.round(body.trim().split(/\s+/).length / 200));
+---
+
+<BaseLayout
+  title="Blog | HaikaiTech Solutions — Web Development Guides for Malaysian Businesses"
+  description="Practical guides and field notes on business websites, pricing, custom software, and hiring developers — written for Malaysian businesses by HaikaiTech Solutions."
+  canonical="https://haikaitech.my/blog/"
+>
+  <div class="min-h-screen relative font-sans bg-paper bg-grid-pattern selection:bg-yellow-200 selection:text-slate-900">
+    <Navbar client:load prefix="/" />
+
+    <main class="max-w-5xl mx-auto px-6 py-20 md:py-28 relative">
+      <DoodleStar class="top-24 left-8 text-slate-300 animate-pulse hidden lg:block" />
+      <DoodleStar class="top-48 right-16 text-blue-200 hidden lg:block" />
+
+      <!-- Header -->
+      <header class="relative mb-20 md:mb-28">
+        <Tape class="top-4 -left-6 rotate-[-6deg] hidden md:block" />
+        <p class="font-mono text-sm text-blue-700 tracking-widest uppercase">Field Notes</p>
+        <h1 class="mt-4 font-hand text-5xl md:text-7xl text-slate-800 leading-tight relative max-w-3xl">
+          Notes on building for{' '}
+          <span class="text-blue-700 relative">
+            Malaysian businesses
+            <ScribbleUnderline class="w-full text-blue-400" />
+          </span>
+        </h1>
+        <p class="mt-8 max-w-xl text-slate-600 text-lg font-light">
+          Straightforward guides on websites, pricing, and custom software — no jargon, no fluff. New posts land as we build.
+        </p>
+      </header>
+
+      <!-- Posts -->
+      <section class="grid gap-6">
+        {posts.map((post) => (
+          <a
+            href={`/blog/${post.id}/`}
+            class="group block bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all hover:-translate-y-1 hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)]"
+          >
+            <div class="flex flex-wrap items-center gap-3 mb-3">
+              <span class="font-mono text-xs text-slate-500">{formatDate(post.data.pubDate)}</span>
+              <span class="font-mono text-xs text-slate-500">·</span>
+              <span class="font-mono text-xs text-slate-500">{readingTime(post.body)} min read</span>
+              <div class="flex flex-wrap gap-2 ml-auto">
+                {post.data.tags.slice(0, 3).map((tag) => (
+                  <span class="px-2 py-0.5 text-xs font-mono bg-slate-100 border border-slate-200 text-slate-600 rounded-full">#{tag}</span>
+                ))}
+              </div>
+            </div>
+            <h2 class="text-2xl font-bold text-slate-800 group-hover:text-blue-700 transition-colors">{post.data.title}</h2>
+            <p class="mt-3 text-slate-600 leading-relaxed">{post.data.description}</p>
+            <span class="mt-5 inline-flex items-center gap-2 font-mono text-sm text-blue-700 group-hover:gap-3 transition-all">
+              Read post <span>→</span>
+            </span>
+          </a>
+        ))}
+      </section>
+
+      <!-- CTA -->
+      <section class="mt-20 bg-slate-900 text-slate-100 p-8 md:p-12 rounded-2xl relative overflow-hidden text-center">
+        <div class="absolute top-0 right-0 w-72 h-72 bg-blue-600/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="relative z-10">
+          <h2 class="font-hand text-3xl md:text-4xl text-slate-100">Reading this to start a project?</h2>
+          <p class="mt-4 max-w-xl mx-auto text-slate-400 text-lg font-light">
+            Book a free 30-minute call and get a fixed quotation — no obligation, no pressure.
+          </p>
+          <a
+            href="/#booking"
+            class="mt-7 inline-flex items-center gap-2 bg-blue-700 text-white rounded-xl px-6 py-3 font-mono text-sm hover:bg-blue-800 active:scale-[0.98] transition-all"
+          >
+            Book a free call
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <FooterSection />
+  </div>
+</BaseLayout>
+

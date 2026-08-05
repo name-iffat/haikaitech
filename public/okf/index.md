@@ -17,6 +17,7 @@ This bundle describes HaikaiTech Solutions in an agent-readable format. Each fil
 - [Services](services.md) — business websites, custom software, company profiles, add-ons, and maintenance pricing.
 - [Toolkit](toolkit.md) — free business tools for Malaysian SMEs.
 - [Projects](projects.md) — selected portfolio projects.
+- [Blog](blog.md) — guides and field notes for Malaysian businesses.
 - [Contact](contact.md) — how to get in touch and engage.
 
 ## Source site

@@ -1,6 +1,6 @@
 # HaikaiTech Solutions
 
-> HaikaiTech Solutions is a registered software engineering studio in Penang, Malaysia (SSM: 202603149868, CA0422517-K). We build business websites, custom web apps, dashboards, and interactive systems for clients worldwide — from one-time "Website Siap" packages to fully managed monthly plans and quotation-based custom software.
+> HaikaiTech Solutions is a registered software engineering studio in Penang, Malaysia (SSM: 202603149868, CA0422517-K). We build business websites, custom web apps, dashboards, and interactive systems for clients across Malaysia — most of our clients are based in Kuala Lumpur — and worldwide. From one-time "Website Siap" packages to fully managed monthly plans and quotation-based custom software.
 
 ## Services
 
@@ -16,9 +16,19 @@
 - [Fuzzfloor](https://haikaitech.my/projects/fuzzfloor/): Premium editorial presentation site.
 - [Murtajiz](https://haikaitech.my/projects/murtajiz/): Project case study.
 
+## Blog
+
+- [How Much Does a Business Website Cost in Malaysia? (2026 Guide)](https://haikaitech.my/blog/how-much-does-a-business-website-cost-in-malaysia/): Transparent website pricing breakdown — one-time from RM1,500, managed RM199/month, company profiles RM800–1,200, add-ons, and hidden costs.
+- [Website Siap: A Complete Malaysian SME Website for RM1,500](https://haikaitech.my/blog/website-siap-malaysian-sme-website/): What the one-time Website Siap package includes, plus the RM350/year renewal.
+- [The RM199/Month Managed Website Plan — What You Get](https://haikaitech.my/blog/rm199-managed-website-plan-malaysia/): Fully managed website with hosting, SSL, security, backups, maintenance, and support.
+- [How to Choose a Web Developer for Your KL Business (Malaysia-Wide)](https://haikaitech.my/blog/how-to-choose-a-web-developer-in-kuala-lumpur/): Hiring checklist — pricing, ownership, maintenance, SEO, and why location matters less.
+- [Custom Software in Malaysia: Web Apps, Dashboards, .NET, and Unity](https://haikaitech.my/blog/custom-software-malaysia-web-apps-and-dashboards/): When a website isn't enough, and how quotation-based pricing works.
+
 ## Key pages
 
 - [Home](https://haikaitech.my/): Portfolio overview, skills, about, contact, and booking.
+- [Services & Pricing](https://haikaitech.my/services/): Business websites, company profiles, custom software, add-ons, and maintenance.
+- [Blog](https://haikaitech.my/blog/): Guides on website costs, packages, and custom software for Malaysian businesses.
 - [Book a free call](https://haikaitech.my/#booking): Cal.com booking for a free 30-minute consultation.
 - [Contact](https://haikaitech.my/#contact): Lead form and WhatsApp.
 - [Privacy Policy](https://haikaitech.my/privacy-policy/)
