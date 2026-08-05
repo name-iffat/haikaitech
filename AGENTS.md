@@ -31,17 +31,20 @@
 - SPA fallback: `public/_redirects` contains `/* /index.html 200`
 - Node 22+ required (Astro 6 constraint, `.node-version`)
 - No `wrangler.toml` — static Pages site, not a Worker
-- Manual deploy via Cloudflare dashboard (no CI/CD configured)
+- **Git integration CI/CD**: pushing to `origin/main` auto-builds and deploys to the **Production** environment
+- **CLI deploys**: `wrangler pages deploy dist --project-name haikaitech --branch main` → Production env. **CRITICAL: `--branch production` lands in the Preview environment** (no env secrets) — this project's Production env is branch `main`
+- `functions/api/track.ts` (GA4 proxy) auto-bundles on deploy; reads secret `GA4_API_SECRET` (Pages production secret)
+- Local function testing: `wrangler pages dev dist --compatibility-date 2026-06-02 --binding GA4_API_SECRET=…` (newer dates error: bundled runtime supports up to 2026-06-02)
 - Live at: **haikaitech.my**
 
 ## External services
-- Cal.com booking via `@calcom/embed-react` in `components/CalBooking.tsx`
+- Cal.com booking via `@calcom/embed-react` in `components/CalBooking.tsx` (event `haikaitech/30min`)
 - Skill icons from `https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/` (mapped in `constants.tsx`)
 
 ## What's NOT here
 - No tests, no test framework, no test files
 - No linter, no formatter, no lint/format scripts
-- No CI/CD workflows (`.github/` doesn't exist)
+- No CI/CD workflows in `.github/` — Cloudflare git integration (on `main`) is the deployment path
 
 ## OpenCode context
 - Cloudflare skill references live in `.agents/skills/` (installed by OpenCode, not app code)
