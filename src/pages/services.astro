@@ -1,0 +1,450 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar';
+import FooterSection from '../../components/FooterSection';
+import { DoodleStar, ScribbleUnderline, ArrowSketch, Tape } from '../../components/Decorations';
+
+const tiers = [
+  {
+    tag: 'Option 1',
+    name: 'Website Siap (One-Time)',
+    price: 'from RM1,500',
+    billing: 'Own it outright. Manage it yourself.',
+    recommended: false,
+    features: [
+      'Professional custom website',
+      'Up to 5 pages',
+      'Mobile responsive',
+      'WhatsApp integration',
+      'Contact form',
+      'Google Maps',
+      'Google Search ready',
+      'Google Search Console setup',
+      'Google Analytics 4',
+      'Basic SEO',
+      'SSL setup',
+      'Website deployment',
+    ],
+    renewal: {
+      label: 'Annual renewal',
+      price: 'RM350/year',
+      items: ['Domain renewal', 'Hosting renewal', 'SSL', 'Basic technical maintenance'],
+      note: 'Content updates are charged separately.',
+    },
+  },
+  {
+    tag: 'Option 2',
+    name: 'Business Website Plan',
+    price: 'RM199/month',
+    billing: '12-month minimum · No large upfront payment.',
+    recommended: true,
+    features: [
+      'Professional website',
+      'Hosting',
+      'Domain (if required)',
+      'SSL',
+      'Website maintenance',
+      'Security monitoring',
+      'Regular backups',
+      'Small content updates',
+      'Technical support',
+      'Google Search ready',
+    ],
+    renewal: null,
+  },
+];
+
+const addOns = [
+  { name: 'Additional page', price: 'RM150–250 / page' },
+  { name: 'Additional language (BM / EN)', price: 'From RM500' },
+  { name: 'Blog / CMS', price: 'From RM500' },
+  { name: 'Copywriting', price: 'Quotation' },
+  { name: 'Logo design', price: 'From RM300' },
+  { name: 'Google Business Profile setup', price: 'RM300' },
+  { name: 'Email setup', price: 'RM150' },
+  { name: 'Website migration', price: 'Quotation' },
+];
+
+const maintenance = [
+  { name: 'Minor update', price: 'RM50–100' },
+  { name: 'New section', price: 'RM100–200' },
+  { name: 'New page', price: 'RM150–250' },
+  { name: 'Major redesign', price: 'Quotation' },
+];
+
+const steps = [
+  { num: '01', title: 'Book a free call', body: 'A 30-minute no-obligation call to understand your business and what you need.' },
+  { num: '02', title: 'Get a fixed quotation', body: 'A clear, fixed price based on scope — no hidden costs, no surprises.' },
+  { num: '03', title: 'We build & deploy', body: 'We design, build, test, and launch your website or system. You see progress throughout.' },
+  { num: '04', title: 'You own the result', body: 'Credentials, source, and full ownership handed over. Ongoing support optional.' },
+];
+---
+
+<BaseLayout
+  title="Services & Pricing | HaikaiTech Solutions — Websites & Custom Software"
+  description="Business websites from RM1,500 (one-time) or RM199/month managed, company profile design, and custom software. Fixed pricing, no surprises, you own the result. Book a free call."
+  canonical="https://haikaitech.my/services/"
+>
+  <div class="min-h-screen relative font-sans bg-paper bg-grid-pattern selection:bg-yellow-200 selection:text-slate-900">
+    <Navbar client:load prefix="/" />
+
+    <main class="max-w-5xl mx-auto px-6 py-20 md:py-28 relative">
+      <DoodleStar class="top-24 left-8 text-slate-300 animate-pulse hidden lg:block" />
+      <DoodleStar class="top-48 right-16 text-blue-200 hidden lg:block" />
+      <DoodleStar class="bottom-96 left-1/4 text-orange-200 hidden lg:block" />
+
+      <!-- Hero -->
+      <header class="relative mb-24 md:mb-32">
+        <Tape class="top-4 -left-6 rotate-[-6deg] hidden md:block" />
+        <p class="font-mono text-sm text-blue-700 tracking-widest uppercase">Services &amp; Pricing</p>
+        <h1 class="mt-4 font-hand text-5xl md:text-7xl text-slate-800 leading-tight relative">
+          Websites that work.
+          <br />
+          <span class="text-blue-700 relative">
+            Systems that last.
+            <ScribbleUnderline class="w-full text-blue-400" />
+          </span>
+        </h1>
+        <p class="mt-8 max-w-xl text-slate-600 text-lg font-light">
+          From a ready-in-weeks business website to a custom dashboard that runs your operations.
+          Fixed pricing, no surprises, and you own the result.
+        </p>
+        <div class="mt-10 flex flex-wrap items-center gap-4">
+          <a
+            href="/#booking"
+            class="bg-blue-700 text-white rounded-xl px-6 py-3 font-mono text-sm hover:bg-blue-800 active:scale-[0.98] transition-all shadow-[0_4px_14px_rgba(29,78,216,0.35)]"
+          >
+            Book a free call →
+          </a>
+          <a
+            href="#pricing"
+            class="border border-slate-300 bg-white text-slate-700 rounded-xl px-6 py-3 font-mono text-sm hover:border-slate-400 hover:text-slate-900 transition-colors"
+          >
+            See pricing
+          </a>
+        </div>
+        <ArrowSketch class="bottom-0 right-8 hidden lg:block text-blue-500 rotate-[10deg]" />
+      </header>
+
+      <!-- Website packages -->
+      <section id="pricing" class="mb-24 md:mb-32 scroll-mt-28 relative">
+        <p class="font-mono text-xs text-slate-400 uppercase tracking-widest">01 / Website Packages</p>
+        <h2 class="mt-3 font-hand text-4xl md:text-5xl text-slate-800">Pick how you want to work</h2>
+        <p class="mt-4 max-w-2xl text-slate-600 font-light">
+          Own the website outright, or let us manage everything for you. Both include a professional,
+          mobile-responsive, Google-ready website.
+        </p>
+
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+          {tiers.map((tier) => (
+            <div
+              class={`relative bg-white border rounded-2xl p-6 md:p-8 flex flex-col transition-all ${
+                tier.recommended
+                  ? 'border-blue-300 shadow-[0_12px_40px_rgba(29,78,216,0.12)] md:-translate-y-2'
+                  : 'border-slate-200 shadow-[0_8px_30px_rgb(0,0,0,0.04)]'
+              }`}
+            >
+              {tier.recommended && (
+                <span class="absolute -top-3 left-6 px-3 py-1 rounded-full bg-blue-700 text-white font-mono text-[10px] tracking-widest uppercase shadow">
+                  Recommended
+                </span>
+              )}
+              <span class="font-mono text-xs text-slate-400 uppercase tracking-widest">{tier.tag}</span>
+              <h3 class="mt-2 text-xl font-bold text-slate-800">{tier.name}</h3>
+              <p class="mt-3 text-3xl font-bold text-blue-700">{tier.price}</p>
+              <p class="mt-1 text-sm text-slate-500">{tier.billing}</p>
+
+              <ul class="mt-6 space-y-2.5 flex-1">
+                {tier.features.map((f) => (
+                  <li class="flex items-start gap-2 text-sm text-slate-600">
+                    <span class="mt-0.5 text-blue-600 font-bold">✓</span>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+
+              {tier.renewal && (
+                <div class="mt-6 border-t border-dashed border-slate-200 pt-5">
+                  <p class="font-mono text-xs text-slate-400 uppercase tracking-widest">{tier.renewal.label}</p>
+                  <p class="mt-1 text-lg font-bold text-slate-800">{tier.renewal.price}</p>
+                  <ul class="mt-2 space-y-1.5">
+                    {tier.renewal.items.map((item) => (
+                      <li class="flex items-start gap-2 text-sm text-slate-500">
+                        <span class="mt-0.5 text-slate-400">·</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <p class="mt-3 text-xs text-slate-400 italic">{tier.renewal.note}</p>
+                </div>
+              )}
+
+              <a
+                href="/#booking"
+                class={`mt-8 inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 font-mono text-sm transition-all ${
+                  tier.recommended
+                    ? 'bg-blue-700 text-white hover:bg-blue-800 active:scale-[0.98]'
+                    : 'border border-slate-300 text-slate-700 hover:border-slate-400 hover:text-slate-900'
+                }`}
+              >
+                Get started →
+              </a>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Company profile -->
+      <section class="mb-24 md:mb-32 relative">
+        <p class="font-mono text-xs text-slate-400 uppercase tracking-widest">02 / Company Profile</p>
+        <h2 class="mt-3 font-hand text-4xl md:text-5xl text-slate-800 max-w-2xl">A profile your clients take seriously</h2>
+        <p class="mt-4 max-w-2xl text-slate-600 font-light">
+          A professionally designed company profile document — normally bundled together with your website.
+        </p>
+
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-slate-900 text-slate-100 p-6 md:p-8 rounded-2xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-40 h-40 bg-blue-600/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+            <p class="relative font-mono text-xs text-blue-300 uppercase tracking-widest">Company Profile Design</p>
+            <p class="relative mt-3 text-3xl font-bold">RM800 – RM1,200</p>
+            <p class="relative mt-3 text-slate-400 leading-relaxed font-light">
+              Depends on the number of pages, whether your content is ready, and the graphic design complexity.
+            </p>
+          </div>
+
+          <div class="bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+            <p class="font-mono text-xs text-slate-400 uppercase tracking-widest">Bundle Example</p>
+            <div class="mt-4 space-y-4">
+              <div class="flex items-center justify-between gap-4">
+                <div>
+                  <p class="font-semibold text-slate-800">Company Profile</p>
+                  <p class="text-sm text-slate-500">RM1,000</p>
+                </div>
+                <span class="text-slate-400">+</span>
+                <div class="text-right">
+                  <p class="font-semibold text-slate-800">Business Website Plan</p>
+                  <p class="text-sm text-slate-500">RM199/month</p>
+                </div>
+              </div>
+              <div class="border-t border-dashed border-slate-200 pt-4 flex items-center justify-between gap-4">
+                <div>
+                  <p class="font-semibold text-slate-800">Company Profile</p>
+                  <p class="text-sm text-slate-500">+ Website</p>
+                </div>
+                <span class="text-right font-mono text-lg font-bold text-blue-700">RM2,300 one-time</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Add-ons -->
+      <section class="mb-24 md:mb-32 relative">
+        <p class="font-mono text-xs text-slate-400 uppercase tracking-widest">03 / Add-ons</p>
+        <h2 class="mt-3 font-hand text-4xl md:text-5xl text-slate-800">Future-proof your site</h2>
+        <div class="mt-10 bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="bg-slate-50 border-b border-slate-200 font-mono text-xs text-slate-400 uppercase tracking-widest">
+                <th class="text-left px-6 py-4 font-medium">Service</th>
+                <th class="text-right px-6 py-4 font-medium">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              {addOns.map((row, idx) => (
+                <tr class={idx % 2 === 0 ? 'bg-white' : 'bg-slate-50/50'}>
+                  <td class="px-6 py-3.5 text-slate-700">{row.name}</td>
+                  <td class="px-6 py-3.5 text-right font-mono text-slate-600">{row.price}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Maintenance -->
+      <section class="mb-24 md:mb-32 relative">
+        <p class="font-mono text-xs text-slate-400 uppercase tracking-widest">04 / Maintenance</p>
+        <h2 class="mt-3 font-hand text-4xl md:text-5xl text-slate-800 max-w-2xl">
+          Already have a site? <span class="text-blue-700">Updates on demand.</span>
+        </h2>
+        <p class="mt-4 max-w-2xl text-slate-600 font-light">
+          For one-time clients after the website is completed.
+        </p>
+        <div class="mt-10 bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="bg-slate-50 border-b border-slate-200 font-mono text-xs text-slate-400 uppercase tracking-widest">
+                <th class="text-left px-6 py-4 font-medium">Service</th>
+                <th class="text-right px-6 py-4 font-medium">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              {maintenance.map((row, idx) => (
+                <tr class={idx % 2 === 0 ? 'bg-white' : 'bg-slate-50/50'}>
+                  <td class="px-6 py-3.5 text-slate-700">{row.name}</td>
+                  <td class="px-6 py-3.5 text-right font-mono text-slate-600">{row.price}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Custom software -->
+      <section class="mb-24 md:mb-32 relative">
+        <p class="font-mono text-xs text-slate-400 uppercase tracking-widest">05 / Custom Software</p>
+        <h2 class="mt-3 font-hand text-4xl md:text-5xl text-slate-800 max-w-2xl">
+          Need something built, not just a site?
+        </h2>
+        <p class="mt-4 max-w-2xl text-slate-600 font-light">
+          Custom software is quoted by scope — every project is different. Tell us what you need and we'll give you a fixed price.
+        </p>
+
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {[
+            { title: 'Custom Web Apps', body: 'Tools and platforms tailored to your workflow — from internal systems to client-facing products.' },
+            { title: 'Business Dashboards', body: 'Live data, real-time KPIs, and clean reporting that replace spreadsheets and guesswork.' },
+            { title: '.NET & Blazor Systems', body: 'Reliable, maintainable back-office systems built on Microsoft&apos;s stack.' },
+            { title: 'Unity Visualizations', body: 'Interactive 3D and real-time visual experiences for product, training, and demos.' },
+          ].map((s) => (
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all hover:-translate-y-1 hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)]">
+              <h3 class="text-lg font-bold text-slate-800">{s.title}</h3>
+              <p class="mt-2 text-sm text-slate-600 leading-relaxed">{s.body}</p>
+              <p class="mt-4 font-mono text-xs text-blue-700">Quotation — book a free call</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- How it works -->
+      <section class="mb-24 md:mb-32 relative">
+        <p class="font-mono text-xs text-slate-400 uppercase tracking-widest">06 / How it works</p>
+        <h2 class="mt-3 font-hand text-4xl md:text-5xl text-slate-800">From first call to launch</h2>
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {steps.map((step) => (
+            <div class="bg-slate-900 text-slate-100 p-6 rounded-2xl relative overflow-hidden">
+              <div class="absolute -top-6 -right-2 font-hand text-7xl text-blue-600/25 pointer-events-none">{step.num}</div>
+              <h3 class="relative text-xl font-bold">{step.title}</h3>
+              <p class="relative mt-3 text-slate-400 leading-relaxed font-light text-sm">{step.body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="mb-24 md:mb-32 scroll-mt-28 relative">
+        <p class="font-mono text-xs text-slate-400 uppercase tracking-widest">07 / FAQ</p>
+        <h2 class="mt-3 font-hand text-4xl md:text-5xl text-slate-800">Common questions</h2>
+
+        <div class="mt-10 space-y-4 max-w-3xl">
+          {[
+            { q: 'What does HaikaiTech build?', a: 'We build business websites, custom web apps, dashboards, and interactive systems. For Malaysian SMEs we offer packaged website plans; for larger or more complex work we quote by scope.' },
+            { q: 'Where is HaikaiTech based?', a: 'We are a registered studio in Penang, Malaysia (SSM: 202603149868) and work with clients worldwide.' },
+            { q: 'What is the difference between the one-time plan and the monthly plan?', a: 'Website Siap is a one-time build you own and manage, with an optional RM350/year renewal. The Business Website Plan is RM199/month with a 12-month minimum, and we handle hosting, security, backups, maintenance, and small updates for you.' },
+            { q: 'How long does a website take?', a: 'Most business websites are ready in a matter of weeks. Custom software timelines depend on scope — you get a clear schedule with your quotation.' },
+            { q: 'Do I get to keep my website?', a: 'Yes. With the one-time plan you own the website outright. With the managed plan, everything is maintained for you while you are a subscriber.' },
+            { q: 'How do I start a project?', a: 'Book a free 30-minute call, tell us what you need, and we will send a fixed quotation with no obligation.' },
+          ].map((faq) => (
+            <details class="bg-white border border-slate-200 rounded-2xl p-6 shadow-[0_4px_20px_rgb(0,0,0,0.03)] group">
+              <summary class="flex items-center justify-between gap-4 cursor-pointer font-semibold text-slate-800 list-none">
+                {faq.q}
+                <span class="text-blue-700 font-mono group-open:rotate-45 transition-transform">+</span>
+              </summary>
+              <p class="mt-4 text-slate-600 leading-relaxed font-light">{faq.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="mb-16 relative">
+        <div class="bg-slate-900 text-slate-100 p-8 md:p-14 rounded-2xl relative overflow-hidden text-center">
+          <div class="absolute top-0 right-0 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+          <div class="absolute bottom-0 left-0 w-64 h-64 bg-yellow-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
+
+          <div class="relative z-10">
+            <span class="inline-block px-3 py-1 rounded-full bg-slate-800 text-yellow-300 font-mono text-xs mb-6 border border-slate-700">
+              FREE 30-MINUTE CALL
+            </span>
+            <h2 class="font-hand text-4xl md:text-5xl text-slate-100">
+              Let&apos;s talk about <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-yellow-500 italic">your</span> project
+            </h2>
+            <p class="mt-5 max-w-xl mx-auto text-slate-400 text-lg font-light">
+              No obligation, no pressure. We&apos;ll scope your idea and give you a clear fixed price.
+            </p>
+            <div class="mt-8 flex flex-wrap justify-center gap-4">
+              <a
+                href="/#booking"
+                class="bg-blue-700 text-white rounded-xl px-6 py-3 font-mono text-sm hover:bg-blue-800 active:scale-[0.98] transition-all"
+              >
+                Book a free call
+              </a>
+              <a
+                href="https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%27m%20interested%20in%20your%20services.%20Can%20we%20talk%3F"
+                class="border border-slate-600 text-slate-300 rounded-xl px-6 py-3 font-mono text-sm hover:border-slate-400 hover:text-white transition-colors"
+              >
+                WhatsApp us
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <FooterSection />
+
+    <!-- JSON-LD: Service -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Service",
+          "serviceType": "Business Website (One-Time)",
+          "provider": { "@type": "Organization", "name": "HaikaiTech Solutions", "url": "https://haikaitech.my/" },
+          "offers": { "@type": "Offer", "price": "1500", "priceCurrency": "MYR" },
+          "areaServed": "Worldwide",
+          "description": "Professional custom website with up to 5 pages, mobile responsive, WhatsApp integration, contact form, Google Maps, Google Search Console, Google Analytics 4, basic SEO, SSL, and deployment. Annual renewal RM350/year."
+        },
+        {
+          "@type": "Service",
+          "serviceType": "Managed Business Website Plan",
+          "provider": { "@type": "Organization", "name": "HaikaiTech Solutions", "url": "https://haikaitech.my/" },
+          "offers": { "@type": "Offer", "price": "199", "priceCurrency": "MYR" },
+          "areaServed": "Worldwide",
+          "description": "Fully managed website including hosting, domain (if required), SSL, maintenance, security monitoring, regular backups, small content updates, and technical support. 12-month minimum, no large upfront payment."
+        },
+        {
+          "@type": "Service",
+          "serviceType": "Company Profile Design",
+          "provider": { "@type": "Organization", "name": "HaikaiTech Solutions", "url": "https://haikaitech.my/" },
+          "offers": { "@type": "AggregateOffer", "lowPrice": "800", "highPrice": "1200", "priceCurrency": "MYR" },
+          "description": "Professionally designed company profile document, usually bundled with a website."
+        },
+        {
+          "@type": "Service",
+          "serviceType": "Custom Software Development",
+          "provider": { "@type": "Organization", "name": "HaikaiTech Solutions", "url": "https://haikaitech.my/" },
+          "areaServed": "Worldwide",
+          "description": "Custom web apps, business dashboards, .NET/Blazor systems, and Unity visualizations. Quotation-based by scope."
+        }
+      ]
+    }
+    </script>
+    <!-- JSON-LD: FAQPage -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "What does HaikaiTech build?", "acceptedAnswer": { "@type": "Answer", "text": "We build business websites, custom web apps, dashboards, and interactive systems. For Malaysian SMEs we offer packaged website plans; for larger or more complex work we quote by scope." } },
+        { "@type": "Question", "name": "Where is HaikaiTech based?", "acceptedAnswer": { "@type": "Answer", "text": "We are a registered studio in Penang, Malaysia (SSM: 202603149868) and work with clients worldwide." } },
+        { "@type": "Question", "name": "What is the difference between the one-time plan and the monthly plan?", "acceptedAnswer": { "@type": "Answer", "text": "Website Siap is a one-time build you own and manage, with an optional RM350/year renewal. The Business Website Plan is RM199/month with a 12-month minimum, and we handle hosting, security, backups, maintenance, and small updates for you." } },
+        { "@type": "Question", "name": "Do I get to keep my website?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. With the one-time plan you own the website outright. With the managed plan, everything is maintained for you while you are a subscriber." } },
+        { "@type": "Question", "name": "How do I start a project?", "acceptedAnswer": { "@type": "Answer", "text": "Book a free 30-minute call, tell us what you need, and we will send a fixed quotation with no obligation." } }
+      ]
+    }
+    </script>
+  </div>
+</BaseLayout>

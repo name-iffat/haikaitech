@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Terminal, User, Mail, Wrench, Home, Calendar, Briefcase } from 'lucide-react';
+import { Menu, X, Terminal, User, Mail, Wrench, Home, Calendar, Briefcase, Tag } from 'lucide-react';
 
 interface NavbarProps {
   prefix?: string;
@@ -24,6 +24,7 @@ const Navbar: React.FC<NavbarProps> = ({ prefix = '' }) => {
     { name: 'About', href: '#about', icon: User },
     { name: 'Contact', href: '#contact', icon: Mail },
     { name: 'Book', href: '#booking', icon: Calendar },
+    { name: 'Services', href: '/services/', icon: Tag, page: true },
     { name: 'Tools', href: '/toolkit/', icon: Briefcase, page: true },
   ];
 

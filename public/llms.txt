@@ -1,0 +1,31 @@
+# HaikaiTech Solutions
+
+> HaikaiTech Solutions is a registered software engineering studio in Penang, Malaysia (SSM: 202603149868, CA0422517-K). We build business websites, custom web apps, dashboards, and interactive systems for clients worldwide — from one-time "Website Siap" packages to fully managed monthly plans and quotation-based custom software.
+
+## Services
+
+- [Services & Pricing](https://haikaitech.my/services/): Business websites (one-time from RM1,500 or RM199/month managed), company profile design, custom software, add-ons, and maintenance pricing.
+- [Business Toolkit](https://haikaitech.my/toolkit/): Free tools for Malaysian SMEs — invoice generator, quotation builder, receipt maker, purchase order, and payroll calculator.
+
+## Portfolio
+
+- [AVS Bina](https://haikaitech.my/projects/avsbina/): Construction company website built with Astro and React.
+- [Adyumrah Hajj & Umrah](https://haikaitech.my/projects/adyumrah/): Hajj & Umrah travel booking platform with admin dashboard.
+- [Hawker Rewards](https://haikaitech.my/projects/hawkerrewards/): Loyalty rewards app for hawker stalls.
+- [Clarity Learn Centre](https://haikaitech.my/projects/clarity-learncentre/): Learning centre website with course information.
+- [Fuzzfloor](https://haikaitech.my/projects/fuzzfloor/): Premium editorial presentation site.
+- [Murtajiz](https://haikaitech.my/projects/murtajiz/): Project case study.
+
+## Key pages
+
+- [Home](https://haikaitech.my/): Portfolio overview, skills, about, contact, and booking.
+- [Book a free call](https://haikaitech.my/#booking): Cal.com booking for a free 30-minute consultation.
+- [Contact](https://haikaitech.my/#contact): Lead form and WhatsApp.
+- [Privacy Policy](https://haikaitech.my/privacy-policy/)
+- [Terms of Service](https://haikaitech.my/terms-of-service/)
+- [Refund & Cancellation Policy](https://haikaitech.my/refund-cancellation-policy/)
+
+## For AI agents
+
+- [OKF knowledge bundle](https://haikaitech.my/okf/index.md): Structured, agent-readable knowledge base (Open Knowledge Format v0.1).
+- [Sitemap](https://haikaitech.my/sitemap.xml): Full list of pages.

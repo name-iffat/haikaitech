@@ -1,0 +1,56 @@
+# HaikaiTech Solutions
+
+HaikaiTech Solutions is a registered software engineering studio in Penang, Malaysia (SSM: 202603149868, CA0422517-K), run by Iffat Haikal. We build business websites, custom web apps, dashboards, and interactive systems for clients worldwide.
+
+## What we do
+
+### Business websites
+Professional, mobile-responsive websites for Malaysian businesses. Two ways to work:
+- **Website Siap (one-time)**: from RM1,500. Up to 5 pages, mobile responsive, WhatsApp integration, contact form, Google Maps, Google Search ready, Google Search Console setup, Google Analytics 4, basic SEO, SSL, and deployment. Annual renewal RM350/year covers domain, hosting, SSL, and basic technical maintenance. Content updates billed separately.
+- **Business Website Plan (managed)**: RM199/month, 12-month minimum. Everything managed — professional website, hosting, domain (if required), SSL, website maintenance, security monitoring, regular backups, small content updates, and technical support. No large upfront payment.
+
+### Company profile design
+Professional company profile documents, RM800–RM1,200 depending on number of pages, content readiness, and design complexity. Usually bundled with a website (e.g., company profile + website from RM2,300 one-time, or company profile + monthly plan).
+
+### Custom software & systems
+Quotation-based work: custom web apps, business dashboards, .NET/Blazor systems, Unity visualizations, and integrations. Pricing depends on scope — book a free call for a quote.
+
+### Add-ons
+- Additional page: RM150–250 per page
+- Additional language (BM/EN): from RM500
+- Blog/CMS: from RM500
+- Copywriting: quotation
+- Logo design: from RM300
+- Google Business Profile setup: RM300
+- Email setup: RM150
+- Website migration: quotation
+
+### Maintenance for one-time clients
+- Minor update: RM50–100
+- New section: RM100–200
+- New page: RM150–250
+- Major redesign: quotation
+
+## How to engage
+
+1. Book a free 30-minute call via Cal.com (https://haikaitech.my/#booking).
+2. We scope the project and send a fixed quotation.
+3. We build and deploy. You own the result.
+
+## Contact
+
+- Email: hq@haikaitech.my
+- WhatsApp: +60 14-753 3499
+- Location: Penang, Malaysia (serving clients worldwide)
+
+## Toolbox
+
+Free business tools for Malaysian SMEs at https://haikaitech.my/toolkit/ — invoice generator (live), quotation builder, receipt maker, purchase order, and payroll calculator (coming soon). No login required.
+
+## Projects
+
+- https://haikaitech.my/projects/avsbina/ — Construction company website (Astro + React)
+- https://haikaitech.my/projects/adyumrah/ — Hajj & Umrah travel platform with admin dashboard
+- https://haikaitech.my/projects/hawkerrewards/ — Hawker stall loyalty rewards app
+- https://haikaitech.my/projects/clarity-learncentre/ — Learning centre website
+- https://haikaitech.my/projects/fuzzfloor/ — Premium editorial presentation site

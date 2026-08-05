@@ -8,6 +8,10 @@ const FooterSection: React.FC = () => {
           <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
           &copy; {new Date().getFullYear()} HaikaiTech
         </div>
+        <div className="flex items-center gap-2 text-xs" aria-label="Last updated">
+          <span>Last updated</span>
+          <time dateTime="2026-08-06">2026-08-06</time>
+        </div>
         <div className="flex gap-6">
           <a href="https://github.com/name-iffat" target="_blank" rel="noopener noreferrer" className="hover:text-slate-600 cursor-pointer transition-colors">Github</a>
           <a href="https://www.linkedin.com/in/iffathaikal/" target="_blank" rel="noopener noreferrer" className="hover:text-slate-600 cursor-pointer transition-colors">LinkedIn</a>
