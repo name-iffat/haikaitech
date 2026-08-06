@@ -1,8 +1,8 @@
 ---
 name: ai-seo
-description: "When the user wants to optimize content for AI search engines, get cited by LLMs, or appear in AI-generated answers. Also use when the user mentions 'AI SEO,' 'AEO,' 'GEO,' 'LLMO,' 'answer engine optimization,' 'generative engine optimization,' 'LLM optimization,' 'AI Overviews,' 'optimize for ChatGPT,' 'optimize for Perplexity,' 'AI citations,' 'AI visibility,' 'zero-click search,' 'how do I show up in AI answers,' 'LLM mentions,' 'optimize for Claude/Gemini,' 'llms.txt,' 'OKF,' 'Open Knowledge Format,' 'knowledge bundle,' or 'agent-readable site.' Use this whenever someone wants their content to be cited or surfaced by AI assistants and AI search engines. For traditional technical and on-page SEO audits, see seo-audit. For structured data implementation, see schema."
+description: "When the user wants to optimize content for AI search engines, get cited by LLMs, or appear in AI-generated answers. Also use when the user mentions 'AI SEO,' 'AEO,' 'GEO,' 'LLMO,' 'answer engine optimization,' 'generative engine optimization,' 'LLM optimization,' 'AI Overviews,' 'optimize for ChatGPT,' 'optimize for Perplexity,' 'AI citations,' 'AI visibility,' 'zero-click search,' 'how do I show up in AI answers,' 'LLM mentions,' 'optimize for Claude/Gemini,' 'llms.txt,' 'OKF,' 'Open Knowledge Format,' 'knowledge bundle,' or 'agent-readable site.' Also use when the user mentions 'llmstxt directory,' 'submit llms.txt,' 'get listed in an llmstxt directory,' 'AI citation audit,' 'baseline AI audit,' 'why does my competitor get cited,' 'competitor AI teardown,' or 'who is winning AI search.' Use this whenever someone wants their content to be cited or surfaced by AI assistants and AI search engines. For traditional technical and on-page SEO audits, see seo-audit. For structured data implementation, see schema."
 metadata:
-  version: 2.1.0
+  version: 2.2.0
 ---
 
 # AI SEO
@@ -317,6 +317,27 @@ If you don't have one yet, add an `llms.txt` that gives AI systems a quick overv
 
 Google [introduced OKF](https://cloud.google.com/blog/products/data-analytics/how-the-open-knowledge-format-can-improve-data-sharing) in June 2026 — a markdown spec for representing site content as a directory of cross-linked files with YAML frontmatter, agent-readable without scraping. Built primarily for data-team catalog metadata; the site-readable-by-agents repurposing was popularized by Suganthan Mohanadasan. No confirmed AI-search ranking signal today — treat it as protocol-layer registration like early schema.org. **For the full breakdown, implementation paths (free generator, WordPress plugin, by-hand), hosting guidance, and when to skip, see [references/okf.md](references/okf.md).**
 
+### llmstxt Directory Listings & Submission
+
+Once `/llms.txt` is live, get it listed in llmstxt directories. **`llmstxt.org` is the spec site only — it is NOT a submission directory.** The two real listing targets:
+
+| Directory | URL | Form | Notes |
+|-----------|-----|------|-------|
+| **directory.llmstxt.cloud** | https://directory.llmstxt.cloud | Tally form (https://tally.so/r/wAydjB) | Curation-gated — "await approval from our curation team"; auto-links `/llms-full.txt` and tracks token counts |
+| **llmstxt.site** | https://llmstxt.site | /submit form | 7 fields, accepts both llms.txt + llms-full.txt URLs |
+
+**directory.llmstxt.cloud fields:** Website or product name, llms.txt URL, Category, Email (notify when listed), X username (optional), a note on your llms.txt adoption, sponsor (No).
+
+**llmstxt.site fields:** Product Name, Website URL, Your Name, Email Address, llms.txt URL, llms-full.txt URL, Additional Notes.
+
+**Process:**
+1. Pre-verify `/llms.txt` and `/llms-full.txt` return 200 with `text/plain` before submitting.
+2. Submit both directories.
+3. Listings are NOT immediate — both curate. Expect days. Add a "re-verify in ~48h" follow-up tick.
+4. Re-verify by searching each directory for the site name.
+
+Both directories display token counts — a compact, hand-crafted llms.txt (hundreds of tokens) vs an auto-generated 500+-page one is a visible quality signal for a specialist site.
+
 ### Schema Markup for AI
 
 Structured data helps AI systems understand your content. Key schemas:
@@ -412,6 +433,33 @@ Monthly manual check:
 3. Record: Are you cited? Who is? What page?
 4. Log in a spreadsheet, track month-over-month
 
+### Baseline Citation Audit Protocol
+
+For a structured, repeatable AI-citation baseline (used for new sites and relaunches):
+
+1. **Fix the query set** — pick your 5 highest-intent queries (e.g., "[category] cost", "[plan] pricing", "how to choose [provider] in [city]", "[niche] development"). Same set every run.
+2. **Fix the platform set** — ChatGPT, Perplexity, Gemini, Claude (add Google AI Overviews if available). Same set every run.
+3. **Record a baseline** — run all queries × platforms once and log the starting point. For a brand-new domain this is typically **0/20 (no mentions at all)**, with the incumbent competitor cited in ~100% of answers. That is expected, not failure.
+4. **Citation key** — Y = cites your domain, M = mentions but no link, N = no mention. Track in a matrix (platform × query).
+5. **Re-audit weekly** for the first 8–12 weeks, then monthly. Watch for the **first M (mention)** as the leading indicator — it precedes the first Y (citation) by weeks or months.
+6. **Name test** — separately confirm the brand surfaces when asked about directly by name. It almost always does; that is baseline, not signal.
+7. Record deltas each run; logging the baseline + incumbents is more valuable than day-one hopes.
+
+### Competitor AI-Search Teardown
+
+When an incumbent dominates citations, run a structured teardown to find why — this shapes what to out-do vs. what to stop competing on:
+
+| Check | What to Look For |
+|-------|------------------|
+| **/llms.txt exists?** | Auto-generated (plugin, e.g., Rank Math) vs hand-crafted. Does it list pricing pages + full post archive? |
+| **robots.txt AI access** | Any `Disallow` for GPTBot/ClaudeBot/PerplexityBot/Google-Extended/CCBot/Bytespider? |
+| **AEO/GEO copy** | Do FAQ/answer blocks read like standalone snippets ("written for AI Overviews, ChatGPT, Perplexity")? Do they sell AI SEO as a service? |
+| **Authority signals** | Years operating, official partnerships (Google Partner), client counts, recognizable backlink sources (news, DataReportal, industry press) |
+| **Content volume** | Post count and how many exactly match your target long-tail queries |
+| **Exact-match pricing pages** | e.g., "Web Design Price Malaysia · Website Cost 2026" |
+
+**Read the result honestly:** if the incumbent wins on authority + volume you cannot out-scale, pivot to differentiation (niche, exact concrete numbers, hand-crafted machine-readable files, a segment they ignore) and measure progress via the Baseline Citation Audit Protocol — not by beating them at volume.
+
 ### Search Console expectations
 
 Google's guide is explicit: **there is no AI-specific Search Console reporting**. AI Overviews and AI Mode use core Search ranking, so the standard Search Console reports (Performance, Coverage, Core Web Vitals) are still what you measure with for Google. The third-party tools above are the only way to see cross-platform AI citation behavior.
@@ -487,3 +535,7 @@ For implementation, see the [tools registry](../../tools/REGISTRY.md).
 - **competitors**: For building comparison pages that get cited
 - **programmatic-seo**: For building SEO pages at scale
 - **copywriting**: For writing content that's both human-readable and AI-extractable
+
+## Level History
+- **v2.2.0** — Added distribution + measurement protocol: `llmstxt Directory Listings & Submission` (the two real directories — directory.llmstxt.cloud Tally form + llmstxt.site/submit; llmstxt.org is spec-only), `Baseline Citation Audit Protocol` (fixed query × platform matrix, Y/M/N key, 0/20 new-domain baseline, weekly re-audit, first-M leading indicator), and `Competitor AI-Search Teardown` (llms.txt/robots/AEO/authority checklist + honest out-scale-vs-differentiate decision). (Origin: 2026-08-06 haikaitech distribution phase — llmstxt.org was initially targeted for submission before research revealed it's not a directory; 0/20 baseline audit showed zenweb.my dominating all citations, leading to a full competitor teardown)
+- **v2.1.0** — Added Google's AI features optimization guide stance (no special markup required, write for people), query fan-out implications, agentic experiences section, Google Search Console expectations, and UCP/Merchant Center notes. (Origin: google ai-optimization guide research)
