@@ -22,18 +22,18 @@ const readingTime = (body: string) => Math.max(1, Math.round(body.trim().split(/
     <Navbar client:load prefix="/" />
 
     <main class="max-w-5xl mx-auto px-6 py-20 md:py-28 relative">
-      <DoodleStar class="top-24 left-8 text-slate-300 animate-pulse hidden lg:block" />
-      <DoodleStar class="top-48 right-16 text-blue-200 hidden lg:block" />
+      <DoodleStar className="top-24 left-8 text-slate-300 animate-pulse hidden lg:block" />
+      <DoodleStar className="top-48 right-16 text-blue-200 hidden lg:block" />
 
       <!-- Header -->
       <header class="relative mb-20 md:mb-28">
-        <Tape class="top-4 -left-6 rotate-[-6deg] hidden md:block" />
+        <Tape className="-top-4 right-8 rotate-[-6deg] hidden md:block" />
         <p class="font-mono text-sm text-blue-700 tracking-widest uppercase">Field Notes</p>
         <h1 class="mt-4 font-hand text-5xl md:text-7xl text-slate-800 leading-tight relative max-w-3xl">
           Notes on building for{' '}
           <span class="text-blue-700 relative">
             Malaysian businesses
-            <ScribbleUnderline class="w-full text-blue-400" />
+            <ScribbleUnderline className="w-full text-blue-400" />
           </span>
         </h1>
         <p class="mt-8 max-w-xl text-slate-600 text-lg font-light">

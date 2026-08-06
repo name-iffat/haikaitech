@@ -73,9 +73,9 @@ const formatPostDate = (date: Date) =>
     <Navbar client:load />
 
     <main class="max-w-5xl mx-auto px-6 py-20 md:py-32 relative">
-      <DoodleStar class="top-20 left-10 text-slate-300 animate-pulse hidden lg:block" />
-      <DoodleStar class="top-40 right-20 text-blue-200 hidden lg:block" />
-      <DoodleStar class="bottom-20 left-1/4 text-orange-200 hidden lg:block" />
+      <DoodleStar className="top-20 left-10 text-slate-300 animate-pulse hidden lg:block" />
+      <DoodleStar className="top-40 right-20 text-blue-200 hidden lg:block" />
+      <DoodleStar className="bottom-20 left-1/4 text-orange-200 hidden lg:block" />
 
       <HeroSection client:load avatarSrc={heroAvatar.src} />
       <ProjectsSection client:load projectImages={projectImages} />
