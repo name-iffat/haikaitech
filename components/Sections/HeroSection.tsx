@@ -37,7 +37,7 @@ const HeroSection: React.FC<Props> = ({ avatarSrc }) => {
             <p className="text-slate-600 leading-relaxed text-xl md:text-2xl font-light">
               Full-stack development with React, .NET, and Unity — no agency markup.
             </p>
-            <ArrowSketch className="hidden md:block text-slate-300 absolute -bottom-10 -right-10 rotate-[20deg]" />
+            <ArrowSketch className="hidden md:block text-slate-300 absolute -bottom-8 left-8 rotate-[-90deg]" />
           </div>
 
           <div className="flex flex-wrap gap-4 justify-center md:justify-start">
