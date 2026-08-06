@@ -26,6 +26,11 @@
 - `getImage()` returns `{ src, attributes }` — always use `.src` to get the URL string; never pass raw `ImageMetadata` objects across the Astro↔React boundary (causes `[object Object]` in SSR)
 - 3 image import locations: `constants.tsx` (`.src` for React data), `index.astro` (`getImage()` calls), `[slug].astro` (`<Image />`)
 
+## Content collections (critical — Astro 6 quirk)
+- Collections live in `src/content.config.ts` and MUST use the content-layer **`glob` loader** (`import { glob } from 'astro/loaders'`) — legacy `defineCollection({ type: 'content', schema })` with no loader returns an EMPTY collection ("does not exist or is empty") unless `legacy.collectionsBackwardsCompat` is enabled
+- Content layer exposes **`entry.id`** (filename without extension), NOT `entry.slug` — use `post.id` in `getStaticPaths` params, route links (`/blog/${post.id}/`), and related-post filters
+- Dynamic JSON-LD must use `set:html`: `<script is:inline type="application/ld+json" set:html={JSON.stringify(schema)}></script>` — plain `<script is:inline>{expr}</script>` does NOT interpolate. Keep the script inside the page body (before `</BaseLayout>`), or it lands after `</html>`
+
 ## Deployment (Cloudflare Pages)
 - Build: `npm run build`, output dir: `dist/`
 - SPA fallback: `public/_redirects` contains `/* /index.html 200`
