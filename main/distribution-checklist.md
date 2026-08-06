@@ -25,24 +25,26 @@ Tick as you submit. Property: `haikaitech.my`. **Status: DONE (user submitted al
 ## Part C — llmstxt directory listings
 `llmstxt.org` is the spec site (no submission). Submit to the two real directories:
 
-### C1 — directory.llmstxt.cloud (Tally form: https://tally.so/r/wAydjB)
-- [ ] Website or product name: `HaikaiTech`
-- [ ] llms.txt URL: `https://haikaitech.my/llms.txt` (auto-links llms-full.txt + tracks tokens)
-- [ ] Category: select (web design / web development)
-- [ ] Email: `hq@haikaitech.my` (notify when listed)
-- [ ] Notes: "Malaysia web design agency — llms.txt + llms-full.txt + OKF knowledge bundle + Service/BlogPosting schema for AI-search visibility"
-- [ ] Sponsor: No
+### C1 — directory.llmstxt.cloud (Tally form: https://tally.so/r/wAydjB) — SUBMITTED 2026-08-06
+- [x] Website or product name: `HaikaiTech`
+- [x] llms.txt URL: `https://haikaitech.my/llms.txt` (auto-links llms-full.txt + tracks tokens)
+- [x] Category: select (web design / web development)
+- [x] Email: `hq@haikaitech.my` (notify when listed)
+- [x] Notes: "Malaysia web design agency — llms.txt + llms-full.txt + OKF knowledge bundle + Service/BlogPosting schema for AI-search visibility"
+- [x] Sponsor: No
+- [ ] **Re-verify listing** (~48h): search directory.llmstxt.cloud for `HaikaiTech`
 
-### C2 — llmstxt.site (form: https://llmstxt.site/submit)
-- [ ] Product Name: `HaikaiTech`
-- [ ] Website URL: `https://haikaitech.my`
-- [ ] Your Name: Iffat
-- [ ] Email Address: `hq@haikaitech.my`
-- [ ] llms.txt URL: `https://haikaitech.my/llms.txt`
-- [ ] llms-full.txt URL: `https://haikaitech.my/llms-full.txt`
-- [ ] Additional Notes: same as C1 note
+### C2 — llmstxt.site (form: https://llmstxt.site/submit) — SUBMITTED 2026-08-06
+- [x] Product Name: `HaikaiTech`
+- [x] Website URL: `https://haikaitech.my`
+- [x] Your Name: Iffat
+- [x] Email Address: `hq@haikaitech.my`
+- [x] llms.txt URL: `https://haikaitech.my/llms.txt`
+- [x] llms-full.txt URL: `https://haikaitech.my/llms-full.txt`
+- [x] Additional Notes: same as C1 note
+- [ ] **Re-verify listing** (~48h): search llmstxt.site for `HaikaiTech`
 
-Pre-verified healthy: `/llms.txt` + `/llms-full.txt` both 200 text/plain.
+Pre-verified healthy: `/llms.txt` + `/llms-full.txt` both 200 text/plain. Both directories curate before listing (verified absent 2026-08-06 — pending approval).
 
 ## Part D — Baseline AI audit
 Run each query in ChatGPT, Perplexity, Gemini, and Claude. Record whether HaikaiTech is cited, the URL cited, and anything notable. Re-run weekly and compare.
