@@ -57,7 +57,7 @@ Guides and field notes for Malaysian businesses:
 
 ## Toolbox
 
-Free business tools for Malaysian SMEs at https://haikaitech.my/toolkit/ — invoice generator (live), quotation builder, receipt maker, purchase order, and payroll calculator (coming soon). No login required.
+Free business tools for Malaysian SMEs at https://haikaitech.my/toolkit/ — invoice generator, quotation builder, and receipt maker (live), purchase order and payroll calculator (coming soon). No login required.
 
 ## Projects
 

@@ -11,8 +11,8 @@ tags: [haikaitech, toolkit, invoices, sme, malaysia]
 A growing collection of free business tools for Malaysian SMEs, built for how Malaysian small businesses actually work. No login, no paywall, clean PDFs, no watermark.
 
 - Invoice Generator — **Live** at https://invoice.haikaitech.my
-- Quotation Builder — coming soon
-- Receipt Maker — coming soon
+- Quotation Builder — **Live** at https://invoice.haikaitech.my/?type=quotation
+- Receipt Maker — **Live** at https://invoice.haikaitech.my/?type=receipt
 - Purchase Order — coming soon
 - Payroll Calculator (EPF/SOCSO/EIS) — coming soon
 
