@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowSketch, StylizedCorner, Tape, Sticker } from '../Decorations';
-import { MessageCircle, Terminal, Send } from 'lucide-react';
+import { MessageCircle, Terminal, Mail } from 'lucide-react';
 import { track } from '../track';
 
 interface Props {
@@ -46,32 +46,14 @@ const HeroSection: React.FC<Props> = ({ avatarSrc }) => {
               <span className="font-hand text-xl">Chat on WhatsApp</span>
               <StylizedCorner className="text-white/20 bottom-1 right-1 w-3 h-3" />
             </a>
+            <a href="mailto:hq@haikaitech.my?subject=Project%20enquiry" onClick={() => track('cta_clicked', 'email_cta_hero')} className="group inline-flex items-center gap-2 px-8 py-4 border-2 border-slate-200 text-slate-700 font-medium rounded-md hover:border-slate-400 hover:bg-white transition-all bg-white/50 backdrop-blur-sm">
+              <Mail className="w-4 h-4 text-slate-400 group-hover:text-slate-800" />
+              <span className="font-mono text-sm">Email us</span>
+            </a>
             <a href="#projects" onClick={() => track('cta_clicked', 'view_work_hero')} className="group inline-flex items-center gap-2 px-8 py-4 border-2 border-slate-200 text-slate-700 font-medium rounded-md hover:border-slate-400 hover:bg-white transition-all bg-white/50 backdrop-blur-sm">
               <Terminal className="w-4 h-4 text-slate-400 group-hover:text-slate-800" />
               <span className="font-mono text-sm">./view_work.sh</span>
             </a>
-          </div>
-
-          {/* Low-friction lead capture */}
-          <div className="mt-8 max-w-md">
-            <form action="https://api.web3forms.com/submit" method="POST" className="flex gap-2">
-              <input type="hidden" name="access_key" value="516d8b43-084b-4a54-a5b4-c5d4790ca317" />
-              <input type="hidden" name="subject" value="New lead from haikaitech.my" />
-              <input type="hidden" name="from_name" value="HaikaiTech Lead" />
-              <input
-                type="email"
-                name="email"
-                placeholder="Not ready to chat? Enter your email for a rough estimate"
-                className="flex-1 px-4 py-3 border-2 border-slate-200 rounded-md text-sm focus:outline-none focus:border-slate-400 bg-white/70"
-                required
-              />
-              <button
-                type="submit"
-                className="px-5 py-3 bg-slate-900 text-white rounded-md hover:bg-slate-800 transition-colors"
-              >
-                <Send className="w-4 h-4" />
-              </button>
-            </form>
           </div>
 
           {/* Trusted-by strip */}
