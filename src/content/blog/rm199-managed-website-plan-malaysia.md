@@ -51,10 +51,10 @@ If you'd rather own everything outright with no subscription, the **Website Siap
 
 ## Getting started
 
-1. **Book a free 30-minute call** — we scope your site and confirm the plan fits.
+1. **Chat on WhatsApp** — we scope your site and confirm the plan fits.
 2. **We build and launch** — no large upfront payment.
 3. **We handle it from there** — hosting, security, updates, and support, all in RM199/month.
 
-[Book your free call](/booking/) or see the full [services and pricing](/services/).
+[Chat on WhatsApp](https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%27m%20interested%20in%20the%20RM199%2Fmonth%20managed%20plan.) or see the full [services and pricing](/services/).
 
 > HaikaiTech Solutions is a registered software engineering studio in Penang (SSM: 202603149868), serving businesses across all of Malaysia — most of our clients are in Kuala Lumpur. Everything works remotely, in your timezone.

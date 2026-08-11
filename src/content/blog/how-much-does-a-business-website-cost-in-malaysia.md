@@ -75,12 +75,12 @@ We commonly bundle it with a website:
 
 Pricing guides are only useful if they lead somewhere. Here's our four-step process, and it's how we work for every client in Malaysia:
 
-1. **Book a free 30-minute call** — no obligation, we just listen and scope.
+1. **Chat on WhatsApp** — no obligation, we just listen and scope.
 2. **Get a fixed quotation** — a clear price based on scope, not on how much we think you'll pay.
 3. **We build and deploy** — you see progress throughout.
 4. **You own the result** — credentials, source, and full ownership are handed over.
 
-You can [book that call right here](/booking/) — or read our full [services and pricing page](/services/).
+You can [chat on WhatsApp right here](https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%27d%20like%20a%20quote%20for%20a%20business%20website.) — or read our full [services and pricing page](/services/).
 
 ## Common questions
 

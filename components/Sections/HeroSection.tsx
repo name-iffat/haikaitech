@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowSketch, StylizedCorner, Tape, Sticker } from '../Decorations';
-import { Calendar, Terminal, Send } from 'lucide-react';
+import { MessageCircle, Terminal, Send } from 'lucide-react';
 import { track } from '../track';
 
 interface Props {
@@ -41,9 +41,9 @@ const HeroSection: React.FC<Props> = ({ avatarSrc }) => {
           </div>
 
           <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-            <a href="#booking" onClick={() => track('cta_clicked', 'book_call_hero')} className="group relative inline-flex items-center gap-2 px-8 py-4 bg-slate-900 text-white font-medium rounded-md hover:bg-slate-800 transition-all hover:-translate-y-1 hover:shadow-lg">
-              <Calendar className="w-4 h-4 group-hover:animate-bounce" />
-              <span className="font-hand text-xl">Book a Free Call</span>
+            <a href="https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%20came%20across%20your%20portfolio%20(haikaitech.my)%20and%20would%20love%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" onClick={() => track('cta_clicked', 'chat_whatsapp_hero')} className="group relative inline-flex items-center gap-2 px-8 py-4 bg-[#25D366] text-white font-medium rounded-md hover:bg-[#20b858] transition-all hover:-translate-y-1 hover:shadow-lg">
+              <MessageCircle className="w-4 h-4 group-hover:animate-bounce" />
+              <span className="font-hand text-xl">Chat on WhatsApp</span>
               <StylizedCorner className="text-white/20 bottom-1 right-1 w-3 h-3" />
             </a>
             <a href="#projects" onClick={() => track('cta_clicked', 'view_work_hero')} className="group inline-flex items-center gap-2 px-8 py-4 border-2 border-slate-200 text-slate-700 font-medium rounded-md hover:border-slate-400 hover:bg-white transition-all bg-white/50 backdrop-blur-sm">
@@ -61,7 +61,7 @@ const HeroSection: React.FC<Props> = ({ avatarSrc }) => {
               <input
                 type="email"
                 name="email"
-                placeholder="Not ready for a call? Enter your email for a rough estimate"
+                placeholder="Not ready to chat? Enter your email for a rough estimate"
                 className="flex-1 px-4 py-3 border-2 border-slate-200 rounded-md text-sm focus:outline-none focus:border-slate-400 bg-white/70"
                 required
               />

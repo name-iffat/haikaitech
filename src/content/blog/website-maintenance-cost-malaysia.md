@@ -79,4 +79,4 @@ Yes — we take over existing sites on a per-task basis, and migrating an existi
 **How do I know I won't be overcharged?**
 Every task is quoted up front with a fixed price before work starts — RM50–RM250 depending on scope — and managed clients pay one flat RM199/month.
 
-Ready to put your website on a maintenance plan? [Book a free 30-minute call](/booking/) — or see the full [services and pricing page](/services/).
+Ready to put your website on a maintenance plan? [Chat on WhatsApp](https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%20need%20website%20maintenance%20help.) — or see the full [services and pricing page](/services/).

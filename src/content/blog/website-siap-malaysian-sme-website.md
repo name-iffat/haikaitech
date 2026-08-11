@@ -66,12 +66,12 @@ If instead you'd rather **never touch hosting or updates again**, the managed pl
 
 ## How the process works
 
-1. **Book a free 30-minute call** — we scope what you need.
+1. **Chat on WhatsApp** — we scope what you need.
 2. **Get a fixed quotation** — if your scope fits the package, it's RM1,500; if it needs more, you'll see the itemised add-ons before agreeing.
 3. **We build and deploy** — you review along the way.
 4. **You own it** — full handover of credentials and source.
 
-Ready to go? [Book your free call](/booking/) or read the full [services & pricing](/services/).
+Ready to go? [Chat on WhatsApp](https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%27d%20like%20a%20Website%20Siap%20for%20RM1%2C500.) or read the full [services & pricing](/services/).
 
 ## Where we work
 

@@ -62,9 +62,9 @@ Ask for projects similar to yours (an SME site, not a flashy app). Ask what thei
 
 ## How we work
 
-If you're comparing us against others, here's the honest summary: fixed prices, published on a public page. You own the result. A free 30-minute call before anything is quoted. Registered, SSM-verifiable, serving clients across Malaysia from Penang — most of them in KL.
+If you're comparing us against others, here's the honest summary: fixed prices, published on a public page. You own the result. Chat on WhatsApp before anything is quoted. Registered, SSM-verifiable, serving clients across Malaysia from Penang — most of them in KL.
 
-Want the pricing detail first? See [how much a business website costs in Malaysia](/blog/how-much-does-a-business-website-cost-in-malaysia/), or jump straight to [booking a free call](/booking/).
+Want the pricing detail first? See [how much a business website costs in Malaysia](/blog/how-much-does-a-business-website-cost-in-malaysia/), or jump straight to [chat on WhatsApp](https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%27m%20comparing%20web%20developers%20and%20would%20like%20a%20quote.).
 
 ## One more thing: website vs custom software
 

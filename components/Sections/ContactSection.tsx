@@ -19,7 +19,7 @@ const ContactSection: React.FC = () => {
               Ready to build something <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-yellow-500 font-hand italic">real?</span>
             </h2>
             <p className="text-slate-400 text-xl max-w-md mx-auto md:mx-0 mb-8 font-light">
-              Drop me a line for collaborations, freelance work, or just to share your favorite VS Code theme.
+              Need a website, dashboard, or custom software? Chat is fastest — I usually reply within a few hours.
             </p>
           </div>
 

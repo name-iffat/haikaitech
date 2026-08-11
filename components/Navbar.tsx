@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Terminal, User, Mail, Wrench, Home, Calendar, Briefcase, Tag } from 'lucide-react';
+import { Menu, X, Terminal, User, Mail, Wrench, Home, MessageCircle, Briefcase, Tag } from 'lucide-react';
 
 interface NavbarProps {
   prefix?: string;
@@ -23,7 +23,7 @@ const Navbar: React.FC<NavbarProps> = ({ prefix = '' }) => {
     { name: 'Workshop', href: '#skills', icon: Wrench },
     { name: 'About', href: '#about', icon: User },
     { name: 'Contact', href: '#contact', icon: Mail },
-    { name: 'Book', href: '#booking', icon: Calendar },
+    { name: 'Chat', href: 'https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%20came%20across%20your%20portfolio%20(haikaitech.my)%20and%20would%20love%20to%20discuss%20a%20project.', icon: MessageCircle, page: true },
     { name: 'Services', href: '/services/', icon: Tag, page: true },
     { name: 'Tools', href: '/toolkit/', icon: Briefcase, page: true },
   ];

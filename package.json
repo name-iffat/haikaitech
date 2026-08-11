@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@astrojs/react": "^5.0.6",
-    "@calcom/embed-react": "^1.5.3",
     "astro": "^6.4.2",
     "lucide-react": "^0.561.0",
     "react": "^19.2.3",

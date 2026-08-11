@@ -53,7 +53,7 @@ We serve businesses across all of Malaysia — most of our clients are based in 
 
 ## Custom software & systems
 
-Custom web apps, business dashboards, .NET/Blazor systems, Unity visualizations, and integrations are quotation-based — pricing depends on scope. Book a free call to get a quote.
+Custom web apps, business dashboards, .NET/Blazor systems, Unity visualizations, and integrations are quotation-based — pricing depends on scope. Chat on WhatsApp to get a quote.
 
 ## Links
 

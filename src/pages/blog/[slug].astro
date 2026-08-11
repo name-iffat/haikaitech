@@ -5,7 +5,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../../components/Navbar';
 import FooterSection from '../../../components/FooterSection';
 import StickyBooking from '../../../components/StickyBooking';
-import { ArrowLeft, Calendar, Tag } from 'lucide-react';
+import { ArrowLeft, MessageCircle, Tag } from 'lucide-react';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -105,14 +105,16 @@ const blogSchema = {
         <div class="absolute top-0 right-0 w-64 h-64 bg-blue-600/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
         <div class="relative z-10">
           <h2 class="font-hand text-3xl text-slate-100">Have a project like this in mind?</h2>
-          <p class="mt-3 text-slate-400">Book a free 30-minute call — we&apos;ll scope it and send a fixed quotation.</p>
+          <p class="mt-3 text-slate-400">Chat on WhatsApp — we&apos;ll scope it and send a fixed quotation.</p>
           <div class="mt-6 flex flex-wrap justify-center gap-4">
             <a
-              href="/#booking"
-              class="inline-flex items-center gap-2 bg-blue-700 text-white rounded-xl px-6 py-3 font-mono text-sm hover:bg-blue-800 active:scale-[0.98] transition-all"
+              href="https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%20read%20your%20blog%20and%20have%20a%20project%20in%20mind."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 bg-[#25D366] text-white rounded-xl px-6 py-3 font-mono text-sm hover:bg-[#20b858] active:scale-[0.98] transition-all"
             >
-              <Calendar class="w-4 h-4" />
-              Book a free call
+              <MessageCircle class="w-4 h-4" />
+              Chat on WhatsApp
             </a>
             <a
               href="/services/"

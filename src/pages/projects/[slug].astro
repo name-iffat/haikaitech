@@ -4,7 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navbar from '../../../components/Navbar';
 import StickyBooking from '../../../components/StickyBooking';
 import { Tape, ArrowSketch } from '../../../components/Decorations';
-import { Calendar, ExternalLink, Hash, ArrowLeft } from 'lucide-react';
+import { MessageCircle, ExternalLink, Hash, ArrowLeft } from 'lucide-react';
 import { PROJECTS } from '../../../constants';
 import type { Project } from '../../../types';
 
@@ -120,10 +120,12 @@ const related = PROJECTS.filter(p => p.id !== project.id).slice(0, 3);
               <ExternalLink class="w-4 h-4" />
               View Live Project
             </a>
-            <a href="/#booking"
-              class="inline-flex items-center gap-2 px-6 py-3 border-2 border-slate-300 text-slate-700 font-medium rounded-md hover:bg-white hover:border-slate-400 transition-all">
-              <Calendar class="w-4 h-4" />
-              Want Something Similar? Let's Talk
+            <a href="https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%20saw%20your%20project%20and%20have%20something%20similar%20in%20mind."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 px-6 py-3 bg-[#25D366] text-white font-medium rounded-md hover:bg-[#20b858] transition-all">
+              <MessageCircle class="w-4 h-4" />
+              Want Something Similar? Let's Chat
             </a>
           </div>
         </div>

@@ -43,7 +43,7 @@
 - Live at: **haikaitech.my**
 
 ## External services
-- Cal.com booking via `@calcom/embed-react` in `components/CalBooking.tsx` (event `haikaitech/30min`)
+- WhatsApp-first CTAs (`wa.me/60147533499`) + email (`hq@haikaitech.my`) as secondary
 - Skill icons from `https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/` (mapped in `constants.tsx`)
 
 ## What's NOT here

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Project } from '../types';
-import { ExternalLink, Hash, Pin, Calendar } from 'lucide-react';
+import { ExternalLink, Hash, Pin, MessageCircle } from 'lucide-react';
 import { Tape } from './Decorations';
 
 declare global {
@@ -85,12 +85,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       {/* Bottom CTA */}
       <div className="relative z-20 mt-2 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <a
-          href="#booking"
-          onClick={(e) => { e.stopPropagation(); track('cta_clicked', 'project_to_booking', project.id); }}
-          className="inline-flex items-center gap-1.5 text-xs font-medium text-blue-600 hover:text-blue-800 transition-colors"
+          href="https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%20saw%20your%20project%20and%20have%20something%20similar%20in%20mind."
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(e) => { e.stopPropagation(); track('cta_clicked', 'chat_whatsapp_project', project.id); }}
+          className="inline-flex items-center gap-1.5 text-xs font-medium text-[#25D366] hover:text-[#20b858] transition-colors"
         >
-          <Calendar className="w-3 h-3" />
-          Need something like this? Let's talk.
+          <MessageCircle className="w-3 h-3" />
+          Need something like this? Let's chat.
         </a>
       </div>
 

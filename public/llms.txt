@@ -28,11 +28,11 @@
 
 ## Key pages
 
-- [Home](https://haikaitech.my/): Portfolio overview, skills, about, contact, and booking.
+- [Home](https://haikaitech.my/): Portfolio overview, skills, about, contact, and start a project.
 - [Services & Pricing](https://haikaitech.my/services/): Business websites, company profiles, custom software, add-ons, and maintenance.
 - [Blog](https://haikaitech.my/blog/): Guides on website costs, packages, and custom software for Malaysian businesses.
-- [Book a free call](https://haikaitech.my/#booking): Cal.com booking for a free 30-minute consultation.
-- [Contact](https://haikaitech.my/#contact): Lead form and WhatsApp.
+- [Start a project](https://haikaitech.my/#start): Chat on WhatsApp or email hq@haikaitech.my.
+- [Contact](https://haikaitech.my/#contact): Lead form, WhatsApp, and email.
 - [Privacy Policy](https://haikaitech.my/privacy-policy/)
 - [Terms of Service](https://haikaitech.my/terms-of-service/)
 - [Refund & Cancellation Policy](https://haikaitech.my/refund-cancellation-policy/)

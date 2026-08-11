@@ -3,20 +3,20 @@ type: Contact
 title: Contact HaikaiTech Solutions
 description: How to reach HaikaiTech Solutions — booking, email, WhatsApp, and lead form.
 resource: https://haikaitech.my/#contact
-tags: [haikaitech, contact, booking, whatsapp]
+tags: [haikaitech, contact, whatsapp, email]
 ---
 
 # Contact
 
-- Book a free 30-minute call: https://haikaitech.my/#booking (Cal.com, event `haikaitech/30min`)
+- WhatsApp: +60 14-753 3499 (preferred)
 - Email: hq@haikaitech.my
-- WhatsApp: +60 14-753 3499
+- Start a project: https://haikaitech.my/#start
 - Lead form: https://haikaitech.my/#contact
 - Location: Penang, Malaysia — serving clients worldwide
 
 ## How engagement works
 
-1. Book a free call and describe the project.
+1. Chat on WhatsApp or email and describe the project.
 2. Receive a fixed quotation (no obligation).
 3. On approval, we build, deploy, and hand over — you own the result.
 

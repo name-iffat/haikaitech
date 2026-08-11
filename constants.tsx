@@ -244,8 +244,8 @@ export const CONTACTS: ContactLink[] = [
   },
   {
     label: 'Email',
-    value: 'iffathaikal7@gmail.com',
-    href: 'mailto:iffathaikal7@gmail.com',
+    value: 'hq@haikaitech.my',
+    href: 'mailto:hq@haikaitech.my?subject=Project%20enquiry',
     type: 'email',
     description: 'Drop me a line directly.'
   },

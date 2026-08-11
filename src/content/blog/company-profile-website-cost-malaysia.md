@@ -76,4 +76,4 @@ Yes — copywriting is quoted separately, or you can bundle it. We don't publish
 **We're based in Kuala Lumpur — do you work with KL companies?**
 Yes. We're a Penang-based studio serving businesses across all of Malaysia — most of our clients are in Kuala Lumpur, and everything runs remotely with calls and WhatsApp.
 
-Ready to scope your company profile? [Book a free 30-minute call](/booking/) — or see the full [services and pricing page](/services/).
+Ready to scope your company profile? [Chat on WhatsApp](https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%27d%20like%20a%20quote%20for%20a%20company%20profile.) — or see the full [services and pricing page](/services/).
