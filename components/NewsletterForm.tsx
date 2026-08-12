@@ -15,7 +15,6 @@ const NewsletterForm: React.FC<Props> = ({ source = 'footer' }) => {
     const trimmed = email.trim();
     if (!trimmed || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) return;
     setStatus('sending');
-    track('newsletter_subscribe', source);
 
     try {
       const res = await fetch('https://invoice.haikaitech.my/api/subscribe', {
@@ -23,6 +22,7 @@ const NewsletterForm: React.FC<Props> = ({ source = 'footer' }) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: trimmed, source }),
       });
+      if (res.ok) track('newsletter_subscribe', source);
       setStatus(res.ok ? 'success' : 'error');
     } catch {
       setStatus('error');
