@@ -28,6 +28,11 @@ const HeroSection: React.FC<Props> = ({ avatarSrc }) => {
             </div>
           </div>
 
+          <div className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 rounded-full px-4 py-1.5 mb-6">
+            <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+            <span className="text-xs font-mono font-bold text-emerald-700 uppercase">Currently accepting projects</span>
+          </div>
+
           <h1 className="text-slate-900 font-bold tracking-tight mb-8 text-5xl md:text-7xl leading-[1.1]">
             Custom web apps and dashboards <br className="hidden md:block" />
             for businesses that outgrew templates.

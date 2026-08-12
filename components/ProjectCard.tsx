@@ -28,10 +28,21 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         <div className={`absolute inset-0 opacity-80 mix-blend-multiply ${project.accentColor.split(' ')[0]} bg-slate-50 transition-opacity duration-500 group-hover:opacity-100`}>
           <img
             src={project.image}
-            alt={project.name}
+            alt={`${project.name} — ${project.purpose}`}
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-90"
           />
         </div>
+
+        {/* Status badge */}
+        {project.status === 'live' ? (
+          <div className="absolute top-3 left-3 bg-emerald-50 backdrop-blur-sm px-2 py-0.5 text-[10px] font-mono font-bold uppercase text-emerald-600 border border-emerald-200 rounded-full">
+            Live Client
+          </div>
+        ) : (
+          <div className="absolute top-3 left-3 bg-slate-50 backdrop-blur-sm px-2 py-0.5 text-[10px] font-mono font-bold uppercase text-slate-400 border border-slate-200 rounded-full">
+            Demo
+          </div>
+        )}
 
         {/* Handwritten Fig Number */}
         <div className="absolute bottom-3 left-3 bg-white/95 backdrop-blur-sm px-3 py-1 text-sm font-hand font-bold border border-slate-200 -rotate-2 shadow-sm transform group-hover:rotate-0 transition-transform">

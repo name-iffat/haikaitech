@@ -23,7 +23,7 @@ const StartProjectSection: React.FC = () => {
 
   const steps = [
     { num: '01', text: 'You message us on WhatsApp or email' },
-    { num: '02', text: 'We reply fast — usually within minutes' },
+    { num: '02', text: 'We reply fast — usually within the hour during business hours' },
     { num: '03', text: 'You get a fixed quotation, no obligation' },
   ];
 

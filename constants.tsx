@@ -43,6 +43,7 @@ export const PROJECTS: Project[] = [
     link: 'https://avsbina.com.my',
     image: avsbinaImg.src,
     accentColor: 'border-amber-700 text-amber-700',
+    status: 'live',
     theme: 'avsbina'
   },
   {
@@ -54,6 +55,7 @@ export const PROJECTS: Project[] = [
     link: 'https://adyumrahajj.com',
     image: adyumrahImg.src,
     accentColor: 'border-purple-600 text-purple-600',
+    status: 'live',
     theme: 'adyumrah'
   },
   {
@@ -65,6 +67,7 @@ export const PROJECTS: Project[] = [
     link: 'https://fuzzfloor.com',
     image: fuzzfloorImg.src,
     accentColor: 'border-teal-600 text-teal-600',
+    status: 'live',
     theme: 'fuzzfloor'
   },
   {
@@ -76,6 +79,7 @@ export const PROJECTS: Project[] = [
     link: 'https://atoneconstruction.com.my',
     image: atoneImg.src,
     accentColor: 'border-slate-700 text-slate-700',
+    status: 'live',
     theme: 'atone'
   },
   {
@@ -87,6 +91,7 @@ export const PROJECTS: Project[] = [
     link: 'https://murtazjiumrah.haikaitech.my/',
     image: murtajizImg.src,
     accentColor: 'border-emerald-600 text-emerald-600',
+    status: 'live',
     theme: 'murtajiz'
   },
   {
@@ -98,6 +103,7 @@ export const PROJECTS: Project[] = [
     link: 'https://hijrahumrah.haikaitech.my/',
     image: hijrahImg.src,
     accentColor: 'border-stone-600 text-stone-600',
+    status: 'live',
     theme: 'hijrah'
   },
   {
@@ -109,6 +115,7 @@ export const PROJECTS: Project[] = [
     link: 'https://dentex-clinic.netlify.app/',
     image: dentexImg.src,
     accentColor: 'border-blue-600 text-blue-600',
+    status: 'demo',
     theme: 'dentex'
   },
   {
@@ -120,6 +127,7 @@ export const PROJECTS: Project[] = [
     link: 'https://medin-frag.myshopify.com/',
     image: medinImg.src,
     accentColor: 'border-amber-700 text-amber-700',
+    status: 'live',
     theme: 'medin'
   },
   {
@@ -131,6 +139,7 @@ export const PROJECTS: Project[] = [
     link: 'https://clarity-learncentre.netlify.app/',
     image: clarityImg.src,
     accentColor: 'border-green-600 text-green-600',
+    status: 'demo',
     theme: 'hijrah'
   },
   {
@@ -142,6 +151,7 @@ export const PROJECTS: Project[] = [
     link: 'https://binamaju-demoweb.pages.dev/ms',
     image: binamajuImg.src,
     accentColor: 'border-emerald-700 text-emerald-700',
+    status: 'demo',
     theme: 'binamaju'
   },
   {
@@ -153,6 +163,7 @@ export const PROJECTS: Project[] = [
     link: 'https://binapro-contractor-blueprint.pages.dev/',
     image: binaproImg.src,
     accentColor: 'border-blue-700 text-blue-700',
+    status: 'demo',
     theme: 'binapro'
   },
   {
@@ -164,6 +175,7 @@ export const PROJECTS: Project[] = [
     link: 'https://hawkerrewards.pages.dev/',
     image: hawkerrewardsImg.src,
     accentColor: 'border-yellow-600 text-yellow-600',
+    status: 'demo',
     theme: 'hawkerrewards'
   },
   {
@@ -175,6 +187,7 @@ export const PROJECTS: Project[] = [
     link: 'https://bear-split-waitlist.vercel.app/',
     image: bearsplitImg.src,
     accentColor: 'border-orange-900 text-orange-900',
+    status: 'demo',
     theme: 'bear'
   },
   {
@@ -186,6 +199,7 @@ export const PROJECTS: Project[] = [
     link: 'https://rumahpizza.netlify.app/',
     image: pizzaImg.src,
     accentColor: 'border-red-600 text-red-600',
+    status: 'demo',
     theme: 'pizza'
   },
   {
@@ -197,6 +211,7 @@ export const PROJECTS: Project[] = [
     link: 'https://tahu-kripto.netlify.app/',
     image: tahuImg.src,
     accentColor: 'border-cyan-600 text-cyan-600',
+    status: 'demo',
     theme: 'crypto'
   }
 ];
@@ -240,7 +255,7 @@ export const CONTACTS: ContactLink[] = [
     value: '+60 14-753 3499',
     href: `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_TEXT}`,
     type: 'whatsapp',
-    description: 'Reply within a few hours.'
+    description: 'Reply within the hour during business hours (9am–6pm MYT).'
   },
   {
     label: 'Email',

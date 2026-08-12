@@ -41,7 +41,7 @@ Interactive 3D and real-time visual experiences for product demos, training, and
 
 Unlike our [published website pricing](/services/), custom software is **quoted by scope** — because a "dashboard" can mean a two-week tool or a six-month platform. What you *can* count on is the process:
 
-1. **Free 30-minute call** — we listen, understand the problem, and define scope together.
+1. **Chat on WhatsApp** — we listen, understand the problem, and define scope together.
 2. **Fixed quotation** — you get a number and a schedule before any work starts. No hourly-billing surprises.
 3. **Build and deploy** — you see progress throughout, with checkpoints.
 4. **You own the result** — source, credentials, and full handover.

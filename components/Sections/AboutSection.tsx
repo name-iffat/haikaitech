@@ -14,14 +14,16 @@ const AboutSection: React.FC = () => {
           </h2>
           <div className="prose prose-slate prose-lg font-light text-slate-600">
             <p>
-              Based in Malaysia, I work with clients worldwide. I own the entire build — from database to API to UI — so you don't need to manage multiple freelancers.
-              <span className="font-hand text-xl text-slate-800 block my-2 transform -rotate-1">
-                "I care about structure, but I also care about how things feel."
-              </span>
+              Based in Penang, I build custom web apps, dashboards, and interactive systems for businesses across Malaysia — from single-owner shops in KL to growing agencies that need more than a template.
+            </p>
+            <span className="font-hand text-xl text-slate-800 block my-2 transform -rotate-1">
+              "I own the entire build — from database to API to UI — so you never need to manage multiple freelancers."
+            </span>
+            <p>
+              I work this way because it produces better products: one person understands the full picture, and you get a direct line to the builder — no account managers, no agency markup. WhatsApp is the fastest way to reach me because that's how Malaysian SMEs actually communicate.
             </p>
             <p>
-              I turn complex problems into calm interfaces, and serious systems into products people actually enjoy using.
-              My approach is grounded in engineering fundamentals but elevated by a visual-first mindset.
+              HaikaiTech Solutions is a registered company (SSM 202603149868), so you're working with a real business, not a side project.
             </p>
           </div>
         </div>

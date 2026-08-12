@@ -7,6 +7,7 @@ export interface Project {
   link: string;
   image: string;
   accentColor: string; // Tailwind class for border/text
+  status: 'live' | 'demo';
   theme: 'bear' | 'hijrah' | 'dentex' | 'crypto' | 'pizza' | 'murtajiz' | 'medin' | 'avsbina' | 'adyumrah' | 'fuzzfloor' | 'atone' | 'binamaju' | 'binapro' | 'hawkerrewards';
 }
 
