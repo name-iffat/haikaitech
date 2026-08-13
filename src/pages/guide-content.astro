@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
-  title="2026 Website & Lead Gen Guide for Malaysian SMEs — HaikaiTech"
+  title="2026 Website & Lead Generation Guide for Malaysian SMEs — HaikaiTech"
   description=""
   canonical="https://haikaitech.my/guide-content/"
   noindex
@@ -17,14 +17,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       max-width: 720px;
       margin: 0 auto;
       padding: 40px 48px;
-      line-height: 1.65;
+      line-height: 1.6;
     }
-    .guide-page h1 { font-size: 32px; line-height: 1.2; color: #0f172a; margin: 0 0 8px; }
-    .guide-page h2 { font-size: 20px; color: #1d4ed8; margin: 36px 0 8px; }
-    .guide-page h3 { font-size: 16px; color: #0f172a; margin: 24px 0 6px; }
+    .guide-page h1 { font-size: 34px; line-height: 1.15; color: #0f172a; margin: 0 0 8px; }
+    .guide-page h2 { font-size: 21px; color: #1d4ed8; margin: 0 0 10px; }
+    .guide-page h3 { font-size: 15px; color: #0f172a; margin: 20px 0 6px; }
     .guide-page p { font-size: 14px; margin: 0 0 12px; color: #334155; }
     .guide-page ul, .guide-page ol { font-size: 14px; color: #334155; margin: 0 0 12px; padding-left: 22px; }
     .guide-page li { margin-bottom: 6px; }
+    .guide-page strong { color: #0f172a; }
     .guide-page .sub { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #64748b; }
     .guide-page .lead { font-size: 16px; color: #0f172a; margin-top: 16px; }
     .guide-page .box { background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px 18px; margin: 16px 0; }
@@ -33,11 +34,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     .guide-page .quote { border-left: 3px solid #1d4ed8; padding: 4px 0 4px 14px; font-style: italic; color: #475569; margin: 12px 0; }
     .guide-page .script { background: #0f172a; color: #e2e8f0; border-radius: 8px; padding: 12px 14px; font-size: 13px; margin: 8px 0; }
     .guide-page .script strong { color: #34d399; }
-    .guide-page .two-col { display: flex; gap: 24px; }
     .guide-page .fact { font-family: 'VT323', monospace; font-size: 22px; color: #1d4ed8; }
-    .guide-page .cta { text-align: center; margin-top: 32px; padding: 20px; background: #0f172a; color: #fff; border-radius: 12px; }
+    .guide-page .cta { text-align: center; margin-top: 24px; padding: 20px; background: #0f172a; color: #fff; border-radius: 12px; }
     .guide-page .cta a { color: #34d399; font-weight: 700; }
     .guide-page .page-break { page-break-before: always; }
+    .guide-page .numeric { font-weight: 700; color: #059669; }
+    .guide-page .check { color: #059669; font-weight: 700; }
 
     @media print {
       @page { margin: 16mm; }
@@ -47,95 +49,227 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </style>
 
   <div class="guide-page">
-    <p class="sub">HaikaiTech Solutions · Malaysia</p>
-    <h1>2026 Website &amp; Lead Gen Guide for Malaysian SMEs</h1>
-    <p class="sub">How much things really cost, and how to get leads from your site</p>
+    <!-- Cover -->
+    <div style="min-height: 80vh; display: flex; flex-direction: column; justify-content: center;">
+      <p class="sub">HaikaiTech Solutions · Malaysia</p>
+      <h1>2026 Website &amp; Lead Generation Guide for Malaysian SMEs</h1>
+      <p class="sub" style="margin-top: 10px;">Practical numbers and tactics — no fluff</p>
 
-    <p class="lead">
-      This short guide gives you the pricing reality for websites, web apps and dashboards in Malaysia, a clear look
-      at how fixed-price work (instead of hourly surprises), and practical lead-gen steps — including WhatsApp reply
-      scripts you can copy-paste today.
-    </p>
+      <div class="box" style="margin-top: 32px;">
+        <h3>What's inside</h3>
+        <ol>
+          <li>Website pricing in Malaysia (2026) — what things really cost</li>
+          <li>What makes a website actually generate leads</li>
+          <li>Lead generation tactics that work in Malaysia</li>
+          <li>A simple action plan for this week and this month</li>
+        </ol>
+      </div>
 
-    <div class="box">
-      <h3>What's inside</h3>
-      <ol>
-        <li>What a Malaysian SME website actually costs</li>
-        <li>The fixed-price model (why it's safer for you)</li>
-        <li>Lead-gen checklist for Malaysian SMEs</li>
-        <li>WhatsApp reply scripts that convert</li>
-      </ol>
+      <p class="sub" style="margin-top: 40px;">Based on real projects and current market patterns in Malaysia · 2026</p>
     </div>
 
-    <h2>1. What a Malaysian SME website actually costs</h2>
+    <div class="page-break"></div>
+
+    <!-- Introduction -->
+    <h2>Introduction</h2>
     <p>
-      Prices in Malaysia vary wildly — from friends "coding something" for cheap, to agencies quoting five figures.
-      The useful breakdown is by what you're actually buying:
+      This guide is for Malaysian SME owners and managers who want straight answers: <strong>what does a website
+      actually cost, and how do I get enquiries from it?</strong>
     </p>
+    <p>You'll get:</p>
     <ul>
-      <li><strong>One-page business website</strong> — typically <span class="tag">RM1,500 fixed</span>. Hero, services, contact. Built to look professional and convert. This covers most contractors, clinics, salons, and freelancers.</li>
-      <li><strong>Multi-page business website</strong> — RM3,000–5,000 range. Services, team, testimonials, blog, individual product/portfolio pages.</li>
-      <li><strong>Web apps &amp; dashboards</strong> — RM5,000+. Ordering systems, customer portals, internal dashboards, automation. Priced per project, never per hour blindly.</li>
-      <li><strong>Managed maintenance</strong> — from <span class="tag">RM199/mo</span>. Updates, small edits, uptime, peace of mind.</li>
+      <li><strong>Real website pricing ranges</strong> — one-time, monthly, and web app pricing in RM.</li>
+      <li><strong>What actually drives leads</strong> — the difference between a "nice website" and a "working website".</li>
+      <li><strong>Simple actions you can take this week</strong> — no jargon, no big budgets.</li>
     </ul>
     <p>
-      A website is a business asset, not a commodity. The cheapest quote is rarely the cheapest once you count
-      rework, hidden charges, and a site that doesn't convert.
+      The numbers and tactics here are based on real projects and current market patterns in Malaysia as of 2026.
+    </p>
+
+    <div class="page-break"></div>
+
+    <!-- Part 1: Pricing -->
+    <h2>Part 1 — Website Pricing in Malaysia (2026)</h2>
+
+    <h3>One-time website packages</h3>
+    <ul>
+      <li><strong>One-page business website</strong> — roughly <span class="tag">RM1,500–2,500</span>. Hero, services, contact, WhatsApp button. Fits most freelancers, clinics, salons, and service businesses.</li>
+      <li><strong>Multi-page business website</strong> — roughly <span class="tag">RM3,000–7,000</span>. Services, team, testimonials, blog, individual pages.</li>
+      <li><strong>Company profile (PDF vs website)</strong> — a designed PDF profile is cheaper (hundreds of RM) and faster; a dedicated profile website is usually RM2,000+, but doubles as a sales tool that can be shared and updated.</li>
+    </ul>
+
+    <h3>Managed / monthly website plans</h3>
+    <ul>
+      <li><strong>Managed maintenance plans</strong> — from <span class="tag">RM199/mo</span>. Covers updates, small content changes, backup and uptime. Cheaper than buying an ad-hoc "edit" every time you need a change.</li>
+    </ul>
+
+    <h3>Web apps &amp; systems</h3>
+    <ul>
+      <li><strong>Dashboards, order systems, customer portals, automation</strong> — from <span class="tag">RM5,000+</span>. Priced per project based on scope, never blindly per hour.</li>
+    </ul>
+
+    <h3>What actually affects the price</h3>
+    <ul>
+      <li><strong>Number of pages</strong> — more pages, more design and content work.</li>
+      <li><strong>Design complexity</strong> — custom branding, animations, and bespoke layouts cost more than clean templates.</li>
+      <li><strong>Content readiness</strong> — you supply text/images = lower cost; you ask them to write it = higher cost and slower launch.</li>
+      <li><strong>Bilingual / multilingual</strong> — Bahasa Melayu + English (or Chinese/Tamil) adds work at every step.</li>
+      <li><strong>Functionality</strong> — forms, booking, payment, admin login, integrations. Each adds real scope.</li>
+    </ul>
+
+    <div class="box">
+      <h3>Quick cost table</h3>
+      <ul>
+        <li><span class="check">▸</span> One-page website — RM1,500–2,500</li>
+        <li><span class="check">▸</span> Multi-page business website — RM3,000–7,000</li>
+        <li><span class="check">▸</span> Managed monthly plan — from RM199/mo</li>
+        <li><span class="check">▸</span> Company profile PDF — few hundred RM; as a website — RM2,000+</li>
+        <li><span class="check">▸</span> Web app / dashboard / system — RM5,000+</li>
+      </ul>
+    </div>
+
+    <h3>Common mistakes when buying a website</h3>
+    <ul>
+      <li>Picking the cheapest quote — rework and hidden add-ons usually cost more in the end.</li>
+      <li>No written scope — then "revisions" mean extras.</li>
+      <li>No content prepared — the site sits in a holding pattern for weeks.</li>
+      <li>Design-first, no consideration of how it converts — pretty but generates zero enquiries.</li>
+    </ul>
+
+    <div class="page-break"></div>
+
+    <!-- Part 2: Leads -->
+    <h2>Part 2 — What Makes a Website Actually Generate Leads</h2>
+
+    <p>
+      Most SME websites get almost no enquiries. Not because they're ugly — because they're built as brochures,
+      not as lead-generation tools.
+    </p>
+
+    <h3>The difference between a "nice website" and a "working website"</h3>
+    <p>
+      A nice website looks good and describes you. A working website tells a visitor <strong>exactly what to do
+      next, in seconds</strong> — and makes doing it frictionless.
+    </p>
+
+    <h3>Key elements that matter</h3>
+    <ul>
+      <li><strong>Clear offer</strong> — a visitor should understand what you do and who it's for within 5 seconds of landing.</li>
+      <li><strong>Strong WhatsApp CTA</strong> — a persistent "Chat on WhatsApp" button above the fold, because most of your traffic reads on their phone.</li>
+      <li><strong>Fast loading on mobile</strong> — slow websites lose enquiries; mobile visitors are most of your traffic.</li>
+      <li><strong>Focused landing pages vs a busy homepage</strong> — a simple page per offer (e.g. "website packages" vs "dashboard project") converts far better than one crowded homepage.</li>
+    </ul>
+
+    <div class="box">
+      <h3>Checklist — does your current website have these?</h3>
+      <ul>
+        <li><span class="check">▸</span> Clear offer in the first screen</li>
+        <li><span class="check">▸</span> WhatsApp button above the fold, on mobile too</li>
+        <li><span class="check">▸</span> Loads fast on a phone (test on 4G)</li>
+        <li><span class="check">▸</span> Each main offer has its own focused page or section</li>
+        <li><span class="check">▸</span> Someone (or a form) actually replies within the hour</li>
+      </ul>
+      <p style="margin-bottom:0;">Miss more than one? Your website is costing you leads even if it looks great.</p>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- Part 3: Tactics -->
+    <h2>Part 3 — Lead Generation Tactics That Work in Malaysia</h2>
+
+    <h3>The big shift: WhatsApp is now the main first-contact channel</h3>
+    <p>
+      For most Malaysian customers, WhatsApp is the fastest and most natural way to reach a business — and most
+      SME enquiries now start there. If your website makes it easy to click-to-WhatsApp and you reply fast, you're
+      already ahead of most competitors.
     </p>
 
     <div class="quote">
-      "A fixed OK quote upfront beats a cheap price plus surprise extras every time."
+      "Reply speed is a lead-gen tactic. Businesses that reply within an hour win the enquiry."
     </div>
 
-    <h2>2. The fixed-price model (why it's safer for you)</h2>
+    <h3>Reply speed and why it matters</h3>
     <p>
-      At HaikaiTech we quote a fixed price before work begins. You know the total, the deliverables, and the timeline
-      upfront — no hourly tracking, no surprise invoices. It works like this:
+      The faster you reply, the more enquires turn into customers. A slow reply (hours or next day) means the
+      customer has already contacted two other businesses. Aim to reply <strong>within the hour, during business
+      hours</strong>.
     </p>
+
+    <h3>5–7 highest-impact tactics</h3>
     <ol>
-      <li><strong>Tell us what you need</strong> — on WhatsApp, with a short description or a screenshot.</li>
-      <li><strong>Get a fixed quote</strong> — scope, price, and timeline in writing.</li>
-      <li><strong>Pay in milestones</strong> — typically 40% to start, 40% on review, 20% on delivery.</li>
-      <li><strong>Launch &amp; maintain</strong> — handover, your domain, optional RM199/mo care.</li>
+      <li><strong>Google Business Profile</strong> — free, and most local searches surface it. Keep it updated, respond to reviews, post photos.</li>
+      <li><strong>Click-to-WhatsApp everywhere</strong> — on your website, Google profile, social bios, even your printed materials.</li>
+      <li><strong>Focused landing pages</strong> — one page per offer (service, package, or product) instead of a busy homepage.</li>
+      <li><strong>Useful content / guides</strong> — short practical posts answer the questions customers actually search, and build trust.</li>
+      <li><strong>A fast follow-up system</strong> — set a rule: every enquiry gets a reply today. Even "thanks, let me check and come back to you" beats silence.</li>
+      <li><strong>Simple lead magnets</strong> — a short PDF (like this one) or a checklist traded for an email, so visitors who aren't ready to buy today stay on your list.</li>
+      <li><strong>(Optional) basic paid ads</strong> — Google or Meta ads directed at a focused landing page (not your homepage) can work, but only once the basics above are solid.</li>
     </ol>
+
+    <h3>Use both WhatsApp and email properly</h3>
     <p>
-      You're never locked into a black-box billing model, and both sides know what "done" means.
+      WhatsApp is for fast conversations. Email is for ownership — a list you control where you can send updates,
+      notes, and offers even if a platform changes. A simple "get practical notes" form on your site turns
+      one-time visitors into repeat customers over months.
     </p>
 
-    <h2>3. Lead-gen checklist for Malaysian SMEs</h2>
-    <p>Most Malaysian customers reach out on WhatsApp. The businesses that reply fastest (and look professional) win. Use this checklist:</p>
+    <div class="page-break"></div>
+
+    <!-- Part 4: Action plan -->
+    <h2>Part 4 — A Simple Action Plan</h2>
+
+    <h3>This week (30 min total)</h3>
+    <ol>
+      <li>Add a click-to-WhatsApp button to your website home page (and mobile).</li>
+      <li>Update your Google Business Profile — hours, photos, and a link to WhatsApp.</li>
+      <li>Write down your one-sentence offer ("We do X for Y customers"). If you can't, neither can your visitors.</li>
+      <li>Set a reply-time rule for enquiries: within the hour, during business hours.</li>
+    </ol>
+
+    <h3>This month</h3>
+    <ol>
+      <li>Build one focused landing page for your main offer (services, price, WhatsApp CTA, at least 2 testimonials).</li>
+      <li>Start collecting emails with a simple form — "get practical notes" or a PDF guide.</li>
+      <li>Publish 2 short practical posts or guides that answer your customers' real questions.</li>
+      <li>Review what your current website does on mobile with real 4G — slow? Fix it.</li>
+    </ol>
+
+    <h3>Quick self-audit questions</h3>
     <ul>
-      <li>Put a <strong>WhatsApp button above the fold</strong> on your homepage — most visits happen on phones.</li>
-      <li>Reply <strong>within the hour during business hours</strong> — speed is a ranking factor for trust.</li>
-      <li>Make your <strong>pricing clear</strong> (e.g. a starting price) so the right customers self-qualify.</li>
-      <li>Add <strong>testimonials / past work</strong> near your contact CTA.</li>
-      <li>Capture emails too — a short "get practical notes" form turns one-time visitors into repeat business.</li>
+      <li>Can a visitor tell what I do in 5 seconds?</li>
+      <li>Is the WhatsApp button impossible to miss on a phone?</li>
+      <li>Do I reply to enquiries within the hour?</li>
+      <li>Am I collecting emails, or losing visitors after they leave?</li>
     </ul>
-    <p>
-      The single biggest miss for small businesses: owning their list. WhatsApp DMs disappear; an email list (and a
-      website you control) keeps working for years.
-    </p>
-
-    <h2>4. WhatsApp reply scripts that convert</h2>
-    <p>Copy-paste these, then make them your own voice:</p>
-
-    <div class="script"><strong>Fast first reply:</strong> "Hi! Thanks for reaching out — this is Iffat from HaikaiTech. Happy to help. Quick question: are you looking for a brand-new website, or improving one you already have?"</div>
-    <div class="script"><strong>Qualify budget/size:</strong> "Got it — that sounds like a solid one-page site (hero, services, contact, WhatsApp button). Our fixed price for that starts at RM1,500 and we'd scope it properly before quoting. Want me to confirm availability this week?"</div>
-    <div class="script"><strong>Give a fixed quote:</strong> "Here's the fixed quote: RM2,000 for a one-page site with the sections we discussed, delivered in about 2 weeks. That includes mobile-ready design, WhatsApp button, and handover. No hidden costs — does that work for you?"</div>
-    <div class="script"><strong>Follow up without being pushy:</strong> "No stress if you're still deciding! I know you're busy. For reference, most SME sites in your industry take about 2 weeks and start at RM1,500. Happy to answer any questions whenever you're ready."</div>
 
     <div class="box">
-      <h3>Your next step</h3>
-      <p>
-        Want a fixed quote for your business? Chat on WhatsApp and tell us what you need — we usually reply within the
-        hour during business hours (9am–6pm MYT).
-      </p>
-      <p class="fact">wa.me/60147533499 · hq@haikaitech.my</p>
+      <h3>Bonus — copy-paste WhatsApp replies</h3>
+      <div class="script"><strong>Fast first reply:</strong> "Hi! Thanks for reaching out — happy to help. Quick question: are you looking for a brand-new website, or improving one you already have?"</div>
+      <div class="script"><strong>Qualify budget/size:</strong> "Got it — that's usually a one-page site (hero, services, contact, WhatsApp button). Our fixed price starts at RM1,500 and we'd scope it before quoting. Want me to confirm availability this week?"</div>
+      <div class="script"><strong>Give a fixed quote:</strong> "Here's the fixed quote: RM2,000 for a one-page site with the sections we discussed, delivered in about 2 weeks — mobile-ready, WhatsApp button, handover included. No hidden costs. Does that work for you?"</div>
+      <div class="script"><strong>Follow up without being pushy:</strong> "No stress if you're still deciding. Most SME sites in your industry take about 2 weeks and start at RM1,500. Happy to answer any questions whenever you're ready."</div>
     </div>
 
+    <div class="page-break"></div>
+
+    <!-- Closing -->
+    <h2>Closing — Here's the one-line summary</h2>
+    <p>
+      A website generates leads when it has a clear offer, a fast-reply WhatsApp path, and a way to keep
+      collecting enquiries even when people aren't ready to buy. Everything else is polish.
+    </p>
+
+    <p>
+      If you're thinking about a website or system and want a <strong>clear fixed quote</strong>, just message us
+      on WhatsApp — no call required, no obligation.
+    </p>
+
     <div class="cta">
-      HaikaiTech Solutions · haikaitech.my · SSM 202603149868 (CA0422517-K)<br />
-      Fixed-price websites, dashboards &amp; web apps for Malaysian SMEs.
+      <p style="margin:0 0 6px; color:#fff;"><strong>Chat on WhatsApp</strong> — usually replies within the hour (9am–6pm MYT)</p>
+      <p style="margin:0; font-size:16px;"><a href="https://wa.me/60147533499">wa.me/60147533499</a></p>
+      <p style="margin:8px 0 0; color:#94a3b8; font-size:12px;">Want more practical notes like this? <a href="https://haikaitech.my/">Join the list</a> — haikaitech.my</p>
     </div>
+
+    <p class="sub" style="margin-top:24px;">HaikaiTech Solutions · haikaitech.my · SSM 202603149868 (CA0422517-K)</p>
   </div>
 </BaseLayout>
