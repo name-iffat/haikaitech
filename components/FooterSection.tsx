@@ -1,8 +1,18 @@
 import React from 'react';
+import NewsletterForm from './NewsletterForm';
 
 const FooterSection: React.FC = () => {
   return (
     <footer className="border-t border-slate-200 py-12">
+      <div className="max-w-3xl mx-auto mb-10 text-center">
+        <p className="font-hand text-2xl text-slate-700">Practical notes for Malaysian SMEs</p>
+        <p className="mt-1 text-sm text-slate-500 mb-4">Website pricing, lead-gen tactics & free tools — no spam, unsubscribe anytime.</p>
+        <div className="max-w-sm mx-auto">
+          <NewsletterForm source="footer" />
+        </div>
+        <p className="mt-6 text-xs text-slate-400 font-mono">We'll only send updates you asked for. See our <a href="/privacy-policy/" className="underline underline-offset-2 hover:text-slate-600">privacy policy</a>.</p>
+      </div>
+
       <div className="flex flex-col md:flex-row justify-between items-center text-slate-400 text-sm font-mono gap-4">
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
