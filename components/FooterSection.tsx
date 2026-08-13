@@ -59,6 +59,7 @@ const FooterSection: React.FC = () => {
         </a>
         <span className="inline-flex items-center gap-1.5">🌍 Serving clients worldwide</span>
         <a href="/toolkit/" className="inline-flex items-center gap-1.5 font-medium text-slate-500 hover:text-slate-600 transition-colors py-2">🧰 Business Toolkit</a>
+        <a href="/guide/" className="inline-flex items-center gap-1.5 font-medium text-slate-500 hover:text-slate-600 transition-colors py-2">📖 2026 Website Cost Guide</a>
         <a href="/privacy-policy/" className="hover:text-slate-600 transition-colors py-2">Privacy Policy</a>
         <a href="/terms-of-service/" className="hover:text-slate-600 transition-colors py-2">Terms of Service</a>
         <a href="/refund-cancellation-policy/" className="hover:text-slate-600 transition-colors py-2">Refund Policy</a>
