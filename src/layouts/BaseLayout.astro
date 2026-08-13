@@ -3,11 +3,12 @@ interface Props {
   title?: string;
   description?: string;
   canonical?: string;
+  noindex?: boolean;
 }
 
 import '../styles/global.css';
 
-const { title = 'HAIKAITECH SOLUTIONS | Software Engineering Studio Malaysia', description = 'HAIKAITECH SOLUTIONS — registered software engineering studio in Malaysia. We build custom web apps, dashboards, and interactive systems with React, .NET, and Unity. Chat on WhatsApp for a fast reply.', canonical = 'https://haikaitech.my/' } = Astro.props;
+const { title = 'HAIKAITECH SOLUTIONS | Software Engineering Studio Malaysia', description = 'HAIKAITECH SOLUTIONS — registered software engineering studio in Malaysia. We build custom web apps, dashboards, and interactive systems with React, .NET, and Unity. Chat on WhatsApp for a fast reply.', canonical = 'https://haikaitech.my/', noindex = false } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -18,6 +19,7 @@ const { title = 'HAIKAITECH SOLUTIONS | Software Engineering Studio Malaysia', d
   <title>{title}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
+  {noindex && <meta name="robots" content="noindex, nofollow" />}
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="apple-touch-icon" href="/favicon.png" />
   <!-- Open Graph -->

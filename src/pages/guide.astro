@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar';
+import FooterSection from '../../components/FooterSection';
+import LeadMagnetForm from '../../components/LeadMagnetForm';
+import { DoodleStar, ScribbleUnderline, ArrowSketch, Tape } from '../../components/Decorations';
+
+const contents = [
+  { title: 'What a Malaysian SME website actually costs', body: 'Fixed-price reality — one-page sites, multi-page business sites, web apps and dashboards. No vague quotes, no hourly surprises.' },
+  { title: 'The fixed-price model (and why it is safer for you)', body: 'How our fixed quotes are built — scope, timeline and exactly what is included before you commit a single ringgit.' },
+  { title: 'Lead-gen checklist for Malaysian SMEs', body: 'The practical checklist: WhatsApp-first contact, fastest-reply wins, a homepage built to convert, and what to skip.' },
+  { title: 'WhatsApp reply scripts you can copy today', body: 'Copy-paste replies for fast responses, qualifying budget, giving a fixed quote, and following up without being pushy.' },
+];
+---
+
+<BaseLayout
+  title="How much should a website cost in Malaysia? (2026 Guide for Malaysian SMEs)"
+  description="Free 2026 guide for Malaysian SMEs — website pricing reality, the fixed-price model, a lead-gen checklist, and copy-paste WhatsApp reply scripts. Get it free by email."
+  canonical="https://haikaitech.my/guide/"
+>
+  <div class="min-h-screen relative font-sans bg-paper bg-grid-pattern selection:bg-yellow-200 selection:text-slate-900">
+    <Navbar client:load prefix="/" />
+
+    <main class="max-w-4xl mx-auto px-6 py-20 md:py-24 relative">
+      <DoodleStar className="top-20 left-4 text-slate-300 hidden lg:block" />
+      <DoodleStar className="top-64 right-8 text-blue-200 hidden lg:block" />
+
+      <!-- Hero -->
+      <header class="relative mb-16">
+        <Tape className="-top-4 right-2 rotate-[-6deg] hidden md:block" />
+        <p class="font-mono text-sm text-blue-700 tracking-widest uppercase">Free guide · PDF · 2026</p>
+        <h1 class="mt-4 font-hand text-5xl md:text-6xl text-slate-800 leading-tight relative">
+          How much should a website cost
+          <br />
+          <span class="text-blue-700 relative">
+            in Malaysia?
+            <ScribbleUnderline className="w-full text-blue-400" />
+          </span>
+        </h1>
+        <p class="mt-6 max-w-xl text-slate-600 text-lg font-light">
+          The 2026 Website &amp; Lead Gen Guide for Malaysian SMEs. What things really cost, how to avoid overpaying,
+          and how to actually get leads from your site. No fluff, no jargon — written for how local businesses work.
+        </p>
+        <ArrowSketch className="-bottom-10 left-10 hidden lg:block text-blue-500 rotate-[10deg]" />
+      </header>
+
+      <!-- Gate / form -->
+      <section class="relative mb-20 bg-white border border-slate-200 rounded-2xl p-8 md:p-12 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+        <div class="flex flex-col md:flex-row md:items-center gap-8">
+          <div class="md:w-1/2">
+            <p class="font-mono text-xs text-slate-400 uppercase tracking-widest">What's inside</p>
+            <ul class="mt-4 space-y-3 text-sm text-slate-700">
+              <li class="flex gap-2 items-start"><span class="text-emerald-600 font-bold">&#10003;</span> Website cost reality for 2026 (RM)</li>
+              <li class="flex gap-2 items-start"><span class="text-emerald-600 font-bold">&#10003;</span> The fixed-price model, explained simply</li>
+              <li class="flex gap-2 items-start"><span class="text-emerald-600 font-bold">&#10003;</span> Lead-gen checklist for Malaysian SMEs</li>
+              <li class="flex gap-2 items-start"><span class="text-emerald-600 font-bold">&#10003;</span> Copy-paste WhatsApp reply scripts</li>
+            </ul>
+          </div>
+          <div class="md:w-1/2 text-center">
+            <p class="font-hand text-2xl text-slate-700">Get the free guide</p>
+            <p class="mt-1 text-sm text-slate-500">Sent straight to your inbox as a PDF.</p>
+            <div class="mt-6 max-w-sm mx-auto relative">
+              <LeadMagnetForm client:load />
+            </div>
+            <p class="mt-6 text-xs text-slate-400 font-mono">No spam, unsubscribe anytime. See our <a href="/privacy-policy/" class="underline underline-offset-2 hover:text-slate-600">privacy policy</a>.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Content preview -->
+      <section class="mb-20">
+        <p class="font-mono text-xs text-slate-400 uppercase tracking-widest">Inside the guide</p>
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+          {contents.map((item) => (
+            <div class="bg-white border border-slate-200 rounded-2xl p-6">
+              <h2 class="font-bold text-slate-800">{item.title}</h2>
+              <p class="mt-2 text-sm text-slate-600 leading-relaxed">{item.body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Trust strip -->
+      <section class="mb-16 bg-slate-900 text-slate-100 p-8 md:p-10 rounded-2xl relative overflow-hidden text-center">
+        <div class="absolute top-0 right-0 w-72 h-72 bg-blue-600/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+        <div class="relative z-10">
+          <p class="font-hand text-3xl md:text-4xl text-slate-100">Who wrote this?</p>
+          <p class="mt-4 max-w-xl mx-auto text-slate-400 text-sm md:text-base font-light leading-relaxed">
+            HaikaiTech Solutions — a registered (SSM) software studio in Penang that builds websites, dashboards and
+            web apps for Malaysian businesses. We price everything on a fixed, no-surprise basis, and we wrote this
+            guide so you know what you're actually paying for.
+          </p>
+          <div class="mt-6 flex flex-wrap justify-center gap-4">
+            <a
+              href="https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%20just%20downloaded%20your%202026%20website%20guide%20and%20would%20love%20to%20discuss%20a%20project."
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bg-[#25D366] text-white rounded-xl px-6 py-3 font-mono text-sm hover:bg-[#20b858] active:scale-[0.98] transition-all"
+            >
+              Chat on WhatsApp
+            </a>
+            <a
+              href="/#projects"
+              class="border border-slate-600 text-slate-300 rounded-xl px-6 py-3 font-mono text-sm hover:border-slate-400 hover:text-white transition-colors"
+            >
+              See our work
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <FooterSection client:load />
+  </div>
+</BaseLayout>
