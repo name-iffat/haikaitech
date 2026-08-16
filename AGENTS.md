@@ -50,6 +50,7 @@
 - `/guide/` landing page is the gated SEO surface; `/guide-content/` is print-only and `noindex`.
 - GA4 events: `newsletter_subscribe` (footer/blog/toolkit), `lead_magnet_request` (guide form).
 - Privacy link under every form; consent = subscription itself (PDPA).
+- **Nurture drip (live)**: `subscribe.ts` fires `subscriber.created` event for NEW subscribers → Resend Automation "HaikaiTech Nurture Drip" (`01a00a1b-b627-747d-94ef-0c27f7b3ab89`): day 3 website-cost value email → day 6 lead-gen value email → day 9 WhatsApp soft-offer. Templates carry `{{{RESEND_UNSUBSCRIBE_URL}}}`. Setup script: `scripts/setup-nurture.mjs` in haikaitech-invoice (do NOT re-run — creates duplicates). Edit flow: duplicate automation in Resend dashboard, edit copy, switch (enabled automations are immutable).
 
 ## External services
 - WhatsApp-first CTAs (`wa.me/60147533499`) + email (`hq@haikaitech.my`) as secondary
