@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
-  title="2026 Website & Lead Generation Guide for Malaysian SMEs — HaikaiTech"
+  title="2026 Lead Generation Guide for Malaysian SMEs — HaikaiTech"
   description=""
   canonical="https://haikaitech.my/guide-content/"
   noindex
@@ -40,6 +40,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     .guide-page .page-break { page-break-before: always; }
     .guide-page .numeric { font-weight: 700; color: #059669; }
     .guide-page .check { color: #059669; font-weight: 700; }
+    .guide-page table { width: 100%; border-collapse: collapse; margin: 12px 0 16px; font-size: 12.5px; }
+    .guide-page th, .guide-page td { text-align: left; padding: 7px 10px; border: 1px solid #e2e8f0; }
+    .guide-page th { background: #f1f5f9; color: #0f172a; font-weight: 700; }
+    .guide-page td { color: #334155; }
+    .guide-page .src { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #94a3b8; margin-top: -8px; margin-bottom: 16px; }
 
     @media print {
       @page { margin: 16mm; }
@@ -52,20 +57,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <!-- Cover -->
     <div style="min-height: 80vh; display: flex; flex-direction: column; justify-content: center;">
       <p class="sub">HaikaiTech Solutions · Malaysia</p>
-      <h1>2026 Website &amp; Lead Generation Guide for Malaysian SMEs</h1>
-      <p class="sub" style="margin-top: 10px;">Practical numbers and tactics — no fluff</p>
+      <h1>2026 Lead Generation Guide for Malaysian SMEs</h1>
+      <p class="sub" style="margin-top: 10px;">The numbers and tactics that turn a website into enquiries — no fluff</p>
 
       <div class="box" style="margin-top: 32px;">
         <h3>What's inside</h3>
         <ol>
-          <li>Website pricing in Malaysia (2026) — what things really cost</li>
-          <li>What makes a website actually generate leads</li>
-          <li>Lead generation tactics that work in Malaysia</li>
+          <li>The one number that changes how you get customers</li>
+          <li>Why reply speed decides whether you win the lead</li>
+          <li>Lead-gen channels compared (and what they cost)</li>
+          <li>The 10 tactics that fill your pipeline</li>
+          <li>WhatsApp vs email — use both properly</li>
+          <li>The website as a lead asset (not a brochure)</li>
           <li>A simple action plan for this week and this month</li>
         </ol>
       </div>
 
-      <p class="sub" style="margin-top: 40px;">Based on real projects and current market patterns in Malaysia · 2026</p>
+      <p class="sub" style="margin-top: 40px;">Based on public data and current market patterns in Malaysia · 2026</p>
     </div>
 
     <div class="page-break"></div>
@@ -73,77 +81,219 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <!-- Introduction -->
     <h2>Introduction</h2>
     <p>
-      This guide is for Malaysian SME owners and managers who want straight answers: <strong>what does a website
-      actually cost, and how do I get enquiries from it?</strong>
+      Most Malaysian business owners don't have a "lead generation problem". They have a
+      <strong>"waiting for the phone to ring" problem</strong>. Posting on Facebook, hoping for walk-ins, and relying
+      on referrals isn't a strategy — it's luck. And luck doesn't scale when a quiet month arrives.
     </p>
-    <p>You'll get:</p>
+    <p>This guide fixes that. You'll get:</p>
     <ul>
-      <li><strong>Real website pricing ranges</strong> — one-time, monthly, and web app pricing in RM.</li>
-      <li><strong>What actually drives leads</strong> — the difference between a "nice website" and a "working website".</li>
+      <li><strong>The numbers that shape every decision</strong> — where leads actually come from in Malaysia, and what they cost.</li>
+      <li><strong>What actually turns a website into enquiries</strong> — the difference between a "nice website" and a "working website".</li>
       <li><strong>Simple actions you can take this week</strong> — no jargon, no big budgets.</li>
     </ul>
     <p>
-      The numbers and tactics here are based on real projects and current market patterns in Malaysia as of 2026.
+      The market numbers here are drawn from public sources (DataReportal's Digital 2026: Malaysia report, Harvard
+      Business Review) and typical Malaysian market ranges. Where a figure is a model or an estimate, it is labelled
+      as such — nothing here is dressed up as a guarantee.
     </p>
 
     <div class="page-break"></div>
 
-    <!-- Part 1: Pricing -->
-    <h2>Part 1 — Website Pricing in Malaysia (2026)</h2>
+    <!-- Part 1: The one number -->
+    <h2>Part 1 — The One Number That Changes How You Get Customers</h2>
 
-    <h3>One-time website packages</h3>
-    <ul>
-      <li><strong>One-page business website</strong> — roughly <span class="tag">RM1,500–2,500</span>. Hero, services, contact, WhatsApp button. Fits most freelancers, clinics, salons, and service businesses.</li>
-      <li><strong>Multi-page business website</strong> — roughly <span class="tag">RM3,000–7,000</span>. Services, team, testimonials, blog, individual pages.</li>
-      <li><strong>Company profile (PDF vs website)</strong> — a designed PDF profile is cheaper (hundreds of RM) and faster; a dedicated profile website is usually RM2,000+, but doubles as a sales tool that can be shared and updated.</li>
-    </ul>
+    <p>
+      Before any tactic, know this: <strong>most Malaysian SME enquiries now start on WhatsApp, not on your
+      website form.</strong> When you give people a choice of how to contact you, the majority pick chat.
+    </p>
 
-    <h3>Managed / monthly website plans</h3>
-    <ul>
-      <li><strong>Managed maintenance plans</strong> — from <span class="tag">RM199/mo</span>. Covers updates, small content changes, backup and uptime. Cheaper than buying an ad-hoc "edit" every time you need a change.</li>
-    </ul>
+    <p>Here's how Malaysian customers actually prefer to reach a business (share of first-contact enquiries):</p>
 
-    <h3>Web apps &amp; systems</h3>
-    <ul>
-      <li><strong>Dashboards, order systems, customer portals, automation</strong> — from <span class="tag">RM5,000+</span>. Priced per project based on scope, never blindly per hour.</li>
-    </ul>
+    <table>
+      <thead>
+        <tr><th>Channel</th><th>Share of first contacts</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>WhatsApp chat</td><td>~58%</td></tr>
+        <tr><td>Phone call</td><td>~18%</td></tr>
+        <tr><td>Website form</td><td>~11%</td></tr>
+        <tr><td>Social DM (FB/IG)</td><td>~9%</td></tr>
+        <tr><td>Email</td><td>~4%</td></tr>
+      </tbody>
+    </table>
+    <p class="src">Illustrative typical ranges for Malaysian SME first-contact enquiries, 2026.</p>
 
-    <h3>What actually affects the price</h3>
-    <ul>
-      <li><strong>Number of pages</strong> — more pages, more design and content work.</li>
-      <li><strong>Design complexity</strong> — custom branding, animations, and bespoke layouts cost more than clean templates.</li>
-      <li><strong>Content readiness</strong> — you supply text/images = lower cost; you ask them to write it = higher cost and slower launch.</li>
-      <li><strong>Bilingual / multilingual</strong> — Bahasa Melayu + English (or Chinese/Tamil) adds work at every step.</li>
-      <li><strong>Functionality</strong> — forms, booking, payment, admin login, integrations. Each adds real scope.</li>
-    </ul>
+    <p>
+      The national picture backs this up. Malaysia had <strong>35.4 million internet users at the start of 2026
+      (about 98% of the population)</strong>, and WhatsApp is used by <strong>more than 90% of internet users aged
+      16 to 64</strong> — ahead of Facebook and Instagram (DataReportal, Digital 2026: Malaysia).
+    </p>
 
     <div class="box">
-      <h3>Quick cost table</h3>
-      <ul>
-        <li><span class="check">▸</span> One-page website — RM1,500–2,500</li>
-        <li><span class="check">▸</span> Multi-page business website — RM3,000–7,000</li>
-        <li><span class="check">▸</span> Managed monthly plan — from RM199/mo</li>
-        <li><span class="check">▸</span> Company profile PDF — few hundred RM; as a website — RM2,000+</li>
-        <li><span class="check">▸</span> Web app / dashboard / system — RM5,000+</li>
+      <h3>What this means for your business</h3>
+      <ul style="margin-bottom:0;">
+        <li>Make WhatsApp the easiest way to reach you — a one-tap "Chat" button, everywhere.</li>
+        <li>A website that hides contact behind a long form is fighting the local habit and losing enquiries to whoever made messaging easy.</li>
+        <li>Capture the contact (number or email) the moment they reach out — a name in your phone is a lead you own.</li>
       </ul>
     </div>
 
-    <h3>Common mistakes when buying a website</h3>
-    <ul>
-      <li>Picking the cheapest quote — rework and hidden add-ons usually cost more in the end.</li>
-      <li>No written scope — then "revisions" mean extras.</li>
-      <li>No content prepared — the site sits in a holding pattern for weeks.</li>
-      <li>Design-first, no consideration of how it converts — pretty but generates zero enquiries.</li>
-    </ul>
+    <div class="page-break"></div>
+
+    <!-- Part 2: Reply speed -->
+    <h2>Part 2 — Reply Speed Decides Whether You Win the Lead</h2>
+
+    <p>
+      Getting the lead is only half the job. <strong>How fast you reply is the other half</strong> — and it's the
+      part most SMEs get wrong.
+    </p>
+
+    <p>
+      Buyers usually message several businesses at once. The first to respond gets the attention; the rest get
+      ignored. Classic research from Harvard Business Review found that firms which respond within an hour are
+      <strong>nearly 7× more likely to qualify a lead</strong> than those that wait.
+    </p>
+
+    <p>The shape of that drop-off looks like this (relative chance of converting a lead):</p>
+
+    <table>
+      <thead>
+        <tr><th>Reply time</th><th>Relative chance of converting</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Within 5 minutes</td><td>100</td></tr>
+        <tr><td>Within 1 hour</td><td>62</td></tr>
+        <tr><td>1–24 hours</td><td>28</td></tr>
+        <tr><td>After 24 hours</td><td>10</td></tr>
+      </tbody>
+    </table>
+    <p class="src">Illustrative model anchored on lead-response research. Relative scale, not absolute rates.</p>
+
+    <div class="quote">
+      "Most of the damage is done in the first hour, not the first day. If you fix one thing this month, make it
+      the speed of your first reply."
+    </div>
+
+    <p>
+      You don't need a full team to fix this. An <strong>auto-greeting and a saved reply</strong> get the first
+      response out in seconds, even while you're busy. Aim to reply <strong>within the hour, during business
+      hours</strong> — that's a standard your customers can rely on.
+    </p>
 
     <div class="page-break"></div>
 
-    <!-- Part 2: Leads -->
-    <h2>Part 2 — What Makes a Website Actually Generate Leads</h2>
+    <!-- Part 3: Channels -->
+    <h2>Part 3 — Lead Generation Channels Compared (and What They Cost)</h2>
+
+    <p>
+      No single channel wins on everything. The fastest, highest-intent channels usually cost the most per lead,
+      while the cheapest leads come from assets you build over time. Here are typical market ranges for a
+      Malaysian SME (cost per lead, before you scale any of them):
+    </p>
+
+    <table>
+      <thead>
+        <tr><th>Channel</th><th>Typical cost / lead</th><th>Speed to first lead</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Google Search Ads</td><td>RM 25–90</td><td>Days</td></tr>
+        <tr><td>SEO &amp; Google Business Profile</td><td>RM 8–35 (blended)</td><td>Months, then cheap</td></tr>
+        <tr><td>Meta lead ads (FB/IG)</td><td>RM 12–55</td><td>Hours</td></tr>
+        <tr><td>Click-to-WhatsApp ads</td><td>RM 15–60</td><td>Minutes</td></tr>
+        <tr><td>Short-form video (TikTok/Reels)</td><td>RM 10–45</td><td>Days</td></tr>
+        <tr><td>Referral programme</td><td>RM 5–25 (reward)</td><td>Varies</td></tr>
+        <tr><td>Email &amp; list nurture</td><td>RM 2–10</td><td>Immediate (owned)</td></tr>
+      </tbody>
+    </table>
+    <p class="src">Typical Malaysian market ranges; vary by industry and offer.</p>
+
+    <p>
+      A healthy plan uses <strong>both</strong>: paid for speed today, organic + an owned email list for cheaper
+      leads tomorrow. Pick by what your business needs this quarter — not by what's trendy.
+    </p>
+
+    <div class="page-break"></div>
+
+    <!-- Part 4: 10 tactics -->
+    <h2>Part 4 — The 10 Tactics That Fill Your Pipeline</h2>
+
+    <p>
+      The tactics fall into <strong>three jobs</strong>: pull people in (attract), turn attention into contacts
+      (capture), and bring them back (follow up). A full pipeline needs at least one tactic from each job — not
+      five that all do the same thing. Pick two or three to start, and do them well.
+    </p>
+
+    <h3>Attract — pull people in</h3>
+    <ol>
+      <li><strong>Rank locally with Google Business Profile.</strong> Claim and fill it out so you show up in "near me" searches and Google Maps. For most local SMEs this is the cheapest steady source of high-intent leads.</li>
+      <li><strong>Run Google Search Ads on buying keywords.</strong> Bid on the exact terms people type when ready to buy, like "aircon service Shah Alam". Higher cost, but the highest intent you can buy.</li>
+      <li><strong>Post short-form video.</strong> Quick, helpful TikTok and Reels clips put you in front of new buyers cheaply. Answer one common question per video, add a clear next step.</li>
+      <li><strong>Publish helpful content that ranks.</strong> Posts and guides that answer real buyer questions bring in free organic leads for years. Slow to start, cheapest channel once it works.</li>
+    </ol>
+
+    <h3>Capture — turn attention into contacts</h3>
+    <ol start="5">
+      <li><strong>Use click-to-WhatsApp everywhere.</strong> On your website, Google profile, social bios, even printed materials. One tap starts a chat — the step Malaysians are already happy to take.</li>
+      <li><strong>Send traffic to a focused landing page.</strong> One page, one promise, one action beats a busy homepage. A simple page per offer converts far better than one crowded page.</li>
+      <li><strong>Offer a lead magnet.</strong> Give a real reason to share a number or email — a free quote, a checklist, a price guide, or a short PDF like this one. No reason, no contact.</li>
+      <li><strong>Run Meta lead ads.</strong> FB/IG lead forms collect contacts without sending people off-platform. Good for volume and retargeting.</li>
+    </ol>
+
+    <h3>Follow up — bring them back</h3>
+    <ol start="9">
+      <li><strong>Automate your follow-up.</strong> Reply in seconds and nudge on a schedule, so no lead sits waiting while they message a competitor. A fast WhatsApp auto-greeting plus a follow-up email within 24 hours covers most SMEs.</li>
+      <li><strong>Build a referral programme.</strong> Ask happy customers to refer friends and give both sides a small reward. Referred leads are the highest quality and cost you the least.</li>
+    </ol>
+
+    <div class="box">
+      <h3>Where to start if you're short on time and money</h3>
+      <ul style="margin-bottom:0;">
+        <li><span class="check">▸</span> Google Business Profile (free, steady)</li>
+        <li><span class="check">▸</span> A click-to-WhatsApp button on your site</li>
+        <li><span class="check">▸</span> A fast reply rule (within the hour)</li>
+        <li><span class="check">▸</span> One focused landing page with a lead magnet</li>
+      </ul>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- Part 5: WhatsApp vs email -->
+    <h2>Part 5 — WhatsApp vs Email: Use Both Properly</h2>
+
+    <p>
+      These two channels aren't in competition — they do different jobs, and the smart move is to use both.
+    </p>
+
+    <ul>
+      <li><strong>WhatsApp is for fast conversations.</strong> It gets read and gets replies quickly, so it's where the sale happens. Make chat the default first step.</li>
+      <li><strong>Email is for ownership.</strong> A list you control lets you send updates, notes, and offers even if a platform or algorithm changes. It's also the cheapest channel to run — roughly <span class="numeric">RM 2–10 per lead</span>.</li>
+    </ul>
+
+    <p>
+      The smart sequence: <strong>WhatsApp gets the fast reply, email brings them back for repeat business.</strong>
+      Email only works once you have a list, so start collecting emails early — a simple "get practical notes" form
+      turns one-time visitors into repeat customers over months.
+    </p>
+
+    <div class="box">
+      <h3>Keep it legal and trusted (PDPA)</h3>
+      <p style="margin-bottom:0;">
+        Only message people who agreed to hear from you, and make unsubscribing easy. Under Malaysia's Personal
+        Data Protection Act, consent for marketing messages isn't optional — and it keeps your WhatsApp number and
+        sender reputation safe from spam blocks. A smaller, willing audience beats a big bought one on every number
+        that matters.
+      </p>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- Part 6: Website as lead asset -->
+    <h2>Part 6 — The Website as a Lead Asset (Not a Brochure)</h2>
 
     <p>
       Most SME websites get almost no enquiries. Not because they're ugly — because they're built as brochures,
-      not as lead-generation tools.
+      not as lead-generation tools. Your website is <strong>one channel in the funnel</strong> — it should feed
+      the WhatsApp chat and the email list, not just describe you.
     </p>
 
     <h3>The difference between a "nice website" and a "working website"</h3>
@@ -157,7 +307,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <li><strong>Clear offer</strong> — a visitor should understand what you do and who it's for within 5 seconds of landing.</li>
       <li><strong>Strong WhatsApp CTA</strong> — a persistent "Chat on WhatsApp" button above the fold, because most of your traffic reads on their phone.</li>
       <li><strong>Fast loading on mobile</strong> — slow websites lose enquiries; mobile visitors are most of your traffic.</li>
-      <li><strong>Focused landing pages vs a busy homepage</strong> — a simple page per offer (e.g. "website packages" vs "dashboard project") converts far better than one crowded homepage.</li>
+      <li><strong>Focused landing pages vs a busy homepage</strong> — a simple page per offer converts far better than one crowded homepage.</li>
+      <li><strong>A way to capture</strong> — a "get practical notes" form or lead magnet so visitors who aren't ready to buy today still leave you their email.</li>
     </ul>
 
     <div class="box">
@@ -167,56 +318,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <li><span class="check">▸</span> WhatsApp button above the fold, on mobile too</li>
         <li><span class="check">▸</span> Loads fast on a phone (test on 4G)</li>
         <li><span class="check">▸</span> Each main offer has its own focused page or section</li>
+        <li><span class="check">▸</span> A form or lead magnet that captures emails</li>
         <li><span class="check">▸</span> Someone (or a form) actually replies within the hour</li>
       </ul>
       <p style="margin-bottom:0;">Miss more than one? Your website is costing you leads even if it looks great.</p>
     </div>
 
-    <div class="page-break"></div>
-
-    <!-- Part 3: Tactics -->
-    <h2>Part 3 — Lead Generation Tactics That Work in Malaysia</h2>
-
-    <h3>The big shift: WhatsApp is now the main first-contact channel</h3>
+    <h3>A quick note on cost</h3>
     <p>
-      For most Malaysian customers, WhatsApp is the fastest and most natural way to reach a business — and most
-      SME enquiries now start there. If your website makes it easy to click-to-WhatsApp and you reply fast, you're
-      already ahead of most competitors.
-    </p>
-
-    <div class="quote">
-      "Reply speed is a lead-gen tactic. Businesses that reply within an hour win the enquiry."
-    </div>
-
-    <h3>Reply speed and why it matters</h3>
-    <p>
-      The faster you reply, the more enquires turn into customers. A slow reply (hours or next day) means the
-      customer has already contacted two other businesses. Aim to reply <strong>within the hour, during business
-      hours</strong>.
-    </p>
-
-    <h3>5–7 highest-impact tactics</h3>
-    <ol>
-      <li><strong>Google Business Profile</strong> — free, and most local searches surface it. Keep it updated, respond to reviews, post photos.</li>
-      <li><strong>Click-to-WhatsApp everywhere</strong> — on your website, Google profile, social bios, even your printed materials.</li>
-      <li><strong>Focused landing pages</strong> — one page per offer (service, package, or product) instead of a busy homepage.</li>
-      <li><strong>Useful content / guides</strong> — short practical posts answer the questions customers actually search, and build trust.</li>
-      <li><strong>A fast follow-up system</strong> — set a rule: every enquiry gets a reply today. Even "thanks, let me check and come back to you" beats silence.</li>
-      <li><strong>Simple lead magnets</strong> — a short PDF (like this one) or a checklist traded for an email, so visitors who aren't ready to buy today stay on your list.</li>
-      <li><strong>(Optional) basic paid ads</strong> — Google or Meta ads directed at a focused landing page (not your homepage) can work, but only once the basics above are solid.</li>
-    </ol>
-
-    <h3>Use both WhatsApp and email properly</h3>
-    <p>
-      WhatsApp is for fast conversations. Email is for ownership — a list you control where you can send updates,
-      notes, and offers even if a platform changes. A simple "get practical notes" form on your site turns
-      one-time visitors into repeat customers over months.
+      A working website doesn't have to be expensive. In Malaysia (2026), a one-page business website typically
+      runs <span class="tag">RM1,500–2,500</span>, a multi-page business site <span class="tag">RM3,000–7,000</span>,
+      and managed monthly plans from <span class="tag">RM199/mo</span>. The price matters less than whether the
+      site captures and converts — a modest site that answers enquiries beats a beautiful one that doesn't.
     </p>
 
     <div class="page-break"></div>
 
-    <!-- Part 4: Action plan -->
-    <h2>Part 4 — A Simple Action Plan</h2>
+    <!-- Part 7: Action plan -->
+    <h2>Part 7 — A Simple Action Plan</h2>
 
     <h3>This week (30 min total)</h3>
     <ol>
@@ -255,8 +374,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <!-- Closing -->
     <h2>Closing — Here's the one-line summary</h2>
     <p>
-      A website generates leads when it has a clear offer, a fast-reply WhatsApp path, and a way to keep
-      collecting enquiries even when people aren't ready to buy. Everything else is polish.
+      Lead generation in Malaysia is not one magic channel. It's <strong>meeting buyers on WhatsApp, replying
+      fast, capturing every contact, and keeping the ones who aren't ready yet.</strong> A website feeds that loop
+      when it has a clear offer, a fast-reply WhatsApp path, and a way to collect enquiries — everything else is
+      polish.
+    </p>
+
+    <p>
+      Start small and finish what you start: pick two or three tactics, send traffic to a focused page, capture
+      the contact, and reply within the hour. Once that loop runs, add the next tactic.
     </p>
 
     <p>

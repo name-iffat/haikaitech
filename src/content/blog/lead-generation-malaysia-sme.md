@@ -13,7 +13,7 @@ This guide gives you the 10 tactics that actually fill a Malaysian SME pipeline,
 
 Before tactics, you need the numbers that shape every decision:
 
-**73% of Malaysian SME leads now first-contact via WhatsApp.** That's up from 31% in 2022. Email sits at 4%, web forms at 11%. If your primary call-to-action pushes people anywhere except a chat, you're adding friction to the one step they're happy to take.
+**Most Malaysian SME enquiries now start on WhatsApp.** When people are given a choice of how to contact a business, around 58% pick chat — well ahead of phone calls (18%), web forms (11%), social DMs (9%), and email (4%). At a national level, WhatsApp is used by more than 90% of Malaysian internet users aged 16–64 (DataReportal, Digital 2026: Malaysia). If your primary call-to-action pushes people anywhere except a chat, you're adding friction to the one step they're happy to take.
 
 **Speed wins.** Research from Harvard Business Review found firms that respond within an hour are nearly 7× more likely to qualify a lead. In Malaysia, where buyers message several businesses at once, the first to reply gets the attention:
 
@@ -56,7 +56,7 @@ Most of the damage is done in the first hour, not the first day.
 
 ## Why email still matters (but not as your primary)
 
-Email marketing returns roughly RM28 for every RM1 spent — the highest return of any digital channel. But there's a catch: it only works once you have a list.
+Email is typically the cheapest channel to run — around RM2–10 per lead — and a well-maintained list returns more per ringgit than paid ads over time. But there's a catch: it only works once you have a list.
 
 For a Malaysian SME, email's role is **nurture, not first-contact.** WhatsApp leads the conversation, email follows up. A captured email address is worth nurturing because it's an audience you own — no algorithm can take it away.
 

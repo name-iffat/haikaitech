@@ -6,16 +6,19 @@ import LeadMagnetForm from '../../components/LeadMagnetForm';
 import { DoodleStar, ScribbleUnderline, ArrowSketch, Tape } from '../../components/Decorations';
 
 const contents = [
-  { title: 'Website pricing in Malaysia (2026)', body: 'Realistic RM ranges for one-page sites, multi-page business websites, managed monthly plans, company profiles, and web apps — plus what actually affects the price.' },
-  { title: 'What makes a website actually generate leads', body: 'The difference between a "nice website" and a "working website" — clear offer, WhatsApp CTA, mobile speed, focused landing pages, plus a self-check checklist.' },
-  { title: 'Lead-gen tactics that work in Malaysia', body: 'Why WhatsApp is now the main first-contact channel, reply-speed math, and 5–7 highest-impact tactics — Google Business Profile, click-to-WhatsApp, focused pages, simple lead magnets.' },
-  { title: 'A simple action plan + WhatsApp reply scripts', body: 'What to do this week and this month (with a self-audit), plus copy-paste WhatsApp replies for fast, qualified, follow-up conversations.' },
+  { title: 'The one number that changes how you get customers', body: 'Where Malaysian enquiries actually start — WhatsApp leads the way — with the national data behind it. Make chat the easiest first step.' },
+  { title: 'Why reply speed decides whether you win the lead', body: 'The research on response time, a modelled conversion-by-speed table, and how an auto-greeting fixes the first hour.' },
+  { title: 'Lead-gen channels compared (and what they cost)', body: 'A typical cost-per-lead table across Google, Meta, WhatsApp ads, referrals, and email — so you pick by budget, not hype.' },
+  { title: 'The 10 tactics that fill your pipeline', body: 'Organised into attract, capture, and follow-up — plus where to start if you are short on time and money.' },
+  { title: 'WhatsApp vs email — use both properly', body: 'Fast conversations on WhatsApp, an owned list in email. The smart sequence, plus how to stay PDPA-safe.' },
+  { title: 'The website as a lead asset', body: 'The difference between a "nice" and a "working" website, a self-check checklist, and a quick note on 2026 costs.' },
+  { title: 'A simple action plan + WhatsApp reply scripts', body: 'What to do this week and this month (with a self-audit), plus copy-paste WhatsApp replies for fast, qualified follow-ups.' },
 ];
 ---
 
 <BaseLayout
-  title="How much should a website cost in Malaysia? (2026 Website & Lead Gen Guide for SMEs)"
-  description="Free 2026 guide for Malaysian SMEs — real website pricing ranges, what makes a website generate leads, lead-gen tactics that work in Malaysia, and a simple action plan. Get it free by email."
+  title="2026 Lead Generation Guide for Malaysian SMEs (free PDF)"
+  description="Free 2026 lead generation guide for Malaysian SMEs — where enquiries really come from, what each channel costs, why reply speed wins, and a simple action plan. Get it free by email."
   canonical="https://haikaitech.my/guide/"
 >
   <div class="min-h-screen relative font-sans bg-paper bg-grid-pattern selection:bg-yellow-200 selection:text-slate-900">
@@ -30,16 +33,18 @@ const contents = [
         <Tape className="-top-4 right-2 rotate-[-6deg] hidden md:block" />
         <p class="font-mono text-sm text-blue-700 tracking-widest uppercase">Free guide · PDF · 2026</p>
         <h1 class="mt-4 font-hand text-5xl md:text-6xl text-slate-800 leading-tight relative">
-          How much should a website cost
+          How to get
           <br />
           <span class="text-blue-700 relative">
-            in Malaysia?
+            more enquiries
             <ScribbleUnderline className="w-full text-blue-400" />
           </span>
+          <br />
+          for your business
         </h1>
         <p class="mt-6 max-w-xl text-slate-600 text-lg font-light">
-          The 2026 Website &amp; Lead Generation Guide for Malaysian SME owners and managers. Real pricing numbers,
-          what actually makes a website bring in enquiries, and lead-gen tactics that work here — no fluff, no jargon.
+          The 2026 Lead Generation Guide for Malaysian SME owners and managers. Where enquiries really come from,
+          what each channel costs, why reply speed wins the lead, and a simple action plan — no fluff, no jargon.
         </p>
         <ArrowSketch className="-bottom-10 left-10 hidden lg:block text-blue-500 rotate-[10deg]" />
       </header>
@@ -50,9 +55,9 @@ const contents = [
           <div class="md:w-1/2">
             <p class="font-mono text-xs text-slate-400 uppercase tracking-widest">What's inside</p>
             <ul class="mt-4 space-y-3 text-sm text-slate-700">
-              <li class="flex gap-2 items-start"><span class="text-emerald-600 font-bold">&#10003;</span> Realistic 2026 pricing ranges (RM)</li>
-              <li class="flex gap-2 items-start"><span class="text-emerald-600 font-bold">&#10003;</span> Why most SME websites get almost no enquiries</li>
-              <li class="flex gap-2 items-start"><span class="text-emerald-600 font-bold">&#10003;</span> 5–7 lead-gen tactics that work in Malaysia</li>
+              <li class="flex gap-2 items-start"><span class="text-emerald-600 font-bold">&#10003;</span> Where Malaysian enquiries actually start</li>
+              <li class="flex gap-2 items-start"><span class="text-emerald-600 font-bold">&#10003;</span> What each lead-gen channel costs (RM)</li>
+              <li class="flex gap-2 items-start"><span class="text-emerald-600 font-bold">&#10003;</span> Why reply speed decides the sale</li>
               <li class="flex gap-2 items-start"><span class="text-emerald-600 font-bold">&#10003;</span> Action plan + copy-paste WhatsApp replies</li>
             </ul>
           </div>
@@ -87,13 +92,13 @@ const contents = [
           <p class="font-hand text-3xl md:text-4xl text-slate-100">Who wrote this?</p>
           <p class="mt-4 max-w-xl mx-auto text-slate-400 text-sm md:text-base font-light leading-relaxed">
             HaikaiTech Solutions — a registered (SSM) software studio in Penang that has built websites, dashboards
-            and web apps for Malaysian businesses of all sizes. The numbers and tactics in this guide come from real
-            projects and current market patterns — we're sharing them so you're better prepared, whether or not you
-            ever work with us.
+            and web apps for Malaysian businesses of all sizes. The market numbers here draw on public sources and
+            typical Malaysian ranges — we're sharing them so you're better prepared, whether or not you ever work
+            with us.
           </p>
           <div class="mt-6 flex flex-wrap justify-center gap-4">
             <a
-              href="https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%20just%20downloaded%20your%202026%20website%20guide%20and%20would%20love%20to%20discuss%20a%20project."
+              href="https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%20just%20downloaded%20your%202026%20lead%20generation%20guide%20and%20would%20love%20to%20discuss%20a%20project."
               target="_blank"
               rel="noopener noreferrer"
               class="bg-[#25D366] text-white rounded-xl px-6 py-3 font-mono text-sm hover:bg-[#20b858] active:scale-[0.98] transition-all"
