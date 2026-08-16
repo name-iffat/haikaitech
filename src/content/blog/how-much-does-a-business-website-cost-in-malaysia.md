@@ -11,6 +11,21 @@ Here is exactly what HaikaiTech Solutions charges, what you get at each price, a
 
 ## The short answer
 
+In Malaysia (2026), a professionally built business website typically costs:
+
+| Website type | Typical market range |
+|---|---|
+| DIY builder (Wix, Squarespace) | RM600–RM2,000/year |
+| One-page site / landing page | RM800–RM2,500 |
+| Basic business website (3–5 pages) | RM1,500–RM5,000 |
+| SME corporate website (6–10 pages) | RM4,000–RM12,000 |
+| E-commerce store | RM8,000–RM25,000 |
+| Custom web app / portal | RM25,000+ |
+
+*Ranges are typical for the Malaysian market; the exact price tracks scope, customisation, and who builds it.*
+
+Where we sit in that market:
+
 - **A one-time business website**: from **RM1,500**.
 - **A fully managed website**: **RM199/month** (12-month minimum, no large upfront payment).
 - **A company profile document**: **RM800–RM1,200**.
@@ -54,11 +69,16 @@ These add-ons are charged transparently, so a quote you receive is a quote you c
 
 ## Hidden costs to watch out for
 
-Every website has a life after launch. In Malaysia, three costs get missed:
+Every website has a life after launch. In Malaysia, these running costs get missed:
 
-1. **Domain renewal** — typically RM40–RM80/year, but cheap domains sometimes renew at higher prices.
-2. **Hosting** — shared hosting starts around RM10–RM20/month; the price depends on traffic and whether you need a Malaysian server.
-3. **Maintenance and updates** — content changes, security patches, and small fixes add up if you pay by the hour.
+| Ongoing cost | Typical range |
+|---|---|
+| Domain renewal | RM40–RM80/year |
+| Hosting | RM120–RM600/year (shared), more for VPS |
+| SSL certificate | Free–RM300/year (often bundled with hosting) |
+| Maintenance & updates | RM50–RM500/month if outsourced |
+
+So a RM1,500 one-time site realistically costs **RM300–RM800/year to keep alive** — budget the build fee plus running costs, not just the sticker price.
 
 That's why our Website Siap package bundles the first year and offers a flat RM350/year renewal, and why the managed plan exists at all — you trade the mental load of "website admin" for a single monthly number.
 
