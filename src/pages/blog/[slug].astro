@@ -2,10 +2,11 @@
 import type { CollectionEntry } from 'astro:content';
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Navbar from '../../../components/Navbar';
+import WorkbenchNav from '../../components/WorkbenchNav.astro';
 import StickyBooking from '../../../components/StickyBooking';
-import NewsletterForm from '../../../components/NewsletterForm';
-import { ArrowLeft, MessageCircle, Tag } from 'lucide-react';
+import FooterWorkbench from '../../../components/FooterWorkbench';
+import '../../styles/workbench.css';
+import '../../styles/article.css';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -13,7 +14,7 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props as { post: CollectionEntry<'blog'> };
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
 
 const allPosts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const related = allPosts.filter((p) => p.id !== post.id).slice(0, 3);
@@ -51,120 +52,123 @@ const blogSchema = {
 ---
 
 <BaseLayout title={`${post.data.title} | HaikaiTech Blog`} description={post.data.description} canonical={canonical}>
-  <div class="min-h-screen relative font-sans bg-paper bg-grid-pattern selection:bg-yellow-200 selection:text-slate-900">
+  <div class="workbench wb-article-page">
     <script is:inline type="application/ld+json" set:html={JSON.stringify(blogSchema, null, 2)}></script>
-    <Navbar client:load prefix="/" />
+    <WorkbenchNav />
 
-    <main class="max-w-3xl mx-auto px-6 py-20 md:py-28 relative">
-      <!-- Back link -->
-      <a href="/blog/" class="inline-flex items-center gap-2 text-slate-500 hover:text-slate-800 font-mono text-sm mb-10 transition-colors">
-        <ArrowLeft class="w-4 h-4" />
-        ../back_to_blog
+    <main class="wa-main">
+      <a class="wa-back" href="/blog/">
+        <span aria-hidden="true">/</span>
+        Insights / all field notes
       </a>
 
-      <!-- Header -->
-      <header class="mb-10">
-        <div class="flex flex-wrap items-center gap-3 mb-4">
-          <span class="font-mono text-xs text-slate-500 uppercase tracking-wider">Field Note</span>
-          <span class="font-mono text-xs text-slate-500">·</span>
-          <time datetime={pubDate} class="font-mono text-xs text-slate-500">{formatDate(post.data.pubDate)}</time>
-          <span class="font-mono text-xs text-slate-500">·</span>
-          <span class="font-mono text-xs text-slate-500">{readingTime} min read</span>
+      <header class="wa-hero" aria-labelledby="article-title">
+        <div class="wa-hero-copy">
+          <p class="wb-eyebrow">Insights / Field note</p>
+          <h1 id="article-title">{post.data.title}</h1>
+          <p class="wa-lede">{post.data.description}</p>
+          <div class="wa-meta" aria-label="Article metadata">
+            <time datetime={pubDate}>{formatDate(post.data.pubDate)}</time>
+            <span aria-hidden="true">·</span>
+            <span>{readingTime} min read</span>
+            <span aria-hidden="true">·</span>
+            <span>{wordCount} words</span>
+          </div>
+          <div class="wa-topics" aria-label="Article topics">
+            {post.data.tags.map((tag) => <span>{tag}</span>)}
+          </div>
         </div>
-        <h1 class="text-3xl md:text-5xl font-bold text-slate-900 tracking-tight leading-tight">{post.data.title}</h1>
-        <p class="mt-5 text-xl text-slate-600 font-light leading-relaxed">{post.data.description}</p>
-        <div class="flex flex-wrap gap-2 mt-6">
-          {post.data.tags.map((tag) => (
-            <span class="px-3 py-1 text-sm font-mono bg-slate-100 border border-slate-200 text-slate-600 rounded-full flex items-center gap-1">
-              <Tag class="w-3 h-3 opacity-40" />
-              {tag}
-            </span>
-          ))}
-        </div>
+
+        <aside class="wa-docket" aria-label="Field note details">
+          <p class="wa-docket-label">WORKSHOP FILE</p>
+          <dl>
+            <div><dt>Filed</dt><dd>{formatDate(post.data.pubDate)}</dd></div>
+            <div><dt>Read</dt><dd>{readingTime} min</dd></div>
+            <div><dt>Topics</dt><dd>{post.data.tags.length}</dd></div>
+          </dl>
+          <p class="wa-docket-note" aria-hidden="true">notes worth keeping.</p>
+        </aside>
       </header>
 
-      <div class="border-t border-slate-200 pt-10">
-        <article class="article-content">
-          <Content />
+      {headings.filter((heading) => heading.depth === 2).length > 0 && (
+        <nav class="wa-toc" aria-label="In this article">
+          <div class="wa-toc-head">
+            <p>In this article</p>
+            <span>{headings.filter((heading) => heading.depth === 2).length} sections</span>
+          </div>
+          <ol>
+            {headings.filter((heading) => heading.depth === 2).map((heading, index) => (
+              <li>
+                <a href={`#${heading.slug}`}>
+                  <span>{String(index + 1).padStart(2, '0')}</span>
+                  <b>{heading.text}</b>
+                </a>
+              </li>
+            ))}
+          </ol>
+        </nav>
+      )}
+
+      <div class="wa-rule" aria-hidden="true"></div>
+
+      <div class="wa-reading-layout">
+        <article class="wa-paper article-content">
+          <header class="wa-paper-head">
+            <span>FIELD NOTE / {post.id.replaceAll('-', ' ')}</span>
+            <span>{wordCount} words</span>
+          </header>
+          <div class="wa-paper-body">
+            <Content />
+          </div>
+          <footer class="wa-author">
+            <div class="wa-author-mark" aria-hidden="true">HT</div>
+            <div>
+              <p>Filed by HaikaiTech Solutions</p>
+              <span>Penang, Malaysia · serving businesses across Malaysia.</span>
+            </div>
+          </footer>
         </article>
       </div>
 
-      <!-- Author line -->
-      <div class="mt-12 bg-white border border-slate-200 rounded-2xl p-6 flex items-center gap-4">
-        <div class="w-12 h-12 rounded-full bg-blue-700 text-white flex items-center justify-center font-hand text-xl">IH</div>
+      <section class="wa-project" aria-labelledby="project-question">
         <div>
-          <p class="font-bold text-slate-800">HaikaiTech Solutions</p>
-          <p class="text-sm text-slate-500">
-            Registered software engineering studio in Penang, serving businesses across Malaysia — most clients in Kuala Lumpur. Built on React, .NET, and Unity.
-          </p>
+          <p class="wb-eyebrow">Have a project in mind?</p>
+          <h2 id="project-question">Let&apos;s make the useful version.</h2>
         </div>
-      </div>
-
-      <!-- CTA -->
-      <div class="mt-12 bg-slate-900 text-slate-100 p-8 md:p-10 rounded-2xl text-center relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-64 h-64 bg-blue-600/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
-        <div class="relative z-10">
-          <h2 class="font-hand text-3xl text-slate-100">Have a project like this in mind?</h2>
-          <p class="mt-3 text-slate-400">Chat on WhatsApp — we&apos;ll scope it and send a fixed quotation.</p>
-          <div class="mt-6 flex flex-wrap justify-center gap-4">
+        <div class="wa-project-actions">
+          <p>Chat on WhatsApp and we&apos;ll scope it into a fixed quotation.</p>
+          <div>
             <a
+              class="wb-button wb-primary wb-button--painted"
               href="https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%20read%20your%20blog%20and%20have%20a%20project%20in%20mind."
               target="_blank"
               rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 bg-[#25D366] text-white rounded-xl px-6 py-3 font-mono text-sm hover:bg-[#20b858] active:scale-[0.98] transition-all"
-            >
-              <MessageCircle class="w-4 h-4" />
-              Chat on WhatsApp
-            </a>
-            <a
-              href="/services/"
-              class="inline-flex items-center gap-2 border border-slate-600 text-slate-300 rounded-xl px-6 py-3 font-mono text-sm hover:border-slate-400 hover:text-white transition-colors"
-            >
-              See services &amp; pricing
-            </a>
+            >Chat on WhatsApp</a>
+            <a class="wb-button wb-secondary" href="/services/">See services &amp; pricing</a>
           </div>
         </div>
-      </div>
+      </section>
 
-      <!-- Related -->
       {related.length > 0 && (
-        <div class="mt-14">
-          <h2 class="text-xl font-bold text-slate-800 mb-6">Keep reading</h2>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <section class="wa-related" aria-labelledby="related-title">
+          <header>
+            <p class="wb-eyebrow">More field notes</p>
+            <h2 id="related-title">Keep reading.</h2>
+          </header>
+          <div class="wa-related-list">
             {related.map((p) => (
-              <a
-                href={`/blog/${p.id}/`}
-                class="group block p-5 bg-white border border-slate-200 rounded-xl hover:shadow-lg hover:-translate-y-1 transition-all"
-              >
-                <p class="font-mono text-xs text-slate-500 mb-2">{formatDate(p.data.pubDate)}</p>
-                <h3 class="font-bold text-slate-800 group-hover:text-blue-700 transition-colors leading-snug">{p.data.title}</h3>
+              <a href={`/blog/${p.id}/`}>
+                <time datetime={p.data.pubDate.toISOString()}>{formatDate(p.data.pubDate)}</time>
+                <strong>{p.data.title}</strong>
+                <span>Read note</span>
               </a>
             ))}
           </div>
-        </div>
+        </section>
       )}
-
-      <!-- Newsletter subscribe -->
-      <div class="mt-14 bg-slate-50 border border-slate-200 rounded-2xl p-8 text-center">
-        <p class="font-hand text-2xl text-slate-700 mb-2">Stay in the loop</p>
-        <p class="text-sm text-slate-500 mb-4">Practical pricing & lead-gen notes for Malaysian SMEs — no spam, unsubscribe anytime.</p>
-        <div class="max-w-sm mx-auto relative">
-          <NewsletterForm source="blog" client:load />
-        </div>
-        <p class="mt-6 text-xs text-slate-400 font-mono">We'll only send updates you asked for. See our <a href="/privacy-policy/" class="underline underline-offset-2 hover:text-slate-600">privacy policy</a>.</p>
-      </div>
-
-      <footer class="border-t border-slate-200 mt-16 py-10 text-center text-slate-400 text-sm font-mono">
-        <div class="flex items-center justify-center gap-2">
-          <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-          &copy; {new Date().getFullYear()} HaikaiTech
-        </div>
-      </footer>
     </main>
 
+    <FooterWorkbench client:load newsletterSource="blog" />
     <StickyBooking client:load />
   </div>
 </BaseLayout>
-
-
-

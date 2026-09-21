@@ -5,7 +5,7 @@ import { primaryNavigation, serviceNavigation } from '../data/services';
 const links = primaryNavigation;
 const isHome = Astro.url.pathname === '/';
 const destination = (href: string) => href.startsWith('#') && !isHome ? `/${href}` : href;
-const currentPage = (href: string) => href === Astro.url.pathname ? 'page' as const : undefined;
+const currentPage = (href: string) => (href === '#home' && isHome) || href === Astro.url.pathname ? 'page' as const : undefined;
 ---
 <nav class="workbench wb-nav" aria-label="Main navigation">
   <a class="wb-wordmark" href={destination('#home')} aria-label="HaikaiTech home">

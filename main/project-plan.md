@@ -81,8 +81,51 @@ Brand architecture:
 - [~] GSC: request indexing of /services/, /blog/, llms.txt/OKF
 - [~] AI-visibility baseline audit (5 queries across ChatGPT/Perplexity/Gemini/Claude) - user action
 
+---
+## Appended: 2026-08-13
+
+### Phase 5: Lead Capture + Owned List (portfolio growth pass)
+
+**Goal**: Turn `Traffic -> WhatsApp chat -> (maybe) project` into `Traffic -> WhatsApp / free tool -> Email list -> Nurture -> project + repeat value`.
+
+**Context**: Friend-reviewed lead strategy (login with friend's feed). Newsletter backend already exists: D1 (subscribers table) + Resend (segment sync 9a5e9426-463b-4983-b545-16487985c534, source property tagged) + instant welcome email + admin notification. Gap analysis: footer capture is homepage-only (NOT in shared FooterSection), toolkit page has no capture, no nurture sequence beyond welcome, no lead magnet.
+
+- [ ] FooterSection.tsx: add newsletter row (pitch + NewsletterForm source="footer" + privacy link); FooterSection becomes an island (client:load on consumers)
+- [ ] Add client:load to FooterSection on index.astro, toolkit.astro, services.astro, blog/index.astro
+- [ ] projects/[slug].astro: add FooterSection client:load (currently no footer at all)
+- [ ] toolkit.astro: add "Get notified when I release new tools" box (source="toolkit", already whitelisted)
+- [ ] blog/[slug].astro: remove dead FooterSection import (renders its own inline footer)
+- [ ] Phase 1 build + verify forms present in dist
+- [ ] Phase 2: draft nurture copy (welcome reword + value1 day2-3 + value2 day5-7 + soft offer day8-10); configure Resend Automation later (list >= ~10)
+- [ ] Phase 4: subscribe.ts add magnet field + 'lead_magnet' source + guide-delivery email w/ PDF attachment (Resend attachments path URL; base64 fallback)
+- [ ] Phase 4: author /guide-content/ styled noindex page -> print-to-PDF -> public/guides/2026-website-lead-gen-guide.pdf
+- [ ] Phase 4: create /guide/ landing page (SEO "how much should a website cost in malaysia 2026") + LeadMagnetForm gated form + GA4 lead_magnet_request + meta/og
+- [ ] Phase 4: deploy invoice app manually (--branch main) + push portfolio (auto-deploy)
+- [ ] AGENTS.md: document lead-magnet flow
+
+**Deferred**: tool template pack, interactive cost calculator, mini-training, company-profile template (documented in session memory).
+
+**WhatsApp canned replies** (Phase 3, shared in chat):
+1. "By the way, I also send short practical notes on website pricing and getting leads in Malaysia. Want me to add you to the list? Just reply with your email."
+2. "I put together a few guides on website cost + lead gen for Malaysian SMEs. Want me to send them over? Just drop your email."
+
+**Phase 2 nurture sequence copy (configure in Resend Automation later, when list >= ~10):**
+
+- **Welcome (reword existing)**: subject "Welcome to HaikaiTech Updates". Body: practical pricing notes, lead-gen tactics, free tools for Malaysian SMEs — a few short onboarding notes over the next week, then roughly 1–2 emails per month. No spam, no fluff. Toolkit CTA button.
+- **Value 1 (Day 2–3)**: subject "What a Malaysian SME website actually costs". Body: fixed-price RM1,500 one-page site vs RM199/mo managed plan — no vague quotes, no hourly surprises. Link /blog/how-much-does-a-business-website-cost-in-malaysia/ + /services/.
+- **Value 2 (Day 5–7)**: subject "The lead-gen channel most SMEs skip". Body: WhatsApp is how most Malaysians contact businesses — one-page site + WhatsApp CTA converts better than a contact form. Link /blog/lead-generation-malaysia-sme/.
+- **Soft offer (Day 8–10)**: subject "Free fixed quote, no strings". Body: "If you're thinking about a website or system, happy to give a fixed quote on WhatsApp — no call required, reply when you're ready." CTA wa.me/60147533499.
+
 ## Progress Log
 
+2026-08-16 - NURTURE DRIP LIVE (invoice commit 6fbf8ca, deployed + pushed). scripts/setup-nurture.mjs created 3 published templates (nurture-1-website-cost fec59d67, nurture-2-lead-gen dce6545e, nurture-3-soft-offer 543444a7) + enabled automation 'HaikaiTech Nurture Drip' (01a00a1b-b627-747d-94ef-0c27f7b3ab89): trigger subscriber.created -> 3d delay -> value1 (website cost post) -> 3d -> value2 (lead-gen post) -> 3d -> soft offer (wa.me fixed quote). subscribe.ts fires subscriber.created for NEW subscribers only (after contact sync), logged non-blocking. Welcome/guide transactional emails unchanged (guide needs PDF attachment, templates can't). Live E2E: subscribe 201 -> run status 'running'. Cleanup: D1 test rows deleted (2 real remain), 5 Resend test contacts deleted (incl. leftover guide-E2E ones), diag/props contacts already gone. Enabled automations immutable - edit by duplicate+switch in dashboard. Do NOT re-run setup script (duplicates).
+2026-08-16 - Cost-query handoff (commit 3c808a0, live): /guide/ no longer targets 'how much should a website cost' (lead-gen-first now), so how-much-does-a-business-website-cost post carries it — added market-wide price table (DIY RM600-2k/yr, one-page RM800-2.5k, corporate RM4-12k, ecomm RM8-25k, web apps RM25k+) ahead of own packages, running-costs table + 'RM300-800/year to keep alive' figure, cross-link from /guide/ contents ('Mostly want the pricing?'). Blog table CSS already existed in global.css.
+2026-08-16 - Guide refined to lead-gen-first, data-backed (commit af73367, pushed). Studied ZenWeb's lead-generation-malaysia, whatsapp-marketing-malaysia, email-marketing-edm-guide-malaysia. Guide now: intro (waiting vs lead-gen hook), Part 1 WhatsApp first-contact ~58% + DataReportal 2026 national data, Part 2 HBR reply-speed 7x + modelled conversion table (5min=100/1hr=62/1-24hr=28/>24hr=10), Part 3 channels cost-per-lead typical market ranges (Google Ads RM25-90, SEO RM8-35, Meta RM12-55, WA RM15-60, TikTok RM10-45, referrals RM5-25, email RM2-10), Part 4 10 tactics (attract/capture/follow-up + where-to-start box), Part 5 WhatsApp vs email + PDPA, Part 6 website as lead asset (nice vs working + 2026 cost note), Part 7 action plan, bonus scripts, closing. Honesty guardrail: modelled tables labelled illustrative; citable public sources (DataReportal, HBR); 'typical market ranges' NOT 'our client tracking'. /guide/ landing retitled '2026 Lead Generation Guide', hero 'more enquiries', 7-item preview, meta, WA prefill updated. FooterSection + homepage cross-link relabelled. Blog lead-generation-malaysia-sme data aligned (58% first-contact, RM2-10/lead). Added table + source-note CSS. PDF regenerated: 12 pages (was 9), valid EOF. Build clean (32 pages).
+2026-08-13 - ALL Phase 5 DONE. Line items: footer capture (d4c74fb), toolkit box (d4c74fb), projects footer (d4c74fb), /guide/ + LeadMagnetForm + noindex BaseLayout (8be7fd1), guide PDF generated via headless Chrome print (edf3bbe), sitemap + AGENTS (25271ee), subscribe.ts magnet delivery (invoice 41014df). Deployed invoice (+ commits, --branch main) + pushed portfolio (auto-deploy). Live verified: /guide/ 200 + form, /guide-content/ noindex, PDF 200 application/pdf. E2E: fresh lead_magnet subscribe -> 201, D1 rows source=lead_magnet, tail outcome ok zero errors (guide email + contact sync + admin all succeeded). Test rows cleaned. GUIDE_PDF_URL uses static haikaitech.my PDF. Remaining: user configure Resend Automation nurture (copy ready above) when list grows.
+2026-08-13 - Direct-visitor surfacing (commit 8037962): /guide/ had zero internal links (search-only). Added footer '2026 Website Cost Guide' link (all pages) + homepage newsletter cross-link. Guide rewritten for business owners per friend review (commit 6a6a20a): 7-part outline — cover, intro, pricing (2026 RM ranges + drivers + mistakes), what makes a website generate leads (nice vs working + checklist), lead-gen tactics in Malaysia (WhatsApp shift, reply speed, 5-7 tactics), action plan (week/month + self-audit), closing soft CTA; WhatsApp scripts moved to bonus box. PDF regenerated: 9 pages (was 3). Guide in brief: "practical numbers + tactics, no fluff".
+2026-08-13 - ALL Phase 5 DONE. Line items: footer capture (d4c74fb), toolkit box (d4c74fb), projects footer (d4c74fb), /guide/ + LeadMagnetForm + noindex BaseLayout (8be7fd1), guide PDF generated via headless Chrome print (edf3bbe), sitemap + AGENTS (25271ee), subscribe.ts magnet delivery (invoice 41014df). Deployed invoice (+ commits, --branch main) + pushed portfolio (auto-deploy). Live verified: /guide/ 200 + form, /guide-content/ noindex, PDF 200 application/pdf. E2E: fresh lead_magnet subscribe -> 201, D1 rows source=lead_magnet, tail outcome ok zero errors (guide email + contact sync + admin all succeeded). Test rows cleaned. GUIDE_PDF_URL uses static haikaitech.my PDF. Remaining: user configure Resend Automation nurture (copy ready above) when list grows.
+2026-08-13 - Phase 1 DONE (commit d4c74fb): footer capture on 19 pages + toolkit box, 30 pages build clean. Phase 2 copy drafted above. Phases 3-4 pending.
+2026-08-13 - Plan appended: Phase 5 lead capture + owned list pass (footer/toolkit capture, nurture copy, /guide/ lead magnet). Awaiting execution.
 2026-08-02 - Plan created and approved. Beginning Phase 0.
 2026-08-02 - Phase 0 (6/7 done): decisions logged, product-design amended, D1 schema + migration applied, D1 DB + Pages project created, custom domain added, NODE_VERSION set. Blocked: Resend API key (user secret).
 2026-08-02 - Phase 1 (10/10): Astro 6 static scaffold + SPA ported to index.astro, cruft stripped, npm/rename/.node-version/README done, rebrand done (title, hktk_invoice_* key migration, Header "Invoice Generator" + "HaikaiTech Business Toolkit"), CF Pages Functions POST /api/leads done + smoke-tested locally (D1 insert 201, invalid email 400, cross-origin 403), success screen + business profile form + GA4 done (commit 338acab), deployed + LIVE at https://invoice.haikaitech.my (CF status active; HTTPS 200, function 400/201 verified, D1 writes confirmed, prod test data cleaned). Commits a45a0b0, 54d1f1f, 338acab. Adapter deviation: @astrojs/cloudflare v13 removed Pages support -> dropped adapter, static build + Pages-native functions/ dir. Remaining: RESEND_API_KEY (task 6, function degrades gracefully), browser click-through on live site.

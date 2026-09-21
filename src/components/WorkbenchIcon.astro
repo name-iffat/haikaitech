@@ -1,5 +1,6 @@
 ---
 type IconName =
+  | 'home'
   | 'globe'
   | 'workflow'
   | 'blocks'
@@ -35,6 +36,10 @@ const { name, size = 22, class: className = '' } = Astro.props;
   stroke-linejoin="round"
   aria-hidden="true"
 >
+  {name === 'home' && <>
+    <path d="m3 10 9-7 9 7" />
+    <path d="M5 9v11h14V9M9 20v-6h6v6" />
+  </>}
   {name === 'globe' && <>
     <circle cx="12" cy="12" r="9" />
     <path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" />

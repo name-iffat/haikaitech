@@ -1,4 +1,5 @@
 export const primaryNavigation = [
+  { label: 'Home', href: '#home', icon: 'home' },
   { label: 'Work', href: '#projects', icon: 'briefcase' },
   { label: 'Services', href: '#services', icon: 'wrench' },
   { label: 'Solutions', href: '/toolkit/', icon: 'blocks' },
