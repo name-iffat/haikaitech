@@ -69,4 +69,4 @@ The single biggest driver of custom-software cost is **scope creep** — feature
 
 If any of this sounds like your situation, don't send a brief — [chat on WhatsApp](https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%20need%20custom%20software%20and%20would%20like%20a%20quote.) and describe the problem. We'll tell you honestly whether it's a website project, a custom-software project, or something in between, and you'll get a fixed quotation either way.
 
-Meanwhile, the [services and pricing page](/services/) has the full picture of everything we offer, from RM1,500 websites to quotation-based systems.
+Meanwhile, the [services and pricing page](/services/) explains the full picture, from selected website promotions starting at RM1,500 to quotation-based systems.

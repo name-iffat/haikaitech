@@ -14,10 +14,7 @@ const FooterSection: React.FC = () => {
       </div>
 
       <div className="flex flex-col md:flex-row justify-between items-center text-slate-400 text-sm font-mono gap-4">
-        <div className="flex items-center gap-2">
-          <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-          &copy; {new Date().getFullYear()} HaikaiTech
-        </div>
+        <div>&copy; {new Date().getFullYear()} HaikaiTech</div>
         <div className="flex items-center gap-2 text-xs" aria-label="Last updated">
           <span>Last updated</span>
           <time dateTime="2026-08-06">2026-08-06</time>

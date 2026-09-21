@@ -1,0 +1,38 @@
+---
+import { Image } from 'astro:assets';
+import systemsOperator from '../assets/concept-decorations/refined/about-systems-operator.png';
+import WorkbenchIcon from './WorkbenchIcon.astro';
+
+const capabilities = [
+  { icon: 'layout', label: 'Experience', description: 'Websites & interfaces' },
+  { icon: 'settings', label: 'Operations', description: 'Dashboards & internal systems' },
+  { icon: 'database', label: 'Engineering', description: 'Databases, APIs & application logic' },
+] as const;
+---
+
+<section id="about" class="workbench wb-about" aria-labelledby="about-title">
+  <header class="wb-about-head">
+    <div>
+      <p class="wb-eyebrow">About HaikaiTech</p>
+      <h2 id="about-title">Business thinking.<br />Engineering depth.</h2>
+    </div>
+    <p>HaikaiTech is a digital engineering studio building websites, business systems and interactive products for Malaysian businesses.</p>
+  </header>
+
+    <figure class="wb-about-illustration" aria-hidden="true">
+      <Image class="wb-about-operator" src={systemsOperator} alt="" aria-hidden="true" loading="lazy" />
+    </figure>
+
+    <div class="wb-about-copy">
+      <ul class="wb-about-capabilities">
+        {capabilities.map((capability) => (
+          <li>
+            <span class="wb-about-capability-label"><WorkbenchIcon name={capability.icon} /><b>{capability.label}</b></span>
+            <strong>{capability.description}</strong>
+          </li>
+        ))}
+      </ul>
+      <a class="wb-button wb-primary wb-button--painted" href="https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer"><span>Discuss your project</span></a>
+    </div>
+
+</section>

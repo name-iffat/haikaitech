@@ -1,6 +1,6 @@
 ---
 title: "How Much Does a Company Profile Website Cost in Malaysia?"
-description: "Company profile pricing in Malaysia — a designed PDF profile costs RM800–RM1,200, a company profile website from RM1,500, or bundle both at RM2,300 one-time or RM1,000 + RM199/month."
+description: "Company profile pricing in Malaysia — how document design, website scope, content readiness and quotation terms change the final cost."
 pubDate: 2026-08-13
 tags: [company-profile, pricing, malaysia, sme]
 ---
@@ -11,7 +11,7 @@ If you run an SME in Malaysia, a company profile is the document you send to ten
 
 - **A designed company profile (PDF/print)**: **RM800–RM1,200**.
 - **A company profile website**: from **RM1,500**.
-- **Both, bundled**: **RM1,000 + RM199/month** (managed) or **RM2,300 one-time**.
+- **Both together**: quoted according to the document and website scope.
 
 That's our published pricing, and below is what sits behind it.
 
@@ -35,16 +35,13 @@ The result is a document you own outright, delivered in print-ready and digital 
 
 ## The company profile website: from RM1,500
 
-A website takes the profile from "sent when asked" to "found when searched." A company profile website uses our [Website Siap package](/blog/website-siap-malaysian-sme-website/) — from **RM1,500** for up to 5 pages: who we are, services, selected projects, and contact, all mobile-responsive with WhatsApp integration, a contact form, Google Maps, Google Analytics 4, Search Console, basic SEO, SSL, and deployment.
+A website takes the profile from "sent when asked" to "found when searched." A selected [Website Siap promotion](/blog/website-siap-malaysian-sme-website/) may start from **RM1,500** and may fit a focused company-profile scope. The formal quotation confirms the page count, content, integrations, timeline, ownership and recurring costs.
 
-After launch there's an optional **annual renewal of RM350/year** covering domain, hosting, SSL, and basic technical maintenance.
+After launch, domain, hosting, software and maintenance costs are identified in the quotation where applicable.
 
 ## Bundling both — the common choice
 
-Most Malaysian SMEs want both: the PDF for tenders and the website for everyone else. Two ways to bundle:
-
-- **Company profile (RM1,000) + Business Website Plan (RM199/month)** — the managed plan keeps the website updated and maintained while you focus on tenders.
-- **Company profile + website for RM2,300 one-time** — pay once, own both, manage the site yourself (or with the RM350/year renewal).
+Most Malaysian SMEs want both: the PDF for tenders and the website for everyone else. HaikaiTech can quote the two together after confirming the document length, content readiness, website pages, revisions and any CMS or integration requirements. Previous client-specific bundle totals are not public package prices.
 
 ## What changes the price
 
@@ -65,10 +62,10 @@ The design only gets you in the room — the content wins. A profile that perfor
 ## Common questions
 
 **Do I need a PDF profile or a website?**
-Mostly both, but they can share one source. Many clients start with the PDF (RM800–RM1,200), then publish the same content as a website (from RM1,500) — or bundle both for RM2,300.
+Mostly both, but they can share one source. Many clients start with the PDF, then publish approved content as a website. The combined quotation depends on both scopes.
 
-**What exactly is included in the RM2,300 bundle?**
-A designed PDF company profile plus a 5-page website, deployed with SSL, analytics, and Search Console — you own both.
+**Can the PDF and website be quoted together?**
+Yes. The quotation can combine both deliverables and identify the pages, content responsibilities, revisions, website functionality and handover terms.
 
 **Can you write the content for me?**
 Yes — copywriting is quoted separately, or you can bundle it. We don't publish anything you haven't approved.

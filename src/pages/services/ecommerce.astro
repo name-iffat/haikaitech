@@ -1,0 +1,60 @@
+---
+import ServiceDetailLayout from '../../components/ServiceDetailLayout.astro';
+import WorkbenchIcon from '../../components/WorkbenchIcon.astro';
+import { serviceDetails } from '../../data/services';
+import { Image } from 'astro:assets';
+import ServicePlatformMarks from '../../components/ServicePlatformMarks.astro';
+import ecommerceClay from '../../assets/concept-decorations/service-ecommerce-clay.png';
+
+const service = serviceDetails.ecommerce;
+---
+
+<ServiceDetailLayout service={service} canonical="https://haikaitech.my/services/ecommerce/">
+  <div slot="visual" class="sd-art sd-ecommerce-art">
+    <Image class="sd-clay-assembly sd-clay-assembly--ecommerce" src={ecommerceClay} alt="" width={1200} widths={[480, 800, 1200]} sizes="(max-width: 767px) calc(100vw - 48px), (max-width: 1199px) 55vw, 720px" format="webp" loading="eager" fetchpriority="high" />
+    <ServicePlatformMarks kind="ecommerce" />
+  </div>
+
+  <section slot="content" class="sd-content-section" aria-labelledby="ecommerce-choice-title">
+    <header class="sd-section-heading">
+      <WorkbenchIcon name="blocks" size={22} />
+      <h2 id="ecommerce-choice-title">Choose the right shop floor.</h2>
+      <p>Shopify and WooCommerce can both be good choices. The right one depends on how you sell, who maintains it and what needs to connect around it.</p>
+    </header>
+    <dl class="sd-row-list">
+      <div class="sd-row"><dt>Shopify</dt><dd>A focused hosted storefront for teams that want the commerce platform handled and the customer journey shaped around their offer.</dd></div>
+      <div class="sd-row"><dt>WooCommerce</dt><dd>A flexible WordPress-based route when your catalogue, content or integrations need more control in one place.</dd></div>
+      <div class="sd-row"><dt>Platform guidance</dt><dd>Start with the operating model, then choose the platform that leaves the least unnecessary work behind.</dd></div>
+    </dl>
+  </section>
+
+  <section slot="content" class="sd-content-section" aria-labelledby="ecommerce-journey-title">
+    <header class="sd-section-heading">
+      <WorkbenchIcon name="globe" size={22} />
+      <h2 id="ecommerce-journey-title">Make the whole journey readable.</h2>
+      <p>A storefront should help a customer decide, buy and know what happens next — while giving the owner a clear way to keep products moving.</p>
+    </header>
+    <dl class="sd-row-list">
+      <div class="sd-row"><dt>Catalogue</dt><dd>Organise products, categories and essential information so the shop is easy to browse and maintain.</dd></div>
+      <div class="sd-row"><dt>Customer path</dt><dd>Shape the product page, cart and enquiry points around the questions customers actually ask.</dd></div>
+      <div class="sd-row"><dt>Operations</dt><dd>Plan the handoff around payments, delivery, stock and support before the storefront goes live.</dd></div>
+    </dl>
+  </section>
+
+  <section slot="content" class="sd-content-section" aria-labelledby="ecommerce-handover-title">
+    <header class="sd-section-heading">
+      <WorkbenchIcon name="wrench" size={22} />
+      <h2 id="ecommerce-handover-title">A shop you can keep running.</h2>
+      <p>The build should leave the business with a useful storefront and a clear next step for managing it.</p>
+    </header>
+    <dl class="sd-row-list">
+      <div class="sd-row"><dt>Plan</dt><dd>Clarify the offer, catalogue, platform and operational handoffs before visual polish takes over.</dd></div>
+      <div class="sd-row"><dt>Build</dt><dd>Shape the storefront, connect the agreed tools and check the key customer and owner paths.</dd></div>
+      <div class="sd-row"><dt>Handover</dt><dd>Leave the content and operating steps understandable, with ongoing support available when the shop changes.</dd></div>
+    </dl>
+    <div class="sd-proof">
+      <p><strong>Related work:</strong> AA Burger Kiosk is a live digital product example from the project archive. Use it as a reference for an interactive customer-facing flow, not as ecommerce performance proof.</p>
+      <a href="https://aaburger.haikaitech.my/" target="_blank" rel="noopener noreferrer">Open AA Burger Kiosk</a>
+    </div>
+  </section>
+</ServiceDetailLayout>

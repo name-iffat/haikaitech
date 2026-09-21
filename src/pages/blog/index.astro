@@ -1,93 +1,180 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Navbar from '../../../components/Navbar';
-import FooterSection from '../../../components/FooterSection';
+import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
-import { DoodleStar, Tape, ScribbleUnderline } from '../../../components/Decorations';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import WorkbenchNav from '../../components/WorkbenchNav.astro';
+import FooterWorkbench from '../../../components/FooterWorkbench';
+import notebookArt from '../../assets/concept-decorations/refined/insights-notebook.png';
+import '../../styles/workbench.css';
+import '../../styles/insights.css';
 
-const posts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf() || a.id.localeCompare(b.id),
+);
+const featured = posts[0];
 const formatDate = (date: Date) =>
-  new Date(date).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
-
-const readingTime = (body: string) => Math.max(1, Math.round(body.trim().split(/\s+/).length / 200));
+  date.toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' });
+const readingTime = (body?: string) => Math.max(1, Math.round((body ?? '').trim().split(/\s+/).length / 200));
+const topicLabel = (tag: string) => ({
+  websites: 'Websites', pricing: 'Pricing', 'custom-software': 'Custom software',
+  'lead-generation': 'Lead generation', 'company-profile': 'Company profiles',
+  'web-developer': 'Hiring a developer',
+}[tag] ?? tag.replaceAll('-', ' '));
+const availableTags = new Set(posts.flatMap((post) => post.data.tags));
+const topics = [...new Set([
+  ...['websites', 'pricing', 'custom-software', 'lead-generation'].filter((tag) => availableTags.has(tag)),
+  ...posts.flatMap((post) => post.data.tags.slice(0, 1)),
+])];
 ---
 
 <BaseLayout
-  title="Blog | HaikaiTech Solutions — Web Development Guides for Malaysian Businesses"
+  title="Insights | HaikaiTech Solutions — Guides for Malaysian Businesses"
   description="Practical guides and field notes on business websites, pricing, custom software, and hiring developers — written for Malaysian businesses by HaikaiTech Solutions."
   canonical="https://haikaitech.my/blog/"
 >
-  <div class="min-h-screen relative font-sans bg-paper bg-grid-pattern selection:bg-yellow-200 selection:text-slate-900">
-    <Navbar client:load prefix="/" />
+  <div class="workbench wb-insights-page">
+    <WorkbenchNav />
+    <main id="insights" class="in-main">
+      <header class="in-hero" aria-labelledby="insights-title">
+        <div class="in-hero-copy">
+          <p class="wb-eyebrow">Insights / Field notes</p>
+          <h1 id="insights-title">Notes worth<br />keeping.</h1>
+          <p class="in-intro">Practical guides for Malaysian businesses, from websites and pricing to custom software.</p>
+          <p class="in-annotation" aria-hidden="true">from the workshop</p>
+        </div>
 
-    <main class="max-w-5xl mx-auto px-6 py-20 md:py-28 relative">
-      <DoodleStar className="top-24 left-8 text-slate-300 animate-pulse hidden lg:block" />
-      <DoodleStar className="top-48 right-16 text-blue-200 hidden lg:block" />
-
-      <!-- Header -->
-      <header class="relative mb-20 md:mb-28">
-        <Tape className="-top-4 right-8 rotate-[-6deg] hidden md:block" />
-        <p class="font-mono text-sm text-blue-700 tracking-widest uppercase">Field Notes</p>
-        <h1 class="mt-4 font-hand text-5xl md:text-7xl text-slate-800 leading-tight relative max-w-3xl">
-          Notes on building for{' '}
-          <span class="text-blue-700 relative">
-            Malaysian businesses
-            <ScribbleUnderline className="w-full text-blue-400" />
-          </span>
-        </h1>
-        <p class="mt-8 max-w-xl text-slate-600 text-lg font-light">
-          Straightforward guides on websites, pricing, and custom software — no jargon, no fluff. New posts land as we build.
-        </p>
+        {featured && (
+          <div class="in-feature-scene">
+            <Image
+              class="in-notebook-art" src={notebookArt} alt="" aria-hidden="true"
+              width={900} widths={[480, 700, 900]}
+              sizes="(max-width: 767px) 80vw, 42vw"
+              format="webp" loading="eager"
+            />
+            <article class="in-feature" aria-labelledby="featured-title">
+              <span class="in-binding" aria-hidden="true"></span>
+              <span class="in-bookmark" aria-hidden="true"></span>
+              <p class="in-feature-meta">Latest note <span>/</span> <time datetime={featured.data.pubDate.toISOString()}>{formatDate(featured.data.pubDate)}</time></p>
+              <h2 id="featured-title"><a href={'/blog/' + featured.id + '/'}>{featured.data.title}</a></h2>
+              <p class="in-feature-description">{featured.data.description}</p>
+              <div class="in-feature-bottom">
+                <a class="in-read-link" href={'/blog/' + featured.id + '/'}>Read the note<span class="sr-only">: {featured.data.title}</span></a>
+                <span class="in-reading-time">{readingTime(featured.body)} min read</span>
+              </div>
+            </article>
+          </div>
+        )}
       </header>
 
-      <!-- Posts -->
-      <section class="grid gap-6">
-        {posts.map((post) => (
-          <a
-            href={`/blog/${post.id}/`}
-            class="group block bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all hover:-translate-y-1 hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)]"
-          >
-            <div class="flex flex-wrap items-center gap-3 mb-3">
-              <span class="font-mono text-xs text-slate-500">{formatDate(post.data.pubDate)}</span>
-              <span class="font-mono text-xs text-slate-500">·</span>
-              <span class="font-mono text-xs text-slate-500">{readingTime(post.body)} min read</span>
-              <div class="flex flex-wrap gap-2 ml-auto">
-                {post.data.tags.slice(0, 3).map((tag) => (
-                  <span class="px-2 py-0.5 text-xs font-mono bg-slate-100 border border-slate-200 text-slate-600 rounded-full">#{tag}</span>
-                ))}
-              </div>
-            </div>
-            <h2 class="text-2xl font-bold text-slate-800 group-hover:text-blue-700 transition-colors">{post.data.title}</h2>
-            <p class="mt-3 text-slate-600 leading-relaxed">{post.data.description}</p>
-            <span class="mt-5 inline-flex items-center gap-2 font-mono text-sm text-blue-700 group-hover:gap-3 transition-all">
-              Read post <span>→</span>
-            </span>
-          </a>
-        ))}
+      <section id="notes" class="in-index" aria-labelledby="notes-title" data-insights-index>
+        <div class="in-index-heading">
+          <h2 id="notes-title">Find your next read.</h2>
+          <p class="in-index-note" aria-hidden="true">Same workshop.<br />More notes.</p>
+        </div>
+        <div class="in-filters" role="group" aria-label="Browse notes by topic" hidden>
+          <button type="button" data-topic="" aria-pressed="true" aria-controls="note-list">All notes</button>
+          {topics.map((topic) => (
+            <button type="button" data-topic={topic} aria-pressed="false" aria-controls="note-list">{topicLabel(topic)}</button>
+          ))}
+        </div>
+        <p class="in-result-count" role="status" aria-live="polite" aria-atomic="true" data-note-count>
+          {posts.length} {posts.length === 1 ? 'note' : 'notes'} from the workshop
+        </p>
+        <ul id="note-list" class="in-note-list">
+          {posts.map((post) => (
+            <li class="in-note" data-note data-tags={JSON.stringify(post.data.tags)}>
+              <article aria-labelledby={'note-' + post.id}>
+                <div class="in-note-meta">
+                  <time datetime={post.data.pubDate.toISOString()}>{formatDate(post.data.pubDate)}</time>
+                  <span>{readingTime(post.body)} min read</span>
+                </div>
+                <div class="in-note-copy">
+                  <h3 id={'note-' + post.id}><a href={'/blog/' + post.id + '/'}>{post.data.title}</a></h3>
+                  <p>{post.data.description}</p>
+                </div>
+                <div class="in-note-topics" aria-label="Article topics">
+                  {post.data.tags.slice(0, 3).map((tag) => <span>{topicLabel(tag)}</span>)}
+                </div>
+              </article>
+            </li>
+          ))}
+        </ul>
+        <div class="in-empty" hidden={posts.length > 0} data-no-notes>
+          <h3>No notes here yet.</h3>
+          <p>More field notes are on the way.</p>
+          <button class="in-read-link" type="button" data-reset-topics hidden>Browse all notes</button>
+        </div>
+        <p class="in-index-end" aria-hidden="true">Filed for your next build.<span></span></p>
       </section>
 
-      <!-- CTA -->
-      <section class="mt-20 bg-slate-900 text-slate-100 p-8 md:p-12 rounded-2xl relative overflow-hidden text-center">
-        <div class="absolute top-0 right-0 w-72 h-72 bg-blue-600/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
-        <div class="relative z-10">
-          <h2 class="font-hand text-3xl md:text-4xl text-slate-100">Reading this to start a project?</h2>
-          <p class="mt-4 max-w-xl mx-auto text-slate-400 text-lg font-light">
-            Chat on WhatsApp and get a fixed quotation — no obligation, no pressure.
-          </p>
+      <section class="in-project" aria-labelledby="project-question">
+        <h2 id="project-question">Reading this to<br />start a project?</h2>
+        <div>
+          <p>Chat on WhatsApp and get a fixed quotation — no obligation, no pressure.</p>
           <a
+            class="wb-button wb-primary wb-button--painted"
             href="https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%20read%20your%20blog%20and%20have%20a%20project%20in%20mind."
-            target="_blank"
-            rel="noopener noreferrer"
-            class="mt-7 inline-flex items-center gap-2 bg-[#25D366] text-white rounded-xl px-6 py-3 font-mono text-sm hover:bg-[#20b858] active:scale-[0.98] transition-all"
-          >
-            Chat on WhatsApp
-          </a>
+            target="_blank" rel="noopener noreferrer"
+          ><span>Chat on WhatsApp</span></a>
         </div>
       </section>
     </main>
-
-    <FooterSection client:load />
+    <FooterWorkbench client:load />
   </div>
 </BaseLayout>
+
+<script>
+  const index = document.querySelector<HTMLElement>('[data-insights-index]');
+  if (index) {
+    const filters = index.querySelector<HTMLElement>('.in-filters');
+    const buttons = [...index.querySelectorAll<HTMLButtonElement>('[data-topic]')];
+    const notes = [...index.querySelectorAll<HTMLElement>('[data-note]')].map((element) => ({
+      element, tags: JSON.parse(element.dataset.tags ?? '[]') as string[],
+    }));
+    const count = index.querySelector<HTMLElement>('[data-note-count]');
+    const empty = index.querySelector<HTMLElement>('[data-no-notes]');
+    const reset = index.querySelector<HTMLButtonElement>('[data-reset-topics]');
+
+    function applyTopic(requested: string) {
+      const selected = buttons.find((button) => button.dataset.topic === requested) ?? buttons[0];
+      const topic = selected?.dataset.topic ?? '';
+      let visible = 0;
+      for (const note of notes) {
+        note.element.hidden = Boolean(topic && !note.tags.includes(topic));
+        if (!note.element.hidden) visible++;
+      }
+      for (const button of buttons) {
+        button.setAttribute('aria-pressed', String(button === selected));
+      }
+      if (count) {
+        const suffix = topic ? ' on ' + selected.textContent?.trim() : ' from the workshop';
+        count.textContent = visible + (visible === 1 ? ' note' : ' notes') + suffix;
+      }
+      if (empty) empty.hidden = visible > 0;
+      if (reset) reset.hidden = !topic;
+    }
+
+    function selectTopic(topic: string) {
+      const url = new URL(window.location.href);
+      const current = url.searchParams.get('topic') ?? '';
+      if (topic) url.searchParams.set('topic', topic);
+      else url.searchParams.delete('topic');
+      if (current !== topic) window.history.pushState(null, '', url);
+      applyTopic(topic);
+    }
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => selectTopic(button.dataset.topic ?? ''));
+    });
+    reset?.addEventListener('click', () => {
+      selectTopic('');
+      buttons[0]?.focus();
+    });
+    window.addEventListener('popstate', () => {
+      applyTopic(new URL(window.location.href).searchParams.get('topic') ?? '');
+    });
+    applyTopic(new URL(window.location.href).searchParams.get('topic') ?? '');
+    if (filters && notes.length > 0) filters.hidden = false;
+  }
+</script>
 

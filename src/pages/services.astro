@@ -1,456 +1,158 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Navbar from '../../components/Navbar';
-import FooterSection from '../../components/FooterSection';
-import { DoodleStar, ScribbleUnderline, ArrowSketch, Tape } from '../../components/Decorations';
+import WorkbenchNav from '../components/WorkbenchNav.astro';
+import WorkbenchIcon from '../components/WorkbenchIcon.astro';
+import FooterWorkbench from '../../components/FooterWorkbench';
+import StickyBooking from '../../components/StickyBooking';
+import draftingBoardArt from '../assets/concept-decorations/refined/hero-drafting-board.webp';
+import coffeeCupArt from '../assets/concept-decorations/refined/hero-coffee-cup.webp';
+import rulerArt from '../assets/concept-decorations/refined/hero-engineering-ruler.webp';
+import '../styles/workbench.css';
+import '../styles/services-pricing.css';
 
-const tiers = [
-  {
-    tag: 'Option 1',
-    name: 'Website Siap (One-Time)',
-    price: 'from RM1,500',
-    billing: 'Own it outright. Manage it yourself.',
-    recommended: false,
-    features: [
-      'Professional custom website',
-      'Up to 5 pages',
-      'Mobile responsive',
-      'WhatsApp integration',
-      'Contact form',
-      'Google Maps',
-      'Google Search ready',
-      'Google Search Console setup',
-      'Google Analytics 4',
-      'Basic SEO',
-      'SSL setup',
-      'Website deployment',
-    ],
-    renewal: {
-      label: 'Annual renewal',
-      price: 'RM350/year',
-      items: ['Domain renewal', 'Hosting renewal', 'SSL', 'Basic technical maintenance'],
-      note: 'Content updates are charged separately.',
-    },
-  },
-  {
-    tag: 'Option 2',
-    name: 'Business Website Plan',
-    price: 'RM199/month',
-    billing: '12-month minimum · No large upfront payment.',
-    recommended: true,
-    features: [
-      'Professional website',
-      'Hosting',
-      'Domain (if required)',
-      'SSL',
-      'Website maintenance',
-      'Security monitoring',
-      'Regular backups',
-      'Small content updates',
-      'Technical support',
-      'Google Search ready',
-    ],
-    renewal: null,
-  },
+const whatsapp = 'https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%27d%20like%20a%20quotation%20for%20a%20website%20or%20system.';
+
+const quickFacts = [
+  { label: 'Starting point', value: 'Scope before price' },
+  { label: 'Final price', value: 'Confirmed in quotation' },
+  { label: 'Payment', value: '50% start / 50% handover' },
+  { label: 'Ownership', value: 'Agreed deliverables handed over' },
 ];
 
-const addOns = [
-  { name: 'Additional page', price: 'RM150–250 / page' },
-  { name: 'Additional language (BM / EN)', price: 'From RM500' },
-  { name: 'Blog / CMS', price: 'From RM500' },
-  { name: 'Copywriting', price: 'Quotation' },
-  { name: 'Logo design', price: 'From RM300' },
-  { name: 'Google Business Profile setup', price: 'RM300' },
-  { name: 'Email setup', price: 'RM150' },
-  { name: 'Website migration', price: 'Quotation' },
+const marketRanges = [
+  { type: 'Brochure / business profile', range: 'RM1,500–RM5,000', scope: '3–5 pages, company information, services, contact and WhatsApp' },
+  { type: 'Lead-generation website', range: 'RM4,000–RM10,000', scope: 'More pages, stronger calls to action, forms and conversion planning' },
+  { type: 'Corporate / multi-service website', range: 'RM8,000–RM20,000', scope: '10–20 pages, multiple services, projects, teams and content structure' },
+  { type: 'Ecommerce website', range: 'RM8,000–RM25,000', scope: 'Product catalogue, cart, checkout, payment, delivery and stock workflows' },
+  { type: 'Custom platform', range: 'RM15,000–RM50,000+', scope: 'Booking, membership, dashboards, integrations and operational systems' },
 ];
 
-const maintenance = [
-  { name: 'Minor update', price: 'RM50–100' },
-  { name: 'New section', price: 'RM100–200' },
-  { name: 'New page', price: 'RM150–250' },
-  { name: 'Major redesign', price: 'Quotation' },
+const pricingModels = [
+  { model: 'Promotional one-off build', method: 'A defined standard scope starts at a promotional price; the quotation confirms the final scope.', fit: 'A focused business presence', position: 'Available for selected scopes only' },
+  { model: 'Scope-based fixed quotation', method: 'Requirements are reviewed before a fixed price and deliverables are issued.', fit: 'CMS, larger websites, ecommerce and integrations', position: 'Main model for most HaikaiTech projects' },
+  { model: 'Phased custom build', method: 'A larger system is divided into useful, approved stages.', fit: 'Dashboards, booking systems and workflow tools', position: 'Available where phasing is technically suitable' },
+  { model: 'Monthly subscription', method: 'Build, hosting and support are bundled into a recurring payment.', fit: 'Owners who prefer a recurring model', position: 'Not currently offered by HaikaiTech' },
 ];
 
-const steps = [
-  { num: '01', title: 'Chat on WhatsApp', body: 'Send a quick message to understand your business and what you need — usually replied within the hour during business hours (9am–6pm MYT).' },
-  { num: '02', title: 'Get a fixed quotation', body: 'A clear, fixed price based on scope — no hidden costs, no surprises.' },
-  { num: '03', title: 'We build & deploy', body: 'We design, build, test, and launch your website or system. You see progress throughout.' },
-  { num: '04', title: 'You own the result', body: 'Credentials, source, and full ownership handed over. Ongoing support optional.' },
+const offerRoutes = [
+  { icon: 'globe', label: 'Selected promotional scope', title: 'Website promotion', price: 'From RM1,500', description: 'For a focused business website within a defined promotional scope. Final pages, content, revisions, timeline and add-ons are confirmed in the quotation.', href: whatsapp, action: 'Discuss the promotional scope', external: true },
+  { icon: 'layout', label: 'Content-led build', title: 'Business website and CMS', price: 'Quotation', description: 'For larger websites, multiple services, CMS, catalogue management, content updates or lead-generation requirements.', href: whatsapp, action: 'Discuss the website scope', external: true },
+  { icon: 'blocks', label: 'Commerce route', title: 'Ecommerce, booking and payment', price: 'Quotation', description: 'Pricing depends on products, variations, stock rules, delivery, payment gateway, personalisation, pre-orders, integrations and third-party tools.', href: '/services/ecommerce/', action: 'Explore ecommerce builds', external: false },
+  { icon: 'workflow', label: 'Operations route', title: 'Custom systems and automation', price: 'Quotation', description: 'For dashboards, portals, booking systems, internal workflows, integrations, AI agents, automation and custom web applications.', href: '/services/automation/', action: 'Explore automation builds', external: false },
+] as const;
+
+const priceFactors = [
+  { icon: 'list-check', title: 'Number of pages', body: 'More pages mean more content structure, design decisions, review and testing.' },
+  { icon: 'layout', title: 'Custom design complexity', body: 'A focused layout costs less than a fully bespoke visual system with many page types.' },
+  { icon: 'book', title: 'Content readiness', body: 'Approved copy and images keep the build moving. Writing, editing or sourcing content adds scope.' },
+  { icon: 'database', title: 'CMS and catalogue needs', body: 'Editable content, product records and permissions require additional setup and testing.' },
+  { icon: 'blocks', title: 'Payments and integrations', body: 'Booking, ecommerce, payment gateways and connected tools introduce more workflows to verify.' },
+  { icon: 'wrench', title: 'Ongoing services', body: 'Hosting, updates and third-party services are identified separately so ownership costs stay visible.' },
+] as const;
+
+const extraCosts = ['Copywriting', 'Photography and video', 'Product or content entry', 'Domain and hosting renewals', 'Paid plugins or licensed tools', 'Payment gateway transaction fees', 'Advertising budget', 'Complex integrations', 'Major revisions after approval', 'New pages outside the agreed scope', 'Data, storage or provider costs for custom systems'];
+
+const process = [
+  { title: 'Discuss the business', body: 'Share what needs to work better, who will use it and what already exists.' },
+  { title: 'Choose a suitable route', body: 'We identify whether the work fits the promotion, a fixed quotation or a phased build.' },
+  { title: 'Receive a formal quotation', body: 'The quotation confirms deliverables, exclusions, timeline, revisions and external costs.' },
+  { title: 'Pay 50% to begin', body: 'The approved deposit reserves the work and starts the agreed project.' },
+  { title: 'Build, review and test', body: 'Work is reviewed on staging before the final launch or handover.' },
+  { title: 'Pay the final 50%', body: 'The balance is due before final launch and handover unless the quotation states otherwise.' },
+  { title: 'Receive the handover', body: 'Agreed credentials, source and deliverables are handed over after completion.' },
 ];
+
+const faqs = [
+  { q: 'How much does a website cost?', a: 'The final price depends on pages, content, revisions, timeline, integrations and ongoing costs, and is confirmed in a formal quotation. A selected promotional route is shown below for focused business-website scopes.' },
+  { q: 'What does the website promotion include?', a: 'It is a promotional starting route for selected focused business-website scopes. The quotation confirms the exact pages, content responsibilities, revisions, timeline, integrations and handover terms before work begins.' },
+  { q: 'Why do ecommerce and booking websites require a quotation?', a: 'Their cost changes with products, variants, stock rules, delivery, payment gateways, booking logic, personalisation, integrations and third-party services. A quotation prevents a misleading package price.' },
+  { q: 'What is the difference between a promotional price and a formal quotation?', a: 'A promotional price is a starting point for a defined type of project. A formal quotation is the project-specific commercial document that confirms the final scope, price, deliverables, exclusions and payment terms.' },
+  { q: 'What costs may exist after launch?', a: 'Depending on the project, ongoing costs may include domain and hosting renewals, paid plugins, provider usage, storage, payment gateway fees, content updates and future development. These are identified in the quotation where known.' },
+  { q: 'How does payment work?', a: 'For standard projects, 50% is paid to start and 50% before final launch or handover. Larger systems may be divided into approved phases with a payment split stated in the quotation.' },
+  { q: 'Do I own the website after completion?', a: 'For completed one-time quoted projects, the agreed credentials, source and deliverables are handed over after final payment, subject to the quotation and any third-party licence terms.' },
+];
+
+const serviceSchema = {
+  '@context': 'https://schema.org', '@type': 'Service', name: 'Website design and custom software development',
+  description: 'Promotional business website scopes from RM1,500, plus quotation-based CMS, ecommerce, booking, automation and custom systems for Malaysian businesses.',
+  provider: { '@type': 'Organization', name: 'HaikaiTech Solutions', url: 'https://haikaitech.my/' },
+  areaServed: { '@type': 'Country', name: 'Malaysia' },
+  offers: { '@type': 'Offer', name: 'Selected standard website promotion', price: '1500', priceCurrency: 'MYR', description: 'Promotional starting price for selected standard website scopes. Final scope and price are confirmed in a formal quotation.', url: 'https://haikaitech.my/services/#pricing' },
+};
+
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((faq) => ({ '@type': 'Question', name: faq.q, acceptedAnswer: { '@type': 'Answer', text: faq.a } })) };
 ---
 
-<BaseLayout
-  title="Services & Pricing | HaikaiTech Solutions — Websites & Custom Software"
-  description="Business websites from RM1,500 (one-time) or RM199/month managed, company profile design, and custom software. Fixed pricing, no surprises, you own the result. Chat on WhatsApp."
-  canonical="https://haikaitech.my/services/"
->
-  <div class="min-h-screen relative font-sans bg-paper bg-grid-pattern selection:bg-yellow-200 selection:text-slate-900">
-    <Navbar client:load prefix="/" />
-
-    <main class="max-w-5xl mx-auto px-6 py-20 md:py-28 relative">
-      <DoodleStar className="top-24 left-8 text-slate-300 animate-pulse hidden lg:block" />
-      <DoodleStar className="top-48 right-16 text-blue-200 hidden lg:block" />
-      <DoodleStar className="bottom-96 left-1/4 text-orange-200 hidden lg:block" />
-
-      <!-- Hero -->
-      <header class="relative mb-24 md:mb-32">
-        <Tape className="-top-4 right-8 rotate-[-6deg] hidden md:block" />
-        <p class="font-mono text-sm text-blue-700 tracking-widest uppercase">Services &amp; Pricing</p>
-        <h1 class="mt-4 font-hand text-5xl md:text-7xl text-slate-800 leading-tight relative">
-          Websites that work.
-          <br />
-          <span class="text-blue-700 relative">
-            Systems that last.
-            <ScribbleUnderline className="w-full text-blue-400" />
-          </span>
-        </h1>
-        <p class="mt-8 max-w-xl text-slate-600 text-lg font-light">
-          From a ready-in-weeks business website to a custom dashboard that runs your operations.
-          Fixed pricing, no surprises, and you own the result.
-        </p>
-        <div class="mt-10 flex flex-wrap items-center gap-4">
-            <a
-              href="https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%27m%20interested%20in%20your%20services.%20Can%20we%20talk%3F"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="bg-[#25D366] text-white rounded-xl px-6 py-3 font-mono text-sm hover:bg-[#20b858] active:scale-[0.98] transition-all shadow-[0_4px_14px_rgba(37,211,102,0.35)]"
-            >
-              Chat on WhatsApp →
-            </a>
-            <a
-              href="mailto:hq@haikaitech.my?subject=Project%20enquiry"
-              class="border border-slate-300 bg-white text-slate-700 rounded-xl px-6 py-3 font-mono text-sm hover:border-slate-400 hover:text-slate-900 transition-colors"
-            >
-              Email us
-            </a>
+<BaseLayout title="Website Pricing Malaysia | Services & Quotations | HaikaiTech" description="HaikaiTech website promotions start from RM1,500 for selected scopes. Compare indicative Malaysian market ranges and learn how websites, ecommerce, automation and custom systems are quoted." canonical="https://haikaitech.my/services/">
+  <div class="workbench wb-pricing-site bg-paper bg-grid-pattern">
+    <WorkbenchNav />
+    <main class="sp-main">
+      <section class="sp-hero" aria-labelledby="services-title">
+        <div class="sp-hero-copy">
+          <p class="wb-eyebrow"><WorkbenchIcon name="briefcase" size={18} />Services &amp; pricing</p>
+          <h1 id="services-title">Website pricing that starts with the <em>real scope.</em></h1>
+          <p class="sp-hero-lede">Selected website promotions are available for focused scopes. Websites involving CMS, ecommerce, booking, payments or business systems are quoted according to the actual scope.</p>
+          <div class="sp-actions"><a class="wb-button wb-button--painted" href={whatsapp} target="_blank" rel="noopener noreferrer"><span>Request a quotation</span></a><a class="wb-button wb-secondary" href="#market-ranges"><span>Understand the ranges</span></a></div>
+          <p class="sp-hero-note">Clear scope first. Then the number means something.</p>
         </div>
-        <ArrowSketch className="-bottom-10 left-10 hidden lg:block text-blue-500 rotate-[10deg]" />
-      </header>
-
-      <!-- Website packages -->
-      <section id="pricing" class="mb-24 md:mb-32 scroll-mt-28 relative">
-        <p class="font-mono text-xs text-slate-500 uppercase tracking-widest">01 / Website Packages</p>
-        <h2 class="mt-3 font-hand text-4xl md:text-5xl text-slate-800">Pick how you want to work</h2>
-        <p class="mt-4 max-w-2xl text-slate-600 font-light">
-          Own the website outright, or let us manage everything for you. Both include a professional,
-          mobile-responsive, Google-ready website.
-        </p>
-
-        <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
-          {tiers.map((tier) => (
-            <div
-              class={`relative bg-white border rounded-2xl p-6 md:p-8 flex flex-col transition-all ${
-                tier.recommended
-                  ? 'border-blue-300 shadow-[0_12px_40px_rgba(29,78,216,0.12)] md:-translate-y-2'
-                  : 'border-slate-200 shadow-[0_8px_30px_rgb(0,0,0,0.04)]'
-              }`}
-            >
-              {tier.recommended && (
-                <span class="absolute -top-3 left-6 px-3 py-1 rounded-full bg-blue-700 text-white font-mono text-[10px] tracking-widest uppercase shadow">
-                  Recommended
-                </span>
-              )}
-              <span class="font-mono text-xs text-slate-500 uppercase tracking-widest">{tier.tag}</span>
-              <h3 class="mt-2 text-xl font-bold text-slate-800">{tier.name}</h3>
-              <p class="mt-3 text-3xl font-bold text-blue-700">{tier.price}</p>
-              <p class="mt-1 text-sm text-slate-500">{tier.billing}</p>
-
-              <ul class="mt-6 space-y-2.5 flex-1">
-                {tier.features.map((f) => (
-                  <li class="flex items-start gap-2 text-sm text-slate-600">
-                    <span class="mt-0.5 text-blue-600 font-bold">✓</span>
-                    {f}
-                  </li>
-                ))}
-              </ul>
-
-              {tier.renewal && (
-                <div class="mt-6 border-t border-dashed border-slate-200 pt-5">
-                  <p class="font-mono text-xs text-slate-500 uppercase tracking-widest">{tier.renewal.label}</p>
-                  <p class="mt-1 text-lg font-bold text-slate-800">{tier.renewal.price}</p>
-                  <ul class="mt-2 space-y-1.5">
-                    {tier.renewal.items.map((item) => (
-                      <li class="flex items-start gap-2 text-sm text-slate-500">
-                        <span class="mt-0.5 text-slate-500">·</span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                  <p class="mt-3 text-xs text-slate-500 italic">{tier.renewal.note}</p>
-                </div>
-              )}
-
-              <a
-                href="https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%27m%20interested%20in%20your%20services.%20Can%20we%20talk%3F"
-                target="_blank"
-                rel="noopener noreferrer"
-                class={`mt-8 inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 font-mono text-sm transition-all ${
-                  tier.recommended
-                    ? 'bg-[#25D366] text-white hover:bg-[#20b858] active:scale-[0.98]'
-                    : 'border border-slate-300 text-slate-700 hover:border-slate-400 hover:text-slate-900'
-                }`}
-              >
-                Get started →
-              </a>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <!-- Company profile -->
-      <section class="mb-24 md:mb-32 relative">
-        <p class="font-mono text-xs text-slate-500 uppercase tracking-widest">02 / Company Profile</p>
-        <h2 class="mt-3 font-hand text-4xl md:text-5xl text-slate-800 max-w-2xl">A profile your clients take seriously</h2>
-        <p class="mt-4 max-w-2xl text-slate-600 font-light">
-          A professionally designed company profile document — normally bundled together with your website.
-        </p>
-
-        <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="bg-slate-900 text-slate-100 p-6 md:p-8 rounded-2xl relative overflow-hidden">
-            <div class="absolute top-0 right-0 w-40 h-40 bg-blue-600/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-            <p class="relative font-mono text-xs text-blue-300 uppercase tracking-widest">Company Profile Design</p>
-            <p class="relative mt-3 text-3xl font-bold">RM800 – RM1,200</p>
-            <p class="relative mt-3 text-slate-500 leading-relaxed font-light">
-              Depends on the number of pages, whether your content is ready, and the graphic design complexity.
-            </p>
+        <div class="sp-hero-scene">
+          <Image class="sp-drafting-board" src={draftingBoardArt} alt="" width={1200} format="webp" loading="eager" aria-hidden="true" />
+          <Image class="sp-coffee-cup" src={coffeeCupArt} alt="" width={180} format="webp" loading="eager" aria-hidden="true" />
+          <div class="sp-scope-board" aria-label="Items confirmed in a formal quotation">
+            <span class="sp-board-pin" aria-hidden="true"></span>
+            <div class="sp-board-head"><p>Quotation worksheet</p><span>Scope before price</span></div>
+            <p class="sp-board-title">The final quotation confirms:</p>
+            <ul><li><span>01</span>Pages and content</li><li><span>02</span>Review rounds</li><li><span>03</span>Timeline</li><li><span>04</span>Integrations</li><li><span>05</span>Ownership and handover</li><li><span>06</span>Recurring and third-party costs</li></ul>
+            <p class="sp-board-caption">No internal quotation totals are used as public package prices.</p>
           </div>
-
-          <div class="bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
-            <p class="font-mono text-xs text-slate-500 uppercase tracking-widest">Bundle Example</p>
-            <div class="mt-4 space-y-4">
-              <div class="flex items-center justify-between gap-4">
-                <div>
-                  <p class="font-semibold text-slate-800">Company Profile</p>
-                  <p class="text-sm text-slate-500">RM1,000</p>
-                </div>
-                <span class="text-slate-500">+</span>
-                <div class="text-right">
-                  <p class="font-semibold text-slate-800">Business Website Plan</p>
-                  <p class="text-sm text-slate-500">RM199/month</p>
-                </div>
-              </div>
-              <div class="border-t border-dashed border-slate-200 pt-4 flex items-center justify-between gap-4">
-                <div>
-                  <p class="font-semibold text-slate-800">Company Profile</p>
-                  <p class="text-sm text-slate-500">+ Website</p>
-                </div>
-                <span class="text-right font-mono text-lg font-bold text-blue-700">RM2,300 one-time</span>
-              </div>
-            </div>
-          </div>
+          <Image class="sp-ruler" src={rulerArt} alt="" width={280} format="webp" loading="eager" aria-hidden="true" />
         </div>
       </section>
 
-      <!-- Add-ons -->
-      <section class="mb-24 md:mb-32 relative">
-        <p class="font-mono text-xs text-slate-500 uppercase tracking-widest">03 / Add-ons</p>
-        <h2 class="mt-3 font-hand text-4xl md:text-5xl text-slate-800">Future-proof your site</h2>
-        <div class="mt-10 bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
-          <table class="w-full text-sm">
-            <thead>
-              <tr class="bg-slate-50 border-b border-slate-200 font-mono text-xs text-slate-500 uppercase tracking-widest">
-                <th class="text-left px-6 py-4 font-medium">Service</th>
-                <th class="text-right px-6 py-4 font-medium">Price</th>
-              </tr>
-            </thead>
-            <tbody>
-              {addOns.map((row, idx) => (
-                <tr class={idx % 2 === 0 ? 'bg-white' : 'bg-slate-50/50'}>
-                  <td class="px-6 py-3.5 text-slate-700">{row.name}</td>
-                  <td class="px-6 py-3.5 text-right font-mono text-slate-600">{row.price}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+      <dl class="sp-quick-facts" aria-label="Pricing quick facts">{quickFacts.map((fact) => <div><dt>{fact.label}</dt><dd>{fact.value}</dd></div>)}</dl>
+
+      <section id="market-ranges" class="sp-section sp-section--ranges" aria-labelledby="market-title">
+        <header class="sp-section-head"><div><p class="wb-eyebrow">Market context</p><h2 id="market-title">Typical Malaysian market ranges</h2></div><p>These ranges help you compare project types before asking for a quotation. They are context, not HaikaiTech package prices.</p></header>
+        <div class="sp-table-wrap" tabindex="0" role="region" aria-label="Typical Malaysian website market ranges"><table><thead><tr><th scope="col">Website type</th><th scope="col">Typical market range</th><th scope="col">Usually involves</th></tr></thead><tbody>{marketRanges.map((row) => <tr><th scope="row">{row.type}</th><td class="sp-price">{row.range}</td><td>{row.scope}</td></tr>)}</tbody></table></div>
+        <p class="sp-source-note">These are indicative Malaysian market ranges for comparison only, based on <a href="https://zenweb.my/services/web-design/pricing/" target="_blank" rel="noopener noreferrer">public industry pricing references</a>. They are not HaikaiTech’s fixed prices or a guarantee of what a project will cost.</p>
       </section>
 
-      <!-- Maintenance -->
-      <section class="mb-24 md:mb-32 relative">
-        <p class="font-mono text-xs text-slate-500 uppercase tracking-widest">04 / Maintenance</p>
-        <h2 class="mt-3 font-hand text-4xl md:text-5xl text-slate-800 max-w-2xl">
-          Already have a site? <span class="text-blue-700">Updates on demand.</span>
-        </h2>
-        <p class="mt-4 max-w-2xl text-slate-600 font-light">
-          For one-time clients after the website is completed.
-        </p>
-        <div class="mt-10 bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
-          <table class="w-full text-sm">
-            <thead>
-              <tr class="bg-slate-50 border-b border-slate-200 font-mono text-xs text-slate-500 uppercase tracking-widest">
-                <th class="text-left px-6 py-4 font-medium">Service</th>
-                <th class="text-right px-6 py-4 font-medium">Price</th>
-              </tr>
-            </thead>
-            <tbody>
-              {maintenance.map((row, idx) => (
-                <tr class={idx % 2 === 0 ? 'bg-white' : 'bg-slate-50/50'}>
-                  <td class="px-6 py-3.5 text-slate-700">{row.name}</td>
-                  <td class="px-6 py-3.5 text-right font-mono text-slate-600">{row.price}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+      <section class="sp-section sp-section--models" aria-labelledby="models-title">
+        <header class="sp-section-head"><div><p class="wb-eyebrow">Commercial models</p><h2 id="models-title">How website projects are priced</h2></div><p>The billing model should match the certainty of the scope. HaikaiTech currently works through promotions, fixed quotations and suitable phased builds.</p></header>
+        <div class="sp-table-wrap" tabindex="0" role="region" aria-label="Website pricing models"><table><thead><tr><th scope="col">Pricing model</th><th scope="col">How it works</th><th scope="col">Best for</th><th scope="col">HaikaiTech position</th></tr></thead><tbody>{pricingModels.map((row) => <tr><th scope="row">{row.model}</th><td>{row.method}</td><td>{row.fit}</td><td class="sp-position">{row.position}</td></tr>)}</tbody></table></div>
       </section>
 
-      <!-- Custom software -->
-      <section class="mb-24 md:mb-32 relative">
-        <p class="font-mono text-xs text-slate-500 uppercase tracking-widest">05 / Custom Software</p>
-        <h2 class="mt-3 font-hand text-4xl md:text-5xl text-slate-800 max-w-2xl">
-          Need something built, not just a site?
-        </h2>
-        <p class="mt-4 max-w-2xl text-slate-600 font-light">
-          Custom software is quoted by scope — every project is different. Tell us what you need and we'll give you a fixed price.
-        </p>
-
-        <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {[
-            { title: 'Custom Web Apps', body: 'Tools and platforms tailored to your workflow — from internal systems to client-facing products.' },
-            { title: 'Business Dashboards', body: 'Live data, real-time KPIs, and clean reporting that replace spreadsheets and guesswork.' },
-            { title: '.NET & Blazor Systems', body: 'Reliable, maintainable back-office systems built on Microsoft&apos;s stack.' },
-            { title: 'Unity Visualizations', body: 'Interactive 3D and real-time visual experiences for product, training, and demos.' },
-          ].map((s) => (
-            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all hover:-translate-y-1 hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)]">
-              <h3 class="text-lg font-bold text-slate-800">{s.title}</h3>
-              <p class="mt-2 text-sm text-slate-600 leading-relaxed">{s.body}</p>
-              <p class="mt-4 font-mono text-xs text-[#25D366]">Quotation — chat on WhatsApp</p>
-            </div>
-          ))}
-        </div>
+      <section id="pricing" class="sp-section sp-section--offers" aria-labelledby="offers-title">
+        <header class="sp-section-head"><div><p class="wb-eyebrow">Current routes</p><h2 id="offers-title">Choose the closest starting point</h2></div><p>You do not need to diagnose the whole project yourself. Pick the nearest route and the quotation will define the edges.</p></header>
+        <div class="sp-offer-register">{offerRoutes.map((route) => <article class="sp-offer-row"><span class="sp-offer-icon" aria-hidden="true"><WorkbenchIcon name={route.icon} size={22} /></span><div class="sp-offer-title"><p>{route.label}</p><h3>{route.title}</h3></div><p class="sp-offer-description">{route.description}</p><div class="sp-offer-action"><strong>{route.price}</strong><a href={route.href} target={route.external ? '_blank' : undefined} rel={route.external ? 'noopener noreferrer' : undefined}>{route.action}</a></div></article>)}</div>
       </section>
 
-      <!-- How it works -->
-      <section class="mb-24 md:mb-32 relative">
-        <p class="font-mono text-xs text-slate-500 uppercase tracking-widest">06 / How it works</p>
-        <h2 class="mt-3 font-hand text-4xl md:text-5xl text-slate-800">From first call to launch</h2>
-        <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {steps.map((step) => (
-            <div class="bg-slate-900 text-slate-100 p-6 rounded-2xl relative overflow-hidden">
-              <div class="absolute -top-6 -right-2 font-hand text-7xl text-blue-600/25 pointer-events-none">{step.num}</div>
-              <h3 class="relative text-xl font-bold">{step.title}</h3>
-              <p class="relative mt-3 text-slate-500 leading-relaxed font-light text-sm">{step.body}</p>
-            </div>
-          ))}
-        </div>
+      <section class="sp-section sp-section--factors" aria-labelledby="factors-title">
+        <header class="sp-section-head"><div><p class="wb-eyebrow">Scope drivers</p><h2 id="factors-title">The six things that change the price</h2></div><p>A quote changes because the work changes. These are the practical decisions that have the largest effect.</p></header>
+        <div class="sp-factor-grid">{priceFactors.map((factor) => <article><span aria-hidden="true"><WorkbenchIcon name={factor.icon} size={21} /></span><h3>{factor.title}</h3><p>{factor.body}</p></article>)}</div>
       </section>
 
-      <!-- FAQ -->
-      <section id="faq" class="mb-24 md:mb-32 scroll-mt-28 relative">
-        <p class="font-mono text-xs text-slate-500 uppercase tracking-widest">07 / FAQ</p>
-        <h2 class="mt-3 font-hand text-4xl md:text-5xl text-slate-800">Common questions</h2>
-
-        <div class="mt-10 space-y-4 max-w-3xl">
-          {[
-            { q: 'What does HaikaiTech build?', a: 'We build business websites, custom web apps, dashboards, and interactive systems. For Malaysian SMEs we offer packaged website plans; for larger or more complex work we quote by scope.' },
-            { q: 'Where is HaikaiTech based?', a: 'We are a registered studio in Penang, Malaysia (SSM: 202603149868) serving businesses across all of Malaysia — most of our clients are in Kuala Lumpur — and worldwide.' },
-            { q: 'What is the difference between the one-time plan and the monthly plan?', a: 'Website Siap is a one-time build you own and manage, with an optional RM350/year renewal. The Business Website Plan is RM199/month with a 12-month minimum, and we handle hosting, security, backups, maintenance, and small updates for you.' },
-            { q: 'How long does a website take?', a: 'Most business websites are ready in a matter of weeks. Custom software timelines depend on scope — you get a clear schedule with your quotation.' },
-            { q: 'Do I get to keep my website?', a: 'Yes. With the one-time plan you own the website outright. With the managed plan, everything is maintained for you while you are a subscriber.' },
-            { q: 'How do I start a project?', a: 'Message us on WhatsApp or email hq@haikaitech.my, tell us what you need, and we will send a fixed quotation with no obligation.' },
-          ].map((faq) => (
-            <details class="bg-white border border-slate-200 rounded-2xl p-6 shadow-[0_4px_20px_rgb(0,0,0,0.03)] group">
-              <summary class="flex items-center justify-between gap-4 cursor-pointer font-semibold text-slate-800 list-none">
-                {faq.q}
-                <span class="text-blue-700 font-mono group-open:rotate-45 transition-transform">+</span>
-              </summary>
-              <p class="mt-4 text-slate-600 leading-relaxed font-light">{faq.a}</p>
-            </details>
-          ))}
-        </div>
+      <section id="maintenance" class="sp-section sp-section--extras" aria-labelledby="extras-title">
+        <header class="sp-section-head"><div><p class="wb-eyebrow">Scope boundaries</p><h2 id="extras-title">What may cost extra</h2></div><p>The quotation separates work and running costs that are not part of the agreed build. Nothing below receives a universal price before its scope is known.</p></header>
+        <ul class="sp-extra-list">{extraCosts.map((item) => <li><span aria-hidden="true">—</span>{item}</li>)}</ul>
       </section>
 
-      <!-- CTA -->
-      <section class="mb-16 relative">
-        <div class="bg-slate-900 text-slate-100 p-8 md:p-14 rounded-2xl relative overflow-hidden text-center">
-          <div class="absolute top-0 right-0 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
-          <div class="absolute bottom-0 left-0 w-64 h-64 bg-yellow-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
-
-          <div class="relative z-10">
-            <span class="inline-block px-3 py-1 rounded-full bg-slate-800 text-yellow-300 font-mono text-xs mb-6 border border-slate-700">
-              FREE QUOTATION
-            </span>
-            <h2 class="font-hand text-4xl md:text-5xl text-slate-100">
-              Let&apos;s build <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-yellow-500 italic">your</span> project
-            </h2>
-            <p class="mt-5 max-w-xl mx-auto text-slate-500 text-lg font-light">
-              No obligation, no pressure. We&apos;ll scope your idea and give you a clear fixed price.
-            </p>
-            <div class="mt-8 flex flex-wrap justify-center gap-4">
-              <a
-                href="https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%27m%20interested%20in%20your%20services.%20Can%20we%20talk%3F"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="bg-[#25D366] text-white rounded-xl px-6 py-3 font-mono text-sm hover:bg-[#20b858] active:scale-[0.98] transition-all"
-              >
-                Chat on WhatsApp
-              </a>
-              <a
-                href="mailto:hq@haikaitech.my?subject=Project%20enquiry"
-                class="border border-slate-600 text-slate-300 rounded-xl px-6 py-3 font-mono text-sm hover:border-slate-400 hover:text-white transition-colors"
-              >
-                Email us
-              </a>
-            </div>
-          </div>
-        </div>
+      <section id="custom-software" class="sp-section sp-section--process" aria-labelledby="process-title">
+        <header class="sp-section-head"><div><p class="wb-eyebrow">Quotation process</p><h2 id="process-title">From useful brief to handover</h2></div><p>Standard projects use a 50/50 payment flow. Larger systems may be divided into approved phases, each with terms stated in the quotation.</p></header>
+        <ol class="sp-process-list">{process.map((step, index) => <li><span>{String(index + 1).padStart(2, '0')}</span><div><h3>{step.title}</h3><p>{step.body}</p></div></li>)}</ol>
       </section>
+
+      <section id="faq" class="sp-section sp-section--faq" aria-labelledby="faq-title">
+        <header class="sp-section-head"><div><p class="wb-eyebrow">Common questions</p><h2 id="faq-title">Pricing, without the fog</h2></div><p>Short answers to the questions that should be settled before a project begins.</p></header>
+        <div class="sp-faq-list">{faqs.map((faq) => <details><summary>{faq.q}<span aria-hidden="true">+</span></summary><p>{faq.a}</p></details>)}</div>
+      </section>
+
+      <section class="sp-cta" aria-labelledby="services-cta-title"><div><p class="wb-eyebrow">Next useful step</p><h2 id="services-cta-title">Bring the scope.<br /><em>We’ll price the real job.</em></h2></div><div><p>Tell us what the website or system needs to do. We’ll identify the right route and prepare a formal quotation.</p><div class="sp-actions"><a class="wb-button wb-button--painted" href={whatsapp} target="_blank" rel="noopener noreferrer"><span>Request a quotation</span></a><a class="sp-email-link" href="mailto:hq@haikaitech.my?subject=Project%20quotation">Email hq@haikaitech.my</a></div></div></section>
     </main>
-
-    <FooterSection client:load />
-
-    <!-- JSON-LD: Service -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Service",
-          "serviceType": "Business Website (One-Time)",
-          "provider": { "@type": "Organization", "name": "HaikaiTech Solutions", "url": "https://haikaitech.my/" },
-          "offers": { "@type": "Offer", "price": "1500", "priceCurrency": "MYR" },
-          "areaServed": "Worldwide",
-          "description": "Professional custom website with up to 5 pages, mobile responsive, WhatsApp integration, contact form, Google Maps, Google Search Console, Google Analytics 4, basic SEO, SSL, and deployment. Annual renewal RM350/year."
-        },
-        {
-          "@type": "Service",
-          "serviceType": "Managed Business Website Plan",
-          "provider": { "@type": "Organization", "name": "HaikaiTech Solutions", "url": "https://haikaitech.my/" },
-          "offers": { "@type": "Offer", "price": "199", "priceCurrency": "MYR" },
-          "areaServed": "Worldwide",
-          "description": "Fully managed website including hosting, domain (if required), SSL, maintenance, security monitoring, regular backups, small content updates, and technical support. 12-month minimum, no large upfront payment."
-        },
-        {
-          "@type": "Service",
-          "serviceType": "Company Profile Design",
-          "provider": { "@type": "Organization", "name": "HaikaiTech Solutions", "url": "https://haikaitech.my/" },
-          "offers": { "@type": "AggregateOffer", "lowPrice": "800", "highPrice": "1200", "priceCurrency": "MYR" },
-          "description": "Professionally designed company profile document, usually bundled with a website."
-        },
-        {
-          "@type": "Service",
-          "serviceType": "Custom Software Development",
-          "provider": { "@type": "Organization", "name": "HaikaiTech Solutions", "url": "https://haikaitech.my/" },
-          "areaServed": "Worldwide",
-          "description": "Custom web apps, business dashboards, .NET/Blazor systems, and Unity visualizations. Quotation-based by scope."
-        }
-      ]
-    }
-    </script>
-    <!-- JSON-LD: FAQPage -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        { "@type": "Question", "name": "What does HaikaiTech build?", "acceptedAnswer": { "@type": "Answer", "text": "We build business websites, custom web apps, dashboards, and interactive systems. For Malaysian SMEs we offer packaged website plans; for larger or more complex work we quote by scope." } },
-        { "@type": "Question", "name": "Where is HaikaiTech based?", "acceptedAnswer": { "@type": "Answer", "text": "We are a registered studio in Penang, Malaysia (SSM: 202603149868) serving businesses across all of Malaysia — most of our clients are in Kuala Lumpur — and worldwide." } },
-        { "@type": "Question", "name": "What is the difference between the one-time plan and the monthly plan?", "acceptedAnswer": { "@type": "Answer", "text": "Website Siap is a one-time build you own and manage, with an optional RM350/year renewal. The Business Website Plan is RM199/month with a 12-month minimum, and we handle hosting, security, backups, maintenance, and small updates for you." } },
-        { "@type": "Question", "name": "Do I get to keep my website?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. With the one-time plan you own the website outright. With the managed plan, everything is maintained for you while you are a subscriber." } },
-        { "@type": "Question", "name": "How do I start a project?", "acceptedAnswer": { "@type": "Answer", "text": "Message us on WhatsApp or email hq@haikaitech.my, tell us what you need, and we will send a fixed quotation with no obligation." } }
-      ]
-    }
-    </script>
+    <FooterWorkbench client:load />
+    <StickyBooking client:load />
   </div>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(serviceSchema)}></script>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
 </BaseLayout>

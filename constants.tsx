@@ -26,7 +26,7 @@ import pizzaImg from './src/assets/projects/rumahpizza.webp';
 import clarityImg from './src/assets/projects/clarity-learncentre.webp';
 import medinImg from './src/assets/projects/medin-fragrances.webp';
 import avsbinaImg from './src/assets/projects/avsbina.webp';
-import adyumrahImg from './src/assets/projects/adyumrah.webp';
+import adyumrahImg from './src/assets/projects/adyumrah-current.png';
 import fuzzfloorImg from './src/assets/projects/fuzzfloor.webp';
 import atoneImg from './src/assets/projects/atone.webp';
 import binamajuImg from './src/assets/projects/binamaju.webp';

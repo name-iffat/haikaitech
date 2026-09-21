@@ -4,14 +4,17 @@ import { track } from './track';
 
 interface Props {
   source?: 'footer' | 'blog' | 'toolkit';
+  variant?: 'legacy' | 'workbench';
 }
 
-const NewsletterForm: React.FC<Props> = ({ source = 'footer' }) => {
+const NewsletterForm: React.FC<Props> = ({ source = 'footer', variant = 'legacy' }) => {
+  const fieldId = React.useId();
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (status === 'sending') return;
     const trimmed = email.trim();
     if (!trimmed || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) return;
     setStatus('sending');
@@ -28,6 +31,19 @@ const NewsletterForm: React.FC<Props> = ({ source = 'footer' }) => {
       setStatus('error');
     }
   };
+
+  if (variant === 'workbench') return (
+    <div className="wb-newsletter">
+      {status !== 'success' && <form onSubmit={handleSubmit} aria-busy={status === 'sending'}>
+        <label htmlFor={fieldId}>Email address <span>(required)</span></label>
+        <div className="wb-newsletter-fields">
+          <input id={fieldId} name="email" type="email" autoComplete="email" spellCheck={false} placeholder="you@company.my" required value={email} onChange={e => setEmail(e.target.value)} aria-describedby={status === 'error' ? `${fieldId}-status` : undefined} />
+          <button type="submit" className="wb-button wb-primary wb-button--painted" disabled={status === 'sending'}><span>{status === 'sending' ? 'Sending…' : 'Subscribe'}</span></button>
+        </div>
+      </form>}
+      <p id={`${fieldId}-status`} role="status" className="wb-newsletter-status">{status === 'success' ? 'Subscribed — thank you!' : status === 'error' ? 'Could not subscribe. Please try again; your email is still here.' : ''}</p>
+    </div>
+  );
 
   if (status === 'success') {
     return (

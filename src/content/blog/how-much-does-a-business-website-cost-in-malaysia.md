@@ -1,13 +1,13 @@
 ---
 title: "How Much Does a Business Website Cost in Malaysia? (2026 Guide)"
-description: "A transparent breakdown of business website pricing in Malaysia — one-time builds from RM1,500, managed plans at RM199/month, company profiles, add-ons, and what actually moves the price."
+description: "A practical breakdown of website pricing in Malaysia — indicative market ranges, selected promotions from RM1,500, quotation-based work and the factors that change the final price."
 pubDate: 2026-08-06
 tags: [websites, pricing, malaysia, sme]
 ---
 
 "How much does a website cost?" is the first question almost every business owner asks — and the answer in Malaysia ranges from a few hundred ringgit to tens of thousands. That range is unhelpful, so let's make it concrete.
 
-Here is exactly what HaikaiTech Solutions charges, what you get at each price, and what actually drives the cost up or down.
+Here is a practical market comparison, where HaikaiTech's current promotion sits, and what actually drives a formal quotation up or down.
 
 ## The short answer
 
@@ -24,31 +24,31 @@ In Malaysia (2026), a professionally built business website typically costs:
 
 *Ranges are typical for the Malaysian market; the exact price tracks scope, customisation, and who builds it.*
 
-Where we sit in that market:
+Where HaikaiTech currently sits in that market:
 
-- **A one-time business website**: from **RM1,500**.
-- **A fully managed website**: **RM199/month** (12-month minimum, no large upfront payment).
-- **A company profile document**: **RM800–RM1,200**.
+- **Selected standard website promotions**: from **RM1,500**.
+- **CMS-heavy websites, ecommerce, booking, payments and integrations**: quotation.
+- **Custom platforms, dashboards and automation**: quotation or an approved phased build.
 
-Those are the packaged numbers we publish because we think pricing should be public and boring. Below is what sits behind them.
+The promotional figure is a starting point for a defined scope, not a promise that every website costs the same amount. The formal quotation confirms pages, content, revisions, timeline, integrations, ownership and ongoing costs.
 
-## The two ways to work (and the price difference)
+## How HaikaiTech prices the work
 
-The biggest cost decision isn't about pages — it's about **who maintains the website after launch**.
+The most useful pricing model depends on how clearly the work can be defined.
 
-### Own it outright: Website Siap, from RM1,500
+### Promotional one-off build: from RM1,500
 
-You pay once, you own the website, and you (or a future developer) manage it yourself. For RM1,500 you get a professional, mobile-responsive site with up to 5 pages, WhatsApp integration, a contact form, Google Maps, Google Analytics 4, Google Search Console setup, basic SEO, SSL, and deployment.
+Selected focused business websites may fit the current promotion. The exact pages, content responsibilities, revisions, timeline, integrations and handover terms are confirmed in the quotation.
 
-After launch there's an optional **annual renewal of RM350/year**, which covers domain renewal, hosting, SSL, and basic technical maintenance. Content updates are billed separately (usually RM50–RM250 depending on scope).
+### Scope-based fixed quotation
 
-### Hand it to us: Business Website Plan, RM199/month
+Larger websites, CMS requirements, ecommerce, booking, payments and integrations are reviewed before a fixed quotation is issued. This is the main model for most projects because the price reflects the real work rather than a generic package.
 
-The managed plan bundles everything — website, hosting, domain (if required), SSL, security monitoring, regular backups, small content updates, and technical support — into one RM199/month subscription. There's a 12-month minimum and no large upfront payment.
+### Phased custom build
 
-It suits owners who don't want to think about hosting renewals, security patches, or "small updates" ever again.
+Dashboards, workflow tools and custom platforms may be divided into approved stages when that produces a safer and more useful delivery path.
 
-> If you're weighing the two, read [Website Siap: a complete Malaysian SME website for RM1,500](/blog/website-siap-malaysian-sme-website/) and [the RM199/month managed website plan](/blog/rm199-managed-website-plan-malaysia/) for the full breakdown.
+HaikaiTech does not currently offer a public monthly website subscription. For the post-launch ownership questions, read [Website ownership and maintenance costs in Malaysia](/blog/rm199-managed-website-plan-malaysia/).
 
 ## What actually changes the price
 
@@ -65,7 +65,7 @@ Beyond the package, five things move a website quote in Malaysia:
 | Business email setup | RM150 |
 | Migrating an existing site | Quotation |
 
-These add-ons are charged transparently, so a quote you receive is a quote you can trust — no surprises on the final invoice.
+These figures are indicative historical starting points. Current quotations may separate copywriting, content entry, paid tools, photography, hosting, integrations and other third-party costs according to scope.
 
 ## Hidden costs to watch out for
 
@@ -78,27 +78,24 @@ Every website has a life after launch. In Malaysia, these running costs get miss
 | SSL certificate | Free–RM300/year (often bundled with hosting) |
 | Maintenance & updates | RM50–RM500/month if outsourced |
 
-So a RM1,500 one-time site realistically costs **RM300–RM800/year to keep alive** — budget the build fee plus running costs, not just the sticker price.
-
-That's why our Website Siap package bundles the first year and offers a flat RM350/year renewal, and why the managed plan exists at all — you trade the mental load of "website admin" for a single monthly number.
+So a one-time site still has an ownership cost after launch. Budget the build plus domain, hosting, software licences, provider usage and future updates—not only the starting figure. The quotation should identify known recurring costs and who controls each account.
 
 ## Company profile design
 
 Many Malaysian SMEs pair a website with a **company profile** — the polished document you send to tender committees, banks, and corporate clients. Pricing is RM800–RM1,200 depending on the number of pages, whether your content is ready, and design complexity.
 
-We commonly bundle it with a website:
-
-- Company profile (RM1,000) + Business Website Plan (RM199/month), or
-- Company profile + website for **RM2,300 one-time**.
+Company profile and website work can be quoted together, but the total depends on the approved page count, content readiness, design complexity and website scope. Previous client-specific bundle totals are not public package prices.
 
 ## How to get an accurate quote
 
 Pricing guides are only useful if they lead somewhere. Here's our four-step process, and it's how we work for every client in Malaysia:
 
 1. **Chat on WhatsApp** — no obligation, we just listen and scope.
-2. **Get a fixed quotation** — a clear price based on scope, not on how much we think you'll pay.
-3. **We build and deploy** — you see progress throughout.
-4. **You own the result** — credentials, source, and full ownership are handed over.
+2. **Get a formal quotation** — a clear price, scope, exclusions, payment terms and known external costs.
+3. **Pay 50% to begin** — larger systems may instead use approved phases.
+4. **We build, review and test** — you see progress on staging.
+5. **Pay the final 50%** — before final launch or handover unless the quotation states otherwise.
+6. **Receive the agreed handover** — credentials, source and deliverables are transferred subject to the quotation and third-party licences.
 
 You can [chat on WhatsApp right here](https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%27d%20like%20a%20quote%20for%20a%20business%20website.) — or read our full [services and pricing page](/services/).
 

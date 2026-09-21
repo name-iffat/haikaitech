@@ -1,0 +1,106 @@
+---
+import WorkbenchIcon from './WorkbenchIcon.astro';
+import { primaryNavigation, serviceNavigation } from '../data/services';
+
+const links = primaryNavigation;
+const isHome = Astro.url.pathname === '/';
+const destination = (href: string) => href.startsWith('#') && !isHome ? `/${href}` : href;
+const currentPage = (href: string) => href === Astro.url.pathname ? 'page' as const : undefined;
+---
+<nav class="workbench wb-nav" aria-label="Main navigation">
+  <a class="wb-wordmark" href={destination('#home')} aria-label="HaikaiTech home">
+    <img src="/haikaitech-mark.png" width="32" height="32" alt="" aria-hidden="true" />
+    <span>HAIKAITECH<span aria-hidden="true">_</span></span>
+  </a>
+  <div class="wb-desktop-links">
+    {links.map(({ label, href, icon }) => label === 'Services' ? (
+      <details class:list={['wb-nav-services', Astro.url.pathname.startsWith('/services/') && 'is-current']}>
+        <summary id="wb-services-trigger" aria-controls="wb-services-menu" aria-expanded="false">Services <span aria-hidden="true">⌄</span></summary>
+        <div id="wb-services-menu" class="wb-nav-services-menu">
+          <p>Build layer / choose a useful starting point</p>
+          {serviceNavigation.map((service) => (
+            <a href={service.href} aria-current={currentPage(service.href)}>
+              <span class="wb-nav-services-icon" aria-hidden="true"><WorkbenchIcon name={service.icon} size={18} /></span>
+              <span><b>{service.label}</b><small>{service.note}</small></span>
+            </a>
+          ))}
+          <a class="wb-nav-services-all" href="/services/">All services &amp; pricing<span aria-hidden="true">↗</span></a>
+        </div>
+      </details>
+    ) : (
+      <a href={destination(href)} aria-current={currentPage(href)}>{label}</a>
+    ))}
+  </div>
+  <a class="wb-button wb-primary wb-nav-cta" href={destination('#contact')}>Start a project</a>
+  <details class="wb-menu">
+    <summary>
+      <span class="wb-menu-label">Menu</span>
+      <span class="wb-menu-icon" aria-hidden="true"><i></i><i></i></span>
+    </summary>
+    <div class="wb-menu-panel">
+      <p class="wb-menu-kicker">Workshop index / Find your way in</p>
+      <div class="wb-menu-links">
+        {links.map(({ label, href, icon }) => (
+          <a href={destination(href)} aria-current={currentPage(href)}>
+            <span aria-hidden="true"><WorkbenchIcon name={icon} size={20} /></span>
+            <b>{label}</b>
+          </a>
+        ))}
+      </div>
+      <footer class="wb-menu-footer">
+        <p>Start with what needs to work better.</p>
+        <a class="wb-button wb-primary" href={destination('#contact')}>Start a project</a>
+      </footer>
+    </div>
+  </details>
+</nav>
+<script>
+  const menu = document.querySelector<HTMLDetailsElement>('.wb-menu');
+  const trigger = menu?.querySelector('summary');
+  menu?.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') { menu.open = false; trigger?.focus(); }
+  });
+  menu?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { menu.open = false; }));
+  document.addEventListener('click', event => {
+    if (menu?.open && event.target instanceof Node && !menu.contains(event.target)) menu.open = false;
+  });
+  const serviceMenu = document.querySelector<HTMLDetailsElement>('.wb-nav-services');
+  const serviceTrigger = serviceMenu?.querySelector('summary');
+  const syncServiceState = () => serviceTrigger?.setAttribute('aria-expanded', String(Boolean(serviceMenu?.open)));
+  serviceMenu?.addEventListener('toggle', syncServiceState);
+  serviceMenu?.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') { serviceMenu.open = false; syncServiceState(); serviceTrigger?.focus(); }
+  });
+  document.addEventListener('click', event => {
+    if (serviceMenu?.open && event.target instanceof Node && !serviceMenu.contains(event.target)) { serviceMenu.open = false; syncServiceState(); }
+  });
+  const desktop = matchMedia('(min-width: 1024px)');
+  let serviceHoverCloseTimer: number | undefined;
+  const clearServiceHoverClose = () => {
+    if (serviceHoverCloseTimer !== undefined) {
+      window.clearTimeout(serviceHoverCloseTimer);
+      serviceHoverCloseTimer = undefined;
+    }
+  };
+  const openServiceOnHover = (event: PointerEvent) => {
+    if (event.pointerType !== 'mouse' || !desktop.matches) return;
+    clearServiceHoverClose();
+    if (serviceMenu && !serviceMenu.open) serviceMenu.open = true;
+    syncServiceState();
+  };
+  const closeServiceOnLeave = (event: PointerEvent) => {
+    if (event.pointerType !== 'mouse' || !desktop.matches) return;
+    clearServiceHoverClose();
+    serviceHoverCloseTimer = window.setTimeout(() => {
+      if (serviceMenu) serviceMenu.open = false;
+      syncServiceState();
+      serviceHoverCloseTimer = undefined;
+    }, 100);
+  };
+  serviceMenu?.addEventListener('pointerenter', openServiceOnHover);
+  serviceMenu?.addEventListener('pointerleave', closeServiceOnLeave);
+  desktop.addEventListener('change', () => {
+    if (desktop.matches && menu) menu.open = false;
+    if (!desktop.matches && serviceMenu) { clearServiceHoverClose(); serviceMenu.open = false; syncServiceState(); }
+  });
+</script>

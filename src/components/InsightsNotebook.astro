@@ -1,0 +1,300 @@
+---
+const { posts } = Astro.props;
+const [featured, ...entries] = posts;
+
+const formatDate = (date: Date) =>
+  new Intl.DateTimeFormat('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
+    .format(date)
+    .toUpperCase();
+---
+
+<section class="workbench wb-insights" aria-labelledby="insights-title">
+  <header class="wb-insights-head">
+    <p class="wb-eyebrow">Insights from the workshop</p>
+    <a href="/blog/">All field notes</a>
+  </header>
+
+  {featured && (
+    <div class="wb-notebook">
+      <div class="wb-notebook-left-stage">
+        <section class="wb-notebook-page wb-notebook-contents" data-notebook-contents aria-label="Latest field note contents">
+          <p class="wb-notebook-label">The HaikaiTech notebook</p>
+          <h2 id="insights-title">Field notes.</h2>
+          <p class="wb-notebook-intro">Things worth knowing before you build, launch or grow your website.</p>
+
+          <ol class="wb-notebook-list">
+            {[featured, ...entries].map((post, index) => (
+              <li>
+                <a href={`/blog/${post.id}/`}>
+                  <span class="wb-notebook-index">{String(index + 1).padStart(2, '0')}</span>
+                  <span>
+                    <strong>{post.data.title}</strong>
+                    <small>{formatDate(post.data.pubDate)} / {post.data.tags[0]}</small>
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ol>
+          <footer><span>Contents / Latest entries</span><span>01</span></footer>
+        </section>
+
+        {[featured, ...entries].map((post, index) => (
+          <article class="wb-notebook-page wb-notebook-left-leaf" data-notebook-left-leaf={index} aria-hidden="true">
+            <p class="wb-notebook-label">Filed note / {String(index + 1).padStart(2, '0')}</p>
+            <p class="wb-notebook-left-note">Turned over from the workbench.</p>
+            <h3>{post.data.title}</h3>
+            <p>{post.data.description}</p>
+            <footer><span>{post.data.tags.slice(0, 2).join(' / ')}</span><span>TURNED</span></footer>
+          </article>
+        ))}
+      </div>
+
+      <article class="wb-notebook-page wb-notebook-feature">
+        <span class="wb-notebook-bookmark" aria-hidden="true"></span>
+        <div id="notebook-pages" class="wb-notebook-stage" aria-live="polite">
+          {[featured, ...entries].map((post, index) => (
+            <article class:list={['wb-notebook-leaf', { 'is-active': index === 0 }]} aria-hidden={index === 0 ? undefined : 'true'}>
+              <p class="wb-notebook-label">Open note / {formatDate(post.data.pubDate)}</p>
+              {index === 0 && <p class="wb-notebook-note">The website is live. Now what?</p>}
+              <h3>{post.data.title}</h3>
+              <p class="wb-notebook-description">{post.data.description}</p>
+              <ul class="wb-notebook-topics" aria-label="Article topics">
+                {post.data.tags.slice(0, 3).map((tag) => <li>{tag}</li>)}
+              </ul>
+              <a class="wb-notebook-read" href={`/blog/${post.id}/`}>Read the full note</a>
+              <footer><span>{post.data.tags.slice(0, 2).join(' / ')}</span><span>{String(index + 2).padStart(2, '0')}</span></footer>
+            </article>
+          ))}
+          <article class="wb-notebook-leaf wb-notebook-leaf--more" aria-hidden="true">
+            <p class="wb-notebook-label">Last page / Keep reading</p>
+            <p class="wb-notebook-note">More notes from the workshop.</p>
+            <h3>There is more to explore.</h3>
+            <p class="wb-notebook-description">Browse every field note on websites, pricing, software and finding your next customer.</p>
+            <a class="wb-notebook-read" href="/blog/">Open all field notes</a>
+            <footer><span>HaikaiTech / Insights</span><span>{String(posts.length + 2).padStart(2, '0')}</span></footer>
+          </article>
+        </div>
+      </article>
+
+      <nav class="wb-notebook-controls" aria-label="Notebook page controls">
+        <button type="button" data-notebook-previous aria-label="Previous notebook page" aria-controls="notebook-pages" disabled>←</button>
+        <span data-notebook-position>1 / {posts.length + 1}</span>
+        <button type="button" data-notebook-next aria-label="Next notebook page" aria-controls="notebook-pages"><span aria-hidden="true">→</span></button>
+      </nav>
+    </div>
+  )}
+</section>
+
+<script>
+  const stage = document.querySelector<HTMLElement>('.wb-notebook-stage');
+  const leaves = stage ? Array.from(stage.querySelectorAll<HTMLElement>('.wb-notebook-leaf')) : [];
+  const contents = document.querySelector<HTMLElement>('[data-notebook-contents]');
+  const leftLeaves = Array.from(document.querySelectorAll<HTMLElement>('[data-notebook-left-leaf]'));
+  const previous = document.querySelector<HTMLButtonElement>('[data-notebook-previous]');
+  const next = document.querySelector<HTMLButtonElement>('[data-notebook-next]');
+  const position = document.querySelector<HTMLElement>('[data-notebook-position]');
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const twoPageSpread = matchMedia('(min-width: 1024px)');
+  const notebook = document.querySelector<HTMLElement>('.wb-notebook');
+  let current = 0;
+  let isTurning = false;
+  let wheelLocked = false;
+  let pointerStartX = 0;
+  let isPointerTracking = false;
+  let suppressClick = false;
+  let isIntersecting = true;
+
+  if ('IntersectionObserver' in window && notebook) {
+    const observer = new IntersectionObserver((entries) => {
+      isIntersecting = entries[0]?.isIntersecting ?? true;
+    }, { threshold: 0.05 });
+    observer.observe(notebook);
+  }
+
+  const leftPageFor = (index: number) => index === 0 ? contents : leftLeaves[index - 1];
+
+  const getPageCount = () => twoPageSpread.matches ? leaves.length : leaves.length + 1;
+
+  const setMobilePage = (index: number) => {
+    if (twoPageSpread.matches) {
+      notebook?.classList.remove('is-mobile-contents', 'is-mobile-reading');
+      contents?.removeAttribute('aria-hidden');
+      contents?.removeAttribute('inert');
+      stage?.removeAttribute('aria-hidden');
+      stage?.removeAttribute('inert');
+      return;
+    }
+
+    const isContents = index === 0;
+    notebook?.classList.toggle('is-mobile-contents', isContents);
+    notebook?.classList.toggle('is-mobile-reading', !isContents);
+    contents?.toggleAttribute('aria-hidden', !isContents);
+    contents?.toggleAttribute('inert', !isContents);
+    stage?.toggleAttribute('aria-hidden', isContents);
+    stage?.toggleAttribute('inert', isContents);
+
+    if (!isContents) {
+      const leafIndex = index - 1;
+      leaves.forEach((leaf, i) => {
+        const isActive = i === leafIndex;
+        leaf.classList.toggle('is-active', isActive);
+        leaf.toggleAttribute('aria-hidden', !isActive);
+      });
+    }
+  };
+
+  const setLeftPage = (index: number) => {
+    if (!twoPageSpread.matches) {
+      contents?.classList.remove('is-retiring');
+      contents?.removeAttribute('aria-hidden');
+      contents?.removeAttribute('inert');
+      setMobilePage(index);
+      return;
+    }
+
+    notebook?.classList.remove('is-mobile-contents', 'is-mobile-reading');
+    stage?.removeAttribute('aria-hidden');
+    stage?.removeAttribute('inert');
+    const active = leftPageFor(index);
+    [contents, ...leftLeaves].forEach((page) => {
+      if (!page) return;
+      const isActive = page === active;
+      page.classList.toggle('is-active', isActive);
+      page.classList.remove('is-revealing', 'is-retiring');
+      // The turned leaves repeat the visible note only as a physical-page cue.
+      // Keep the real reading page as the single screen-reader surface.
+      page.toggleAttribute('aria-hidden', page !== contents || !isActive);
+      page.toggleAttribute('inert', page === contents && !isActive);
+    });
+  };
+
+  const updateControls = () => {
+    if (!previous || !next || !position) return;
+    const max = getPageCount();
+    previous.disabled = isTurning || current === 0;
+    next.disabled = isTurning || current >= max - 1;
+    position.textContent = `${current + 1} / ${max}`;
+  };
+
+  const showPage = (target: number) => {
+    const max = getPageCount();
+    if (isTurning || target === current || target < 0 || target >= max) return;
+    const isSpread = twoPageSpread.matches;
+    isTurning = true;
+    stage?.setAttribute('aria-busy', 'true');
+    updateControls();
+
+    if (isSpread) {
+      const outgoing = leaves[current];
+      const incoming = leaves[target];
+      const outgoingLeft = leftPageFor(current);
+      const incomingLeft = leftPageFor(target);
+      const isForward = target > current;
+
+      incoming.classList.add('is-underneath');
+      outgoing.classList.add(isForward ? 'is-turning-forward' : 'is-turning-back');
+      incomingLeft?.classList.add('is-revealing');
+      outgoingLeft?.classList.add('is-retiring');
+
+      const finishSpread = () => {
+        outgoing.classList.remove('is-active', 'is-leaving', 'is-turning-forward', 'is-turning-back');
+        outgoing.setAttribute('aria-hidden', 'true');
+        incoming.classList.add('is-active');
+        incoming.classList.remove('is-entering', 'is-underneath');
+        incoming.removeAttribute('aria-hidden');
+
+        outgoingLeft?.classList.remove('is-active', 'is-retiring');
+        outgoingLeft?.setAttribute('aria-hidden', 'true');
+        if (outgoingLeft === contents) outgoingLeft.setAttribute('inert', '');
+        incomingLeft?.classList.add('is-active');
+        incomingLeft?.classList.remove('is-revealing');
+        if (incomingLeft === contents) {
+          incomingLeft.removeAttribute('aria-hidden');
+          incomingLeft.removeAttribute('inert');
+        } else {
+          incomingLeft?.setAttribute('aria-hidden', 'true');
+        }
+
+        current = target;
+        isTurning = false;
+        stage?.removeAttribute('aria-busy');
+        updateControls();
+      };
+
+      if (reduceMotion.matches) {
+        finishSpread();
+        return;
+      }
+      window.setTimeout(finishSpread, 380);
+    } else {
+      const finishMobile = () => {
+        current = target;
+        setMobilePage(current);
+        isTurning = false;
+        stage?.removeAttribute('aria-busy');
+        updateControls();
+      };
+
+      if (reduceMotion.matches) {
+        finishMobile();
+        return;
+      }
+      window.setTimeout(finishMobile, 120);
+    }
+  };
+
+  previous?.addEventListener('click', () => showPage(current - 1));
+  next?.addEventListener('click', () => showPage(current + 1));
+
+  notebook?.addEventListener('wheel', (event) => {
+    if (!isIntersecting) return;
+    const horizontalDelta = Math.abs(event.deltaX) >= Math.abs(event.deltaY)
+      ? event.deltaX
+      : event.shiftKey
+        ? event.deltaY
+        : 0;
+    if (!horizontalDelta) return;
+    event.preventDefault();
+    if (wheelLocked || isTurning) return;
+    wheelLocked = true;
+    showPage(current + (horizontalDelta > 0 ? 1 : -1));
+    window.setTimeout(() => { wheelLocked = false; }, 420);
+  }, { passive: false });
+
+  notebook?.addEventListener('pointerdown', (event) => {
+    if (event.pointerType === 'mouse') return;
+    pointerStartX = event.clientX;
+    isPointerTracking = true;
+    notebook.setPointerCapture?.(event.pointerId);
+  });
+
+  notebook?.addEventListener('pointerup', (event) => {
+    if (!isPointerTracking) return;
+    isPointerTracking = false;
+    const distance = event.clientX - pointerStartX;
+    if (Math.abs(distance) < 48) return;
+    suppressClick = true;
+    showPage(current + (distance < 0 ? 1 : -1));
+    window.setTimeout(() => { suppressClick = false; }, 0);
+  });
+
+  notebook?.addEventListener('pointercancel', () => { isPointerTracking = false; });
+  notebook?.addEventListener('click', (event) => {
+    if (!suppressClick) return;
+    event.preventDefault();
+    event.stopPropagation();
+    suppressClick = false;
+  }, true);
+
+  twoPageSpread.addEventListener('change', () => {
+    if (twoPageSpread.matches) {
+      if (current > 0) current = Math.min(current - 1, leaves.length - 1);
+      setLeftPage(current);
+    } else {
+      setMobilePage(current);
+    }
+    updateControls();
+  });
+  setLeftPage(current);
+  updateControls();
+</script>

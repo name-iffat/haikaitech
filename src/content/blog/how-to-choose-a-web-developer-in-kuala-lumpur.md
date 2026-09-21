@@ -24,7 +24,7 @@ So treat "must be in KL" as a nice-to-have, not a requirement. What actually mat
 
 ### 1. Do they publish real prices?
 
-Vendors who hide pricing behind "contact us" are either selling you a process, or planning to discover your budget first. Publishers are transparent and confident. (Ours is public: [from RM1,500 one-time, or RM199/month managed](/services/).)
+Useful pricing pages explain both the starting point and why the final number changes. HaikaiTech publishes a [selected promotional starting price from RM1,500 plus indicative market context](/services/), while CMS, ecommerce, booking, integrations and systems are formally quoted.
 
 ### 2. Who owns the website?
 
@@ -38,7 +38,7 @@ Ask what's included post-launch and what it costs:
 - Updates and small changes — included, or billed per edit?
 - What happens when something breaks — response time?
 
-Many KL business owners get burned by cheap builds that cost RM200 for every tiny change afterwards. A flat renewal (like our RM350/year) or a managed plan (RM199/month) removes that anxiety.
+Many KL business owners get burned by cheap builds that hide domain, hosting, licence, maintenance and update costs. Ask for recurring and third-party costs to be identified in the quotation rather than relying on a headline package price.
 
 ### 4. Do they do SEO and analytics setup?
 
@@ -62,7 +62,7 @@ Ask for projects similar to yours (an SME site, not a flashy app). Ask what thei
 
 ## How we work
 
-If you're comparing us against others, here's the honest summary: fixed prices, published on a public page. You own the result. Chat on WhatsApp before anything is quoted. Registered, SSM-verifiable, serving clients across Malaysia from Penang — most of them in KL.
+If you're comparing us against others, here's the honest summary: a public promotional starting point, scope-based formal quotations, and agreed handover terms. Chat on WhatsApp before anything is quoted. Registered, SSM-verifiable, serving clients across Malaysia from Penang — most of them in KL.
 
 Want the pricing detail first? See [how much a business website costs in Malaysia](/blog/how-much-does-a-business-website-cost-in-malaysia/), or jump straight to [chat on WhatsApp](https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%27m%20comparing%20web%20developers%20and%20would%20like%20a%20quote.).
 

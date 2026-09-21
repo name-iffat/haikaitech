@@ -29,5 +29,10 @@ dist-ssr
 # Astro dev cache
 .astro/
 
+# Local design-review artifacts
+.playwright-cli/
+.impeccable/
+output/
+
 # Wrangler local cache
 .wrangler/

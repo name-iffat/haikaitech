@@ -1,13 +1,13 @@
 ---
-title: "Website Siap: A Complete Malaysian SME Website for RM1,500"
-description: "Exactly what you get with the Website Siap one-time package — 5 pages, WhatsApp, contact form, Google Maps, Google Analytics 4, basic SEO, SSL, and deployment — plus how the RM350/year renewal works."
+title: "Website Siap: Understanding HaikaiTech's RM1,500 Starting Promotion"
+description: "How HaikaiTech's selected website promotion works, what a formal quotation confirms, and when CMS, ecommerce, booking or integrations require a scope-based price."
 pubDate: 2026-08-06
 tags: [websites, website-siap, pricing, malaysia]
 ---
 
-"Website Siap" is our one-time package for Malaysian SMEs: **from RM1,500**, you get a complete business website, you own it outright, and there's no monthly commitment. This post is the full itemised breakdown — what's included, what isn't, and who it's for.
+"Website Siap" is our promotional starting route for selected Malaysian SME website scopes. Prices start from **RM1,500**, but the final quotation—not the headline—confirms the pages, content, revisions, timeline, integrations, ownership and recurring costs.
 
-## What you get for RM1,500
+## What a suitable promotional scope may include
 
 | Included | Notes |
 |---|---|
@@ -24,34 +24,29 @@ tags: [websites, website-siap, pricing, malaysia]
 | SSL setup | Padlock in the browser — trust for customers |
 | Deployment | Live on your domain, tested |
 
-That's a genuinely complete launch kit. What it's *not* is the upper tier of SEO, content marketing, or heavy customisation — those are add-ons (more below).
+The exact selection is confirmed in writing before work begins. A build with more pages, CMS, ecommerce, booking, payments, integrations or complex content does not automatically fit the promotional scope.
 
-## What's not included (and what it costs)
+## What may sit outside the promotional scope
 
 Transparency only works if we list the edges:
 
-- **Additional pages**: RM150–RM250 per page.
-- **Blog or CMS** (publish articles yourself): from RM500.
-- **Second language** (e.g., BM + English): from RM500.
-- **Professional copywriting**: quoted based on the amount of content.
-- **Logo design**: from RM300.
-- **Google Business Profile setup**: RM300.
-- **Business email setup**: RM150.
+- Additional pages or page types,
+- Blog, CMS or catalogue management,
+- A second language,
+- Professional copywriting,
+- Photography or video,
+- Product or content entry,
+- Booking, payment or ecommerce workflows,
+- Paid plugins, hosting and third-party services,
+- Complex integrations.
 
-None of these are upsells — they're the honest prices we'd quote anyway, listed on the [services and pricing page](/services/) so you can plan the total before you commit.
+These are not automatic add-ons at universal prices. They are included or separated in the formal quotation according to the real scope.
 
-## The RM350/year renewal, explained
+## Post-launch costs, explained
 
 A website isn't a one-time purchase in the strict sense: your **domain, hosting, and SSL** are recurring costs that exist whether you built the site with us or anyone else.
 
-The Website Siap renewal bundles them at a flat **RM350/year**:
-
-- Domain renewal
-- Hosting renewal
-- SSL certificate
-- Basic technical maintenance
-
-Content updates (new text, new photos, a new page) are billed separately — typically RM50–RM100 for a minor update, RM100–RM200 for a new section, and RM150–RM250 for a new page.
+The quotation should identify known domain, hosting, SSL, software, provider and maintenance costs. Content updates, new pages and new features after approval are quoted separately unless the quotation explicitly includes them.
 
 ## Who is Website Siap for?
 
@@ -59,19 +54,21 @@ It fits owners who:
 
 - Want a professional web presence **without a monthly subscription**,
 - Are comfortable managing their own content, or have a staff member who can,
-- Prefer one transparent payment and a clear renewal number,
+- Prefer a formal one-time quotation and clear handover terms,
 - Don't need heavy custom software right now.
 
-If instead you'd rather **never touch hosting or updates again**, the managed plan at RM199/month bundles all of that — the comparison is in our post on [the RM199/month managed website plan](/blog/rm199-managed-website-plan-malaysia/).
+HaikaiTech does not currently offer a public monthly website subscription. Read [website ownership and maintenance costs in Malaysia](/blog/rm199-managed-website-plan-malaysia/) to understand the post-launch questions that should appear in your quotation.
 
 ## How the process works
 
 1. **Chat on WhatsApp** — we scope what you need.
-2. **Get a fixed quotation** — if your scope fits the package, it's RM1,500; if it needs more, you'll see the itemised add-ons before agreeing.
-3. **We build and deploy** — you review along the way.
-4. **You own it** — full handover of credentials and source.
+2. **Get a formal quotation** — the promotion applies only when the confirmed scope fits it.
+3. **Pay 50% to begin** — unless an approved phased build states different terms.
+4. **We build, review and test** — you review on staging.
+5. **Pay the final 50%** — before final launch or handover.
+6. **Receive the agreed handover** — credentials, source and deliverables subject to third-party licences.
 
-Ready to go? [Chat on WhatsApp](https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%27d%20like%20a%20Website%20Siap%20for%20RM1%2C500.) or read the full [services & pricing](/services/).
+Ready to discuss the scope? [Chat on WhatsApp](https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%27d%20like%20to%20discuss%20the%20website%20promotion.) or read the full [services & pricing guide](/services/).
 
 ## Where we work
 

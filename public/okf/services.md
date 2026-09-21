@@ -1,62 +1,59 @@
 ---
 type: Service
 title: HaikaiTech Services & Pricing
-description: Business websites (one-time or managed monthly), company profile design, custom software (quotation), add-ons, and maintenance pricing.
+description: Promotional website scopes from RM1,500, indicative Malaysian market context, and quotation-based CMS, ecommerce, booking, automation and custom systems.
 resource: https://haikaitech.my/services/
 tags: [haikaitech, services, pricing, websites, malaysia]
 ---
 
 # Services & Pricing
 
-We serve businesses across all of Malaysia — most of our clients are based in Kuala Lumpur — with everything handled remotely.
+HaikaiTech serves businesses across Malaysia and beyond. Public pricing is a guide to the likely commercial route, not a mirror of internal quotation totals.
 
-## Website Siap — One-Time
+## Selected website promotion
 
-- Price: from RM1,500
-- Suited to: clients who want to own the website and manage it themselves
-- Includes: professional custom website, up to 5 pages, mobile responsive, WhatsApp integration, contact form, Google Maps, Google Search ready, Google Search Console setup, Google Analytics 4, basic SEO, SSL, website deployment
-- Annual renewal: RM350/year (domain renewal, hosting renewal, SSL, basic technical maintenance; content updates billed separately)
+- Promotional starting price: from RM1,500
+- Availability: selected focused business-website scopes
+- Final price: confirmed in a formal quotation
+- Quotation confirms: pages, content, revisions, timeline, integrations, ownership, handover, recurring costs and third-party costs
+- Standard payment flow: 50% to start and 50% before final launch or handover
 
-## Business Website Plan — Managed (Recommended)
+The promotion is not a guarantee that every website costs RM1,500.
 
-- Price: RM199/month, 12-month minimum
-- Includes: professional website, hosting, domain (if required), SSL, website maintenance, security monitoring, regular backups, small content updates, technical support, Google Search ready
-- No large upfront payment
+## Quotation-based routes
 
-## Company Profile Design
+- Business websites and CMS: larger websites, multiple services, editable content, catalogues and lead-generation requirements
+- Ecommerce, booking and payment: products, variants, stock, delivery, gateways, personalisation, pre-orders and integrations
+- Custom systems and automation: dashboards, portals, workflow tools, integrations, AI agents and custom applications
+- Phased builds: available where a larger system can be divided into useful approved stages
 
-- Price: RM800–RM1,200
-- Depends on: number of pages, content readiness, graphic design complexity
-- Usually bundled with the website (e.g., company profile RM1,000 + business website plan RM199/month, or company profile + website RM2,300 one-time)
+HaikaiTech does not currently offer a public monthly website subscription.
 
-## Add-ons
+## Indicative Malaysian market context
 
-| Service | Price |
-|---|---|
-| Additional page | RM150–250/page |
-| Additional language (BM/EN) | From RM500 |
-| Blog/CMS | From RM500 |
-| Copywriting | Quotation |
-| Logo design | From RM300 |
-| Google Business Profile setup | RM300 |
-| Email setup | RM150 |
-| Website migration | Quotation |
+| Website type | Typical market range |
+|---|---:|
+| Brochure / business profile | RM1,500–RM5,000 |
+| Lead-generation website | RM4,000–RM10,000 |
+| Corporate / multi-service website | RM8,000–RM20,000 |
+| Ecommerce website | RM8,000–RM25,000 |
+| Custom platform | RM15,000–RM50,000+ |
 
-## Maintenance (one-time clients)
+These are indicative Malaysian market ranges based on public industry pricing references. They are not HaikaiTech fixed prices or a guarantee of project cost.
 
-| Service | Price |
-|---|---|
-| Minor update | RM50–100 |
-| New section | RM100–200 |
-| New page | RM150–250 |
-| Major redesign | Quotation |
+## What changes the quotation
 
-## Custom software & systems
-
-Custom web apps, business dashboards, .NET/Blazor systems, Unity visualizations, and integrations are quotation-based — pricing depends on scope. Chat on WhatsApp to get a quote.
+- Number of pages
+- Custom design and layout complexity
+- Content readiness
+- CMS and catalogue requirements
+- Booking, payment, ecommerce and integrations
+- Ongoing updates, hosting and third-party services
 
 ## Links
 
+- [Automation services](https://haikaitech.my/services/automation/)
+- [Ecommerce development](https://haikaitech.my/services/ecommerce/)
 - [Organization](organization.md)
 - [Contact](contact.md)
 - [Toolkit](toolkit.md)

@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WorkbenchNav from './WorkbenchNav.astro';
+import FooterWorkbench from '../../components/FooterWorkbench';
+import StickyBooking from '../../components/StickyBooking';
+import WorkbenchIcon from './WorkbenchIcon.astro';
+import { serviceDetails } from '../data/services';
+import '../styles/workbench.css';
+import '../styles/service-detail.css';
+
+type ServiceDetail = typeof serviceDetails[keyof typeof serviceDetails];
+
+interface Props {
+  service: ServiceDetail;
+  canonical: string;
+}
+
+const { service, canonical } = Astro.props;
+const whatsapp = 'https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%27d%20like%20to%20discuss%20a%20project.';
+---
+
+<BaseLayout title={service.pageTitle} description={service.pageDescription} canonical={canonical}>
+  <div class="workbench wb-detail-site bg-paper bg-grid-pattern">
+    <WorkbenchNav />
+    <main class="sd-main">
+      <section class="sd-hero" aria-labelledby="service-detail-title">
+        <div class="sd-hero-copy">
+          <nav class="sd-breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Home</a><span aria-hidden="true">/</span><a href="/services/">Services</a><span aria-hidden="true">/</span><span>{service.eyebrow.split(' / ')[0]}</span>
+          </nav>
+          <p class="wb-eyebrow sd-eyebrow"><WorkbenchIcon name={service.icon} size={18} />{service.eyebrow}</p>
+          <h1 id="service-detail-title">{service.title.split('\n').map((line) => <span>{line}</span>)}</h1>
+          <p class="sd-hero-description">{service.description}</p>
+          <div class="sd-hero-actions">
+            <a class="wb-button wb-button--painted" href={whatsapp} target="_blank" rel="noopener noreferrer"><span>Start a conversation</span></a>
+            <a class="wb-button wb-secondary" href="/#projects"><span>See the work</span></a>
+          </div>
+          <p class="sd-hero-note">{service.heroNote}</p>
+        </div>
+        <div class="sd-hero-visual" aria-hidden="true">
+          <slot name="visual" />
+        </div>
+      </section>
+
+      <div class="sd-content">
+        <slot name="content" />
+      </div>
+
+      <section class="sd-cta" aria-labelledby="service-cta-title">
+        <div>
+          <p class="wb-eyebrow">Next useful step</p>
+          <h2 id="service-cta-title">Bring the messy bit.<br /><em>We’ll map it out.</em></h2>
+        </div>
+        <div class="sd-cta-copy">
+          <p>Tell us what currently takes too much time, loses too much context or needs a better storefront. We’ll reply with a practical next step.</p>
+          <div class="sd-cta-actions">
+            <a class="wb-button wb-button--painted" href={whatsapp} target="_blank" rel="noopener noreferrer"><span>Chat on WhatsApp</span></a>
+            <a class="sd-text-link" href="mailto:hq@haikaitech.my?subject=Project%20enquiry">Email hq@haikaitech.my</a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <FooterWorkbench />
+    <StickyBooking client:load />
+  </div>
+</BaseLayout>

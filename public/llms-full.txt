@@ -5,37 +5,38 @@ HaikaiTech Solutions is a registered software engineering studio in Penang, Mala
 ## What we do
 
 ### Business websites
-Professional, mobile-responsive websites for Malaysian businesses. Two ways to work:
-- **Website Siap (one-time)**: from RM1,500. Up to 5 pages, mobile responsive, WhatsApp integration, contact form, Google Maps, Google Search ready, Google Search Console setup, Google Analytics 4, basic SEO, SSL, and deployment. Annual renewal RM350/year covers domain, hosting, SSL, and basic technical maintenance. Content updates billed separately.
-- **Business Website Plan (managed)**: RM199/month, 12-month minimum. Everything managed — professional website, hosting, domain (if required), SSL, website maintenance, security monitoring, regular backups, small content updates, and technical support. No large upfront payment.
+Professional, mobile-responsive websites for Malaysian businesses:
+- **Selected website promotion**: from RM1,500 for suitable focused scopes. The formal quotation confirms pages, content, revisions, timeline, integrations, ownership, recurring costs and handover terms.
+- **Business website and CMS**: quotation-based for larger websites, multiple services, editable content, catalogues and lead-generation requirements.
+- **Ecommerce, booking and payment**: quotation-based because products, stock, delivery, gateways, personalisation and integrations change the scope.
+
+HaikaiTech does not currently offer a public monthly website subscription.
 
 ### Company profile design
-Professional company profile documents, RM800–RM1,200 depending on number of pages, content readiness, and design complexity. Usually bundled with a website (e.g., company profile + website from RM2,300 one-time, or company profile + monthly plan).
+Professional company profile documents are quoted according to page count, content readiness and design complexity. Document and website work can be quoted together after both scopes are confirmed.
 
 ### Custom software & systems
 Quotation-based work: custom web apps, business dashboards, .NET/Blazor systems, Unity visualizations, and integrations. Pricing depends on scope — chat on WhatsApp for a quote.
 
-### Add-ons
-- Additional page: RM150–250 per page
-- Additional language (BM/EN): from RM500
-- Blog/CMS: from RM500
-- Copywriting: quotation
-- Logo design: from RM300
-- Google Business Profile setup: RM300
-- Email setup: RM150
-- Website migration: quotation
+### Possible additional scope
+- Additional pages or languages
+- Blog, CMS or catalogue management
+- Copywriting, photography, video or content entry
+- Paid plugins and third-party services
+- Booking, payment or complex integrations
+- Website migration
 
-### Maintenance for one-time clients
-- Minor update: RM50–100
-- New section: RM100–200
-- New page: RM150–250
-- Major redesign: quotation
+### Post-launch costs
+Domain, hosting, paid software, provider usage, maintenance, content updates and new development are identified or quoted according to the project. New functionality is separate from routine maintenance.
 
 ## How to engage
 
 1. Message us on WhatsApp (+60 14-753 3499) or email hq@haikaitech.my.
-2. We scope the project and send a fixed quotation.
-3. We build and deploy. You own the result.
+2. We identify the suitable promotional, fixed-quotation or phased route.
+3. We issue a formal quotation confirming scope, exclusions, payment, ownership and known external costs.
+4. Standard projects use 50% payment to start and 50% before final launch or handover.
+5. We build, review and test on staging.
+6. We hand over the agreed credentials, source and deliverables after completion.
 
 ## Contact
 
@@ -48,8 +49,8 @@ Quotation-based work: custom web apps, business dashboards, .NET/Blazor systems,
 Guides and field notes for Malaysian businesses:
 
 - https://haikaitech.my/blog/how-much-does-a-business-website-cost-in-malaysia/ — How Much Does a Business Website Cost in Malaysia? (2026 Guide)
-- https://haikaitech.my/blog/website-siap-malaysian-sme-website/ — Website Siap: A Complete Malaysian SME Website for RM1,500
-- https://haikaitech.my/blog/rm199-managed-website-plan-malaysia/ — The RM199/Month Managed Website Plan — What You Get
+- https://haikaitech.my/blog/website-siap-malaysian-sme-website/ — Website Siap: Understanding HaikaiTech's RM1,500 Starting Promotion
+- https://haikaitech.my/blog/rm199-managed-website-plan-malaysia/ — Website Ownership and Maintenance Costs in Malaysia
 - https://haikaitech.my/blog/how-to-choose-a-web-developer-in-kuala-lumpur/ — How to Choose a Web Developer for Your KL Business (Malaysia-Wide)
 - https://haikaitech.my/blog/custom-software-malaysia-web-apps-and-dashboards/ — Custom Software in Malaysia: Web Apps, Dashboards, .NET, and Unity
 - https://haikaitech.my/blog/company-profile-website-cost-malaysia/ — How Much Does a Company Profile Website Cost in Malaysia?

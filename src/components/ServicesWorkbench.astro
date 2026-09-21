@@ -1,0 +1,191 @@
+---
+import { Image } from 'astro:assets';
+import fuzzfloorImg from '../assets/projects/fuzzfloor.webp';
+import workforceDemoImg from '../assets/projects/mze-workforce-demo.png';
+import aaBurgerImg from '../assets/projects/aaburger-kiosk-desktop.png';
+import browserBuilder from '../assets/concept-decorations/refined/service-browser-builder.png';
+import systemsAssembly from '../assets/concept-decorations/refined/service-systems-assembly.png';
+import productWorkbench from '../assets/concept-decorations/refined/service-product-workbench.png';
+import careToolkit from '../assets/concept-decorations/refined/service-care-toolkit.png';
+import { SKILLS } from '../../constants';
+import WorkbenchIcon from './WorkbenchIcon.astro';
+import { serviceExtensions } from '../data/services';
+
+const services = [
+  {
+    icon: 'globe',
+    title: ['Business', 'websites'],
+    label: 'Company sites / Enquiries',
+    type: 'website',
+    description: 'Help customers understand your business and take the next step, from their first visit to a WhatsApp enquiry.',
+    href: '/services/',
+    action: 'Explore website plans',
+  },
+  {
+    icon: 'workflow',
+    title: ['Business', 'systems'],
+    label: 'Dashboards / Internal tools',
+    type: 'system',
+    description: "Bring your team's day-to-day processes into a system that fits how you work.",
+    href: 'https://mzdemo.haikaitech.my/',
+    action: 'Explore the system demo',
+  },
+  {
+    icon: 'blocks',
+    title: ['Digital products', '& experiences'],
+    label: 'Customer tools / Interactive demos',
+    type: 'product',
+    description: 'Turn a useful idea into something people can use, explore and interact with.',
+    href: 'https://aaburger.haikaitech.my/',
+    action: 'Explore AA Burger Kiosk',
+  },
+  {
+    icon: 'wrench',
+    title: ['Website', 'care'],
+    label: 'Updates / Maintenance',
+    type: 'care',
+    description: 'Keep your site current as your business changes, with post-launch updates quoted around what you need.',
+    href: '/services/',
+    action: 'View support options',
+  },
+];
+---
+
+<section id="services" class="workbench wb-services" aria-labelledby="services-title">
+  <header class="wb-services-head">
+    <div>
+      <p class="wb-eyebrow">Ways we help</p>
+      <h2 id="services-title">Serious builds.<br />A little <em>character.</em></h2>
+    </div>
+    <div class="wb-services-intro">
+      <p>Websites for your customers. Systems for your team. Useful ideas, built around your business.</p>
+    </div>
+  </header>
+
+  <div class="wb-services-list">
+    {services.map((service) => (
+      <article class:list={['wb-service-row', `wb-service-row--${service.type}`]}>
+        <span class="wb-service-icon" aria-hidden="true"><WorkbenchIcon name={service.icon} /></span>
+        <div class="wb-service-title">
+          <h3>{service.title.map((line) => <>{line}<br /></>)}</h3>
+          <p>{service.label}</p>
+        </div>
+
+        <div class="wb-service-object" aria-hidden="true">
+          {service.type === 'website' && (
+            <>
+              <div class="wb-service-browser wb-service-browser--website">
+                <div class="wb-service-browser-bar"><span>● ● ●</span> FUZZFLOOR / MOBILE COMMERCE</div>
+                <Image src={fuzzfloorImg} alt="" width={500} />
+              </div>
+              <Image
+                class="wb-service-browser-builder"
+                src={browserBuilder}
+                alt=""
+                aria-hidden="true"
+                width={440}
+                loading="lazy"
+              />
+              <span class="wb-service-scribble">built to earn its keep</span>
+            </>
+          )}
+          {service.type === 'system' && (
+            <>
+              <Image
+                class="wb-service-assembly wb-service-assembly--systems"
+                src={systemsAssembly}
+                alt=""
+                aria-hidden="true"
+                width={700}
+                loading="lazy"
+              />
+              <div class="wb-service-browser wb-service-browser--system">
+                <Image src={workforceDemoImg} alt="" width={700} />
+                <div class="wb-service-browser-bar">MZE WORKER SYSTEM / DEMO</div>
+              </div>
+            </>
+          )}
+          {service.type === 'product' && (
+            <div class="wb-service-scene wb-service-scene--product">
+              <Image
+                class="wb-service-assembly wb-service-assembly--product"
+                src={productWorkbench}
+                alt=""
+                aria-hidden="true"
+                width={700}
+                loading="lazy"
+              />
+              <div class="wb-service-monitor-screen">
+                <Image src={aaBurgerImg} alt="" width={700} />
+              </div>
+            </div>
+          )}
+          {service.type === 'care' && (
+            <div class="wb-service-scene wb-service-scene--care">
+              <Image
+                class="wb-service-assembly wb-service-assembly--care"
+                src={careToolkit}
+                alt=""
+                aria-hidden="true"
+                width={700}
+                loading="lazy"
+              />
+              <div class="wb-service-checklist wb-service-checklist--care">
+                <strong>CARE / CHECKLIST</strong>
+                <span><i>✓</i> Content updates</span>
+                <span><i>✓</i> Maintenance</span>
+                <span><i>✓</i> Small changes</span>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div class="wb-service-copy">
+          <p>{service.description}</p>
+          <a href={service.href} target={service.href.startsWith('http') ? '_blank' : undefined} rel={service.href.startsWith('http') ? 'noopener noreferrer' : undefined}>
+            {service.action}
+          </a>
+        </div>
+      </article>
+    ))}
+  </div>
+
+  <section class="wb-services-extensions" aria-labelledby="services-extensions-title">
+    <header>
+      <p id="services-extensions-title">Extend the build</p>
+      <span>new paths, same workshop</span>
+    </header>
+    <div class="wb-services-extension-list">
+      {serviceExtensions.map((extension) => (
+        <a class="wb-services-extension" href={extension.href}>
+          <WorkbenchIcon name={extension.icon} size={22} />
+          <span class="wb-services-extension-copy">
+            <small>{extension.eyebrow}</small>
+            <strong>{extension.title}</strong>
+            <span>{extension.description}</span>
+          </span>
+          <span class="wb-services-extension-action">{extension.action}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <details class="wb-services-tools">
+    <summary>Tech, tools &amp; toys <span>— behind the build</span></summary>
+    <div class="wb-services-tools-grid">
+      {SKILLS.map((group) => (
+        <section>
+          <h3>{group.category}</h3>
+          <ul>
+            {group.items.map((skill) => <li>{skill}</li>)}
+          </ul>
+        </section>
+      ))}
+    </div>
+  </details>
+
+  <footer class="wb-services-footer">
+    <p>A clear scope. A useful next step.</p>
+    <a class="wb-button wb-primary" href="/services/">Explore services &amp; pricing</a>
+  </footer>
+</section>

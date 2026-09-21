@@ -1,5 +1,5 @@
 import React from 'react';
-import { MessageCircle, Mail, ArrowRight } from 'lucide-react';
+import { Clock3, FileCheck2, Mail, MessageCircle } from 'lucide-react';
 import { track } from '../track';
 
 const WHATSAPP_NUMBER = '60147533499';
@@ -22,10 +22,10 @@ const StartProjectSection: React.FC = () => {
   }, []);
 
   const steps = [
-    { num: '01', text: 'You message us on WhatsApp or email' },
-    { num: '02', text: 'We reply fast — usually within the hour during business hours' },
-    { num: '03', text: 'You get a fixed quotation, no obligation' },
-  ];
+    { icon: MessageCircle, text: 'You message us on WhatsApp or email' },
+    { icon: Clock3, text: 'We reply fast — usually within the hour during business hours' },
+    { icon: FileCheck2, text: 'You get a fixed quotation, no obligation' },
+  ] as const;
 
   return (
     <section id="start" className="mb-12 scroll-mt-28">
@@ -64,8 +64,8 @@ const StartProjectSection: React.FC = () => {
 
           <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
             {steps.map((step) => (
-              <div key={step.num} className="flex items-center gap-3 bg-white/5 border border-white/10 rounded-xl p-4">
-                <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[#25D366]/20 text-[#25D366] font-mono text-sm flex items-center justify-center font-bold">{step.num}</span>
+              <div key={step.text} className="flex items-center gap-3 bg-white/5 border border-white/10 rounded-xl p-4">
+                <span className="flex-shrink-0 w-8 h-8 text-[#25D366] flex items-center justify-center" aria-hidden="true"><step.icon className="w-5 h-5" strokeWidth={1.75} /></span>
                 <p className="text-sm text-slate-300 text-left">{step.text}</p>
               </div>
             ))}

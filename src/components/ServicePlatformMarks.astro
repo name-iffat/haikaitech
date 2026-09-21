@@ -1,0 +1,30 @@
+---
+interface Props {
+  kind: 'automation' | 'ecommerce';
+}
+
+const { kind } = Astro.props;
+
+const marks = kind === 'automation'
+  ? [
+      { label: 'n8n', src: 'https://cdn.simpleicons.org/n8n/1E3A8A', alt: 'n8n logo' },
+      { label: 'Hermes Agent', src: 'https://raw.githubusercontent.com/NousResearch/hermes-agent/main/web/public/favicon.ico', alt: 'Hermes Agent logo' },
+      { label: 'Custom scripts', src: '', alt: '' },
+    ]
+  : [
+      { label: 'Shopify', src: 'https://cdn.simpleicons.org/shopify/1E3A8A', alt: 'Shopify logo' },
+      { label: 'WooCommerce', src: 'https://cdn.simpleicons.org/woocommerce/1E3A8A', alt: 'WooCommerce logo' },
+    ];
+---
+
+<div class="sd-platform-marks" aria-label={kind === 'automation' ? 'Automation platforms and tools' : 'Ecommerce platforms'}>
+  <span class="sd-platform-marks__label">{kind === 'automation' ? 'TOOLS IN THE WORKSHOP' : 'PLATFORM OPTIONS'}</span>
+  <div class="sd-platform-marks__list">
+    {marks.map((mark) => (
+      <span class="sd-platform-mark">
+        {mark.src ? <img src={mark.src} alt={mark.alt} width="18" height="18" loading="lazy" /> : <span class="sd-platform-mark__script" aria-hidden="true">&lt;/&gt;</span>}
+        <span>{mark.label}</span>
+      </span>
+    ))}
+  </div>
+</div>

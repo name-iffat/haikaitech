@@ -1,0 +1,40 @@
+---
+import { Image } from 'astro:assets';
+import avsLogo from '../assets/logos/avsbina-logo.png';
+import adyUmrahLogo from '../assets/logos/adyumrah-logo.png';
+import fuzzfloorLogo from '../assets/logos/fuzzfloor-logo.png';
+import atOneLogo from '../assets/logos/atone-logo.png';
+import aaBurgerLogo from '../assets/logos/AAburger-kiosk-logo.png';
+import cityThreeLogo from '../assets/logos/citythree-logo.png';
+import hssLogo from '../assets/logos/hss-logo.png';
+import kopiTebuLogo from '../assets/logos/kopitebu-logo.png';
+import zakrulLogo from '../assets/logos/logo-ghost-outline.webp';
+
+// Only show logo assets paired with a published project page or verified live destination.
+const clientLogos = [
+  { id: 'avs', name: 'AVS Design & Construction', href: '/projects/avsbina/', logo: avsLogo },
+  { id: 'adyumrah', name: 'Ady Umrah Hajj', href: '/projects/adyumrah/', logo: adyUmrahLogo },
+  { id: 'fuzzfloor', name: 'Fuzzfloor', href: '/projects/fuzzfloor/', logo: fuzzfloorLogo },
+  { id: 'atone', name: 'AT One Construction', href: '/projects/atone/', logo: atOneLogo },
+  { id: 'aaburger', name: 'AA Burger Kiosk', href: 'https://aaburger.haikaitech.my/', logo: aaBurgerLogo, external: true },
+  { id: 'citythree', name: 'CityThree', href: 'https://citythree.my/', logo: cityThreeLogo, external: true },
+  { id: 'hss', name: 'HSS Wireless CCTV', href: 'https://wirelesscctv.com.my/', logo: hssLogo, external: true },
+  { id: 'kopitebu', name: 'Kopi Tebu', href: 'https://kopitebu-website.pages.dev/', logo: kopiTebuLogo, external: true },
+  { id: 'zakrul', name: 'Zakrul', href: 'https://zakrul.com/', logo: zakrulLogo, external: true },
+];
+---
+
+<section id="trust" class="workbench wb-trust" aria-label="Client proof">
+  <h2 class="wb-trust-heading">Our amazing clients</h2>
+  <div class="wb-trust-register">
+    <ul class="wb-client-list" aria-label="Verified HaikaiTech client projects">
+      {clientLogos.map((client) => (
+        <li>
+          <a href={client.href} aria-label={`View ${client.name} project`} target={client.external ? '_blank' : undefined} rel={client.external ? 'noopener noreferrer' : undefined}>
+            <Image class={`wb-client-logo wb-client-logo--${client.id}`} src={client.logo} width={300} format="webp" quality={80} alt={client.name} loading="lazy" />
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

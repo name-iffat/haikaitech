@@ -1,0 +1,60 @@
+---
+import ServiceDetailLayout from '../../components/ServiceDetailLayout.astro';
+import WorkbenchIcon from '../../components/WorkbenchIcon.astro';
+import { serviceDetails } from '../../data/services';
+import { Image } from 'astro:assets';
+import ServicePlatformMarks from '../../components/ServicePlatformMarks.astro';
+import automationClay from '../../assets/concept-decorations/service-automation-clay.png';
+
+const service = serviceDetails.automation;
+---
+
+<ServiceDetailLayout service={service} canonical="https://haikaitech.my/services/automation/">
+  <div slot="visual" class="sd-art sd-automation-art">
+    <Image class="sd-clay-assembly sd-clay-assembly--automation" src={automationClay} alt="" width={1200} widths={[480, 800, 1200]} sizes="(max-width: 767px) calc(100vw - 48px), (max-width: 1199px) 55vw, 720px" format="webp" loading="eager" fetchpriority="high" />
+    <ServicePlatformMarks kind="automation" />
+  </div>
+
+  <section slot="content" class="sd-content-section" aria-labelledby="automation-fit-title">
+    <header class="sd-section-heading">
+      <WorkbenchIcon name="workflow" size={22} />
+      <h2 id="automation-fit-title">Start with the repeated bit.</h2>
+      <p>Automation is most useful when it removes a clear handoff or keeps context moving between the tools your team already uses.</p>
+    </header>
+    <dl class="sd-row-list">
+      <div class="sd-row"><dt>Enquiry intake</dt><dd>Capture an incoming request, sort the useful details and prepare the next human reply.</dd></div>
+      <div class="sd-row"><dt>Team handoffs</dt><dd>Move information from one step to the next without making people copy the same context into every system.</dd></div>
+      <div class="sd-row"><dt>Routine checks</dt><dd>Run a repeatable check or notification on a schedule, with a visible place for someone to review the result.</dd></div>
+    </dl>
+  </section>
+
+  <section slot="content" class="sd-content-section" aria-labelledby="automation-stack-title">
+    <header class="sd-section-heading">
+      <WorkbenchIcon name="settings" size={22} />
+      <h2 id="automation-stack-title">The workshop has three tools.</h2>
+      <p>Choose the smallest useful layer for the job. The technology follows the workflow, not the other way around.</p>
+    </header>
+    <dl class="sd-row-list">
+      <div class="sd-row"><dt>Hermes agents</dt><dd>Set up an agent to work through a bounded task, with explicit instructions and a human checkpoint where needed.</dd></div>
+      <div class="sd-row"><dt>n8n workflows</dt><dd>Connect services and repeatable steps visually, so the handoff is easier to inspect and maintain.</dd></div>
+      <div class="sd-row"><dt>Custom scripts</dt><dd>Handle the edge cases that do not belong in a connector, with a small script shaped around your actual process.</dd></div>
+    </dl>
+  </section>
+
+  <section slot="content" class="sd-content-section" aria-labelledby="automation-proof-title">
+    <header class="sd-section-heading">
+      <WorkbenchIcon name="database" size={22} />
+      <h2 id="automation-proof-title">Keep the system understandable.</h2>
+      <p>Every automation handoff should be explainable, reviewable and possible to change when the business changes.</p>
+    </header>
+    <dl class="sd-row-list">
+      <div class="sd-row"><dt>01 / Map</dt><dd>Describe the current process, where context gets lost and what “done” looks like.</dd></div>
+      <div class="sd-row"><dt>02 / Build</dt><dd>Set up the smallest useful workflow, agent or script and test it against real examples.</dd></div>
+      <div class="sd-row"><dt>03 / Handover</dt><dd>Document the moving parts, the human decisions and the next safe change.</dd></div>
+    </dl>
+    <div class="sd-proof">
+      <p><strong>Related demo:</strong> the MZE Worker System shows the kind of operations thinking that can sit behind a workflow. It is a demo, not a client outcome claim.</p>
+      <a href="https://mzdemo.haikaitech.my/" target="_blank" rel="noopener noreferrer">Open the workforce demo</a>
+    </div>
+  </section>
+</ServiceDetailLayout>
