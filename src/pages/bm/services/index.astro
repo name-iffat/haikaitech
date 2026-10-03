@@ -1,0 +1,145 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import WorkbenchNav from '../../../components/WorkbenchNav.astro';
+import WorkbenchIcon from '../../../components/WorkbenchIcon.astro';
+import FooterWorkbench from '../../../../components/FooterWorkbench';
+import StickyBooking from '../../../../components/StickyBooking';
+import draftingBoardArt from '../../../assets/concept-decorations/refined/hero-drafting-board.webp';
+import coffeeCupArt from '../../../assets/concept-decorations/refined/hero-coffee-cup.webp';
+import rulerArt from '../../../assets/concept-decorations/refined/hero-engineering-ruler.webp';
+import '../../../styles/workbench.css';
+import '../../../styles/services-pricing.css';
+
+const canonical = 'https://haikaitech.my/bm/services/';
+const alternates = { en: 'https://haikaitech.my/services/', bm: canonical };
+const whatsapp = 'https://wa.me/60147533499?text=Salam%20HaikaiTech%2C%20saya%20ingin%20mendapatkan%20sebut%20harga%20untuk%20laman%20web%20atau%20sistem.';
+
+const quickFacts = [
+  ['Titik mula', 'Skop sebelum harga'],
+  ['Harga akhir', 'Disahkan melalui sebut harga'],
+  ['Bayaran', '50% mula / 50% serahan'],
+  ['Pemilikan', 'Hasil yang dipersetujui diserahkan'],
+];
+const marketRanges = [
+  ['Profil syarikat / perniagaan', 'RM1,500–RM5,000', '3–5 halaman, maklumat syarikat, servis, hubungan dan WhatsApp'],
+  ['Laman web mendapatkan pelanggan', 'RM4,000–RM10,000', 'Lebih banyak halaman, seruan tindakan, borang dan perancangan penukaran'],
+  ['Laman korporat / pelbagai servis', 'RM8,000–RM20,000', '10–20 halaman, pelbagai servis, projek, pasukan dan struktur kandungan'],
+  ['Laman web e-dagang', 'RM8,000–RM25,000', 'Katalog produk, troli, pembayaran, penghantaran dan aliran stok'],
+  ['Platform tersuai', 'RM15,000–RM50,000+', 'Tempahan, keahlian, papan pemuka, integrasi dan sistem operasi'],
+];
+const pricingModels = [
+  ['Binaan sekali dengan harga promosi', 'Skop standard yang ditetapkan bermula pada harga promosi; sebut harga mengesahkan skop akhir.', 'Kehadiran perniagaan yang ringkas', 'Hanya untuk skop terpilih'],
+  ['Sebut harga tetap mengikut skop', 'Keperluan disemak sebelum harga tetap dan hasil kerja dikeluarkan.', 'CMS, laman lebih besar, e-dagang dan integrasi', 'Model utama bagi kebanyakan projek'],
+  ['Binaan tersuai berfasa', 'Sistem lebih besar dibahagikan kepada peringkat yang berguna dan diluluskan.', 'Papan pemuka, tempahan dan alat aliran kerja', 'Digunakan apabila sesuai dari segi teknikal'],
+  ['Langganan bulanan', 'Binaan, hos dan sokongan digabungkan dalam bayaran berulang.', 'Pemilik yang mahukan model bayaran berkala', 'Tidak ditawarkan buat masa ini'],
+];
+const offers = [
+  { icon: 'globe', label: 'Skop promosi terpilih', title: 'Promosi laman web', price: 'Bermula RM1,500', description: 'Untuk laman web perniagaan dengan skop promosi yang ditetapkan. Halaman, kandungan, semakan, tempoh dan tambahan akan disahkan dalam sebut harga.', action: 'Bincang skop promosi', href: whatsapp, external: true },
+  { icon: 'layout', label: 'Binaan berasaskan kandungan', title: 'Laman web perniagaan & CMS', price: 'Sebut harga', description: 'Untuk laman lebih besar, pelbagai servis, CMS, pengurusan katalog, kemas kini kandungan atau keperluan mendapatkan pelanggan.', action: 'Bincang skop laman web', href: whatsapp, external: true },
+  { icon: 'blocks', label: 'Laluan e-dagang', title: 'E-dagang, tempahan & bayaran', price: 'Sebut harga', description: 'Harga bergantung pada produk, variasi, stok, penghantaran, gerbang bayaran, pra-tempahan, integrasi dan alat pihak ketiga.', action: 'Teroka binaan e-dagang', href: '/bm/services/ecommerce/', external: false },
+  { icon: 'workflow', label: 'Laluan operasi', title: 'Sistem tersuai & automasi', price: 'Sebut harga', description: 'Untuk papan pemuka, portal, tempahan, aliran kerja dalaman, integrasi, ejen AI, automasi dan aplikasi web tersuai.', action: 'Teroka binaan automasi', href: '/bm/services/automation/', external: false },
+];
+const priceFactors = [
+  ['Bilangan halaman', 'Lebih banyak halaman memerlukan struktur kandungan, keputusan reka bentuk, semakan dan ujian tambahan.'],
+  ['Kerumitan reka bentuk', 'Susun atur ringkas biasanya lebih kecil skopnya berbanding sistem visual tersuai dengan pelbagai jenis halaman.'],
+  ['Kesediaan kandungan', 'Teks dan imej yang diluluskan membantu binaan bergerak lancar. Penulisan, suntingan atau pencarian kandungan menambah skop.'],
+  ['Keperluan CMS dan katalog', 'Kandungan boleh sunting, rekod produk dan kebenaran pengguna memerlukan persediaan serta ujian tambahan.'],
+  ['Bayaran dan integrasi', 'Tempahan, e-dagang, gerbang bayaran dan alat bersambung menambah aliran kerja untuk disahkan.'],
+  ['Servis berterusan', 'Hos, kemas kini dan servis pihak ketiga dinyatakan berasingan supaya kos pemilikan jelas.'],
+];
+const extras = ['Penulisan kandungan', 'Fotografi dan video', 'Kemasukan produk atau kandungan', 'Pembaharuan domain dan hos', 'Plugin berbayar atau alat berlesen', 'Caj transaksi gerbang bayaran', 'Belanjawan iklan', 'Integrasi kompleks', 'Semakan besar selepas kelulusan', 'Halaman baharu di luar skop dipersetujui', 'Kos data, storan atau penyedia untuk sistem tersuai'];
+const process = [
+  ['Bincang perniagaan', 'Kongsi perkara yang perlu dipermudah, siapa yang akan menggunakannya dan apa yang sudah tersedia.'],
+  ['Pilih laluan yang sesuai', 'Kami tentukan sama ada kerja sesuai untuk promosi, sebut harga tetap atau binaan berfasa.'],
+  ['Terima sebut harga rasmi', 'Sebut harga mengesahkan hasil kerja, pengecualian, tempoh, semakan dan kos luaran.'],
+  ['Bayar 50% untuk bermula', 'Deposit yang diluluskan menempah ruang kerja dan memulakan projek yang dipersetujui.'],
+  ['Bina, semak dan uji', 'Kerja disemak pada persekitaran ujian sebelum pelancaran atau serahan akhir.'],
+  ['Bayar baki 50%', 'Baki dibayar sebelum pelancaran atau serahan akhir kecuali dinyatakan sebaliknya dalam sebut harga.'],
+  ['Terima serahan', 'Akses, kod sumber dan hasil yang dipersetujui diserahkan selepas projek selesai.'],
+];
+const faqs = [
+  ['Berapakah kos membina laman web?', 'Harga akhir bergantung pada halaman, kandungan, semakan, tempoh, integrasi dan kos berterusan, kemudian disahkan melalui sebut harga rasmi. Laluan promosi terpilih untuk skop laman perniagaan ringkas diterangkan di bawah.'],
+  ['Apakah yang termasuk dalam promosi laman web?', 'Ini ialah laluan permulaan promosi untuk skop laman perniagaan terpilih. Sebut harga mengesahkan halaman, tanggungjawab kandungan, semakan, tempoh, integrasi dan syarat serahan sebelum kerja bermula.'],
+  ['Mengapa laman e-dagang dan tempahan memerlukan sebut harga?', 'Kos berubah mengikut produk, variasi, peraturan stok, penghantaran, gerbang bayaran, logik tempahan, personalisasi, integrasi dan servis pihak ketiga. Sebut harga mengelakkan harga pakej yang mengelirukan.'],
+  ['Apakah beza harga promosi dengan sebut harga rasmi?', 'Harga promosi ialah harga mula bagi jenis projek yang ditetapkan. Sebut harga rasmi mengesahkan skop, harga, hasil kerja, pengecualian dan syarat bayaran untuk projek tertentu.'],
+  ['Apakah kos yang mungkin timbul selepas pelancaran?', 'Bergantung pada projek, kos berterusan boleh merangkumi pembaharuan domain dan hos, plugin berbayar, penggunaan penyedia, storan, caj gerbang bayaran, kemas kini kandungan dan pembangunan seterusnya. Kos yang diketahui akan dinyatakan dalam sebut harga.'],
+  ['Bagaimanakah bayaran dibuat?', 'Bagi projek standard, 50% dibayar untuk bermula dan 50% sebelum pelancaran atau serahan akhir. Sistem lebih besar boleh dibahagikan kepada fasa yang diluluskan dengan pecahan bayaran dalam sebut harga.'],
+  ['Adakah laman web menjadi milik saya selepas siap?', 'Bagi projek sekali bayar yang selesai, akses, kod sumber dan hasil yang dipersetujui diserahkan selepas bayaran akhir, tertakluk pada sebut harga dan lesen pihak ketiga.'],
+];
+const serviceSchema = { '@context': 'https://schema.org', '@type': 'Service', name: 'Reka bentuk laman web dan pembangunan perisian tersuai', description: 'Skop promosi laman web perniagaan terpilih bermula RM1,500, serta CMS, e-dagang, tempahan, automasi dan sistem tersuai melalui sebut harga.', provider: { '@type': 'Organization', name: 'HaikaiTech Solutions', url: 'https://haikaitech.my/' }, areaServed: { '@type': 'Country', name: 'Malaysia' }, offers: { '@type': 'Offer', name: 'Promosi laman web standard terpilih', price: '1500', priceCurrency: 'MYR', description: 'Harga permulaan promosi untuk skop laman web standard terpilih. Skop dan harga akhir disahkan melalui sebut harga rasmi.', url: 'https://haikaitech.my/bm/services/#pricing' } };
+const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
+---
+
+<BaseLayout locale="bm" title="Harga Laman Web Malaysia | Servis & Sebut Harga | HaikaiTech" description="Promosi laman web HaikaiTech bermula RM1,500 untuk skop terpilih. Bandingkan julat pasaran indikatif dan fahami cara harga laman web, e-dagang, automasi serta sistem tersuai ditentukan." canonical={canonical} alternates={alternates}>
+  <div class="workbench wb-pricing-site bg-paper bg-grid-pattern">
+    <WorkbenchNav locale="bm" />
+    <main class="sp-main">
+      <section class="sp-hero" aria-labelledby="services-title">
+        <div class="sp-hero-copy">
+          <p class="wb-eyebrow"><WorkbenchIcon name="briefcase" size={18} />Servis &amp; harga</p>
+          <h1 id="services-title">Harga laman web bermula dengan <em>skop sebenar.</em></h1>
+          <p class="sp-hero-lede">Promosi laman web terpilih tersedia untuk skop yang ringkas. Laman yang melibatkan CMS, e-dagang, tempahan, bayaran atau sistem perniagaan akan disebut harga mengikut skop sebenar.</p>
+          <div class="sp-actions"><a class="wb-button wb-button--painted" href={whatsapp} target="_blank" rel="noopener noreferrer"><span>Minta sebut harga</span></a><a class="wb-button wb-secondary" href="#market-ranges"><span>Fahami julat harga</span></a></div>
+          <p class="sp-hero-note">Jelaskan skop dahulu. Barulah harga itu bermakna.</p>
+        </div>
+        <div class="sp-hero-scene">
+          <Image class="sp-drafting-board" src={draftingBoardArt} alt="" width={1200} format="webp" loading="eager" aria-hidden="true" />
+          <Image class="sp-coffee-cup" src={coffeeCupArt} alt="" width={180} format="webp" loading="eager" aria-hidden="true" />
+          <div class="sp-scope-board" aria-label="Perkara yang disahkan dalam sebut harga rasmi">
+            <span class="sp-board-pin" aria-hidden="true"></span>
+            <div class="sp-board-head"><p>Lembaran sebut harga</p><span>Skop sebelum harga</span></div>
+            <p class="sp-board-title">Sebut harga akhir mengesahkan:</p>
+            <ul><li><span>01</span>Halaman dan kandungan</li><li><span>02</span>Pusingan semakan</li><li><span>03</span>Tempoh</li><li><span>04</span>Integrasi</li><li><span>05</span>Pemilikan dan serahan</li><li><span>06</span>Kos berulang dan pihak ketiga</li></ul>
+            <p class="sp-board-caption">Jumlah dalaman tidak digunakan sebagai harga pakej awam.</p>
+          </div>
+          <Image class="sp-ruler" src={rulerArt} alt="" width={280} format="webp" loading="eager" aria-hidden="true" />
+        </div>
+      </section>
+
+      <dl class="sp-quick-facts" aria-label="Ringkasan harga">{quickFacts.map(([label, value]) => <div><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
+
+      <section id="market-ranges" class="sp-section sp-section--ranges" aria-labelledby="market-title">
+        <header class="sp-section-head"><div><p class="wb-eyebrow">Konteks pasaran</p><h2 id="market-title">Julat harga pasaran Malaysia</h2></div><p>Julat ini membantu anda membandingkan jenis projek sebelum meminta sebut harga. Ini konteks pasaran, bukan harga pakej HaikaiTech.</p></header>
+        <div class="sp-table-wrap" tabindex="0" role="region" aria-label="Julat harga pasaran laman web di Malaysia"><table><thead><tr><th scope="col">Jenis laman web</th><th scope="col">Julat pasaran biasa</th><th scope="col">Kebiasaannya merangkumi</th></tr></thead><tbody>{marketRanges.map(([type, range, scope]) => <tr><th scope="row">{type}</th><td class="sp-price">{range}</td><td>{scope}</td></tr>)}</tbody></table></div>
+        <p class="sp-source-note">Julat ini ialah anggaran pasaran Malaysia untuk perbandingan sahaja, berdasarkan <a href="https://zenweb.my/services/web-design/pricing/" target="_blank" rel="noopener noreferrer">rujukan harga industri yang diterbitkan</a>. Ini bukan harga tetap HaikaiTech atau jaminan kos sesuatu projek.</p>
+      </section>
+
+      <section class="sp-section sp-section--models" aria-labelledby="models-title">
+        <header class="sp-section-head"><div><p class="wb-eyebrow">Model komersial</p><h2 id="models-title">Cara harga projek ditentukan</h2></div><p>Model bayaran patut sepadan dengan kepastian skop. HaikaiTech menggunakan promosi, sebut harga tetap dan binaan berfasa yang sesuai.</p></header>
+        <div class="sp-table-wrap" tabindex="0" role="region" aria-label="Model harga projek laman web"><table><thead><tr><th scope="col">Model harga</th><th scope="col">Cara ia berfungsi</th><th scope="col">Sesuai untuk</th><th scope="col">Pendekatan HaikaiTech</th></tr></thead><tbody>{pricingModels.map(([model, method, fit, position]) => <tr><th scope="row">{model}</th><td>{method}</td><td>{fit}</td><td class="sp-position">{position}</td></tr>)}</tbody></table></div>
+      </section>
+
+      <section id="pricing" class="sp-section sp-section--offers" aria-labelledby="offers-title">
+        <header class="sp-section-head"><div><p class="wb-eyebrow">Laluan semasa</p><h2 id="offers-title">Pilih titik mula yang paling hampir</h2></div><p>Anda tidak perlu menentukan keseluruhan skop sendiri. Pilih laluan yang paling hampir dan sebut harga akan memperincikan skopnya.</p></header>
+        <div class="sp-offer-register">{offers.map((route) => <article class="sp-offer-row"><span class="sp-offer-icon" aria-hidden="true"><WorkbenchIcon name={route.icon} size={22} /></span><div class="sp-offer-title"><p>{route.label}</p><h3>{route.title}</h3></div><p class="sp-offer-description">{route.description}</p><div class="sp-offer-action"><strong>{route.price}</strong><a href={route.href} target={route.external ? '_blank' : undefined} rel={route.external ? 'noopener noreferrer' : undefined}>{route.action}</a></div></article>)}</div>
+      </section>
+
+      <section class="sp-section sp-section--factors" aria-labelledby="factors-title">
+        <header class="sp-section-head"><div><p class="wb-eyebrow">Penentu skop</p><h2 id="factors-title">Enam perkara yang mengubah harga</h2></div><p>Sebut harga berubah kerana kerja yang diperlukan berbeza. Ini keputusan praktikal yang paling mempengaruhi skop.</p></header>
+        <div class="sp-factor-grid">{priceFactors.map(([title, body], index) => <article><span aria-hidden="true"><WorkbenchIcon name={['list-check', 'layout', 'book', 'database', 'blocks', 'wrench'][index]} size={21} /></span><h3>{title}</h3><p>{body}</p></article>)}</div>
+      </section>
+
+      <section id="maintenance" class="sp-section sp-section--extras" aria-labelledby="extras-title">
+        <header class="sp-section-head"><div><p class="wb-eyebrow">Batas skop</p><h2 id="extras-title">Perkara yang mungkin dikenakan kos tambahan</h2></div><p>Sebut harga membezakan kerja binaan dengan kos operasi yang bukan sebahagian daripada skop dipersetujui. Tiada harga umum diberikan sebelum skop diketahui.</p></header>
+        <ul class="sp-extra-list">{extras.map((item) => <li><span aria-hidden="true">—</span>{item}</li>)}</ul>
+      </section>
+
+      <section id="custom-software" class="sp-section sp-section--process" aria-labelledby="process-title">
+        <header class="sp-section-head"><div><p class="wb-eyebrow">Proses sebut harga</p><h2 id="process-title">Daripada penerangan hingga serahan</h2></div><p>Projek standard menggunakan bayaran 50/50. Sistem lebih besar boleh dibahagikan kepada fasa yang dipersetujui dengan terma dalam sebut harga.</p></header>
+        <ol class="sp-process-list">{process.map(([title, body], index) => <li><span>{String(index + 1).padStart(2, '0')}</span><div><h3>{title}</h3><p>{body}</p></div></li>)}</ol>
+      </section>
+
+      <section id="faq" class="sp-section sp-section--faq" aria-labelledby="faq-title">
+        <header class="sp-section-head"><div><p class="wb-eyebrow">Soalan lazim</p><h2 id="faq-title">Harga, dengan jelas</h2></div><p>Jawapan ringkas kepada soalan yang wajar diselesaikan sebelum projek bermula.</p></header>
+        <div class="sp-faq-list">{faqs.map(([question, answer]) => <details><summary>{question}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>)}</div>
+      </section>
+
+      <section class="sp-cta" aria-labelledby="services-cta-title"><div><p class="wb-eyebrow">Langkah seterusnya</p><h2 id="services-cta-title">Bincang skopnya.<br /><em>Kami hargakan kerja sebenar.</em></h2></div><div><p>Beritahu kami perkara yang perlu dilakukan oleh laman atau sistem itu. Kami akan cadangkan laluan sesuai dan sediakan sebut harga rasmi.</p><div class="sp-actions"><a class="wb-button wb-button--painted" href={whatsapp} target="_blank" rel="noopener noreferrer"><span>Minta sebut harga</span></a><a class="sp-email-link" href="mailto:hq@haikaitech.my?subject=Sebut%20harga%20projek">E-mel hq@haikaitech.my</a></div></div></section>
+    </main>
+    <FooterWorkbench client:load locale="bm" />
+    <StickyBooking client:load locale="bm" />
+  </div>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(serviceSchema)}></script>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
+</BaseLayout>

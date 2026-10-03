@@ -1,0 +1,40 @@
+---
+import ServiceDetailLayout from '../../../components/ServiceDetailLayout.astro';
+import WorkbenchIcon from '../../../components/WorkbenchIcon.astro';
+import ServicePlatformMarks from '../../../components/ServicePlatformMarks.astro';
+import { bmServiceDetails } from '../../../data/locales/bm-services';
+import { Image } from 'astro:assets';
+import ecommerceClay from '../../../assets/concept-decorations/service-ecommerce-clay.png';
+
+const service = bmServiceDetails.ecommerce;
+const alternates = {
+  en: 'https://haikaitech.my/services/ecommerce/',
+  bm: 'https://haikaitech.my/bm/services/ecommerce/',
+};
+const icons = ['blocks', 'globe', 'wrench'];
+const ids = ['ecommerce-choice-title', 'ecommerce-journey-title', 'ecommerce-handover-title'];
+---
+
+<ServiceDetailLayout service={service} locale="bm" canonical={alternates.bm} alternates={alternates}>
+  <div slot="visual" class="sd-art sd-ecommerce-art">
+    <Image class="sd-clay-assembly sd-clay-assembly--ecommerce" src={ecommerceClay} alt="" width={1200} widths={[480, 800, 1200]} sizes="(max-width: 767px) calc(100vw - 48px), (max-width: 1199px) 55vw, 720px" format="webp" loading="eager" fetchpriority="high" />
+    <ServicePlatformMarks kind="ecommerce" />
+  </div>
+
+  {service.sections.map((section, index) => (
+    <section slot="content" class="sd-content-section" aria-labelledby={ids[index]}>
+      <header class="sd-section-heading">
+        <WorkbenchIcon name={icons[index]} size={22} />
+        <h2 id={ids[index]}>{section.title}</h2>
+        <p>{section.intro}</p>
+      </header>
+      <dl class="sd-row-list">
+        {section.rows.map(([label, description]) => <div class="sd-row"><dt>{label}</dt><dd>{description}</dd></div>)}
+      </dl>
+      {section.proof && <div class="sd-proof">
+        <p><strong>Hasil kerja berkaitan:</strong> {section.proof.replace('Hasil berkaitan: ', '')}</p>
+        <a href="https://aaburger.haikaitech.my/" target="_blank" rel="noopener noreferrer">{section.proofAction}</a>
+      </div>}
+    </section>
+  ))}
+</ServiceDetailLayout>

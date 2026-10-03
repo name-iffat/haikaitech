@@ -7,11 +7,20 @@ import browserBuilder from '../assets/concept-decorations/refined/service-browse
 import systemsAssembly from '../assets/concept-decorations/refined/service-systems-assembly.png';
 import productWorkbench from '../assets/concept-decorations/refined/service-product-workbench.png';
 import careToolkit from '../assets/concept-decorations/refined/service-care-toolkit.png';
+// Conceptual workflow artwork, separate from the real project screenshots above.
+import automationIllustration from '../assets/concept-decorations/refined/home-automation-workflow.png';
+import ecommerceIllustration from '../assets/concept-decorations/service-ecommerce-clay.png';
 import { SKILLS } from '../../constants';
 import WorkbenchIcon from './WorkbenchIcon.astro';
 import { serviceExtensions } from '../data/services';
+import { bmHome } from '../data/locales/bm-home';
+import { localizeHref, type SiteLocale } from '../utils/i18n';
 
-const services = [
+interface Props { locale?: SiteLocale; }
+const { locale = 'en' } = Astro.props;
+const isBm = locale === 'bm';
+
+const englishServices = [
   {
     icon: 'globe',
     title: ['Business', 'websites'],
@@ -49,16 +58,19 @@ const services = [
     action: 'View support options',
   },
 ];
+const services = englishServices.map((service, index) => isBm
+  ? { ...service, ...bmHome.services.rows[index], href: localizeHref(service.href, locale) }
+  : service);
 ---
 
 <section id="services" class="workbench wb-services" aria-labelledby="services-title">
   <header class="wb-services-head">
     <div>
-      <p class="wb-eyebrow">Ways we help</p>
-      <h2 id="services-title">Serious builds.<br />A little <em>character.</em></h2>
+      <p class="wb-eyebrow">{isBm ? bmHome.services.eyebrow : 'Ways we help'}</p>
+      <h2 id="services-title">{isBm ? <>{bmHome.services.title[0]}<br />{bmHome.services.title[1]}</> : <>Serious builds.<br />A little <em>character.</em></>}</h2>
     </div>
     <div class="wb-services-intro">
-      <p>Websites for your customers. Systems for your team. Useful ideas, built around your business.</p>
+      <p>{isBm ? bmHome.services.intro : 'Websites for your customers. Systems for your team. Useful ideas, built around your business.'}</p>
     </div>
   </header>
 
@@ -131,10 +143,8 @@ const services = [
                 loading="lazy"
               />
               <div class="wb-service-checklist wb-service-checklist--care">
-                <strong>CARE / CHECKLIST</strong>
-                <span><i>✓</i> Content updates</span>
-                <span><i>✓</i> Maintenance</span>
-                <span><i>✓</i> Small changes</span>
+                <strong>{isBm ? bmHome.services.careTitle : 'CARE / CHECKLIST'}</strong>
+                {bmHome.services.careItems.map((label, index) => <span><i>✓</i> {isBm ? label : ['Content updates', 'Maintenance', 'Small changes'][index]}</span>)}
               </div>
             </div>
           )}
@@ -152,26 +162,45 @@ const services = [
 
   <section class="wb-services-extensions" aria-labelledby="services-extensions-title">
     <header>
-      <p id="services-extensions-title">Extend the build</p>
-      <span>new paths, same workshop</span>
+      <h3 id="services-extensions-title">{isBm ? bmHome.services.extensionsTitle : 'Extend the build.'}</h3>
+      <span>{isBm ? bmHome.services.extensionsNote : 'new paths, same workshop'}</span>
     </header>
     <div class="wb-services-extension-list">
       {serviceExtensions.map((extension) => (
-        <a class="wb-services-extension" href={extension.href}>
-          <WorkbenchIcon name={extension.icon} size={22} />
-          <span class="wb-services-extension-copy">
-            <small>{extension.eyebrow}</small>
-            <strong>{extension.title}</strong>
-            <span>{extension.description}</span>
-          </span>
-          <span class="wb-services-extension-action">{extension.action}</span>
-        </a>
+        <article class:list={['wb-services-extension', `wb-services-extension--${extension.slug}`]}>
+          <div class="wb-services-extension-visual">
+            <Image
+              src={extension.slug === 'automation' ? automationIllustration : ecommerceIllustration}
+              alt={isBm ? extension.slug === 'automation' ? bmHome.services.automationAlt : bmHome.services.ecommerceAlt : extension.slug === 'automation'
+                ? 'An AI helper connects an incoming enquiry to organised tasks and a person’s approval.'
+                : 'A shop helper presents a digital storefront with products, a parcel and an order receipt.'}
+              widths={[360, 560, 800]}
+              sizes="(max-width: 767px) calc(100vw - 48px), (max-width: 1199px) 44vw, 560px"
+              width={800}
+              format="webp"
+              loading="lazy"
+            />
+          </div>
+          <div class="wb-services-extension-copy">
+            <h4>{isBm ? extension.slug === 'automation' ? bmHome.services.automationTitle : bmHome.services.ecommerceTitle : extension.title}</h4>
+            <p>{isBm ? extension.slug === 'automation' ? bmHome.services.automationDesc : bmHome.services.ecommerceDesc : extension.slug === 'automation'
+              ? 'A digital helper that sorts enquiries, prepares tasks and connects your tools. Your team reviews the important decisions.'
+              : 'Your online shop, from browsing products to checkout and managing orders. Built around how your business sells.'}</p>
+            <p class="wb-services-extension-flow" aria-label={isBm ? 'Cara ia berfungsi' : 'How it works'}>
+              {isBm ? extension.slug === 'automation' ? bmHome.services.automationFlow : bmHome.services.ecommerceFlow : extension.slug === 'automation' ? 'Enquiry → AI helper → Your review' : 'Products → Checkout → Orders'}
+            </p>
+            <div class="wb-services-extension-bottom">
+              <span class="wb-services-extension-platforms">{isBm ? extension.slug === 'automation' ? bmHome.services.platformsAutomation : bmHome.services.platformsEcommerce : extension.slug === 'automation' ? 'Hermes / n8n / Custom scripts' : 'Shopify / WooCommerce'}</span>
+              <a class="wb-services-extension-action" href={localizeHref(extension.href, locale)}>{isBm ? extension.slug === 'automation' ? bmHome.services.automationAction : bmHome.services.ecommerceAction : extension.action}</a>
+            </div>
+          </div>
+        </article>
       ))}
     </div>
   </section>
 
   <details class="wb-services-tools">
-    <summary>Tech, tools &amp; toys <span>— behind the build</span></summary>
+    <summary>{isBm ? bmHome.services.tools : <>Tech, tools &amp; toys</>} <span>{isBm ? bmHome.services.behind : '— behind the build'}</span></summary>
     <div class="wb-services-tools-grid">
       {SKILLS.map((group) => (
         <section>
@@ -185,7 +214,7 @@ const services = [
   </details>
 
   <footer class="wb-services-footer">
-    <p>A clear scope. A useful next step.</p>
-    <a class="wb-button wb-primary" href="/services/">Explore services &amp; pricing</a>
+    <p>{isBm ? bmHome.services.footer : 'A clear scope. A useful next step.'}</p>
+    <a class="wb-button wb-primary" href={localizeHref('/services/', locale)}>{isBm ? bmHome.services.pricing : 'Explore services &amp; pricing'}</a>
   </footer>
 </section>

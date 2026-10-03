@@ -1,26 +1,32 @@
 ---
-const { posts } = Astro.props;
+import { bmHome } from '../data/locales/bm-home';
+import type { SiteLocale } from '../utils/i18n';
+
+interface Props { posts: any[]; locale?: SiteLocale; }
+const { posts, locale = 'en' } = Astro.props as Props;
+const isBm = locale === 'bm';
 const [featured, ...entries] = posts;
 
 const formatDate = (date: Date) =>
-  new Intl.DateTimeFormat('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
+  new Intl.DateTimeFormat(isBm ? 'ms-MY' : 'en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
     .format(date)
     .toUpperCase();
 ---
 
 <section class="workbench wb-insights" aria-labelledby="insights-title">
   <header class="wb-insights-head">
-    <p class="wb-eyebrow">Insights from the workshop</p>
-    <a href="/blog/">All field notes</a>
+    <p class="wb-eyebrow">{isBm ? bmHome.insights.eyebrow : 'Insights from the workshop'}</p>
+    <a href="/blog/">{isBm ? bmHome.insights.all : 'All field notes'}</a>
   </header>
 
   {featured && (
     <div class="wb-notebook">
       <div class="wb-notebook-left-stage">
-        <section class="wb-notebook-page wb-notebook-contents" data-notebook-contents aria-label="Latest field note contents">
-          <p class="wb-notebook-label">The HaikaiTech notebook</p>
-          <h2 id="insights-title">Field notes.</h2>
-          <p class="wb-notebook-intro">Things worth knowing before you build, launch or grow your website.</p>
+        <section class="wb-notebook-page wb-notebook-contents" data-notebook-contents aria-label={isBm ? 'Kandungan nota terkini' : 'Latest field note contents'}>
+          <p class="wb-notebook-label">{isBm ? bmHome.insights.label : 'The HaikaiTech notebook'}</p>
+          <h2 id="insights-title">{isBm ? bmHome.insights.title : 'Field notes.'}</h2>
+          <p class="wb-notebook-intro">{isBm ? bmHome.insights.intro : 'Things worth knowing before you build, launch or grow your website.'}</p>
+          {isBm && <p class="wb-notebook-language" lang="ms-MY">Artikel penuh di bawah diterbitkan dalam Bahasa Inggeris.</p>}
 
           <ol class="wb-notebook-list">
             {[featured, ...entries].map((post, index) => (
@@ -28,22 +34,22 @@ const formatDate = (date: Date) =>
                 <a href={`/blog/${post.id}/`}>
                   <span class="wb-notebook-index">{String(index + 1).padStart(2, '0')}</span>
                   <span>
-                    <strong>{post.data.title}</strong>
+                    <strong lang="en">{post.data.title}</strong>
                     <small>{formatDate(post.data.pubDate)} / {post.data.tags[0]}</small>
                   </span>
                 </a>
               </li>
             ))}
           </ol>
-          <footer><span>Contents / Latest entries</span><span>01</span></footer>
+          <footer><span>{isBm ? bmHome.insights.contents : 'Contents / Latest entries'}</span><span>01</span></footer>
         </section>
 
         {[featured, ...entries].map((post, index) => (
           <article class="wb-notebook-page wb-notebook-left-leaf" data-notebook-left-leaf={index} aria-hidden="true">
-            <p class="wb-notebook-label">Filed note / {String(index + 1).padStart(2, '0')}</p>
-            <p class="wb-notebook-left-note">Turned over from the workbench.</p>
-            <h3>{post.data.title}</h3>
-            <p>{post.data.description}</p>
+            <p class="wb-notebook-label">{isBm ? bmHome.insights.fileNote : 'Filed note /'} {String(index + 1).padStart(2, '0')}</p>
+            <p class="wb-notebook-left-note">{isBm ? bmHome.insights.turnedNote : 'Turned over from the workbench.'}</p>
+            <h3 lang="en">{post.data.title}</h3>
+            <p lang="en">{post.data.description}</p>
             <footer><span>{post.data.tags.slice(0, 2).join(' / ')}</span><span>TURNED</span></footer>
           </article>
         ))}
@@ -54,32 +60,32 @@ const formatDate = (date: Date) =>
         <div id="notebook-pages" class="wb-notebook-stage" aria-live="polite">
           {[featured, ...entries].map((post, index) => (
             <article class:list={['wb-notebook-leaf', { 'is-active': index === 0 }]} aria-hidden={index === 0 ? undefined : 'true'}>
-              <p class="wb-notebook-label">Open note / {formatDate(post.data.pubDate)}</p>
-              {index === 0 && <p class="wb-notebook-note">The website is live. Now what?</p>}
-              <h3>{post.data.title}</h3>
-              <p class="wb-notebook-description">{post.data.description}</p>
-              <ul class="wb-notebook-topics" aria-label="Article topics">
+              <p class="wb-notebook-label">{isBm ? bmHome.insights.open : 'Open note /'} {formatDate(post.data.pubDate)}</p>
+              {index === 0 && <p class="wb-notebook-note">{isBm ? 'Laman web sudah dilancarkan. Apa seterusnya?' : 'The website is live. Now what?'}</p>}
+              <h3 lang="en">{post.data.title}</h3>
+              <p class="wb-notebook-description" lang="en">{post.data.description}</p>
+              <ul class="wb-notebook-topics" aria-label={isBm ? bmHome.insights.topics : 'Article topics'}>
                 {post.data.tags.slice(0, 3).map((tag) => <li>{tag}</li>)}
               </ul>
-              <a class="wb-notebook-read" href={`/blog/${post.id}/`}>Read the full note</a>
+              <a class="wb-notebook-read" href={`/blog/${post.id}/`}>{isBm ? bmHome.insights.read : 'Read the full note'}</a>
               <footer><span>{post.data.tags.slice(0, 2).join(' / ')}</span><span>{String(index + 2).padStart(2, '0')}</span></footer>
             </article>
           ))}
           <article class="wb-notebook-leaf wb-notebook-leaf--more" aria-hidden="true">
-            <p class="wb-notebook-label">Last page / Keep reading</p>
-            <p class="wb-notebook-note">More notes from the workshop.</p>
-            <h3>There is more to explore.</h3>
-            <p class="wb-notebook-description">Browse every field note on websites, pricing, software and finding your next customer.</p>
-            <a class="wb-notebook-read" href="/blog/">Open all field notes</a>
-            <footer><span>HaikaiTech / Insights</span><span>{String(posts.length + 2).padStart(2, '0')}</span></footer>
+            <p class="wb-notebook-label">{isBm ? bmHome.insights.lastPage : 'Last page / Keep reading'}</p>
+            <p class="wb-notebook-note">{isBm ? bmHome.insights.moreNote : 'More notes from the workshop.'}</p>
+            <h3>{isBm ? bmHome.insights.moreTitle : 'There is more to explore.'}</h3>
+            <p class="wb-notebook-description">{isBm ? bmHome.insights.moreDesc : 'Browse every field note on websites, pricing, software and finding your next customer.'}</p>
+            <a class="wb-notebook-read" href="/blog/">{isBm ? bmHome.insights.openAll : 'Open all field notes'}</a>
+            <footer><span>{isBm ? bmHome.insights.webLabel : 'HaikaiTech / Insights'}</span><span>{String(posts.length + 2).padStart(2, '0')}</span></footer>
           </article>
         </div>
       </article>
 
-      <nav class="wb-notebook-controls" aria-label="Notebook page controls">
-        <button type="button" data-notebook-previous aria-label="Previous notebook page" aria-controls="notebook-pages" disabled>←</button>
+      <nav class="wb-notebook-controls" aria-label={isBm ? bmHome.insights.controls : 'Notebook page controls'}>
+        <button type="button" data-notebook-previous aria-label={isBm ? bmHome.insights.previous : 'Previous notebook page'} aria-controls="notebook-pages" disabled>←</button>
         <span data-notebook-position>1 / {posts.length + 1}</span>
-        <button type="button" data-notebook-next aria-label="Next notebook page" aria-controls="notebook-pages"><span aria-hidden="true">→</span></button>
+        <button type="button" data-notebook-next aria-label={isBm ? bmHome.insights.next : 'Next notebook page'} aria-controls="notebook-pages"><span aria-hidden="true">→</span></button>
       </nav>
     </div>
   )}

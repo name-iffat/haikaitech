@@ -9,6 +9,12 @@ import cityThreeLogo from '../assets/logos/citythree-logo.png';
 import hssLogo from '../assets/logos/hss-logo.png';
 import kopiTebuLogo from '../assets/logos/kopitebu-logo.png';
 import zakrulLogo from '../assets/logos/logo-ghost-outline.webp';
+import { bmHome } from '../data/locales/bm-home';
+import type { SiteLocale } from '../utils/i18n';
+
+interface Props { locale?: SiteLocale; }
+const { locale = 'en' } = Astro.props;
+const isBm = locale === 'bm';
 
 // Only show logo assets paired with a published project page or verified live destination.
 const clientLogos = [
@@ -24,17 +30,45 @@ const clientLogos = [
 ];
 ---
 
-<section id="trust" class="workbench wb-trust" aria-label="Client proof">
-  <h2 class="wb-trust-heading">Our amazing clients</h2>
+<section id="trust" class="workbench wb-trust" aria-label={isBm ? 'Bukti pelanggan' : 'Client proof'}>
+  <div class="wb-trust-head">
+    <h2 class="wb-trust-heading">{isBm ? bmHome.trust.heading : 'Our amazing clients'}</h2>
+    <button class="wb-client-motion" type="button" aria-label={isBm ? bmHome.trust.pause : 'Pause client logo animation'} aria-pressed="false">{isBm ? 'Jeda' : 'Pause'}</button>
+  </div>
   <div class="wb-trust-register">
-    <ul class="wb-client-list" aria-label="Verified HaikaiTech client projects">
+    <div class="wb-client-track">
+    <ul class="wb-client-list" aria-label={isBm ? 'Projek pelanggan HaikaiTech yang disahkan' : 'Verified HaikaiTech client projects'}>
       {clientLogos.map((client) => (
         <li>
-          <a href={client.href} aria-label={`View ${client.name} project`} target={client.external ? '_blank' : undefined} rel={client.external ? 'noopener noreferrer' : undefined}>
+          <a href={client.href} aria-label={isBm ? `Lihat projek ${client.name}` : `View ${client.name} project`} target={client.external ? '_blank' : undefined} rel={client.external ? 'noopener noreferrer' : undefined}>
             <Image class={`wb-client-logo wb-client-logo--${client.id}`} src={client.logo} width={300} format="webp" quality={80} alt={client.name} loading="lazy" />
           </a>
         </li>
       ))}
     </ul>
+    <ul class="wb-client-list wb-client-list--duplicate" aria-hidden="true">
+      {clientLogos.map((client) => (
+        <li>
+          <span class="wb-client-repeat">
+            <Image class={`wb-client-logo wb-client-logo--${client.id}`} src={client.logo} width={300} format="webp" quality={80} alt="" loading="lazy" />
+          </span>
+        </li>
+      ))}
+    </ul>
+    </div>
   </div>
 </section>
+
+<script>
+  const trust = document.querySelector<HTMLElement>('#trust');
+  const motionButton = trust?.querySelector<HTMLButtonElement>('.wb-client-motion');
+  motionButton?.addEventListener('click', () => {
+    const paused = trust?.classList.toggle('wb-trust--paused') ?? false;
+    motionButton.setAttribute('aria-pressed', String(paused));
+    const isBm = document.documentElement.lang.toLowerCase().startsWith('ms');
+    motionButton.setAttribute('aria-label', isBm
+      ? paused ? 'Mainkan gerakan logo pelanggan' : 'Jeda gerakan logo pelanggan'
+      : paused ? 'Play client logo animation' : 'Pause client logo animation');
+    motionButton.textContent = isBm ? paused ? 'Main' : 'Jeda' : paused ? 'Play' : 'Pause';
+  });
+</script>

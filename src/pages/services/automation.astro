@@ -7,9 +7,10 @@ import ServicePlatformMarks from '../../components/ServicePlatformMarks.astro';
 import automationClay from '../../assets/concept-decorations/service-automation-clay.png';
 
 const service = serviceDetails.automation;
+const alternates = { en: 'https://haikaitech.my/services/automation/', bm: 'https://haikaitech.my/bm/services/automation/' };
 ---
 
-<ServiceDetailLayout service={service} canonical="https://haikaitech.my/services/automation/">
+<ServiceDetailLayout service={service} canonical={alternates.en} alternates={alternates}>
   <div slot="visual" class="sd-art sd-automation-art">
     <Image class="sd-clay-assembly sd-clay-assembly--automation" src={automationClay} alt="" width={1200} widths={[480, 800, 1200]} sizes="(max-width: 767px) calc(100vw - 48px), (max-width: 1199px) 55vw, 720px" format="webp" loading="eager" fetchpriority="high" />
     <ServicePlatformMarks kind="automation" />

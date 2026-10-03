@@ -5,9 +5,11 @@ import { track } from './track';
 interface Props {
   source?: 'footer' | 'blog' | 'toolkit';
   variant?: 'legacy' | 'workbench';
+  locale?: 'en' | 'bm';
 }
 
-const NewsletterForm: React.FC<Props> = ({ source = 'footer', variant = 'legacy' }) => {
+const NewsletterForm: React.FC<Props> = ({ source = 'footer', variant = 'legacy', locale = 'en' }) => {
+  const bm = locale === 'bm';
   const fieldId = React.useId();
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
@@ -35,13 +37,13 @@ const NewsletterForm: React.FC<Props> = ({ source = 'footer', variant = 'legacy'
   if (variant === 'workbench') return (
     <div className="wb-newsletter">
       {status !== 'success' && <form onSubmit={handleSubmit} aria-busy={status === 'sending'}>
-        <label htmlFor={fieldId}>Email address <span>(required)</span></label>
+        <label htmlFor={fieldId}>{bm ? 'Alamat e-mel' : 'Email address'} <span>({bm ? 'wajib' : 'required'})</span></label>
         <div className="wb-newsletter-fields">
           <input id={fieldId} name="email" type="email" autoComplete="email" spellCheck={false} placeholder="you@company.my" required value={email} onChange={e => setEmail(e.target.value)} aria-describedby={status === 'error' ? `${fieldId}-status` : undefined} />
-          <button type="submit" className="wb-button wb-primary wb-button--painted" disabled={status === 'sending'}><span>{status === 'sending' ? 'Sending…' : 'Subscribe'}</span></button>
+          <button type="submit" className="wb-button wb-primary wb-button--painted" disabled={status === 'sending'}><span>{status === 'sending' ? bm ? 'Menghantar…' : 'Sending…' : bm ? 'Langgan' : 'Subscribe'}</span></button>
         </div>
       </form>}
-      <p id={`${fieldId}-status`} role="status" className="wb-newsletter-status">{status === 'success' ? 'Subscribed — thank you!' : status === 'error' ? 'Could not subscribe. Please try again; your email is still here.' : ''}</p>
+      <p id={`${fieldId}-status`} role="status" className="wb-newsletter-status">{status === 'success' ? bm ? 'Langganan berjaya — terima kasih!' : 'Subscribed — thank you!' : status === 'error' ? bm ? 'Tidak dapat melanggan. Sila cuba lagi; alamat e-mel anda masih di sini.' : 'Could not subscribe. Please try again; your email is still here.' : ''}</p>
     </div>
   );
 

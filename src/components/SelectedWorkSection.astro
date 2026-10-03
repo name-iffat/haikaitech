@@ -6,6 +6,12 @@ import aaBurgerImg from '../assets/projects/aaburger-kiosk-desktop.png';
 import cityThreeImg from '../assets/projects/citythree-desktop.png';
 import kopiTebuImg from '../assets/projects/kopitebu-desktop.png';
 import { PROJECTS } from '../../constants';
+import { bmHome } from '../data/locales/bm-home';
+import type { SiteLocale } from '../utils/i18n';
+
+interface Props { locale?: SiteLocale; }
+const { locale = 'en' } = Astro.props;
+const isBm = locale === 'bm';
 
 const featuredProjects = [
   {
@@ -15,7 +21,7 @@ const featuredProjects = [
     status: 'demo',
     href: 'https://mzdemo.haikaitech.my/',
     image: workforceDemoImg,
-    alt: 'MZE Worker System workforce management dashboard in demo mode',
+    alt: isBm ? 'Papan pemuka pengurusan tenaga kerja MZE Worker System dalam mod demo' : 'MZE Worker System workforce management dashboard in demo mode',
     attachment: 'pin',
   },
   {
@@ -25,7 +31,7 @@ const featuredProjects = [
     status: 'live',
     href: 'https://wirelesscctv.com.my/',
     image: hssDesktopImg,
-    alt: 'HSS Wireless CCTV desktop website homepage',
+    alt: isBm ? 'Laman utama desktop HSS Wireless CCTV' : 'HSS Wireless CCTV desktop website homepage',
     attachment: 'tape',
   },
   {
@@ -35,8 +41,8 @@ const featuredProjects = [
     status: 'live',
     href: 'https://aaburger.haikaitech.my/',
     image: aaBurgerImg,
-    alt: 'AA Burger Kiosk ordering interface',
-    sticker: 'Order flow',
+    alt: isBm ? 'Antara muka pesanan AA Burger Kiosk' : 'AA Burger Kiosk ordering interface',
+    sticker: isBm ? 'Aliran pesanan' : 'Order flow',
   },
   {
     id: 'citythree',
@@ -45,7 +51,7 @@ const featuredProjects = [
     status: 'live',
     href: 'https://citythree.my/',
     image: cityThreeImg,
-    alt: 'CityThree desktop website homepage',
+    alt: isBm ? 'Laman utama desktop CityThree' : 'CityThree desktop website homepage',
     attachment: 'pin',
   },
   {
@@ -55,7 +61,7 @@ const featuredProjects = [
     status: 'live',
     href: 'https://kopitebu-website.pages.dev/',
     image: kopiTebuImg,
-    alt: 'Kopi Tebu desktop website homepage',
+    alt: isBm ? 'Laman utama desktop Kopi Tebu' : 'Kopi Tebu desktop website homepage',
   },
 ];
 
@@ -64,24 +70,25 @@ const archiveProjects = PROJECTS.map((project) => ({
   name: project.name,
   status: project.status,
   href: project.link,
+  purpose: isBm ? bmHome.projects.archivePurpose[project.id] ?? project.purpose : project.purpose,
 }));
 ---
 
 <section id="projects" class="workbench wb-selected-work" aria-labelledby="selected-work-title">
   <header class="wb-selected-head">
     <div>
-      <p class="wb-eyebrow">Selected work</p>
-      <h2 id="selected-work-title">Useful things.<br />Shipped.</h2>
+      <p class="wb-eyebrow">{isBm ? bmHome.projects.eyebrow : 'Selected work'}</p>
+      <h2 id="selected-work-title">{isBm ? <>{bmHome.projects.title[0]}<br />{bmHome.projects.title[1]}</> : <>Useful things.<br />Shipped.</>}</h2>
     </div>
-    <p class="wb-selected-intro">Five recent builds, from public-facing sites to an operational system. Each screen is real work, not a placeholder.</p>
+    <p class="wb-selected-intro">{isBm ? bmHome.projects.intro : 'Five recent builds, from public-facing sites to an operational system. Each screen is real work, not a placeholder.'}</p>
   </header>
 
-  <div class="wb-work-wall" aria-label="Five recent HaikaiTech projects">
+  <div class="wb-work-wall" aria-label={isBm ? bmHome.projects.wall : 'Five recent HaikaiTech projects'}>
     {featuredProjects.map((project, index) => (
       <figure class={`wb-project-sheet wb-project-sheet--${project.id}`}>
         {project.id === 'hss' && (
           <span class="wb-project-sheet__note" aria-hidden="true">
-            real work, in the field
+            {isBm ? bmHome.projects.realWork : 'real work, in the field'}
             <svg viewBox="0 0 70 56" fill="none"><path d="M4 7c11 3 40 7 55 34m0 0-18-4m18 4-7-17" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg>
           </span>
         )}
@@ -90,12 +97,12 @@ const archiveProjects = PROJECTS.map((project) => ({
         {project.sticker && <span class="wb-project-sheet__sticker" aria-hidden="true">{project.sticker}</span>}
         <Image src={project.image} alt={project.alt} loading={index === 0 ? 'eager' : 'lazy'} sizes="(max-width: 1023px) calc(100vw - 48px), 66vw" />
         <figcaption>
-          <a href={project.href} target="_blank" rel="noopener noreferrer" aria-label={`Open ${project.name}`}>
+          <a href={project.href} target="_blank" rel="noopener noreferrer" aria-label={isBm ? `Buka ${project.name}` : `Open ${project.name}`}>
             <span>
               <b>{project.name}</b>
-              <small class={`wb-project-sheet__status wb-project-sheet__status--${project.status}`}>{project.type} / {project.status}</small>
+              <small class={`wb-project-sheet__status wb-project-sheet__status--${project.status}`}>{isBm ? bmHome.projects.types[project.type] : project.type} / {isBm ? bmHome.projects.status(project.status) : project.status}</small>
             </span>
-            <span class="wb-project-sheet__visit">View</span>
+            <span class="wb-project-sheet__visit">{isBm ? bmHome.projects.view : 'View'}</span>
           </a>
           <span aria-hidden="true">{String(index + 1).padStart(2, '0')} / 05</span>
         </figcaption>
@@ -105,24 +112,24 @@ const archiveProjects = PROJECTS.map((project) => ({
 
   <section class="wb-archive" aria-labelledby="archive-title">
     <header class="wb-archive-head">
-      <div><p class="wb-eyebrow">More from the workshop / {archiveProjects.length} projects</p><h3 id="archive-title">Explore the rest.</h3></div>
-      <div class="wb-archive-controls"><button type="button" data-direction="-1" aria-label="Previous projects" aria-controls="archive-rail">←</button><button type="button" data-direction="1" aria-label="Next projects" aria-controls="archive-rail">→</button></div>
+      <div><p class="wb-eyebrow">{isBm ? bmHome.projects.more(archiveProjects.length) : `More from the workshop / ${archiveProjects.length} projects`}</p><h3 id="archive-title">{isBm ? bmHome.projects.archive : 'Explore the rest.'}</h3></div>
+      <div class="wb-archive-controls"><button type="button" data-direction="-1" aria-label={isBm ? bmHome.projects.previous : 'Previous projects'} aria-controls="archive-rail">←</button><button type="button" data-direction="1" aria-label={isBm ? bmHome.projects.next : 'Next projects'} aria-controls="archive-rail">→</button></div>
     </header>
-    <ul id="archive-rail" class="wb-archive-rail" tabindex="0" aria-label="Previous projects and demos; scroll horizontally">
+    <ul id="archive-rail" class="wb-archive-rail" tabindex="0" aria-label={isBm ? bmHome.projects.past : 'Previous projects and demos; scroll horizontally'}>
       {archiveProjects.map((project) => (
         <li class="wb-archive-sheet">
-          <a class="wb-archive-image" href={`/projects/${project.id}/`}><img src={project.image} width="600" height="450" alt={`${project.name} website preview`} loading="lazy" /></a>
+          <a class="wb-archive-image" href={`/projects/${project.id}/`} aria-label={isBm ? `Lihat pratonton ${project.name}; butiran projek dalam Bahasa Inggeris` : `View ${project.name} project preview`}><img src={project.image} width="600" height="450" alt={isBm ? `Pratonton projek ${project.name}` : `${project.name} website preview`} loading="lazy" /></a>
           <div class="wb-archive-copy">
-            <small class={`wb-project-sheet__status wb-project-sheet__status--${project.status}`}>{project.status}</small>
-            <h4><a href={`/projects/${project.id}/`}>{project.name}</a></h4>
+            <small class={`wb-project-sheet__status wb-project-sheet__status--${project.status}`}>{isBm ? bmHome.projects.status(project.status) : project.status}</small>
+            <h4><a href={`/projects/${project.id}/`}>{project.name}</a>{isBm && <span class="wb-archive-language">(EN)</span>}</h4>
             <p>{project.purpose}</p>
-            <div class="wb-archive-tools"><h5>Tech, tools &amp; toys</h5><ul>{project.skills.map(skill => <li>{skill}</li>)}</ul></div>
-            <a class="wb-archive-visit" href={project.href} target="_blank" rel="noopener noreferrer">Visit project</a>
+            <div class="wb-archive-tools"><h5>{isBm ? bmHome.projects.tech : <>Tech, tools &amp; toys</>}</h5><ul>{project.skills.map(skill => <li>{skill}</li>)}</ul></div>
+            <a class="wb-archive-visit" href={project.href} target="_blank" rel="noopener noreferrer">{isBm ? bmHome.projects.visit : 'Visit project'}</a>
           </div>
         </li>
       ))}
     </ul>
-    <p class="wb-archive-hint">Scroll or swipe to explore all {archiveProjects.length} projects</p>
+    <p class="wb-archive-hint">{isBm ? bmHome.projects.swipe(archiveProjects.length) : `Scroll or swipe to explore all ${archiveProjects.length} projects`}</p>
   </section>
 </section>
 

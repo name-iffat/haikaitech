@@ -12,6 +12,8 @@ import '../styles/workbench.css';
 import '../styles/services-pricing.css';
 
 const whatsapp = 'https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%27d%20like%20a%20quotation%20for%20a%20website%20or%20system.';
+const canonical = 'https://haikaitech.my/services/';
+const alternates = { en: canonical, bm: 'https://haikaitech.my/bm/services/' };
 
 const quickFacts = [
   { label: 'Starting point', value: 'Scope before price' },
@@ -84,7 +86,7 @@ const serviceSchema = {
 const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((faq) => ({ '@type': 'Question', name: faq.q, acceptedAnswer: { '@type': 'Answer', text: faq.a } })) };
 ---
 
-<BaseLayout title="Website Pricing Malaysia | Services & Quotations | HaikaiTech" description="HaikaiTech website promotions start from RM1,500 for selected scopes. Compare indicative Malaysian market ranges and learn how websites, ecommerce, automation and custom systems are quoted." canonical="https://haikaitech.my/services/">
+<BaseLayout title="Website Pricing Malaysia | Services & Quotations | HaikaiTech" description="HaikaiTech website promotions start from RM1,500 for selected scopes. Compare indicative Malaysian market ranges and learn how websites, ecommerce, automation and custom systems are quoted." canonical={canonical} alternates={alternates}>
   <div class="workbench wb-pricing-site bg-paper bg-grid-pattern">
     <WorkbenchNav />
     <main class="sp-main">

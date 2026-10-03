@@ -1,68 +1,210 @@
 ---
 import WorkbenchIcon from './WorkbenchIcon.astro';
 import { primaryNavigation, serviceNavigation } from '../data/services';
+import { localizeHref, localeSwitchHref, type SiteLocale } from '../utils/i18n';
 
-const links = primaryNavigation;
-const isHome = Astro.url.pathname === '/';
-const destination = (href: string) => href.startsWith('#') && !isHome ? `/${href}` : href;
+interface Props { locale?: SiteLocale; }
+const { locale = 'en' } = Astro.props;
+const isBm = locale === 'bm';
+const homePath = isBm ? '/bm/' : '/';
+const isHome = Astro.url.pathname === homePath || (isBm && Astro.url.pathname === '/bm');
+const mobileIcons = { Home: 'home', Work: 'layout', Services: 'toolbox', Solutions: 'list-check', Insights: 'book', About: 'building' } as const;
+const links = primaryNavigation.map((item) => ({
+  ...item,
+  label: isBm ? ({ Home: 'Laman Utama', Work: 'Projek', Services: 'Servis', Solutions: 'Penyelesaian (EN)', Insights: 'Nota (EN)', About: 'Tentang' } as Record<string, string>)[item.label] : item.label,
+  mobileLabel: isBm
+    ? ({ Home: 'Laman utama', Work: 'Projek kami', Services: 'Servis', Solutions: 'Alat perniagaan (EN)', Insights: 'Artikel & panduan (EN)', About: 'Tentang kami' } as Record<string, string>)[item.label]
+    : ({ Home: 'Home', Work: 'Our work', Services: 'Services', Solutions: 'Business tools', Insights: 'Articles & guides', About: 'About us' } as Record<string, string>)[item.label],
+  mobileDescription: isBm
+    ? ({ Home: 'Kembali ke halaman utama.', Work: 'Lihat laman dan sistem yang kami bina.', Services: 'Pilih servis yang perniagaan anda perlukan.', Solutions: 'Invois, sebut harga & resit percuma.', Insights: 'Panduan praktikal untuk perniagaan anda.', About: 'Kenali HaikaiTech dan cara kami bekerja.' } as Record<string, string>)[item.label]
+    : ({ Home: 'Back to the main page.', Work: 'See the websites and systems we build.', Services: 'Choose what your business needs.', Solutions: 'Free invoices, quotations & receipts.', Insights: 'Practical advice for your business.', About: 'Meet HaikaiTech and how we work.' } as Record<string, string>)[item.label],
+  mobileIcon: mobileIcons[item.label],
+}));
+const translatedServices = serviceNavigation.map((item) => ({
+  ...item,
+  mobileIcon: item.href === '/services/automation/' ? 'bot' as const : item.href === '/services/ecommerce/' ? 'shopping-bag' as const : item.href === '/services/#maintenance' ? 'settings' as const : item.icon,
+  mobileDescription: isBm
+    ? ({ 'Business websites': 'Bantu pelanggan mencari dan menghubungi anda.', 'Business systems & dashboards': 'Urus kerja harian pasukan anda.', 'AI agents & automation': 'Mudahkan tugasan yang berulang.', 'Ecommerce development': 'Jual dalam talian dengan Shopify atau WooCommerce.', 'Digital products': 'Alat berguna untuk pelanggan anda.', 'Website care': 'Pastikan laman web anda sentiasa terkini.' } as Record<string, string>)[item.label]
+    : ({ 'Business websites': 'Help customers find and contact you.', 'Business systems & dashboards': 'Manage your team’s daily work.', 'AI agents & automation': 'Simplify tasks you do again and again.', 'Ecommerce development': 'Sell online with Shopify or WooCommerce.', 'Digital products': 'Useful tools for your customers.', 'Website care': 'Keep your website up to date.' } as Record<string, string>)[item.label],
+  label: isBm ? ({
+    'Business websites': 'Laman web perniagaan',
+    'Business systems & dashboards': 'Sistem perniagaan & papan pemuka',
+    'AI agents & automation': 'Ejen AI & automasi',
+    'Ecommerce development': 'Pembangunan e-dagang',
+    'Digital products': 'Produk digital',
+    'Website care': 'Penyelenggaraan laman web',
+  } as Record<string, string>)[item.label] : item.label,
+  note: isBm ? ({
+    'Sites / enquiries': 'Laman / pertanyaan',
+    'Internal tools / operations': 'Alat dalaman / operasi',
+    'Hermes / n8n / scripting': 'Hermes / n8n / skrip',
+    'Shopify / WooCommerce': 'Shopify / WooCommerce',
+    'Customer tools / demos': 'Alat pelanggan / demo',
+    'Updates / maintenance': 'Kemas kini / penjagaan',
+  } as Record<string, string>)[item.note] : item.note,
+}));
+const destination = (href: string) => href.startsWith('#')
+  ? isHome ? href : `${homePath}${href}`
+  : href === '/toolkit/' || href === '/blog/'
+    ? href
+    : href.startsWith('/') ? localizeHref(href, locale) : href;
 const currentPage = (href: string) => (href === '#home' && isHome) || href === Astro.url.pathname ? 'page' as const : undefined;
+const switchToEnglish = localeSwitchHref(Astro.url.pathname, 'en');
+const switchToMalay = localeSwitchHref(Astro.url.pathname, 'bm');
 ---
-<nav class="workbench wb-nav" aria-label="Main navigation">
-  <a class="wb-wordmark" href={destination('#home')} aria-label="HaikaiTech home">
+<header class="workbench wb-nav">
+  <a class="wb-wordmark" href={destination('#home')} aria-label={isBm ? 'Laman utama HaikaiTech' : 'HaikaiTech home'}>
     <img src="/haikaitech-mark.png" width="32" height="32" alt="" aria-hidden="true" />
     <span>HAIKAITECH<span aria-hidden="true">_</span></span>
   </a>
-  <div class="wb-desktop-links">
-    {links.map(({ label, href, icon }) => label === 'Services' ? (
-      <details class:list={['wb-nav-services', Astro.url.pathname.startsWith('/services/') && 'is-current']}>
-        <summary id="wb-services-trigger" aria-controls="wb-services-menu" aria-expanded="false">Services <span aria-hidden="true">⌄</span></summary>
-        <div id="wb-services-menu" class="wb-nav-services-menu">
-          <p>Build layer / choose a useful starting point</p>
-          {serviceNavigation.map((service) => (
-            <a href={service.href} aria-current={currentPage(service.href)}>
-              <span class="wb-nav-services-icon" aria-hidden="true"><WorkbenchIcon name={service.icon} size={18} /></span>
-              <span><b>{service.label}</b><small>{service.note}</small></span>
-            </a>
-          ))}
-          <a class="wb-nav-services-all" href="/services/">All services &amp; pricing<span aria-hidden="true">↗</span></a>
-        </div>
-      </details>
-    ) : (
-      <a href={destination(href)} aria-current={currentPage(href)}>{label}</a>
-    ))}
+  <div class="wb-nav-actions">
+    <div class="wb-nav-locale" aria-label={isBm ? 'Pilih bahasa' : 'Choose language'}>
+      <a href={switchToEnglish} lang="en" aria-label="English" aria-current={!isBm ? 'page' : undefined}>EN</a>
+      <span aria-hidden="true">/</span>
+      <a href={switchToMalay} lang="ms-MY" aria-label="Bahasa Malaysia" aria-current={isBm ? 'page' : undefined}>BM</a>
+    </div>
+    <a class="wb-button wb-primary wb-nav-cta" href={destination('#contact')}>{isBm ? 'Bincang projek' : 'Start a project'}</a>
   </div>
-  <a class="wb-button wb-primary wb-nav-cta" href={destination('#contact')}>Start a project</a>
   <details class="wb-menu">
-    <summary>
-      <span class="wb-menu-label">Menu</span>
-      <span class="wb-menu-icon" aria-hidden="true"><i></i><i></i></span>
+    <summary aria-controls="wb-mobile-menu-panel" aria-expanded="false">
+      <span class="wb-menu-label wb-menu-label-open">Menu</span>
+      <span class="wb-menu-label wb-menu-label-close">{isBm ? 'Tutup' : 'Close'}</span>
+      <span class="wb-menu-icon" aria-hidden="true">
+        <svg class="wb-menu-open-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+        <svg class="wb-menu-close-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="m6 6 12 12M6 18 18 6" /></svg>
+      </span>
     </summary>
-    <div class="wb-menu-panel">
-      <p class="wb-menu-kicker">Workshop index / Find your way in</p>
-      <div class="wb-menu-links">
-        {links.map(({ label, href, icon }) => (
+    <div id="wb-mobile-menu-panel" class="wb-menu-panel">
+      <div class="wb-menu-intro">
+        <h2>{isBm ? 'Pilih halaman.' : 'Find your way.'}</h2>
+        <p>{isBm ? 'Pilih halaman atau lihat servis kami.' : 'Choose a page or explore our services.'}</p>
+      </div>
+      <nav class="wb-menu-links" aria-label={isBm ? 'Navigasi mudah alih' : 'Mobile navigation'}>
+        {links.map(({ mobileLabel, mobileDescription, mobileIcon, href }) => href === '#services' ? (
+          <details class="wb-menu-services">
+            <summary id="wb-mobile-services-trigger" aria-controls="wb-mobile-services-panel" aria-expanded="false">
+              <span class="wb-menu-row-icon" aria-hidden="true"><WorkbenchIcon name={mobileIcon} size={26} /></span>
+              <span class="wb-menu-row-copy"><b>{mobileLabel}</b><small>{mobileDescription}</small></span>
+              <span class="wb-menu-disclosure" aria-hidden="true">
+                <span class="wb-menu-show">{isBm ? 'Lihat' : 'Show'}</span><span class="wb-menu-hide">{isBm ? 'Tutup' : 'Hide'}</span>
+                <svg class="wb-menu-services-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6" /></svg>
+              </span>
+            </summary>
+            <div id="wb-mobile-services-panel" class="wb-menu-services-panel">
+              <a class="wb-menu-service-overview" href={destination('#services')}>
+                <span aria-hidden="true"><WorkbenchIcon name="blocks" size={18} /></span>
+                <b>{isBm ? 'Gambaran servis' : 'Services overview'}</b>
+              </a>
+              {translatedServices.map((service) => {
+                const serviceHref = destination(service.href);
+                return (
+                  <a class="wb-menu-service-link" href={serviceHref} aria-current={currentPage(serviceHref.split('#')[0])}>
+                    <span class="wb-menu-service-icon" aria-hidden="true"><WorkbenchIcon name={service.mobileIcon} size={22} /></span>
+                    <span><b>{service.label}</b><small>{service.mobileDescription}</small></span>
+                  </a>
+                );
+              })}
+              <a class="wb-menu-services-all" href={destination('/services/')}>
+                {isBm ? 'Lihat semua servis & harga' : 'View all services & pricing'}
+              </a>
+            </div>
+          </details>
+        ) : (
           <a href={destination(href)} aria-current={currentPage(href)}>
-            <span aria-hidden="true"><WorkbenchIcon name={icon} size={20} /></span>
-            <b>{label}</b>
+            <span class="wb-menu-row-icon" aria-hidden="true"><WorkbenchIcon name={mobileIcon} size={26} /></span>
+            <span class="wb-menu-row-copy"><b>{mobileLabel}</b><small>{mobileDescription}</small></span>
           </a>
         ))}
-      </div>
+      </nav>
       <footer class="wb-menu-footer">
-        <p>Start with what needs to work better.</p>
-        <a class="wb-button wb-primary" href={destination('#contact')}>Start a project</a>
+        <p>{isBm ? 'Mulakan dengan perkara yang perlu dipermudah.' : 'Start with what needs to work better.'}</p>
+        <div class="wb-menu-locale">
+          <span>{isBm ? 'Bahasa' : 'Language / Bahasa'}</span>
+          <a href={switchToEnglish} lang="en" aria-current={!isBm ? 'page' : undefined}>English</a>
+          <a href={switchToMalay} lang="ms-MY" aria-current={isBm ? 'page' : undefined}>Bahasa Malaysia</a>
+        </div>
+        <a class="wb-button wb-primary" href={destination('#contact')}>{isBm ? 'Bincang projek' : 'Start a project'}</a>
       </footer>
     </div>
   </details>
+</header>
+<nav class="workbench wb-desktop-links" aria-label={isBm ? 'Navigasi utama' : 'Main navigation'}>
+  {links.map(({ label, href, icon }) => href === '#services' ? (
+    <details class:list={['wb-nav-services', (Astro.url.pathname.startsWith('/services/') || Astro.url.pathname.startsWith('/bm/services/')) && 'is-current']}>
+      <summary id="wb-services-trigger" aria-controls="wb-services-menu" aria-expanded="false">{label} <span aria-hidden="true">⌄</span></summary>
+      <div id="wb-services-menu" class="wb-nav-services-menu">
+        <p>{isBm ? 'Lapisan binaan / pilih titik mula yang sesuai' : 'Build layer / choose a useful starting point'}</p>
+        {translatedServices.map((service) => (
+          <a href={destination(service.href)} aria-current={currentPage(destination(service.href))}>
+            <span class="wb-nav-services-icon" aria-hidden="true"><WorkbenchIcon name={service.icon} size={18} /></span>
+            <span><b>{service.label}</b><small>{service.note}</small></span>
+          </a>
+        ))}
+        <a class="wb-nav-services-all" href={destination('/services/')}>{isBm ? 'Semua servis & harga' : 'All services & pricing'}<span aria-hidden="true">↗</span></a>
+      </div>
+    </details>
+  ) : (
+    <a href={destination(href)} aria-current={currentPage(href)}>{label}</a>
+  ))}
 </nav>
 <script>
   const menu = document.querySelector<HTMLDetailsElement>('.wb-menu');
   const trigger = menu?.querySelector('summary');
-  menu?.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') { menu.open = false; trigger?.focus(); }
+  const navHeader = menu?.closest('header');
+  const backgroundState = new Map<HTMLElement, boolean>();
+  const mobileServices = menu?.querySelector<HTMLDetailsElement>('.wb-menu-services');
+  const mobileServicesTrigger = mobileServices?.querySelector('summary');
+  const syncMobileServicesState = () => mobileServicesTrigger?.setAttribute('aria-expanded', String(Boolean(mobileServices?.open)));
+  const closeMobileServices = () => {
+    if (mobileServices) mobileServices.open = false;
+    syncMobileServicesState();
+  };
+  const syncMenuState = () => {
+    const open = Boolean(menu?.open);
+    trigger?.setAttribute('aria-expanded', String(open));
+    document.documentElement.classList.toggle('wb-menu-is-open', open);
+    if (open) {
+      // The full-screen menu should be the only area reachable while it is open.
+      Array.from(navHeader?.parentElement?.children ?? []).forEach(element => {
+        if (!(element instanceof HTMLElement) || element === navHeader || backgroundState.has(element)) return;
+        backgroundState.set(element, element.inert);
+        element.inert = true;
+      });
+    } else {
+      backgroundState.forEach((wasInert, element) => { element.inert = wasInert; });
+      backgroundState.clear();
+      closeMobileServices();
+    }
+  };
+  const closeMobileMenu = () => {
+    if (menu) menu.open = false;
+    syncMenuState();
+    trigger?.focus({ preventScroll: true });
+  };
+  mobileServices?.addEventListener('toggle', syncMobileServicesState);
+  menu?.addEventListener('toggle', syncMenuState);
+  navHeader?.addEventListener('keydown', (event) => {
+    if (!menu?.open) return;
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      if (mobileServices?.open) {
+        closeMobileServices();
+        mobileServicesTrigger?.focus();
+      } else {
+        closeMobileMenu();
+      }
+    } else if (event.key === 'Tab') {
+      const focusable = Array.from(navHeader.querySelectorAll<HTMLElement>('a[href], summary, button, [tabindex="0"]'))
+        .filter(element => element.checkVisibility() && !element.closest('[inert]'));
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+    }
   });
-  menu?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { menu.open = false; }));
+  menu?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMobileMenu));
   document.addEventListener('click', event => {
-    if (menu?.open && event.target instanceof Node && !menu.contains(event.target)) menu.open = false;
+    if (menu?.open && event.target instanceof Node && !menu.contains(event.target)) closeMobileMenu();
   });
   const serviceMenu = document.querySelector<HTMLDetailsElement>('.wb-nav-services');
   const serviceTrigger = serviceMenu?.querySelector('summary');
@@ -100,7 +242,7 @@ const currentPage = (href: string) => (href === '#home' && isHome) || href === A
   serviceMenu?.addEventListener('pointerenter', openServiceOnHover);
   serviceMenu?.addEventListener('pointerleave', closeServiceOnLeave);
   desktop.addEventListener('change', () => {
-    if (desktop.matches && menu) menu.open = false;
+    if (desktop.matches && menu) { menu.open = false; syncMenuState(); }
     if (!desktop.matches && serviceMenu) { clearServiceHoverClose(); serviceMenu.open = false; syncServiceState(); }
   });
 </script>

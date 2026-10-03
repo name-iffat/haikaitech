@@ -2,21 +2,30 @@
 import { Image } from 'astro:assets';
 import systemsOperator from '../assets/concept-decorations/refined/about-systems-operator.png';
 import WorkbenchIcon from './WorkbenchIcon.astro';
+import { bmHome } from '../data/locales/bm-home';
+import type { SiteLocale } from '../utils/i18n';
 
-const capabilities = [
+interface Props { locale?: SiteLocale; }
+const { locale = 'en' } = Astro.props;
+const isBm = locale === 'bm';
+
+const englishCapabilities = [
   { icon: 'layout', label: 'Experience', description: 'Websites & interfaces' },
   { icon: 'settings', label: 'Operations', description: 'Dashboards & internal systems' },
   { icon: 'database', label: 'Engineering', description: 'Databases, APIs & application logic' },
 ] as const;
+const capabilities = englishCapabilities.map((capability, index) => isBm
+  ? { ...capability, ...bmHome.about.capabilities[index] }
+  : capability);
 ---
 
 <section id="about" class="workbench wb-about" aria-labelledby="about-title">
   <header class="wb-about-head">
     <div>
-      <p class="wb-eyebrow">About HaikaiTech</p>
-      <h2 id="about-title">Business thinking.<br />Engineering depth.</h2>
+      <p class="wb-eyebrow">{isBm ? bmHome.about.eyebrow : 'About HaikaiTech'}</p>
+      <h2 id="about-title">{isBm ? <>{bmHome.about.title[0]}<br />{bmHome.about.title[1]}</> : <>Business thinking.<br />Engineering depth.</>}</h2>
     </div>
-    <p>HaikaiTech is a digital engineering studio building websites, business systems and interactive products for Malaysian businesses.</p>
+    <p>{isBm ? bmHome.about.intro : 'HaikaiTech is a digital engineering studio building websites, business systems and interactive products for Malaysian businesses.'}</p>
   </header>
 
     <figure class="wb-about-illustration" aria-hidden="true">
@@ -32,7 +41,7 @@ const capabilities = [
           </li>
         ))}
       </ul>
-      <a class="wb-button wb-primary wb-button--painted" href="https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer"><span>Discuss your project</span></a>
+      <a class="wb-button wb-primary wb-button--painted" href={isBm ? 'https://wa.me/60147533499?text=Salam%20HaikaiTech%2C%20saya%20ingin%20berbincang%20tentang%20projek.' : 'https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%27d%20like%20to%20discuss%20a%20project.'} target="_blank" rel="noopener noreferrer"><span>{isBm ? bmHome.about.action : 'Discuss your project'}</span></a>
     </div>
 
 </section>

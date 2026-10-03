@@ -4,6 +4,11 @@ import react from '@astrojs/react';
 export default defineConfig({
   integrations: [react()],
   site: 'https://haikaitech.my',
+  i18n: {
+    locales: ['en', 'bm'],
+    defaultLocale: 'en',
+    routing: { prefixDefaultLocale: false },
+  },
   outDir: 'dist',
   build: {
     assets: 'assets',

@@ -94,6 +94,7 @@
 @media (max-width: 900px) {
   .sd-hero { grid-template-columns: 1fr; gap: 48px; padding-top: 48px; }
   .sd-breadcrumb { margin-bottom: 32px; }
+  .sd-breadcrumb a { display: inline-flex; min-height: 44px; align-items: center; }
   .sd-hero-visual { max-width: 720px; }
   .sd-section-heading { grid-template-columns: 32px minmax(0, .9fr) minmax(0, 1fr); }
   .sd-cta { grid-template-columns: 1fr; gap: 32px; }
@@ -127,10 +128,10 @@
   .sd-product-sheet span { padding: 5px 0; font-size: 8px; }
   .sd-receipt { right: 11%; top: 11%; width: 28%; padding: 10px 8px 14px; }
   .sd-receipt strong, .sd-receipt span { font-size: 7px; }
-  .sd-section-heading { grid-template-columns: 28px 1fr; gap: 16px; margin-bottom: 24px; }
+  .sd-section-heading { grid-template-columns: 28px minmax(0, 1fr); gap: 16px; margin-bottom: 24px; }
   .sd-section-heading > svg { width: 20px; height: 20px; }
-  .sd-section-heading h2 { font-size: 40px; }
-  .sd-section-heading p { grid-column: 2; font-size: 16px; }
+  .sd-section-heading h2 { min-width: 0; max-width: 100%; font-size: clamp(30px, 9.5vw, 40px); }
+  .sd-section-heading p { grid-column: 2; min-width: 0; max-width: 100%; font-size: 16px; }
   .sd-content-section { padding-top: 48px; padding-bottom: 48px; }
   .sd-row { grid-template-columns: 1fr; gap: 8px; padding: 16px 0; }
   .sd-row dd { font-size: 15px; }

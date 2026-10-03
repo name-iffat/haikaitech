@@ -4,21 +4,28 @@ interface Props {
   description?: string;
   canonical?: string;
   noindex?: boolean;
+  locale?: 'en' | 'bm';
+  alternates?: { en: string; bm: string };
 }
 
 import '../styles/global.css';
 
-const { title = 'HAIKAITECH SOLUTIONS | Software Engineering Studio Malaysia', description = 'HAIKAITECH SOLUTIONS — registered software engineering studio in Malaysia. We build custom web apps, dashboards, and interactive systems with React, .NET, and Unity. Chat on WhatsApp for a fast reply.', canonical = 'https://haikaitech.my/', noindex = false } = Astro.props;
+const { title = 'HAIKAITECH SOLUTIONS | Software Engineering Studio Malaysia', description = 'HAIKAITECH SOLUTIONS — registered software engineering studio in Malaysia. We build custom web apps, dashboards, and interactive systems with React, .NET, and Unity. Chat on WhatsApp for a fast reply.', canonical = 'https://haikaitech.my/', noindex = false, locale = 'en', alternates } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang={locale === 'bm' ? 'ms-MY' : 'en'}>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
+  {alternates && <>
+    <link rel="alternate" hreflang="en" href={alternates.en} />
+    <link rel="alternate" hreflang="ms-MY" href={alternates.bm} />
+    <link rel="alternate" hreflang="x-default" href={alternates.en} />
+  </>}
   {noindex && <meta name="robots" content="noindex, nofollow" />}
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -29,6 +36,8 @@ const { title = 'HAIKAITECH SOLUTIONS | Software Engineering Studio Malaysia', d
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:url" content={canonical} />
+  <meta property="og:locale" content={locale === 'bm' ? 'ms_MY' : 'en_MY'} />
+  {alternates && <meta property="og:locale:alternate" content={locale === 'bm' ? 'en_MY' : 'ms_MY'} />}
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://haikaitech.my/og-image.png" />
   <meta name="twitter:card" content="summary" />
