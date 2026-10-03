@@ -89,8 +89,8 @@ const topics = [...new Set([
                   <span>{readingTime(post.body)} min read</span>
                 </div>
                 <div class="in-note-copy">
-                  <h3 id={'note-' + post.id}><a href={'/blog/' + post.id + '/'}>{post.data.title}</a></h3>
-                  <p>{post.data.description}</p>
+                  <h3 id={'note-' + post.id} lang={post.data.lang}><a href={'/blog/' + post.id + '/'}>{post.data.title}</a></h3>
+                  <p lang={post.data.lang}>{post.data.description}</p>
                 </div>
                 <div class="in-note-topics" aria-label="Article topics">
                   {post.data.tags.slice(0, 3).map((tag) => <span>{topicLabel(tag)}</span>)}

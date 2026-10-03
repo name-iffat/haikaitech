@@ -7,7 +7,7 @@ const WHATSAPP_TEXT = encodeURIComponent(
   'Hi HaikaiTech! I came across your portfolio (haikaitech.my) and would love to discuss a project.'
 );
 
-const StickyBooking: React.FC<{ locale?: 'en' | 'bm' }> = ({ locale = 'en' }) => {
+const StickyBooking: React.FC<{ locale?: 'en' | 'bm'; readingMode?: boolean }> = ({ locale = 'en', readingMode = false }) => {
   const bm = locale === 'bm';
   const whatsappText = bm
     ? encodeURIComponent('Salam HaikaiTech, saya melihat portfolio anda dan ingin berbincang tentang projek.')
@@ -19,15 +19,22 @@ const StickyBooking: React.FC<{ locale?: 'en' | 'bm' }> = ({ locale = 'en' }) =>
 
   React.useEffect(() => {
     const onScroll = () => {
-      const shouldShow = window.scrollY > 500;
+      const readingSheet = readingMode ? document.querySelector('.wa-paper') : null;
+      const mobileReading = readingSheet && window.matchMedia('(max-width: 767px)').matches
+        && readingSheet.getBoundingClientRect().bottom > window.innerHeight * .7;
+      const shouldShow = window.scrollY > 500 && !mobileReading;
       setShow(shouldShow);
       if (!shouldShow) setOpen(false);
     };
 
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+    window.addEventListener('resize', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+  }, [readingMode]);
 
   React.useEffect(() => {
     const onPointerDown = (event: PointerEvent) => {
@@ -51,6 +58,7 @@ const StickyBooking: React.FC<{ locale?: 'en' | 'bm' }> = ({ locale = 'en' }) =>
   return (
     <div
       ref={launcherRef}
+      inert={!show}
       className={`fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3 transition-[opacity,transform] duration-200 ease-out motion-reduce:transition-none ${
         show ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-2 opacity-0'
       }`}

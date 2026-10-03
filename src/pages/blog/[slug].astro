@@ -15,14 +15,37 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props as { post: CollectionEntry<'blog'> };
 const { Content, headings } = await render(post);
+const isBm = post.data.lang === 'ms-MY';
+const locale = isBm ? 'bm' : 'en';
+const articleHeadings = headings.filter((heading) => heading.depth === 2);
+const copy = isBm ? {
+  back: 'Nota / semua artikel', eyebrow: 'Nota dari bengkel', minutes: 'minit bacaan', words: 'perkataan',
+  file: 'FAIL BENGKEL', filed: 'Tarikh', read: 'Bacaan', topics: 'Topik', note: 'nota untuk disimpan.',
+  contents: 'Dalam artikel ini', sections: 'bahagian', field: 'NOTA', author: 'Ditulis oleh HaikaiTech Solutions',
+  location: 'Pulau Pinang, Malaysia · untuk perniagaan di seluruh Malaysia.',
+  project: 'Ada projek dalam fikiran?', projectTitle: 'Jom bina sesuatu yang berguna.',
+  projectDescription: 'Bincang melalui WhatsApp. Kami akan susun skop dan sediakan sebut harga.',
+  whatsapp: 'Bincang melalui WhatsApp', services: 'Lihat servis & harga', related: 'Nota seterusnya',
+  keepReading: 'Teruskan membaca.', readNote: 'Baca artikel',
+} : {
+  back: 'Insights / all field notes', eyebrow: 'Insights / Field note', minutes: 'min read', words: 'words',
+  file: 'WORKSHOP FILE', filed: 'Filed', read: 'Read', topics: 'Topics', note: 'notes worth keeping.',
+  contents: 'In this article', sections: 'sections', field: 'FIELD NOTE', author: 'Filed by HaikaiTech Solutions',
+  location: 'Penang, Malaysia · serving businesses across Malaysia.',
+  project: 'Have a project in mind?', projectTitle: "Let's make the useful version.",
+  projectDescription: "Chat on WhatsApp and we'll scope it into a fixed quotation.",
+  whatsapp: 'Chat on WhatsApp', services: 'See services & pricing', related: 'More field notes',
+  keepReading: 'Keep reading.', readNote: 'Read note',
+};
 
 const allPosts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const related = allPosts.filter((p) => p.id !== post.id).slice(0, 3);
 
-const readingTime = Math.max(1, Math.round(post.body.trim().split(/\s+/).length / 200));
-const wordCount = post.body.trim().split(/\s+/).length;
+const readingText = post.body.replace(/<[^>]*>/g, ' ').replace(/\[([^\]]+)\]\([^)]*\)/g, '$1').trim();
+const wordCount = readingText.split(/\s+/).length;
+const readingTime = Math.max(1, Math.round(wordCount / 200));
 const formatDate = (date: Date) =>
-  new Date(date).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
+  new Date(date).toLocaleDateString(isBm ? 'ms-MY' : 'en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
 const pubDate = new Date(post.data.pubDate).toISOString();
 const canonical = `https://haikaitech.my/blog/${post.id}/`;
 
@@ -32,7 +55,7 @@ const blogSchema = {
   headline: post.data.title,
   description: post.data.description,
   datePublished: pubDate,
-  inLanguage: 'en',
+  inLanguage: post.data.lang,
   wordCount: wordCount,
   url: canonical,
   mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
@@ -51,28 +74,28 @@ const blogSchema = {
 };
 ---
 
-<BaseLayout title={`${post.data.title} | HaikaiTech Blog`} description={post.data.description} canonical={canonical}>
+<BaseLayout title={`${post.data.title} | HaikaiTech Blog`} description={post.data.description} canonical={canonical} locale={locale}>
   <div class="workbench wb-article-page">
     <script is:inline type="application/ld+json" set:html={JSON.stringify(blogSchema, null, 2)}></script>
-    <WorkbenchNav />
+    <WorkbenchNav locale={locale} />
 
     <main class="wa-main">
       <a class="wa-back" href="/blog/">
         <span aria-hidden="true">/</span>
-        Insights / all field notes
+        {copy.back}
       </a>
 
       <header class="wa-hero" aria-labelledby="article-title">
         <div class="wa-hero-copy">
-          <p class="wb-eyebrow">Insights / Field note</p>
+          <p class="wb-eyebrow">{copy.eyebrow}</p>
           <h1 id="article-title">{post.data.title}</h1>
           <p class="wa-lede">{post.data.description}</p>
           <div class="wa-meta" aria-label="Article metadata">
             <time datetime={pubDate}>{formatDate(post.data.pubDate)}</time>
             <span aria-hidden="true">·</span>
-            <span>{readingTime} min read</span>
+            <span>{readingTime} {copy.minutes}</span>
             <span aria-hidden="true">·</span>
-            <span>{wordCount} words</span>
+            <span>{wordCount} {copy.words}</span>
           </div>
           <div class="wa-topics" aria-label="Article topics">
             {post.data.tags.map((tag) => <span>{tag}</span>)}
@@ -80,24 +103,26 @@ const blogSchema = {
         </div>
 
         <aside class="wa-docket" aria-label="Field note details">
-          <p class="wa-docket-label">WORKSHOP FILE</p>
+          <p class="wa-docket-label">{copy.file}</p>
           <dl>
-            <div><dt>Filed</dt><dd>{formatDate(post.data.pubDate)}</dd></div>
-            <div><dt>Read</dt><dd>{readingTime} min</dd></div>
-            <div><dt>Topics</dt><dd>{post.data.tags.length}</dd></div>
+            <div><dt>{copy.filed}</dt><dd>{formatDate(post.data.pubDate)}</dd></div>
+            <div><dt>{copy.read}</dt><dd>{readingTime} min</dd></div>
+            <div><dt>{copy.topics}</dt><dd>{post.data.tags.length}</dd></div>
           </dl>
-          <p class="wa-docket-note" aria-hidden="true">notes worth keeping.</p>
+          <p class="wa-docket-note" aria-hidden="true">{copy.note}</p>
         </aside>
       </header>
 
-      {headings.filter((heading) => heading.depth === 2).length > 0 && (
-        <nav class="wa-toc" aria-label="In this article">
-          <div class="wa-toc-head">
-            <p>In this article</p>
-            <span>{headings.filter((heading) => heading.depth === 2).length} sections</span>
-          </div>
+      {articleHeadings.length > 0 && (
+        <nav class="wa-toc" aria-label={copy.contents}>
+          <details class="wa-toc-disclosure" open>
+          <summary class="wa-toc-head">
+            <span class="wa-toc-label">{copy.contents}</span>
+            <span>{articleHeadings.length} {copy.sections}</span>
+            <svg class="wa-toc-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
+          </summary>
           <ol>
-            {headings.filter((heading) => heading.depth === 2).map((heading, index) => (
+            {articleHeadings.map((heading, index) => (
               <li>
                 <a href={`#${heading.slug}`}>
                   <span>{String(index + 1).padStart(2, '0')}</span>
@@ -106,6 +131,7 @@ const blogSchema = {
               </li>
             ))}
           </ol>
+          </details>
         </nav>
       )}
 
@@ -114,8 +140,8 @@ const blogSchema = {
       <div class="wa-reading-layout">
         <article class="wa-paper article-content">
           <header class="wa-paper-head">
-            <span>FIELD NOTE / {post.id.replaceAll('-', ' ')}</span>
-            <span>{wordCount} words</span>
+            <span>{copy.field} / {post.id.replaceAll('-', ' ')}</span>
+            <span>{wordCount} {copy.words}</span>
           </header>
           <div class="wa-paper-body">
             <Content />
@@ -123,8 +149,8 @@ const blogSchema = {
           <footer class="wa-author">
             <div class="wa-author-mark" aria-hidden="true">HT</div>
             <div>
-              <p>Filed by HaikaiTech Solutions</p>
-              <span>Penang, Malaysia · serving businesses across Malaysia.</span>
+              <p>{copy.author}</p>
+              <span>{copy.location}</span>
             </div>
           </footer>
         </article>
@@ -132,19 +158,19 @@ const blogSchema = {
 
       <section class="wa-project" aria-labelledby="project-question">
         <div>
-          <p class="wb-eyebrow">Have a project in mind?</p>
-          <h2 id="project-question">Let&apos;s make the useful version.</h2>
+          <p class="wb-eyebrow">{copy.project}</p>
+          <h2 id="project-question">{copy.projectTitle}</h2>
         </div>
         <div class="wa-project-actions">
-          <p>Chat on WhatsApp and we&apos;ll scope it into a fixed quotation.</p>
+          <p>{copy.projectDescription}</p>
           <div>
             <a
               class="wb-button wb-primary wb-button--painted"
-              href="https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%20read%20your%20blog%20and%20have%20a%20project%20in%20mind."
+              href={isBm ? 'https://wa.me/60147533499?text=Salam%20HaikaiTech%2C%20saya%20membaca%20artikel%20anda%20dan%20ingin%20berbincang%20tentang%20projek.' : 'https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%20read%20your%20blog%20and%20have%20a%20project%20in%20mind.'}
               target="_blank"
               rel="noopener noreferrer"
-            >Chat on WhatsApp</a>
-            <a class="wb-button wb-secondary" href="/services/">See services &amp; pricing</a>
+            >{copy.whatsapp}</a>
+            <a class="wb-button wb-secondary" href={isBm ? '/bm/services/' : '/services/'}>{copy.services}</a>
           </div>
         </div>
       </section>
@@ -152,15 +178,15 @@ const blogSchema = {
       {related.length > 0 && (
         <section class="wa-related" aria-labelledby="related-title">
           <header>
-            <p class="wb-eyebrow">More field notes</p>
-            <h2 id="related-title">Keep reading.</h2>
+            <p class="wb-eyebrow">{copy.related}</p>
+            <h2 id="related-title">{copy.keepReading}</h2>
           </header>
           <div class="wa-related-list">
             {related.map((p) => (
               <a href={`/blog/${p.id}/`}>
                 <time datetime={p.data.pubDate.toISOString()}>{formatDate(p.data.pubDate)}</time>
-                <strong>{p.data.title}</strong>
-                <span>Read note</span>
+                <strong lang={p.data.lang}>{p.data.title}</strong>
+                <span>{copy.readNote}{isBm && p.data.lang === 'en' ? ' (EN)' : ''}</span>
               </a>
             ))}
           </div>
@@ -168,7 +194,17 @@ const blogSchema = {
       )}
     </main>
 
-    <FooterWorkbench client:load newsletterSource="blog" />
-    <StickyBooking client:load />
+    <FooterWorkbench client:load newsletterSource="blog" locale={locale} />
+    <StickyBooking client:load locale={locale} readingMode />
   </div>
+<script>
+  const contents = document.querySelector<HTMLDetailsElement>('.wa-toc-disclosure');
+  const smallScreen = matchMedia('(max-width: 767px)');
+  const syncContents = () => { if (contents) contents.open = !smallScreen.matches; };
+  syncContents();
+  smallScreen.addEventListener('change', syncContents);
+  contents?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+    if (smallScreen.matches) contents.open = false;
+  }));
+</script>
 </BaseLayout>

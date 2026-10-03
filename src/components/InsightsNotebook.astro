@@ -34,7 +34,7 @@ const formatDate = (date: Date) =>
                 <a href={`/blog/${post.id}/`}>
                   <span class="wb-notebook-index">{String(index + 1).padStart(2, '0')}</span>
                   <span>
-                    <strong lang="en">{post.data.title}</strong>
+                    <strong lang={post.data.lang}>{post.data.title}</strong>
                     <small>{formatDate(post.data.pubDate)} / {post.data.tags[0]}</small>
                   </span>
                 </a>
@@ -48,8 +48,8 @@ const formatDate = (date: Date) =>
           <article class="wb-notebook-page wb-notebook-left-leaf" data-notebook-left-leaf={index} aria-hidden="true">
             <p class="wb-notebook-label">{isBm ? bmHome.insights.fileNote : 'Filed note /'} {String(index + 1).padStart(2, '0')}</p>
             <p class="wb-notebook-left-note">{isBm ? bmHome.insights.turnedNote : 'Turned over from the workbench.'}</p>
-            <h3 lang="en">{post.data.title}</h3>
-            <p lang="en">{post.data.description}</p>
+            <h3 lang={post.data.lang}>{post.data.title}</h3>
+            <p lang={post.data.lang}>{post.data.description}</p>
             <footer><span>{post.data.tags.slice(0, 2).join(' / ')}</span><span>TURNED</span></footer>
           </article>
         ))}
@@ -62,8 +62,8 @@ const formatDate = (date: Date) =>
             <article class:list={['wb-notebook-leaf', { 'is-active': index === 0 }]} aria-hidden={index === 0 ? undefined : 'true'}>
               <p class="wb-notebook-label">{isBm ? bmHome.insights.open : 'Open note /'} {formatDate(post.data.pubDate)}</p>
               {index === 0 && <p class="wb-notebook-note">{isBm ? 'Laman web sudah dilancarkan. Apa seterusnya?' : 'The website is live. Now what?'}</p>}
-              <h3 lang="en">{post.data.title}</h3>
-              <p class="wb-notebook-description" lang="en">{post.data.description}</p>
+              <h3 lang={post.data.lang}>{post.data.title}</h3>
+              <p class="wb-notebook-description" lang={post.data.lang}>{post.data.description}</p>
               <ul class="wb-notebook-topics" aria-label={isBm ? bmHome.insights.topics : 'Article topics'}>
                 {post.data.tags.slice(0, 3).map((tag) => <li>{tag}</li>)}
               </ul>
