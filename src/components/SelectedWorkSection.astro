@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 import hssDesktopImg from '../assets/projects/hss-wireless-cctv-desktop.png';
 import workforceDemoImg from '../assets/projects/mze-workforce-demo.png';
 import aaBurgerImg from '../assets/projects/aaburger-kiosk-desktop.png';
@@ -22,7 +23,8 @@ const featuredProjects = [
     href: 'https://mzdemo.haikaitech.my/',
     image: workforceDemoImg,
     alt: isBm ? 'Papan pemuka pengurusan tenaga kerja MZE Worker System dalam mod demo' : 'MZE Worker System workforce management dashboard in demo mode',
-    attachment: 'pin',
+    presentation: 'laptop',
+    purpose: isBm ? 'Papan pemuka pengurusan tenaga kerja.' : 'Workforce management dashboard.',
   },
   {
     id: 'hss',
@@ -33,6 +35,8 @@ const featuredProjects = [
     image: hssDesktopImg,
     alt: isBm ? 'Laman utama desktop HSS Wireless CCTV' : 'HSS Wireless CCTV desktop website homepage',
     attachment: 'tape',
+    presentation: 'browser',
+    purpose: isBm ? 'Laman web perniagaan CCTV.' : 'CCTV business website.',
   },
   {
     id: 'aaburger',
@@ -42,7 +46,8 @@ const featuredProjects = [
     href: 'https://aaburger.haikaitech.my/',
     image: aaBurgerImg,
     alt: isBm ? 'Antara muka pesanan AA Burger Kiosk' : 'AA Burger Kiosk ordering interface',
-    sticker: isBm ? 'Aliran pesanan' : 'Order flow',
+    presentation: 'tablet',
+    purpose: isBm ? 'Antara muka pesanan kiosk.' : 'Ordering kiosk interface.',
   },
   {
     id: 'citythree',
@@ -53,6 +58,8 @@ const featuredProjects = [
     image: cityThreeImg,
     alt: isBm ? 'Laman utama desktop CityThree' : 'CityThree desktop website homepage',
     attachment: 'pin',
+    presentation: 'browser',
+    purpose: isBm ? 'Laman web kredit komuniti.' : 'Community credit business website.',
   },
   {
     id: 'kopitebu',
@@ -62,15 +69,19 @@ const featuredProjects = [
     href: 'https://kopitebu-website.pages.dev/',
     image: kopiTebuImg,
     alt: isBm ? 'Laman utama desktop Kopi Tebu' : 'Kopi Tebu desktop website homepage',
+    presentation: 'browser',
+    purpose: isBm ? 'Laman web kafe tepi pantai.' : 'Beachside café website.',
   },
 ];
 
+const archiveImages = Object.values(import.meta.glob<ImageMetadata>('../assets/projects/*.{png,webp}', { eager: true, import: 'default' }));
 const archiveProjects = PROJECTS.map((project) => ({
   ...project,
   name: project.name,
   status: project.status,
   href: project.link,
   purpose: isBm ? bmHome.projects.archivePurpose[project.id] ?? project.purpose : project.purpose,
+  screenshot: archiveImages.find(image => image.src === project.image),
 }));
 ---
 
@@ -86,66 +97,148 @@ const archiveProjects = PROJECTS.map((project) => ({
   <div class="wb-work-wall" aria-label={isBm ? bmHome.projects.wall : 'Five recent HaikaiTech projects'}>
     {featuredProjects.map((project, index) => (
       <figure class={`wb-project-sheet wb-project-sheet--${project.id}`}>
-        {project.id === 'hss' && (
+        {project.id === 'mze' && (
           <span class="wb-project-sheet__note" aria-hidden="true">
-            {isBm ? bmHome.projects.realWork : 'real work, in the field'}
+            <span>{isBm ? <>di sebalik<br />kerja harian</> : <>behind the<br />day-to-day</>}</span>
             <svg viewBox="0 0 70 56" fill="none"><path d="M4 7c11 3 40 7 55 34m0 0-18-4m18 4-7-17" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg>
           </span>
         )}
-        {project.attachment === 'tape' && <span class="wb-project-sheet__tape" aria-hidden="true"></span>}
-        {project.attachment === 'pin' && <span class="wb-pin wb-project-sheet__pin" aria-hidden="true"></span>}
-        {project.sticker && <span class="wb-project-sheet__sticker" aria-hidden="true">{project.sticker}</span>}
-        <Image src={project.image} alt={project.alt} loading={index === 0 ? 'eager' : 'lazy'} sizes="(max-width: 1023px) calc(100vw - 48px), 66vw" />
-        <figcaption>
-          <a href={project.href} target="_blank" rel="noopener noreferrer" aria-label={isBm ? `Buka ${project.name}` : `Open ${project.name}`}>
-            <span>
-              <b>{project.name}</b>
-              <small class={`wb-project-sheet__status wb-project-sheet__status--${project.status}`}>{isBm ? bmHome.projects.types[project.type] : project.type} / {isBm ? bmHome.projects.status(project.status) : project.status}</small>
+        <div class={`wb-project-stage wb-project-stage--${project.presentation}`}>
+          <a class={`wb-project-visual wb-project-visual--${project.presentation}`} href={project.href} target="_blank" rel="noopener noreferrer" aria-label={isBm ? `Buka ${project.name}` : `Open ${project.name}`}>
+            {project.attachment === 'tape' && <span class="wb-project-sheet__tape" aria-hidden="true"></span>}
+            {project.attachment === 'pin' && <span class="wb-pin wb-project-sheet__pin" aria-hidden="true"></span>}
+            {project.presentation === 'browser' && <span class="wb-project-browser-bar" aria-hidden="true"><i></i><i></i><i></i></span>}
+            <span class={project.presentation === 'laptop' ? 'wb-laptop-screen' : project.presentation === 'tablet' ? 'wb-project-tablet-screen' : 'wb-project-browser-screen'}>
+              <Image src={project.image} alt={project.alt} loading={index === 0 ? 'eager' : 'lazy'} widths={[320, 640, 960, 1280]} sizes={project.presentation === 'tablet' ? '(max-width: 1023px) 480px, 430px' : project.id === 'mze' ? '(max-width: 1023px) calc(100vw - 64px), (max-width: 1279px) 56vw, 720px' : '(max-width: 1023px) calc(100vw - 64px), 40vw'} />
             </span>
-            <span class="wb-project-sheet__visit">{isBm ? bmHome.projects.view : 'View'}</span>
+            {project.presentation === 'laptop' && <span class="wb-laptop-base" aria-hidden="true"></span>}
           </a>
-          <span aria-hidden="true">{String(index + 1).padStart(2, '0')} / 05</span>
+        </div>
+        <figcaption>
+          <h3>{project.name}</h3>
+          <p>{project.purpose}</p>
+          <div class="wb-project-sheet__links">
+            <small class={`wb-project-sheet__status wb-project-sheet__status--${project.status}`}>{isBm ? bmHome.projects.types[project.type] : project.type} / {isBm ? bmHome.projects.status(project.status) : project.status}</small>
+            <a class="wb-project-sheet__visit" href={project.href} target="_blank" rel="noopener noreferrer" aria-label={isBm ? `Buka ${project.name}` : `View ${project.name}${project.status === 'demo' ? ' demo' : ' project'}`}>
+              {isBm ? project.status === 'demo' ? 'Lihat demo' : 'Lihat projek' : project.status === 'demo' ? 'View demo' : 'View project'}
+            </a>
+          </div>
         </figcaption>
       </figure>
     ))}
   </div>
 
-  <section class="wb-archive" aria-labelledby="archive-title">
+  <section id="workshop-archive" class="wb-archive" aria-labelledby="archive-title" data-locale={locale}>
     <header class="wb-archive-head">
-      <div><p class="wb-eyebrow">{isBm ? bmHome.projects.more(archiveProjects.length) : `More from the workshop / ${archiveProjects.length} projects`}</p><h3 id="archive-title">{isBm ? bmHome.projects.archive : 'Explore the rest.'}</h3></div>
-      <div class="wb-archive-controls"><button type="button" data-direction="-1" aria-label={isBm ? bmHome.projects.previous : 'Previous projects'} aria-controls="archive-rail">←</button><button type="button" data-direction="1" aria-label={isBm ? bmHome.projects.next : 'Next projects'} aria-controls="archive-rail">→</button></div>
+      <div>
+        <p class="wb-archive-tab">{archiveProjects.length} {isBm ? 'projek' : 'projects'}</p>
+        <h3 id="archive-title">{isBm ? bmHome.projects.archive : 'Explore the rest.'}</h3>
+        <p class="wb-archive-intro">{isBm ? 'Laman web, demo dan eksperimen dari bengkel kami.' : 'Websites, demos and experiments from the workshop.'}</p>
+      </div>
+      <div class="wb-archive-navigation" hidden>
+        <div class="wb-archive-filters" role="group" aria-label={isBm ? 'Tapis projek' : 'Filter projects'}>
+          <button type="button" data-filter="all" aria-pressed="true" aria-controls="archive-rail">{isBm ? 'Semua projek' : 'All projects'}</button>
+          <button type="button" data-filter="live" aria-pressed="false" aria-controls="archive-rail">{isBm ? 'Aktif' : 'Live'}</button>
+          <button type="button" data-filter="demo" aria-pressed="false" aria-controls="archive-rail">{isBm ? 'Demo' : 'Demos'}</button>
+        </div>
+        <div class="wb-archive-controls">
+          <button type="button" data-direction="-1" aria-label={isBm ? bmHome.projects.previous : 'Previous projects'} aria-controls="archive-rail"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m14 6-6 6 6 6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" /></svg></button>
+          <button type="button" data-direction="1" aria-label={isBm ? bmHome.projects.next : 'Next projects'} aria-controls="archive-rail"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m10 6 6 6-6 6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" /></svg></button>
+        </div>
+      </div>
     </header>
     <ul id="archive-rail" class="wb-archive-rail" tabindex="0" aria-label={isBm ? bmHome.projects.past : 'Previous projects and demos; scroll horizontally'}>
       {archiveProjects.map((project) => (
-        <li class="wb-archive-sheet">
-          <a class="wb-archive-image" href={`/projects/${project.id}/`} aria-label={isBm ? `Lihat pratonton ${project.name}; butiran projek dalam Bahasa Inggeris` : `View ${project.name} project preview`}><img src={project.image} width="600" height="450" alt={isBm ? `Pratonton projek ${project.name}` : `${project.name} website preview`} loading="lazy" /></a>
+        <li class="wb-archive-sheet" data-status={project.status}>
+          <a class="wb-archive-image" href={`/projects/${project.id}/`} aria-label={isBm ? `Lihat pratonton ${project.name}; butiran projek dalam Bahasa Inggeris` : `View ${project.name} project preview`}>
+            <Image src={project.screenshot ?? project.image} width={600} height={project.screenshot ? undefined : 450} widths={[320, 600, 900]} sizes="(max-width: 600px) 80vw, (max-width: 1023px) 43vw, 380px" alt={isBm ? `Pratonton projek ${project.name}` : `${project.name} project preview`} loading="lazy" />
+          </a>
           <div class="wb-archive-copy">
-            <small class={`wb-project-sheet__status wb-project-sheet__status--${project.status}`}>{isBm ? bmHome.projects.status(project.status) : project.status}</small>
             <h4><a href={`/projects/${project.id}/`}>{project.name}</a>{isBm && <span class="wb-archive-language">(EN)</span>}</h4>
             <p>{project.purpose}</p>
-            <div class="wb-archive-tools"><h5>{isBm ? bmHome.projects.tech : <>Tech, tools &amp; toys</>}</h5><ul>{project.skills.map(skill => <li>{skill}</li>)}</ul></div>
-            <a class="wb-archive-visit" href={project.href} target="_blank" rel="noopener noreferrer">{isBm ? bmHome.projects.visit : 'Visit project'}</a>
+            <div class="wb-archive-links">
+              <small class={`wb-project-sheet__status wb-project-sheet__status--${project.status}`}>{isBm ? bmHome.projects.status(project.status) : project.status}</small>
+              <a href={`/projects/${project.id}/`}>{isBm ? 'Lihat projek' : 'View project'}</a>
+              <a href={project.href} target="_blank" rel="noopener noreferrer">{isBm ? project.status === 'demo' ? 'Buka demo' : 'Buka laman web' : project.status === 'demo' ? 'Open demo' : 'Open live site'}</a>
+            </div>
+            <div class="wb-archive-tools">
+              <h5>{isBm ? bmHome.projects.tech : <>Tech, tools &amp; toys</>}</h5>
+              <ul>{project.skills.slice(0, 3).map(skill => <li>{skill}</li>)}</ul>
+              {project.skills.length > 3 && <details><summary><span class="wb-tools-show">{isBm ? 'Lihat semua alat' : 'Show all tools'}</span><span class="wb-tools-hide">{isBm ? 'Lihat lebih sedikit' : 'Show fewer tools'}</span></summary><ul>{project.skills.slice(3).map(skill => <li>{skill}</li>)}</ul></details>}
+            </div>
           </div>
         </li>
       ))}
     </ul>
-    <p class="wb-archive-hint">{isBm ? bmHome.projects.swipe(archiveProjects.length) : `Scroll or swipe to explore all ${archiveProjects.length} projects`}</p>
+    <p class="wb-archive-empty" hidden>{isBm ? 'Tiada projek dalam pilihan ini. Pilih Semua projek.' : 'No projects in this selection. Choose All projects.'}</p>
+    <footer class="wb-archive-footer">
+      <div class="wb-archive-progress" aria-hidden="true" hidden><span></span></div>
+      <p class="wb-archive-position" role="status" aria-live="polite" aria-atomic="true"></p>
+      <p class="wb-archive-hint">{isBm ? 'Skrol atau leret untuk meneroka' : 'Scroll or swipe to explore'}</p>
+    </footer>
   </section>
 </section>
 
 <script>
-  const rail = document.querySelector<HTMLElement>('#archive-rail');
-  const buttons = document.querySelectorAll<HTMLButtonElement>('.wb-archive-controls button');
-  if (rail) {
-    const update = () => buttons.forEach(button => {
-      button.disabled = button.dataset.direction === '-1' ? rail.scrollLeft <= 2 : rail.scrollLeft >= rail.scrollWidth - rail.clientWidth - 2;
-    });
-    buttons.forEach(button => button.addEventListener('click', () => {
-      const step = (rail.firstElementChild?.getBoundingClientRect().width ?? rail.clientWidth) + 24;
-      rail.scrollBy({ left: Number(button.dataset.direction) * step, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+  document.querySelectorAll<HTMLElement>('.wb-archive').forEach(archive => {
+    const rail = archive.querySelector<HTMLElement>('.wb-archive-rail');
+    if (!rail) return;
+    const buttons = archive.querySelectorAll<HTMLButtonElement>('[data-direction]');
+    const filters = archive.querySelectorAll<HTMLButtonElement>('[data-filter]');
+    const sheets = [...rail.querySelectorAll<HTMLElement>('.wb-archive-sheet')];
+    const position = archive.querySelector<HTMLElement>('.wb-archive-position');
+    const progress = archive.querySelector<HTMLElement>('.wb-archive-progress span');
+    const empty = archive.querySelector<HTMLElement>('.wb-archive-empty');
+    const isBm = archive.dataset.locale === 'bm';
+    const visibleSheets = () => sheets.filter(sheet => !sheet.hidden);
+    let announceTimer: ReturnType<typeof setTimeout>;
+    const update = () => {
+      const items = visibleSheets();
+      const bounds = rail.getBoundingClientRect();
+      // Count mostly visible prints, not the deliberately clipped next preview.
+      const visible = items.map((sheet, index) => ({ bounds: sheet.getBoundingClientRect(), index }))
+        .filter(item => Math.min(bounds.right, item.bounds.right) - Math.max(bounds.left, item.bounds.left) >= item.bounds.width * .6);
+      const first = (visible[0]?.index ?? 0) + 1;
+      const last = (visible.at(-1)?.index ?? 0) + 1;
+      buttons.forEach(button => {
+        button.disabled = !items.length || (button.dataset.direction === '-1' ? rail.scrollLeft <= 2 : rail.scrollLeft >= rail.scrollWidth - rail.clientWidth - 2);
+      });
+      if (progress) progress.style.transform = `scaleX(${items.length ? last / items.length : 0})`;
+      // Announce only after scrolling settles, rather than every animation frame.
+      clearTimeout(announceTimer);
+      announceTimer = setTimeout(() => {
+        if (position) position.textContent = items.length
+          ? isBm ? `Memaparkan ${first}–${last} daripada ${items.length}` : `Showing ${first}–${last} of ${items.length}`
+          : isBm ? '0 projek' : '0 projects';
+      }, 150);
+    };
+    const move = (direction: number) => {
+      const step = (visibleSheets()[0]?.getBoundingClientRect().width ?? rail.clientWidth) + parseFloat(getComputedStyle(rail).columnGap);
+      rail.scrollBy({ left: direction * step, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+    };
+    buttons.forEach(button => button.addEventListener('click', () => move(Number(button.dataset.direction))));
+    filters.forEach(button => button.addEventListener('click', () => {
+      const filter = button.dataset.filter;
+      filters.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+      sheets.forEach(sheet => { sheet.hidden = filter !== 'all' && sheet.dataset.status !== filter; });
+      if (empty) empty.hidden = visibleSheets().length !== 0;
+      rail.scrollTo({ left: 0, behavior: 'instant' });
+      update();
     }));
+    rail.addEventListener('keydown', event => {
+      if (event.target !== rail) return;
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+        event.preventDefault();
+        move(event.key === 'ArrowLeft' ? -1 : 1);
+      } else if (event.key === 'Home' || event.key === 'End') {
+        event.preventDefault();
+        rail.scrollTo({ left: event.key === 'Home' ? 0 : rail.scrollWidth, behavior: 'instant' });
+      }
+    });
     rail.addEventListener('scroll', update, { passive: true });
     new ResizeObserver(update).observe(rail);
+    archive.querySelectorAll<HTMLElement>('.wb-archive-navigation, .wb-archive-progress').forEach(element => { element.hidden = false; });
+    archive.dataset.enhanced = 'true';
     update();
-  }
+  });
 </script>

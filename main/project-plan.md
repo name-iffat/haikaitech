@@ -65,7 +65,7 @@ Brand architecture:
 
 ### Phase 3: Deferred
 - [x] Services & Pricing page (/services/) — live 2026-08-06, full confirmed pricing + Service/FAQPage JSON-LD
-- [x] Blog engine + 5 seed posts (/blog/) — live 2026-08-06, BlogPosting JSON-LD, homepage section
+- [x] Blog engine + 9 posts (/blog/) — live 2026-08-06, BlogPosting JSON-LD, homepage section; e-commerce readiness article added 2026-10-03 at `/blog/website-untuk-seller-tiktok-shopee/`
 - [~] Case Studies (enrich project detail pages) - deferred
 - [~] haikaitech-ui shared library + haikaitech-quotation - deferred until 2nd tool starts
 

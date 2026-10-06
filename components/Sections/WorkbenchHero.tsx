@@ -12,11 +12,27 @@ interface Props {
   locale?: SiteLocale;
 }
 
-export default function WorkbenchHero({ websiteSrc, fuzzfloorSrc, dashboardSrc, tapeSrc, pinSrc, locale = 'en' }: Props) {
+export default function WorkbenchHero({ websiteSrc, fuzzfloorSrc, dashboardSrc, tapeSrc, locale = 'en' }: Props) {
   const bm = locale === 'bm';
   const copy = bm ? bmHome.hero : null;
   return (
     <header id="home" className={`workbench wb-hero ${bm ? 'wb-hero--bm' : ''}`}>
+      <svg className="wb-hero-drafting" aria-hidden="true" focusable="false" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" fill="none">
+        <g stroke="currentColor" strokeWidth="1" opacity=".35">
+          <path d="M34 72v142M14 94h120M36 650v190M14 790h280M322 44v196M266 108h316M238 884l434-446" />
+          <circle cx="34" cy="94" r="7" />
+          <circle cx="36" cy="790" r="7" />
+          <path d="M286 110h184M302 96v28M454 96v28" />
+        </g>
+        <g stroke="currentColor" strokeWidth="1" opacity=".75">
+          <path d="M704 28v138M620 84h740M1402 62v180M1348 106h76M720 778h678M1318 578v284M1082 690h344" />
+          <circle cx="704" cy="84" r="7" />
+          <circle cx="1402" cy="106" r="7" />
+          <circle cx="1318" cy="778" r="7" />
+          <path d="M1238 196h164v100M1148 836h170v-52M676 146h64v64" />
+          <path strokeDasharray="5 9" d="M650 210v476M888 54v92M1226 798v72M1370 248v258" />
+        </g>
+      </svg>
       <div className="wb-copy">
         <p className="wb-eyebrow">{copy?.eyebrow ?? 'Founder-led digital engineering studio'}</p>
         <h1><span>{copy?.headline[0] ?? 'Built around'}</span> <span>{copy?.headline[1] ?? 'your business.'}</span></h1>
@@ -33,12 +49,16 @@ export default function WorkbenchHero({ websiteSrc, fuzzfloorSrc, dashboardSrc, 
           <span className="wb-project-label">HSS Wireless CCTV / {bm ? 'Laman web' : 'Website'}</span>
         </a>
         <a href="https://mzdemo.haikaitech.my/" target="_blank" rel="noopener noreferrer" className="wb-print wb-print-dashboard" aria-label={bm ? 'Teroka demo sistem pengurusan tenaga kerja (dibuka di tab baharu)' : 'Explore the workforce management demo (opens in a new tab)'}>
-          <img className="wb-hero-pin" src={pinSrc} width={120} height={100} loading="eager" alt="" />
-          <img src={dashboardSrc} width={1440} height={900} loading="eager" alt={copy?.workforceAlt ?? 'MZE Worker System demo dashboard with workforce summaries and permit status'} />
+          <span className="wb-laptop-screen">
+            <img src={dashboardSrc} width={1440} height={900} loading="eager" alt={copy?.workforceAlt ?? 'MZE Worker System demo dashboard with workforce summaries and permit status'} />
+          </span>
+          <span className="wb-laptop-base" aria-hidden="true" />
           <span className="wb-project-label">{bm ? 'Pengurusan tenaga kerja' : 'Workforce management'} / Demo</span>
         </a>
         <a href="/projects/fuzzfloor/" className="wb-print wb-print-fuzz" aria-label={bm ? 'Lihat projek Fuzzfloor; butiran projek dalam Bahasa Inggeris' : 'View Fuzzfloor project'}>
-          <img src={fuzzfloorSrc} width={430} height={860} loading="eager" alt={bm ? 'Laman web mudah alih Fuzzfloor dengan servis lantai dan pilihan pertanyaan projek' : 'Fuzzfloor mobile website with its flooring services and project enquiry actions'} />
+          <span className="wb-phone-shell">
+            <img src={fuzzfloorSrc} width={430} height={860} loading="eager" alt={bm ? 'Laman web mudah alih Fuzzfloor dengan servis lantai dan pilihan pertanyaan projek' : 'Fuzzfloor mobile website with its flooring services and project enquiry actions'} />
+          </span>
           <span className="wb-project-label">Fuzzfloor / {bm ? 'Mudah alih · EN' : 'Mobile'}</span>
         </a>
         <span className="wb-note">{copy?.workNote[0] ?? 'built for'}<br />{copy?.workNote[1] ?? 'real work.'}<svg aria-hidden="true" viewBox="0 0 70 70" fill="none"><path d="M52 5C57 32 30 48 12 56m0 0 5-17m-5 17 20-3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /></svg></span>
