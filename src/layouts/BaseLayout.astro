@@ -11,6 +11,10 @@ interface Props {
 import '../styles/global.css';
 
 const { title = 'HAIKAITECH SOLUTIONS | Software Engineering Studio Malaysia', description = 'HAIKAITECH SOLUTIONS — registered software engineering studio in Malaysia. We build custom web apps, dashboards, and interactive systems with React, .NET, and Unity. Chat on WhatsApp for a fast reply.', canonical = 'https://haikaitech.my/', noindex = false, locale = 'en', alternates } = Astro.props;
+const shareImage = 'https://haikaitech.my/og-image-v2.jpg';
+const shareImageAlt = locale === 'bm'
+  ? 'HaikaiTech — Built around your business. Ilustrasi laman web, pangkalan data dan automasi yang saling berhubung di atas kertas krim.'
+  : 'HaikaiTech — Built around your business. A connected website, database and automation workshop illustration on cream engineering paper.';
 ---
 
 <!DOCTYPE html>
@@ -39,8 +43,17 @@ const { title = 'HAIKAITECH SOLUTIONS | Software Engineering Studio Malaysia', d
   <meta property="og:locale" content={locale === 'bm' ? 'ms_MY' : 'en_MY'} />
   {alternates && <meta property="og:locale:alternate" content={locale === 'bm' ? 'en_MY' : 'ms_MY'} />}
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://haikaitech.my/og-image.png" />
-  <meta name="twitter:card" content="summary" />
+  <meta property="og:site_name" content="HaikaiTech" />
+  <meta property="og:image" content={shareImage} />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content={shareImageAlt} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={shareImage} />
+  <meta name="twitter:image:alt" content={shareImageAlt} />
   <!-- JSON-LD Schema -->
   <script type="application/ld+json">
   {
