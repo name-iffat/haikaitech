@@ -1,0 +1,72 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WorkbenchNav from '../components/WorkbenchNav.astro';
+import FooterWorkbench from '../../components/FooterWorkbench';
+import '../styles/workbench.css';
+import mascot from '../assets/bearsplit/mascot.png';
+import event from '../assets/bearsplit/event-concept.png';
+import balances from '../assets/bearsplit/balances-concept.png';
+import share from '../assets/bearsplit/share-concept.png';
+
+const waitlist = 'https://bear-split-waitlist.vercel.app/';
+const screens = [
+  { image: event, title: '01 / Bring the expenses together', text: 'A shared event gives meals, tickets and little extras a place to live.' },
+  { image: balances, title: '02 / Make the balances clear', text: 'See who owes whom, then record settlements as friends pay each other.' },
+  { image: share, title: '03 / Send a friendly reminder', text: 'Share an expense breakdown with payment QR details for use in a banking app.' },
+];
+---
+
+<BaseLayout title="BearSplit — Social bill splitting, by HaikaiTech" description="Meet BearSplit, a playful shared-expense app in prototype development by HaikaiTech Solutions, Malaysia. Explore the concept and join the early-access waitlist." canonical="https://haikaitech.my/bearsplit/" socialImage="https://haikaitech.my/bearsplit-social.jpg" socialImageAlt="BearSplit — Split the bill. Keep the friendship. A prototype by HaikaiTech Solutions.">
+  <div class="bear-page">
+    <WorkbenchNav />
+    <main>
+      <header class="bear-wrap bear-hero">
+        <div>
+          <p class="bear-kicker">From the HaikaiTech workshop</p>
+          <p class="bear-status">Prototype · In development</p>
+          <h1>Split the bill.<br /><em>Keep the friendship.</em></h1>
+          <p class="bear-intro">Meet BearSplit. A playful social bill-splitting app for young adults sharing makan, trips, futsal and everyday hangouts.</p>
+          <div class="bear-actions"><a class="bear-button" href={waitlist}>Join the early-access waitlist ↗</a><a class="bear-text-link" href="#prototype">Explore the prototype ↓</a></div>
+          <p class="bear-note">A product by HaikaiTech Solutions · Malaysia</p>
+        </div>
+        <div class="bear-mascot"><span class="bear-sticker">Good times.<br />Clear balances.</span><Image src={mascot} alt="BearSplit's friendly bear mascot" width={440} loading="eager" /></div>
+      </header>
+
+      <section class="bear-band" aria-labelledby="why-title"><div class="bear-wrap bear-story"><p class="bear-kicker">For the friend who always pays first</p><div><h2 id="why-title">The hangout ends.<br />The maths shouldn't follow you home.</h2><p>One friend paid for dinner. Another covered the ride. The receipts are somewhere in the group chat. BearSplit is being built to bring those shared expenses together, so settling up feels less awkward.</p></div></div></section>
+
+      <section class="bear-wrap bear-section" aria-labelledby="jobs-title"><p class="bear-kicker">A little less admin. A little more together.</p><h2 id="jobs-title">Split. Understand. Share.</h2><div class="bear-jobs">
+        <article><span aria-hidden="true">01</span><h3>Split the shared stuff.</h3><p>Organise expenses around an event, include friends as guests, and work out each person's share.</p></article>
+        <article><span aria-hidden="true">02</span><h3>See the money story.</h3><p>Our vision: visual breakdowns and friendly insights that help you notice spending patterns without the guilt.</p></article>
+        <article><span aria-hidden="true">03</span><h3>Make reminders friendlier.</h3><p>A designed settlement card puts the breakdown and payment details in one easy-to-share place.</p></article>
+      </div></section>
+
+      <section id="prototype" class="bear-wrap bear-section" aria-labelledby="prototype-title"><p class="bear-kicker">Inside the idea</p><h2 id="prototype-title">A look at the experience.</h2><p class="bear-section-intro">UI concepts from our design exploration, using sample expenses. These are mockups, not screenshots of a released app. The share-card concept includes the earlier MoneyCollect working name.</p><div class="bear-screens">{screens.map(screen => <figure><div class="bear-screen"><Image src={screen.image} alt={screen.title + ' — BearSplit UI concept with sample data'} widths={[320, 640]} sizes="(max-width: 700px) 85vw, 30vw" loading="lazy" /></div><figcaption><h3>{screen.title}</h3><p>{screen.text}</p><small>UI concept · Sample data</small></figcaption></figure>)}</div></section>
+
+      <section class="bear-band" aria-labelledby="progress-title"><div class="bear-wrap bear-section"><p class="bear-kicker">An honest look at where we are</p><h2 id="progress-title">Built in steps. Shared as we go.</h2><div class="bear-jobs">
+        <article><p class="bear-stage">Current / Local prototype</p><h3>The core expense flows.</h3><p>Local prototype code covers events, guest participants, expense splits, balances, settlement recording, payment QR profiles and share cards. The app is not publicly released.</p></article>
+        <article><p class="bear-stage">Next / Validation</p><h3>Try it with real friend groups.</h3><p>Our next milestone is to test the core flow with intended users, learn where it gets confusing, and improve the experience before launch.</p></article>
+        <article><p class="bear-stage">Planned / Exploration</p><h3>A warmer view of spending.</h3><p>Spend Pizza visual breakdowns, playful Bear Awards and AI-assisted recaps are future ideas, not available features.</p></article>
+      </div><aside class="bear-ai"><h3>Where Claude could help</h3><p>We plan to explore the Claude API for event recaps and spending explanations grounded in structured expense data. Claude is not integrated yet. Balances and settlement amounts will remain calculated by application code; AI would explain the numbers, not decide what friends owe.</p></aside></div></section>
+
+      <section class="bear-wrap bear-section bear-founder" aria-labelledby="founder-title"><div><p class="bear-kicker">Made in Malaysia</p><h2 id="founder-title">Our own idea.<br />The same workshop.</h2></div><div><p>I'm Iffat Haikal, the founder behind HaikaiTech Solutions. Alongside building websites and systems for clients, I'm developing BearSplit as our own consumer product.</p><p>BearSplit brings that engineering work into something more personal: making shared money easier to talk about with friends.</p><a class="bear-text-link" href="/#about">Meet HaikaiTech →</a></div></section>
+
+      <section class="bear-wrap bear-final" aria-labelledby="join-title"><p class="bear-kicker">Come along for the build</p><h2 id="join-title">Your next trip deserves<br />a smaller maths problem.</h2><p>Join the existing BearSplit waitlist for early-access updates.</p><a class="bear-button" href={waitlist}>Join the BearSplit waitlist ↗</a><p class="bear-note">Questions or feedback? <a href="mailto:hq@haikaitech.my">hq@haikaitech.my</a></p></section>
+    </main>
+    <FooterWorkbench client:load />
+  </div>
+</BaseLayout>
+
+<style>
+  /* BearSplit's cream, brown and orange palette follows its existing waitlist artwork. */
+  .bear-page{--bear-ink:#392a22;--bear-muted:#665348;--bear-paper:#fffaf1;--bear-accent:#f5a623;background:var(--bear-paper);color:var(--bear-ink)}
+  .bear-wrap{width:min(1120px,calc(100% - 48px));margin-inline:auto}.bear-hero{display:grid;grid-template-columns:1.35fr 1fr;align-items:center;gap:48px;padding-block:88px}
+  .bear-kicker,.bear-stage{font:600 12px/1.6 'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.1em;color:var(--bear-muted)}.bear-status{display:inline-block;margin:20px 0;padding:8px 14px;border:1px solid #cbbba5;border-radius:24px;font-size:13px}
+  h1{font-size:clamp(44px,5.7vw,72px);font-weight:800;letter-spacing:-.045em;line-height:1.08}h1 em{font-family:'Patrick Hand',cursive;font-style:normal;color:#895018}h2{font-size:clamp(30px,3.6vw,46px);font-weight:750;letter-spacing:-.035em;line-height:1.15;margin:12px 0 24px}h3{font-size:21px;font-weight:700;line-height:1.3;margin-bottom:12px}p{line-height:1.75}.bear-intro{font-size:19px;max-width:570px;margin-top:24px;color:var(--bear-muted)}
+  .bear-actions{display:flex;gap:20px;align-items:center;flex-wrap:wrap;margin-top:30px}.bear-button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:14px 22px;background:var(--bear-ink);color:var(--bear-paper);border-radius:12px;font-weight:650;text-decoration:none}.bear-button:hover{background:#60402b}.bear-text-link{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-underline-offset:5px;font-weight:600}.bear-page a:focus-visible{outline:3px solid #99600a;outline-offset:5px}.bear-note{font-size:13px;color:var(--bear-muted);margin-top:20px}.bear-note a{text-decoration:underline}
+  .bear-mascot{position:relative;background:#f7e9cb;border-radius:50% 50% 42% 42%;padding:32px 20px}.bear-mascot img{width:100%;height:auto}.bear-sticker{position:absolute;right:-8px;top:14px;transform:rotate(8deg);padding:16px;background:var(--bear-accent);font:24px/1.1 'Patrick Hand',cursive;border-radius:12px}
+  .bear-band{background:#f3eadb}.bear-story{display:grid;grid-template-columns:1fr 2fr;gap:60px;padding-block:64px}.bear-story p:last-child{max-width:680px;color:var(--bear-muted)}.bear-section{padding-block:72px}.bear-jobs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px;margin-top:36px}.bear-jobs article{border-top:1px solid #cbbba5;padding-top:24px}.bear-jobs article>span{display:block;font:32px 'Patrick Hand',cursive;color:#895018;margin-bottom:20px}.bear-jobs p{color:var(--bear-muted)}.bear-stage{margin-bottom:16px}.bear-section-intro{max-width:720px;color:var(--bear-muted)}
+  .bear-screens{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin-top:40px}.bear-screens figure{margin:0;min-width:0}.bear-screen{padding:12px;background:#eadfcd;border-radius:24px}.bear-screen img{width:100%;height:auto;border-radius:16px}.bear-screens figcaption{padding-top:22px}.bear-screens figcaption p{color:var(--bear-muted)}.bear-screens small{display:block;margin-top:12px;color:var(--bear-muted)}
+  .bear-ai{border-left:4px solid #895018;margin-top:44px;padding:8px 0 8px 24px;max-width:850px}.bear-ai p{color:var(--bear-muted)}.bear-founder{display:grid;grid-template-columns:1fr 1fr;gap:60px}.bear-founder p+p{margin-top:16px}.bear-final{text-align:center;background:#f7e9cb;padding:60px 24px;border-radius:32px;margin-bottom:72px}.bear-final .bear-button{margin-top:24px}
+  @media(max-width:700px){.bear-hero{grid-template-columns:1fr;padding-block:48px;gap:36px}.bear-mascot{max-width:320px;margin-inline:auto}.bear-story,.bear-founder{grid-template-columns:1fr;gap:20px}.bear-jobs{grid-template-columns:1fr;gap:28px}.bear-screens{grid-template-columns:1fr;gap:40px;max-width:360px;margin-inline:auto}.bear-section{padding-block:48px}.bear-wrap{width:calc(100% - 40px)}.bear-sticker{right:0}.bear-final{padding:40px 20px}}
+</style>
