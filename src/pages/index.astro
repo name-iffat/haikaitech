@@ -7,12 +7,13 @@ import WorkbenchHero from '../../components/Sections/WorkbenchHero';
 import '../styles/workbench.css';
 import SelectedWorkSection from '../components/SelectedWorkSection.astro';
 import ServicesWorkbench from '../components/ServicesWorkbench.astro';
+import PricingWorkbench from '../components/PricingWorkbench.astro';
 import AboutWorkbench from '../components/AboutWorkbench.astro';
 import InsightsNotebook from '../components/InsightsNotebook.astro';
 import ContactSection from '../../components/Sections/ContactWorkbench';
 import FooterWorkbench from '../../components/FooterWorkbench';
 import StickyBooking from '../../components/StickyBooking';
-import { getCollection } from 'astro:content';
+import { getPublicPosts } from '../lib/content/posts';
 
 import workforceDemoImg from '../assets/projects/mze-workforce-demo.png';
 import fuzzfloorMobileImg from '../assets/projects/fuzzfloor-mobile.png';
@@ -26,7 +27,7 @@ const heroDashboard = await getImage({ src: workforceDemoImg, width: 1200, forma
 const heroTape = await getImage({ src: heroTapeImg, width: 360, format: 'webp' });
 const heroPin = await getImage({ src: heroPinImg, width: 120, format: 'webp' });
 
-const blogPosts = (await getCollection('blog'))
+const blogPosts = (await getPublicPosts())
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 4);
 
@@ -40,6 +41,7 @@ const blogPosts = (await getCollection('blog'))
       <TrustProof />
       <SelectedWorkSection />
       <ServicesWorkbench />
+      <PricingWorkbench />
       <AboutWorkbench />
       <InsightsNotebook posts={blogPosts} />
       <div id="start" class="scroll-mt-28"><ContactSection client:load /></div>

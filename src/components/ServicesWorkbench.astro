@@ -29,6 +29,7 @@ const englishServices = [
     description: 'Help customers understand your business and take the next step, from their first visit to a WhatsApp enquiry.',
     href: '/services/',
     action: 'Explore website plans',
+    price: 'From RM1,700',
   },
   {
     icon: 'workflow',
@@ -38,6 +39,7 @@ const englishServices = [
     description: "Bring your team's day-to-day processes into a system that fits how you work.",
     href: 'https://mzdemo.haikaitech.my/',
     action: 'Explore the system demo',
+    price: 'Quotation',
   },
   {
     icon: 'blocks',
@@ -47,6 +49,7 @@ const englishServices = [
     description: 'Turn a useful idea into something people can use, explore and interact with.',
     href: 'https://aaburger.haikaitech.my/',
     action: 'Explore AA Burger Kiosk',
+    price: 'Quotation',
   },
   {
     icon: 'wrench',
@@ -56,8 +59,10 @@ const englishServices = [
     description: 'Keep your site current as your business changes, with post-launch updates quoted around what you need.',
     href: '/services/',
     action: 'View support options',
+    price: 'Quotation',
   },
 ];
+const servicePricesBm = ['Bermula RM1,700', 'Sebut harga', 'Sebut harga', 'Sebut harga'];
 const services = englishServices.map((service, index) => isBm
   ? { ...service, ...bmHome.services.rows[index], href: localizeHref(service.href, locale) }
   : service);
@@ -75,7 +80,7 @@ const services = englishServices.map((service, index) => isBm
   </header>
 
   <div class="wb-services-list">
-    {services.map((service) => (
+    {services.map((service, index) => (
       <article class:list={['wb-service-row', `wb-service-row--${service.type}`]}>
         <span class="wb-service-icon" aria-hidden="true"><WorkbenchIcon name={service.icon} /></span>
         <div class="wb-service-title">
@@ -152,6 +157,7 @@ const services = englishServices.map((service, index) => isBm
 
         <div class="wb-service-copy">
           <p>{service.description}</p>
+          <p class="wb-service-price">{isBm ? servicePricesBm[index] : service.price}</p>
           <a href={service.href} target={service.href.startsWith('http') ? '_blank' : undefined} rel={service.href.startsWith('http') ? 'noopener noreferrer' : undefined}>
             {service.action}
           </a>
@@ -190,7 +196,8 @@ const services = englishServices.map((service, index) => isBm
               {isBm ? extension.slug === 'automation' ? bmHome.services.automationFlow : bmHome.services.ecommerceFlow : extension.slug === 'automation' ? 'Enquiry → AI helper → Your review' : 'Products → Checkout → Orders'}
             </p>
             <div class="wb-services-extension-bottom">
-              <span class="wb-services-extension-platforms">{isBm ? extension.slug === 'automation' ? bmHome.services.platformsAutomation : bmHome.services.platformsEcommerce : extension.slug === 'automation' ? 'Hermes / n8n / Custom scripts' : 'Shopify / WooCommerce'}</span>
+              <span class="wb-services-extension-price">{extension.slug === 'automation' ? (isBm ? 'Sebut harga' : 'Quotation') : (isBm ? 'Bermula RM3,500' : 'From RM3,500')}</span>
+              <span class="wb-services-extension-platforms">{isBm ? extension.slug === 'automation' ? bmHome.services.platformsAutomation : bmHome.services.platformsEcommerce : extension.slug === 'automation' ? 'Hermes / n8n / Custom scripts' : 'WooCommerce / Chip / EasyParcel'}</span>
               <a class="wb-services-extension-action" href={localizeHref(extension.href, locale)}>{isBm ? extension.slug === 'automation' ? bmHome.services.automationAction : bmHome.services.ecommerceAction : extension.action}</a>
             </div>
           </div>
@@ -214,7 +221,7 @@ const services = englishServices.map((service, index) => isBm
   </details>
 
   <footer class="wb-services-footer">
-    <p>{isBm ? bmHome.services.footer : 'A clear scope. A useful next step.'}</p>
+    <p>{isBm ? 'Website bermula RM1,700 • E-dagang bermula RM3,500 • Sistem sebut harga' : 'Websites from RM1,700 • Ecom from RM3,500 • Systems by quotation'}</p>
     <a class="wb-button wb-primary" href={localizeHref('/services/', locale)}>{isBm ? bmHome.services.pricing : 'Explore services &amp; pricing'}</a>
   </footer>
 </section>

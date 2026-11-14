@@ -8,16 +8,16 @@ const { locale = 'en' } = Astro.props;
 const isBm = locale === 'bm';
 const homePath = isBm ? '/bm/' : '/';
 const isHome = Astro.url.pathname === homePath || (isBm && Astro.url.pathname === '/bm');
-const mobileIcons = { Home: 'home', Work: 'layout', Services: 'toolbox', Solutions: 'list-check', Insights: 'book', About: 'building' } as const;
+const mobileIcons = { Home: 'home', Work: 'layout', Services: 'toolbox', Pricing: 'briefcase', Solutions: 'list-check', Insights: 'book', About: 'building' } as const;
 const links = primaryNavigation.map((item) => ({
   ...item,
-  label: isBm ? ({ Home: 'Laman Utama', Work: 'Projek', Services: 'Servis', Solutions: 'Penyelesaian (EN)', Insights: 'Nota (EN)', About: 'Tentang' } as Record<string, string>)[item.label] : item.label,
+  label: isBm ? ({ Home: 'Laman Utama', Work: 'Projek', Services: 'Servis', Pricing: 'Harga', Solutions: 'Penyelesaian (EN)', Insights: 'Nota (EN)', About: 'Tentang' } as Record<string, string>)[item.label] : item.label,
   mobileLabel: isBm
-    ? ({ Home: 'Laman utama', Work: 'Projek kami', Services: 'Servis', Solutions: 'Alat perniagaan (EN)', Insights: 'Artikel & panduan (EN)', About: 'Tentang kami' } as Record<string, string>)[item.label]
-    : ({ Home: 'Home', Work: 'Our work', Services: 'Services', Solutions: 'Business tools', Insights: 'Articles & guides', About: 'About us' } as Record<string, string>)[item.label],
+    ? ({ Home: 'Laman utama', Work: 'Projek kami', Services: 'Servis', Pricing: 'Harga & pakej', Solutions: 'Alat perniagaan (EN)', Insights: 'Artikel & panduan (EN)', About: 'Tentang kami' } as Record<string, string>)[item.label]
+    : ({ Home: 'Home', Work: 'Our work', Services: 'Services', Pricing: 'Pricing', Solutions: 'Business tools', Insights: 'Articles & guides', About: 'About us' } as Record<string, string>)[item.label],
   mobileDescription: isBm
-    ? ({ Home: 'Kembali ke halaman utama.', Work: 'Lihat laman dan sistem yang kami bina.', Services: 'Pilih servis yang perniagaan anda perlukan.', Solutions: 'Invois, sebut harga & resit percuma.', Insights: 'Panduan praktikal untuk perniagaan anda.', About: 'Kenali HaikaiTech dan cara kami bekerja.' } as Record<string, string>)[item.label]
-    : ({ Home: 'Back to the main page.', Work: 'See the websites and systems we build.', Services: 'Choose what your business needs.', Solutions: 'Free invoices, quotations & receipts.', Insights: 'Practical advice for your business.', About: 'Meet HaikaiTech and how we work.' } as Record<string, string>)[item.label],
+    ? ({ Home: 'Kembali ke halaman utama.', Work: 'Lihat laman dan sistem yang kami bina.', Services: 'Pilih servis yang perniagaan anda perlukan.', Pricing: 'Website RM1,700, e-dagang RM3,500.', Solutions: 'Invois, sebut harga & resit percuma.', Insights: 'Panduan praktikal untuk perniagaan anda.', About: 'Kenali HaikaiTech dan cara kami bekerja.' } as Record<string, string>)[item.label]
+    : ({ Home: 'Back to the main page.', Work: 'See the websites and systems we build.', Services: 'Choose what your business needs.', Pricing: 'Website RM1,700, ecom RM3,500.', Solutions: 'Free invoices, quotations & receipts.', Insights: 'Practical advice for your business.', About: 'Meet HaikaiTech and how we work.' } as Record<string, string>)[item.label],
   mobileIcon: mobileIcons[item.label],
 }));
 const translatedServices = serviceNavigation.map((item) => ({

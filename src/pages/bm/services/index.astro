@@ -29,15 +29,16 @@ const marketRanges = [
   ['Platform tersuai', 'RM15,000–RM50,000+', 'Tempahan, keahlian, papan pemuka, integrasi dan sistem operasi'],
 ];
 const pricingModels = [
-  ['Binaan sekali dengan harga promosi', 'Skop standard yang ditetapkan bermula pada harga promosi; sebut harga mengesahkan skop akhir.', 'Kehadiran perniagaan yang ringkas', 'Hanya untuk skop terpilih'],
+  ['Website bisnes starter satu halaman', 'Bermula RM1,700 untuk website satu halaman yang direka khas dengan sehingga lima bahagian, termasuk hos dan domain standard tahun pertama serta lima kemas kini kecil selepas launch.', 'Bisnes kecil yang perlukan kehadiran online profesional', 'Halaman dan ciri tambahan disebut harga berasingan'],
+  ['Starter e-dagang WooCommerce', 'Bermula RM3,500 untuk kedai WooCommerce rekaan khas dengan produk tanpa had, bayaran Chip, penghantaran EasyParcel, Bahasa Inggeris sebagai lalai, hos dan domain tahun pertama serta lima kemas kini kecil.', 'Penjual yang beralih dari Shopee / TikTok ke kedai sendiri', 'Varian tersuai, tempahan dan integrasi disebut harga berasingan'],
   ['Sebut harga tetap mengikut skop', 'Keperluan disemak sebelum harga tetap dan hasil kerja dikeluarkan.', 'CMS, laman lebih besar, e-dagang dan integrasi', 'Model utama bagi kebanyakan projek'],
   ['Binaan tersuai berfasa', 'Sistem lebih besar dibahagikan kepada peringkat yang berguna dan diluluskan.', 'Papan pemuka, tempahan dan alat aliran kerja', 'Digunakan apabila sesuai dari segi teknikal'],
   ['Langganan bulanan', 'Binaan, hos dan sokongan digabungkan dalam bayaran berulang.', 'Pemilik yang mahukan model bayaran berkala', 'Tidak ditawarkan buat masa ini'],
 ];
 const offers = [
-  { icon: 'globe', label: 'Skop promosi terpilih', title: 'Promosi laman web', price: 'Bermula RM1,500', description: 'Untuk laman web perniagaan dengan skop promosi yang ditetapkan. Halaman, kandungan, semakan, tempoh dan tambahan akan disahkan dalam sebut harga.', action: 'Bincang skop promosi', href: whatsapp, external: true },
+  { icon: 'globe', label: 'Starter satu halaman', title: 'Website bisnes', price: 'Bermula RM1,700', description: 'Website satu halaman, sehingga lima bahagian, integrasi pertanyaan, SEO/AEO asas, hos dan domain standard tahun pertama, serta lima kemas kini kecil. Skop tambahan disebut harga berasingan.', action: 'Lihat skop RM1,700', href: '/bm/website/', external: false },
   { icon: 'layout', label: 'Binaan berasaskan kandungan', title: 'Laman web perniagaan & CMS', price: 'Sebut harga', description: 'Untuk laman lebih besar, pelbagai servis, CMS, pengurusan katalog, kemas kini kandungan atau keperluan mendapatkan pelanggan.', action: 'Bincang skop laman web', href: whatsapp, external: true },
-  { icon: 'blocks', label: 'Laluan e-dagang', title: 'E-dagang, tempahan & bayaran', price: 'Sebut harga', description: 'Harga bergantung pada produk, variasi, stok, penghantaran, gerbang bayaran, pra-tempahan, integrasi dan alat pihak ketiga.', action: 'Teroka binaan e-dagang', href: '/bm/services/ecommerce/', external: false },
+  { icon: 'blocks', label: 'Starter e-dagang', title: 'Setup kedai WooCommerce', price: 'Bermula RM3,500', description: 'Kedai WooCommerce rekaan khas, produk tanpa had, bayaran Chip, penghantaran EasyParcel, Bahasa Inggeris sebagai lalai, hos dan domain standard tahun pertama, serta lima kemas kini kecil. Skop tambahan disebut harga berasingan.', action: 'Lihat skop RM3,500', href: '/bm/services/ecommerce/', external: false },
   { icon: 'workflow', label: 'Laluan operasi', title: 'Sistem tersuai & automasi', price: 'Sebut harga', description: 'Untuk papan pemuka, portal, tempahan, aliran kerja dalaman, integrasi, ejen AI, automasi dan aplikasi web tersuai.', action: 'Teroka binaan automasi', href: '/bm/services/automation/', external: false },
 ];
 const priceFactors = [
@@ -60,18 +61,18 @@ const process = [
 ];
 const faqs = [
   ['Berapakah kos membina laman web?', 'Harga akhir bergantung pada halaman, kandungan, semakan, tempoh, integrasi dan kos berterusan, kemudian disahkan melalui sebut harga rasmi. Laluan promosi terpilih untuk skop laman perniagaan ringkas diterangkan di bawah.'],
-  ['Apakah yang termasuk dalam promosi laman web?', 'Ini ialah laluan permulaan promosi untuk skop laman perniagaan terpilih. Sebut harga mengesahkan halaman, tanggungjawab kandungan, semakan, tempoh, integrasi dan syarat serahan sebelum kerja bermula.'],
+  ['Apakah yang termasuk dalam website starter RM1,700?', 'Website bisnes satu halaman yang direka khas dengan sehingga lima bahagian kandungan utama, paparan responsif telefon dan desktop, integrasi WhatsApp atau pertanyaan, SEO dan AEO asas, pengoptimuman kelajuan, setup SSL dan deployment, hosting dan satu domain standard untuk setahun, serta lima kemas kini kecil kandungan selepas launch. Halaman dan ciri tambahan disebut harga berasingan.'],
   ['Mengapa laman e-dagang dan tempahan memerlukan sebut harga?', 'Kos berubah mengikut produk, variasi, peraturan stok, penghantaran, gerbang bayaran, logik tempahan, personalisasi, integrasi dan servis pihak ketiga. Sebut harga mengelakkan harga pakej yang mengelirukan.'],
   ['Apakah beza harga promosi dengan sebut harga rasmi?', 'Harga promosi ialah harga mula bagi jenis projek yang ditetapkan. Sebut harga rasmi mengesahkan skop, harga, hasil kerja, pengecualian dan syarat bayaran untuk projek tertentu.'],
   ['Apakah kos yang mungkin timbul selepas pelancaran?', 'Bergantung pada projek, kos berterusan boleh merangkumi pembaharuan domain dan hos, plugin berbayar, penggunaan penyedia, storan, caj gerbang bayaran, kemas kini kandungan dan pembangunan seterusnya. Kos yang diketahui akan dinyatakan dalam sebut harga.'],
   ['Bagaimanakah bayaran dibuat?', 'Bagi projek standard, 50% dibayar untuk bermula dan 50% sebelum pelancaran atau serahan akhir. Sistem lebih besar boleh dibahagikan kepada fasa yang diluluskan dengan pecahan bayaran dalam sebut harga.'],
   ['Adakah laman web menjadi milik saya selepas siap?', 'Bagi projek sekali bayar yang selesai, akses, kod sumber dan hasil yang dipersetujui diserahkan selepas bayaran akhir, tertakluk pada sebut harga dan lesen pihak ketiga.'],
 ];
-const serviceSchema = { '@context': 'https://schema.org', '@type': 'Service', name: 'Reka bentuk laman web dan pembangunan perisian tersuai', description: 'Skop promosi laman web perniagaan terpilih bermula RM1,500, serta CMS, e-dagang, tempahan, automasi dan sistem tersuai melalui sebut harga.', provider: { '@type': 'Organization', name: 'HaikaiTech Solutions', url: 'https://haikaitech.my/' }, areaServed: { '@type': 'Country', name: 'Malaysia' }, offers: { '@type': 'Offer', name: 'Promosi laman web standard terpilih', price: '1500', priceCurrency: 'MYR', description: 'Harga permulaan promosi untuk skop laman web standard terpilih. Skop dan harga akhir disahkan melalui sebut harga rasmi.', url: 'https://haikaitech.my/bm/services/#pricing' } };
+const serviceSchema = { '@context': 'https://schema.org', '@type': 'Service', name: 'Reka bentuk laman web dan pembangunan perisian tersuai', description: 'Website bisnes satu halaman dari RM1,700 dengan sehingga lima bahagian kandungan, SEO dan AEO asas, serta hosting dan domain standard setahun. E-dagang, tempahan, automasi dan sistem tersuai disebut harga ikut skop.', provider: { '@type': 'Organization', name: 'HaikaiTech Solutions', url: 'https://haikaitech.my/' }, areaServed: { '@type': 'Country', name: 'Malaysia' }, offers: { '@type': 'Offer', name: 'Website bisnes starter satu halaman', price: '1700', priceCurrency: 'MYR', description: 'Website bisnes satu halaman dengan sehingga lima bahagian, integrasi pertanyaan, SEO dan AEO asas, hosting dan domain standard setahun, serta lima kemas kini kecil kandungan selepas launch. Skop tambahan disebut harga berasingan.', url: 'https://haikaitech.my/bm/website/' } };
 const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) };
 ---
 
-<BaseLayout locale="bm" title="Harga Laman Web Malaysia | Servis & Sebut Harga | HaikaiTech" description="Promosi laman web HaikaiTech bermula RM1,500 untuk skop terpilih. Bandingkan julat pasaran indikatif dan fahami cara harga laman web, e-dagang, automasi serta sistem tersuai ditentukan." canonical={canonical} alternates={alternates}>
+<BaseLayout locale="bm" title="Harga Laman Web Malaysia | Servis & Sebut Harga | HaikaiTech" description="Website bisnes satu halaman dari RM1,700 dengan sehingga lima bahagian, hosting dan domain standard tahun pertama. E-dagang, tempahan, automasi dan laman lebih besar disebut harga ikut skop." canonical={canonical} alternates={alternates}>
   <div class="workbench wb-pricing-site bg-paper bg-grid-pattern">
     <WorkbenchNav locale="bm" />
     <main class="sp-main">
@@ -79,7 +80,7 @@ const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEn
         <div class="sp-hero-copy">
           <p class="wb-eyebrow"><WorkbenchIcon name="briefcase" size={18} />Servis &amp; harga</p>
           <h1 id="services-title">Harga laman web bermula dengan <em>skop sebenar.</em></h1>
-          <p class="sp-hero-lede">Promosi laman web terpilih tersedia untuk skop yang ringkas. Laman yang melibatkan CMS, e-dagang, tempahan, bayaran atau sistem perniagaan akan disebut harga mengikut skop sebenar.</p>
+          <p class="sp-hero-lede">Starter RM1,700 merangkumi website bisnes satu halaman yang direka khas dengan sehingga lima bahagian. E-dagang, tempahan, bayaran, CMS dan sistem perniagaan disebut harga ikut skop sebenar.</p>
           <div class="sp-actions"><a class="wb-button wb-button--painted" href={whatsapp} target="_blank" rel="noopener noreferrer"><span>Minta sebut harga</span></a><a class="wb-button wb-secondary" href="#market-ranges"><span>Fahami julat harga</span></a></div>
           <p class="sp-hero-note">Jelaskan skop dahulu. Barulah harga itu bermakna.</p>
         </div>

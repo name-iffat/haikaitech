@@ -34,7 +34,7 @@ export default function FooterWorkbench({ newsletterSource = 'footer', locale = 
           <h3>{copy?.elsewhere ?? 'Elsewhere'}</h3>
           <a href="https://github.com/name-iffat" target="_blank" rel="noopener noreferrer"><Github aria-hidden="true" />GitHub</a>
           <a href="https://www.linkedin.com/in/iffathaikal/" target="_blank" rel="noopener noreferrer"><Linkedin aria-hidden="true" />LinkedIn</a>
-          <a href="https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I'd%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" onClick={() => track('contact_clicked', 'whatsapp')}><MessageCircle aria-hidden="true" />WhatsApp</a>
+          <a href="https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%20came%20from%20homepage%20footer%20and%20would%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" onClick={() => track('contact_clicked', 'whatsapp')}><MessageCircle aria-hidden="true" />WhatsApp</a>
           <a href="mailto:hq@haikaitech.my" onClick={() => track('contact_clicked', 'email')}><Mail aria-hidden="true" />hq@haikaitech.my</a>
         </nav>
       </div>

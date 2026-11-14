@@ -1,12 +1,13 @@
 ---
 import { getImage } from 'astro:assets';
-import { getCollection } from 'astro:content';
+import { getPublicPosts } from '../../lib/content/posts';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import WorkbenchNav from '../../components/WorkbenchNav.astro';
 import TrustProof from '../../components/TrustProof.astro';
 import WorkbenchHero from '../../../components/Sections/WorkbenchHero';
 import SelectedWorkSection from '../../components/SelectedWorkSection.astro';
 import ServicesWorkbench from '../../components/ServicesWorkbench.astro';
+import PricingWorkbench from '../../components/PricingWorkbench.astro';
 import AboutWorkbench from '../../components/AboutWorkbench.astro';
 import InsightsNotebook from '../../components/InsightsNotebook.astro';
 import ContactSection from '../../../components/Sections/ContactWorkbench';
@@ -25,7 +26,7 @@ const heroFuzzfloor = await getImage({ src: fuzzfloorMobileImg, width: 600, form
 const heroDashboard = await getImage({ src: workforceDemoImg, width: 1200, format: 'webp' });
 const heroTape = await getImage({ src: heroTapeImg, width: 360, format: 'webp' });
 const heroPin = await getImage({ src: heroPinImg, width: 120, format: 'webp' });
-const blogPosts = (await getCollection('blog'))
+const blogPosts = (await getPublicPosts())
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 4);
 
@@ -46,6 +47,7 @@ const alternates = { en: 'https://haikaitech.my/', bm: 'https://haikaitech.my/bm
       <TrustProof locale="bm" />
       <SelectedWorkSection locale="bm" />
       <ServicesWorkbench locale="bm" />
+      <PricingWorkbench locale="bm" />
       <AboutWorkbench locale="bm" />
       <InsightsNotebook locale="bm" posts={blogPosts} />
       <div id="start" class="scroll-mt-28"><ContactSection client:load locale="bm" /></div>

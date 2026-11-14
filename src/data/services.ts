@@ -2,6 +2,7 @@ export const primaryNavigation = [
   { label: 'Home', href: '#home', icon: 'home' },
   { label: 'Work', href: '#projects', icon: 'briefcase' },
   { label: 'Services', href: '#services', icon: 'wrench' },
+  { label: 'Pricing', href: '/services/#pricing', icon: 'list-check' },
   { label: 'Solutions', href: '/toolkit/', icon: 'blocks' },
   { label: 'Insights', href: '/blog/', icon: 'book' },
   { label: 'About', href: '#about', icon: 'info' },

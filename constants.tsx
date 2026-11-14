@@ -246,7 +246,7 @@ export const SKILLS: SkillGroup[] = [
 
 const WHATSAPP_NUMBER = '60147533499';
 const WHATSAPP_TEXT = encodeURIComponent(
-  'Hi HaikaiTech! I came across your portfolio (haikaitech.my) and would love to discuss a project.'
+  'Hi HaikaiTech! I came from homepage contact and would love to discuss a project.'
 );
 
 export const CONTACTS: ContactLink[] = [

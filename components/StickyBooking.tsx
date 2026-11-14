@@ -4,7 +4,7 @@ import { track } from './track';
 
 const WHATSAPP_NUMBER = '60147533499';
 const WHATSAPP_TEXT = encodeURIComponent(
-  'Hi HaikaiTech! I came across your portfolio (haikaitech.my) and would love to discuss a project.'
+  'Hi HaikaiTech! I came from homepage sticky and would love to discuss a project.'
 );
 
 const StickyBooking: React.FC<{ locale?: 'en' | 'bm'; readingMode?: boolean }> = ({ locale = 'en', readingMode = false }) => {

@@ -1,8 +1,8 @@
 export const bmHome = {
   hero: {
-    eyebrow: 'Studio kejuruteraan digital yang dipimpin pengasas',
+    eyebrow: 'Berpangkalan di Pulau Pinang • Untuk PKS Malaysia',
     headline: ['Dibina untuk', 'perniagaan anda.'],
-    description: 'Laman web, sistem perniagaan dan produk digital untuk perniagaan di Malaysia.',
+    description: 'Laman web bermula RM1,700 • Kedai e-dagang bermula RM3,500 • Sistem mengikut sebut harga. Supaya perniagaan anda terus bergerak.',
     start: 'Bincang projek',
     work: 'Lihat hasil kerja',
     collage: 'Dari bengkel HaikaiTech',
@@ -14,7 +14,7 @@ export const bmHome = {
     status: 'Menerima projek',
   },
   trust: {
-    heading: 'Pelanggan kami',
+    heading: 'Dipercayai 9+ perniagaan Malaysia',
     pause: 'Jeda gerakan logo pelanggan',
     play: 'Mainkan gerakan logo pelanggan',
   },

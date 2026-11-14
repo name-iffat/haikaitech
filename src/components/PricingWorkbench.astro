@@ -1,0 +1,101 @@
+---
+import { localizeHref, type SiteLocale } from '../utils/i18n';
+
+interface Props { locale?: SiteLocale; }
+const { locale = 'en' } = Astro.props;
+const isBm = locale === 'bm';
+
+const cards = isBm
+  ? [
+      {
+        label: 'Starter laman web',
+        title: 'Website Bisnes',
+        price: 'Bermula RM1,700',
+        desc: 'Laman satu halaman rekaan khas sehingga lima bahagian untuk kehadiran profesional yang jelas.',
+        points: ['Responsif mudah alih & desktop', 'SEO/AEO asas & analitik', 'Tindakan WhatsApp', 'Hos + domain tahun 1', '5 kemas kini kecil'],
+        action: 'Mula dengan RM1,700',
+        href: '/services/',
+        wa: 'https://wa.me/60147533499?text=Salam%20HaikaiTech%2C%20saya%20datang%20dari%20harga%20laman%20utama%20dan%20berminat%20dengan%20Website%20Starter%20RM1%2C700.',
+      },
+      {
+        label: 'Starter e-dagang',
+        title: 'Setup WooCommerce',
+        price: 'Bermula RM3,500',
+        desc: 'Kedai rekaan khas dengan produk tanpa had untuk beralih dari Shopee / TikTok ke kedai sendiri.',
+        points: ['Produk tanpa had', 'Bayaran Chip', 'Penghantaran EasyParcel', 'Hos + domain tahun 1', '5 kemas kini kecil'],
+        action: 'Mula dengan RM3,500',
+        href: '/services/ecommerce/',
+        wa: 'https://wa.me/60147533499?text=Salam%20HaikaiTech%2C%20saya%20datang%20dari%20harga%20laman%20utama%20dan%20berminat%20dengan%20Ecom%20Starter%20RM3%2C500.',
+      },
+      {
+        label: 'Laluan operasi',
+        title: 'Sistem & Automasi',
+        price: 'Sebut harga',
+        desc: 'Papan pemuka, portal dan automasi mengikut cara pasukan anda bekerja.',
+        points: ['Aliran kerja dalaman', 'Ejen AI & n8n', 'Invois & resit automatik', 'Integrasi alat sedia ada', 'Semakan manusia dilindungi'],
+        action: 'Bincang sistem anda',
+        href: '/services/automation/',
+        wa: 'https://wa.me/60147533499?text=Salam%20HaikaiTech%2C%20saya%20datang%20dari%20harga%20laman%20utama%20dan%20ingin%20berbincang%20tentang%20sistem%20atau%20automasi.',
+      },
+    ]
+  : [
+      {
+        label: 'Website starter',
+        title: 'Business Website',
+        price: 'From RM1,700',
+        desc: 'A custom one-page site that makes it easy for customers to understand and contact you.',
+        points: ['Up to 5 sections', 'Mobile-responsive design', 'Basic SEO & analytics', 'WhatsApp enquiry actions', 'Hosting + domain year 1', '5 minor updates'],
+        action: 'Start with RM1,700',
+        href: '/services/',
+        wa: 'https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%20came%20from%20homepage%20pricing%20and%20am%20interested%20in%20the%20Website%20Starter%20RM1%2C700.',
+      },
+      {
+        label: 'Ecom starter',
+        title: 'WooCommerce Setup',
+        price: 'From RM3,500',
+        desc: 'A custom storefront with unlimited products for sellers moving off marketplaces.',
+        points: ['Unlimited products', 'Chip payments', 'EasyParcel shipping', 'English by default', 'Hosting + domain year 1', '5 minor updates'],
+        action: 'Start with RM3,500',
+        href: '/services/ecommerce/',
+        wa: 'https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%20came%20from%20homepage%20pricing%20and%20am%20interested%20in%20the%20Ecom%20Starter%20RM3%2C500.',
+      },
+      {
+        label: 'Operations route',
+        title: 'Systems & Automation',
+        price: 'Quotation',
+        desc: 'Dashboards, portals and automations built around how your team works.',
+        points: ['Internal workflows', 'AI agents & n8n', 'Auto invoices & receipts', 'Connect existing tools', 'Human review kept'],
+        action: 'Discuss your system',
+        href: '/services/automation/',
+        wa: 'https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%20came%20from%20homepage%20pricing%20and%20would%20like%20to%20discuss%20a%20system%20or%20automation.',
+      },
+    ];
+---
+
+<section class="workbench wb-pricing" aria-labelledby="pricing-title">
+  <header class="wb-pricing-head">
+    <div>
+      <p class="wb-eyebrow">{isBm ? 'Harga jelas' : 'Clear pricing'}</p>
+      <h2 id="pricing-title">{isBm ? <>Mula dengan harga<br />yang jelas.</> : <>Start with<br />clear pricing.</>}</h2>
+    </div>
+    <p class="wb-pricing-intro">{isBm ? 'Tiga laluan. Pilih yang paling hampir — sebut harga rasmi akan sahkan skop akhir.' : 'Three routes. Pick the closest — the formal quotation confirms final scope.'}</p>
+  </header>
+  <div class="wb-pricing-grid">
+    {cards.map((card) => (
+      <article class="wb-price-card">
+        <p class="wb-price-label">{card.label}</p>
+        <h3>{card.title}</h3>
+        <p class="wb-price-value">{card.price}</p>
+        <p class="wb-price-desc">{card.desc}</p>
+        <ul>
+          {card.points.map((pt) => <li>{pt}</li>)}
+        </ul>
+        <div class="wb-price-actions">
+          <a class="wb-button wb-primary" href={localizeHref(card.href, locale)}>{card.action}</a>
+          <a class="wb-price-wa" href={card.wa} target="_blank" rel="noopener noreferrer">{isBm ? 'Lebih suka WhatsApp?' : 'Prefer WhatsApp?'}</a>
+        </div>
+      </article>
+    ))}
+  </div>
+  <p class="wb-pricing-note">{isBm ? 'Bayaran 50% mula / 50% serahan • Skop sebelum harga' : '50% to start / 50% on handover • Scope before price'} — <a href={localizeHref('/services/', locale)}>{isBm ? 'Lihat semua harga & skop' : 'See full services & pricing'}</a></p>
+</section>
