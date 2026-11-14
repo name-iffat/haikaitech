@@ -9,6 +9,7 @@ import SelectedWorkSection from '../components/SelectedWorkSection.astro';
 import ServicesWorkbench from '../components/ServicesWorkbench.astro';
 import PricingWorkbench from '../components/PricingWorkbench.astro';
 import AboutWorkbench from '../components/AboutWorkbench.astro';
+import OwnProducts from '../components/OwnProducts.astro';
 import InsightsNotebook from '../components/InsightsNotebook.astro';
 import ContactSection from '../../components/Sections/ContactWorkbench';
 import FooterWorkbench from '../../components/FooterWorkbench';
@@ -43,6 +44,7 @@ const blogPosts = (await getPublicPosts())
       <ServicesWorkbench />
       <PricingWorkbench />
       <AboutWorkbench />
+      <OwnProducts />
       <InsightsNotebook posts={blogPosts} />
       <div id="start" class="scroll-mt-28"><ContactSection client:load /></div>
     </main>

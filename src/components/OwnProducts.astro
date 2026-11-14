@@ -1,0 +1,11 @@
+---
+import { Image } from 'astro:assets';
+import mascot from '../assets/bearsplit/mascot.png';
+---
+<section class="workbench own-products" aria-labelledby="own-products-title">
+  <div><p class="wb-eyebrow">From our own workshop</p><h2 id="own-products-title">Good friends.<br />Clearer shared expenses.</h2><p>Alongside building for clients, we're developing BearSplit, our own playful bill-splitting app for young adults.</p><p class="product-status">Prototype · In development · A product by HaikaiTech Solutions</p><a class="wb-button wb-primary" href="/bearsplit/">Explore BearSplit →</a></div>
+  <Image src={mascot} alt="BearSplit's bear mascot" width={280} loading="lazy" />
+</section>
+<style>
+  .own-products{display:grid;grid-template-columns:1fr 280px;gap:48px;align-items:center;padding-block:64px;border-block:1px solid #d6cbbb}.own-products h2{font-size:clamp(30px,4vw,48px);line-height:1.15;font-weight:750;letter-spacing:-.035em;margin:16px 0}.own-products p{max-width:600px;line-height:1.75}.own-products .product-status{font-size:13px;margin:16px 0 24px;color:#665348}.own-products img{width:100%;height:auto}.own-products a:focus-visible{outline:3px solid #895018;outline-offset:5px}@media(max-width:700px){.own-products{grid-template-columns:1fr;gap:24px}.own-products img{width:180px;justify-self:center}}
+</style>

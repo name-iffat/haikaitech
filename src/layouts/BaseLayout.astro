@@ -6,6 +6,8 @@ interface Props {
   noindex?: boolean;
   locale?: 'en' | 'bm';
   alternates?: { en: string; bm: string };
+  socialImage?: string;
+  socialImageAlt?: string;
 }
 
 import '../styles/global.css';
@@ -14,10 +16,10 @@ import MetaPixel from '../components/MetaPixel.astro';
 const { title = 'HAIKAITECH SOLUTIONS | Software Engineering Studio Malaysia', description = 'HAIKAITECH SOLUTIONS — registered software engineering studio in Malaysia. We build custom web apps, dashboards, and interactive systems with React, .NET, and Unity. Chat on WhatsApp for a fast reply.', canonical: canonicalProp, noindex = false, locale = 'en', alternates } = Astro.props;
 const canonicalPath = Astro.url.pathname === '/' ? '/' : `${Astro.url.pathname.replace(/\/$/, '')}/`;
 const canonical = canonicalProp ?? new URL(canonicalPath, Astro.site ?? 'https://haikaitech.my').href;
-const shareImage = 'https://haikaitech.my/og-image-v2.jpg';
-const shareImageAlt = locale === 'bm'
+const shareImage = Astro.props.socialImage ?? 'https://haikaitech.my/og-image-v2.jpg';
+const shareImageAlt = Astro.props.socialImageAlt ?? (locale === 'bm'
   ? 'HaikaiTech — Built around your business. Ilustrasi laman web, pangkalan data dan automasi yang saling berhubung di atas kertas krim.'
-  : 'HaikaiTech — Built around your business. A connected website, database and automation workshop illustration on cream engineering paper.';
+  : 'HaikaiTech — Built around your business. A connected website, database and automation workshop illustration on cream engineering paper.');
 ---
 
 <!DOCTYPE html>
