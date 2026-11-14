@@ -59,7 +59,9 @@ const enabled = /^\d{5,25}$/.test(pixelId);
       if (choice !== 'granted' || !link) return;
       const url = new URL(link.href, location.href);
       if (url.hostname === 'wa.me' || (url.hostname === 'api.whatsapp.com' && url.pathname === '/send')) {
-        w.fbq?.('trackCustom', 'WhatsAppClick', { placement: link.dataset.offerCta ?? 'site', page_path: location.pathname });
+        const payload = { placement: link.dataset.offerCta ?? 'site', page_path: location.pathname };
+        w.fbq?.('trackCustom', 'WhatsAppClick', payload);
+        w.fbq?.('track', 'Lead', { content_name: 'WhatsApp chat', ...payload });
       }
     });
     window.addEventListener('storage', event => {
