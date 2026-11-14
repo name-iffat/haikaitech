@@ -1,0 +1,82 @@
+---
+interface Props { locale?: 'en' | 'bm' }
+const { locale = 'en' } = Astro.props;
+const bm = locale === 'bm';
+// Public identifier only. Never expose a Conversions API token here.
+const pixelId = import.meta.env.PUBLIC_META_PIXEL_ID?.trim() ?? '';
+const enabled = /^\d{5,25}$/.test(pixelId);
+---
+{enabled && <>
+  <div id="meta-preference" data-pixel-id={pixelId}>
+    <section id="meta-choice" hidden aria-label={bm ? 'Pilihan iklan' : 'Advertising preferences'}>
+      <p>{bm ? 'Benarkan Meta Pixel untuk mengukur iklan Facebook dan Instagram? Pilihan ini berasingan daripada analitik laman web.' : 'Allow Meta Pixel to measure Facebook and Instagram ads? This choice is separate from site analytics.'} <a href="/privacy-policy/">{bm ? 'Privasi (EN)' : 'Privacy'}</a></p>
+      <div><button type="button" data-meta-choice="denied">{bm ? 'Tolak' : 'Decline'}</button><button type="button" data-meta-choice="granted">{bm ? 'Benarkan' : 'Allow'}</button></div>
+    </section>
+    <button id="meta-settings" type="button">{bm ? 'Pilihan iklan' : 'Ad preferences'}</button>
+  </div>
+</>}
+<script>
+  const root = document.querySelector<HTMLElement>('#meta-preference');
+  if (root) {
+    const banner = document.querySelector<HTMLElement>('#meta-choice')!;
+    const settings = document.querySelector<HTMLButtonElement>('#meta-settings')!;
+    const key = 'hkt_meta_consent_v1';
+    let choice: string | null = null;
+    try { choice = localStorage.getItem(key); } catch { /* Session-only choice if storage is unavailable. */ }
+    type Pixel = ((...args: unknown[]) => void) & { callMethod?: (...args: unknown[]) => void; queue: unknown[][]; push?: Pixel; loaded: boolean; version: string };
+    const w = window as unknown as { fbq?: Pixel; _fbq?: Pixel };
+    let initialized = false;
+    const enable = () => {
+      if (!w.fbq) {
+        const fbq = function (...args: unknown[]) { if (fbq.callMethod) fbq.callMethod(...args); else fbq.queue.push(args); } as Pixel;
+        fbq.queue = []; fbq.loaded = true; fbq.version = '2.0'; fbq.push = fbq;
+        w.fbq = fbq; w._fbq = fbq;
+        const script = document.createElement('script');
+        script.async = true; script.src = 'https://connect.facebook.net/en_US/fbevents.js';
+        document.head.appendChild(script);
+      }
+      w.fbq('consent', 'grant');
+      if (!initialized) {
+        // Avoid automatically classifying button clicks as leads.
+        w.fbq('set', 'autoConfig', false, root.dataset.pixelId);
+        w.fbq('init', root.dataset.pixelId);
+        w.fbq('track', 'PageView');
+        initialized = true;
+      }
+    };
+    if (choice === 'granted') enable();
+    banner.hidden = choice === 'granted' || choice === 'denied';
+    settings.addEventListener('click', () => { banner.hidden = false; banner.querySelector<HTMLButtonElement>('button')?.focus(); });
+    root.querySelectorAll<HTMLButtonElement>('[data-meta-choice]').forEach(button => button.addEventListener('click', () => {
+      choice = button.dataset.metaChoice!;
+      try { localStorage.setItem(key, choice); } catch { /* Choice still applies to this page. */ }
+      if (choice === 'granted') enable(); else w.fbq?.('consent', 'revoke');
+      banner.hidden = true;
+      settings.focus();
+    }));
+    document.addEventListener('click', event => {
+      const link = event.target instanceof Element ? event.target.closest<HTMLAnchorElement>('a[href]') : null;
+      if (choice !== 'granted' || !link) return;
+      const url = new URL(link.href, location.href);
+      if (url.hostname === 'wa.me' || (url.hostname === 'api.whatsapp.com' && url.pathname === '/send')) {
+        w.fbq?.('trackCustom', 'WhatsAppClick', { placement: link.dataset.offerCta ?? 'site', page_path: location.pathname });
+      }
+    });
+    window.addEventListener('storage', event => {
+      if (event.key !== key) return;
+      choice = event.newValue;
+      if (choice === 'granted') enable(); else w.fbq?.('consent', 'revoke');
+      banner.hidden = choice === 'granted' || choice === 'denied';
+    });
+  }
+</script>
+<style>
+  #meta-choice { position:fixed; inset:auto 16px 96px; max-width:600px; margin-inline:auto; z-index:100; padding:24px; background:#fdfbf7; color:#16202a; border:1px solid #16202a; border-radius:4px; box-shadow:0 4px 24px #16202a22; font:14px/1.6 Inter,Arial,sans-serif; }
+  #meta-choice[hidden] { display:none; }
+  #meta-choice div { display:flex; gap:16px; margin-top:16px; }
+  #meta-choice button { min-height:44px; padding:8px 24px; border:1px solid currentColor; border-radius:4px; }
+  #meta-choice button[data-meta-choice="granted"] { background:#16202a; color:#fdfbf7; }
+  #meta-choice a { text-decoration:underline; }
+  #meta-settings { position:fixed; right:16px; bottom:80px; z-index:90; min-height:44px; padding:8px 12px; background:#fdfbf7; color:#16202a; border:1px solid #16202a; border-radius:4px; font:12px/1.5 Inter,Arial,sans-serif; }
+  #meta-preference :is(a,button):focus-visible { outline:3px solid #1e3a8a; outline-offset:4px; }
+</style>

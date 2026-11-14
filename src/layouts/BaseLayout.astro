@@ -9,8 +9,11 @@ interface Props {
 }
 
 import '../styles/global.css';
+import MetaPixel from '../components/MetaPixel.astro';
 
-const { title = 'HAIKAITECH SOLUTIONS | Software Engineering Studio Malaysia', description = 'HAIKAITECH SOLUTIONS — registered software engineering studio in Malaysia. We build custom web apps, dashboards, and interactive systems with React, .NET, and Unity. Chat on WhatsApp for a fast reply.', canonical = 'https://haikaitech.my/', noindex = false, locale = 'en', alternates } = Astro.props;
+const { title = 'HAIKAITECH SOLUTIONS | Software Engineering Studio Malaysia', description = 'HAIKAITECH SOLUTIONS — registered software engineering studio in Malaysia. We build custom web apps, dashboards, and interactive systems with React, .NET, and Unity. Chat on WhatsApp for a fast reply.', canonical: canonicalProp, noindex = false, locale = 'en', alternates } = Astro.props;
+const canonicalPath = Astro.url.pathname === '/' ? '/' : `${Astro.url.pathname.replace(/\/$/, '')}/`;
+const canonical = canonicalProp ?? new URL(canonicalPath, Astro.site ?? 'https://haikaitech.my').href;
 const shareImage = 'https://haikaitech.my/og-image-v2.jpg';
 const shareImageAlt = locale === 'bm'
   ? 'HaikaiTech — Built around your business. Ilustrasi laman web, pangkalan data dan automasi yang saling berhubung di atas kertas krim.'
@@ -30,7 +33,7 @@ const shareImageAlt = locale === 'bm'
     <link rel="alternate" hreflang="ms-MY" href={alternates.bm} />
     <link rel="alternate" hreflang="x-default" href={alternates.en} />
   </>}
-  {noindex && <meta name="robots" content="noindex, nofollow" />}
+  {(noindex || import.meta.env.DEV) && <meta name="robots" content="noindex, nofollow" />}
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -187,7 +190,9 @@ const shareImageAlt = locale === 'bm'
   </script>
 </head>
 <body>
+  {import.meta.env.DEV && <aside style="padding:8px;background:#fff3cd;color:#332701;text-align:center;font:14px monospace;position:relative;z-index:9999">Local review only — legacy articles are unapproved. Production builds remain blocked pending review.</aside>}
   <slot />
+  <MetaPixel locale={locale} />
   <div class="paper-texture"></div>
 </body>
 </html>
