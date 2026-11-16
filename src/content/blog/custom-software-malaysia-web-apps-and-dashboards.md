@@ -3,6 +3,12 @@ title: "Custom Software in Malaysia: Web Apps, Dashboards, .NET, and Unity"
 description: "When a website isn't enough — custom web apps, business dashboards, .NET/Blazor systems, and Unity visualizations for Malaysian businesses. How quotation-based pricing works and how to start."
 pubDate: 2026-08-06
 tags: [custom-software, dashboards, malaysia, development]
+status: published
+authorId: 'iffat-haikal'
+review:
+  evidence: verified
+  disclosure: cleared
+updatedDate: 2026-11-16
 ---
 
 At some point, a business hits the wall where a website or an off-the-shelf app stops being enough. Maybe you're running your operations on a spreadsheet that's become a full-time job. Maybe you need a dashboard that shows live KPIs. Maybe you need a system built around *your* workflow, not the other way around.
@@ -69,4 +75,4 @@ The single biggest driver of custom-software cost is **scope creep** — feature
 
 If any of this sounds like your situation, don't send a brief — [chat on WhatsApp](https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%20need%20custom%20software%20and%20would%20like%20a%20quote.) and describe the problem. We'll tell you honestly whether it's a website project, a custom-software project, or something in between, and you'll get a fixed quotation either way.
 
-Meanwhile, the [services and pricing page](/services/) explains the full picture, from selected website promotions starting at RM1,500 to quotation-based systems.
+Meanwhile, the [services and pricing page](/services/) explains the full picture, from selected website promotions starting at RM799 to quotation-based systems.

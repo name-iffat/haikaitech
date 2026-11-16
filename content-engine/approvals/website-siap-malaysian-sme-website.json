@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "contentId": "website-siap-malaysian-sme-website",
+  "route": "/blog/website-siap-malaysian-sme-website/",
+  "decision": "approved",
+  "reviewer": "Iffat Haikal (owner)",
+  "approvedAt": "2026-11-16T02:56:05.164Z",
+  "digest": "sha256:140a6cd592ce12266d9ce66108fa7d72b3b79149e0e9cada6dbdb9fb1a7a739e",
+  "checks": {
+    "accuracy": true,
+    "evidence": true,
+    "disclosure": true,
+    "assetRights": true
+  }
+}

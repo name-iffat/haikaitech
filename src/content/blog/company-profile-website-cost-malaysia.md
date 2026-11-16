@@ -3,6 +3,12 @@ title: "How Much Does a Company Profile Website Cost in Malaysia?"
 description: "Company profile pricing in Malaysia — how document design, website scope, content readiness and quotation terms change the final cost."
 pubDate: 2026-08-13
 tags: [company-profile, pricing, malaysia, sme]
+status: published
+authorId: 'iffat-haikal'
+review:
+  evidence: verified
+  disclosure: cleared
+updatedDate: 2026-11-16
 ---
 
 If you run an SME in Malaysia, a company profile is the document you send to tender committees, banks, and corporate clients before they take you seriously. These days it comes in three forms — a designed PDF, a printed booklet, and increasingly a website. Here is exactly what each one costs with HaikaiTech Solutions.
@@ -10,7 +16,7 @@ If you run an SME in Malaysia, a company profile is the document you send to ten
 ## The short answer
 
 - **A designed company profile (PDF/print)**: **RM800–RM1,200**.
-- **A company profile website**: from **RM1,500**.
+- **A company profile website**: from **RM799**.
 - **Both together**: quoted according to the document and website scope.
 
 That's our published pricing, and below is what sits behind it.
@@ -33,9 +39,9 @@ The profile itself — the polished document you send as a PDF and print for mee
 
 The result is a document you own outright, delivered in print-ready and digital formats.
 
-## The company profile website: from RM1,500
+## The company profile website: from RM799
 
-A website takes the profile from "sent when asked" to "found when searched." A selected [Website Siap promotion](/blog/website-siap-malaysian-sme-website/) may start from **RM1,500** and may fit a focused company-profile scope. The formal quotation confirms the page count, content, integrations, timeline, ownership and recurring costs.
+A website takes the profile from "sent when asked" to "found when searched." A selected [Website Siap promotion](/blog/website-siap-malaysian-sme-website/) may start from **RM799** and may fit a focused company-profile scope. The formal quotation confirms the page count, content, integrations, timeline, ownership and recurring costs.
 
 After launch, domain, hosting, software and maintenance costs are identified in the quotation where applicable.
 

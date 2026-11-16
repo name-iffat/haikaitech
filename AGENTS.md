@@ -2,7 +2,7 @@
 
 ## Quick start
 - `npm install` (Node 22+, npm only — verified in `.node-version`)
-- `npm run dev` — dev server on port 4321 (Astro default)
+- `npm run dev` — dev server on port 3000 (configured in astro.config.mjs)
 - `npm run build` — output to `dist/`
 - `npm run preview` — preview production build
 
@@ -33,7 +33,7 @@
 
 ## Deployment (Cloudflare Pages)
 - Build: `npm run build`, output dir: `dist/`
-- SPA fallback: `public/_redirects` contains `/* /index.html 200`
+- Static routing: `src/pages/404.astro` supplies 404.html; no homepage catch-all rewrite
 - Node 22+ required (Astro 6 constraint, `.node-version`)
 - No `wrangler.toml` — static Pages site, not a Worker
 - **Git integration CI/CD**: pushing to `origin/main` auto-builds and deploys to the **Production** environment
@@ -56,8 +56,15 @@
 - WhatsApp-first CTAs (`wa.me/60147533499`) + email (`hq@haikaitech.my`) as secondary
 - Skill icons from `https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/` (mapped in `constants.tsx`)
 
+## Publication controls
+- `content-engine/README.md` documents human review and the legacy release hold
+- Every Astro build enforces publication checks through a local integration
+- Use `getPublicPosts()` for public blog queries; do not bypass with raw getCollection
+- Sitemap and blog knowledge exports are generated after rendering, not stored in public/
+- `npm test` uses Node's built-in runner; `npm run test:content:integration` checks isolated builds and local Pages routing
+
 ## What's NOT here
-- No tests, no test framework, no test files
+- No external test framework
 - No linter, no formatter, no lint/format scripts
 - No CI/CD workflows in `.github/` — Cloudflare git integration (on `main`) is the deployment path
 

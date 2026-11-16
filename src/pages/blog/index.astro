@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import { getCollection } from 'astro:content';
+import { getPublicPosts } from '../../lib/content/posts';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import WorkbenchNav from '../../components/WorkbenchNav.astro';
 import FooterWorkbench from '../../../components/FooterWorkbench';
@@ -8,7 +8,7 @@ import notebookArt from '../../assets/concept-decorations/refined/insights-noteb
 import '../../styles/workbench.css';
 import '../../styles/insights.css';
 
-const posts = (await getCollection('blog')).sort(
+const posts = (await getPublicPosts()).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf() || a.id.localeCompare(b.id),
 );
 const featured = posts[0];

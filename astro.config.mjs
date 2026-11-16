@@ -1,8 +1,9 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
+import publicationControls from './scripts/content/integration.mjs';
 
 export default defineConfig({
-  integrations: [react()],
+  integrations: [publicationControls(), react()],
   site: 'https://haikaitech.my',
   i18n: {
     locales: ['en', 'bm'],

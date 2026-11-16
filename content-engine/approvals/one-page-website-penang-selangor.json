@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "contentId": "one-page-website-penang-selangor",
+  "route": "/blog/one-page-website-penang-selangor/",
+  "decision": "approved",
+  "reviewer": "Iffat Haikal (owner)",
+  "approvedAt": "2026-11-16T02:56:05.164Z",
+  "digest": "sha256:b227af681cb649d8a5fed40183a3e9959b68d0ee5a2ef2ff220a6b7646984bc1",
+  "checks": {
+    "accuracy": true,
+    "evidence": true,
+    "disclosure": true,
+    "assetRights": true
+  }
+}

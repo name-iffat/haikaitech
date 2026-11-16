@@ -29,7 +29,7 @@ const englishServices = [
     description: 'Help customers understand your business and take the next step, from their first visit to a WhatsApp enquiry.',
     href: '/services/',
     action: 'Explore website plans',
-    price: 'From RM1,700',
+    price: 'From RM799',
   },
   {
     icon: 'workflow',
@@ -62,7 +62,7 @@ const englishServices = [
     price: 'Quotation',
   },
 ];
-const servicePricesBm = ['Bermula RM1,700', 'Sebut harga', 'Sebut harga', 'Sebut harga'];
+const servicePricesBm = ['Bermula RM799', 'Sebut harga', 'Sebut harga', 'Sebut harga'];
 const services = englishServices.map((service, index) => isBm
   ? { ...service, ...bmHome.services.rows[index], href: localizeHref(service.href, locale) }
   : service);
@@ -221,7 +221,7 @@ const services = englishServices.map((service, index) => isBm
   </details>
 
   <footer class="wb-services-footer">
-    <p>{isBm ? 'Website bermula RM1,700 • E-dagang bermula RM3,500 • Sistem sebut harga' : 'Websites from RM1,700 • Ecom from RM3,500 • Systems by quotation'}</p>
+    <p>{isBm ? 'Website bermula RM799 • E-dagang bermula RM3,500 • Sistem sebut harga' : 'Websites from RM799 • Ecom from RM3,500 • Systems by quotation'}</p>
     <a class="wb-button wb-primary" href={localizeHref('/services/', locale)}>{isBm ? bmHome.services.pricing : 'Explore services &amp; pricing'}</a>
   </footer>
 </section>

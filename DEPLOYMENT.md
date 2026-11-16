@@ -1,106 +1,77 @@
-# Cloudflare Pages Deployment Guide
+# Cloudflare Pages deployment
 
-## Important: This is a Static Site, NOT a Cloudflare Workers Project
+Verified locally on 2026-11-03: Astro 6.4.2, React 19, Tailwind 3, static output,
+no Cloudflare adapter. `.node-version` specifies 22. This is not a Vite SPA and
+does not require a Gemini API key.
 
-Your portfolio is a **static Vite application** that should be deployed as a **Cloudflare Pages** project, not using Wrangler (which is for Cloudflare Workers).
+## Local verification
 
-## Deployment Configuration
-
-### Framework Preset
-- **Framework preset:** `None` or `Vite`
-- **Build command:** `npm run build`
-- **Build output directory:** `dist`
-- **Root directory:** `/` (leave blank or use root)
-
-### Node.js Version
-- Node.js version: **20** (specified in `.node-version`)
-
-## Step-by-Step Deployment
-
-1. **Go to Cloudflare Pages Dashboard**
-   - Navigate to: https://dash.cloudflare.com/
-   - Click on "Workers & Pages" in the sidebar
-   - Click "Create application" → "Pages" tab
-
-2. **Connect Your Repository**
-   - Click "Connect to Git"
-   - Authorize Cloudflare to access your GitHub/GitLab
-   - Select your repository: `haikaitech-portfolio`
-
-3. **Configure Build Settings**
-   ```
-   Production branch: main (or your default branch)
-   Build command: npm run build
-   Build output directory: dist
-   ```
-
-4. **Environment Variables** (Optional)
-   - If you need `GEMINI_API_KEY`, add it in the environment variables section
-   - For a static portfolio, you likely don't need any environment variables
-
-5. **Deploy**
-   - Click "Save and Deploy"
-   - Cloudflare will automatically build and deploy your site
-   - You'll get a URL like: `your-project.pages.dev`
-
-## Common Issues
-
-### ❌ "Wrangler requires Node.js v20" Error
-**Cause:** Cloudflare is trying to use Wrangler (Workers deployment) instead of Pages (static site deployment)
-
-**Solution:** 
-- Make sure you're creating a **Pages** project, not a Workers project
-- In the Cloudflare dashboard, use "Workers & Pages" → "Create" → "Pages" tab
-- Do NOT use a `wrangler.toml` file (this is for Workers only)
-
-### ❌ Build Command Not Found
-**Cause:** Build command is incorrect
-
-**Solution:**
-- Use exactly: `npm run build`
-- Make sure "Build output directory" is set to: `dist`
-
-### ❌ Assets Not Loading
-**Cause:** Incorrect asset paths
-
-**Solution:**
-- Already fixed! All asset paths use relative URLs (no leading slashes)
-- The `_redirects` file handles SPA routing
-
-## Verify Your Setup
-
-Before deploying, verify locally:
-
-```bash
-# Build the production version
+```text
+npm install
+npm run dev                     # localhost:3000
+npm test
+npm run content:validate
+npm run test:content:integration # temporary fixture builds, no deployment
 npm run build
-
-# Preview the production build
 npm run preview
 ```
 
-Open the preview URL and check:
-- ✅ All images load correctly
-- ✅ Navigation works
-- ✅ No console errors
-- ✅ Favicon appears
+Production builds currently stop on a deliberate legacy review hold. See
+`content-engine/README.md`. Do not deploy stale `dist/` after a failed build.
+The live deployment is unchanged until a separately authorized release.
 
-## After Deployment
+## Pages configuration
 
-Once deployed, your site will be available at:
-- Production: `https://your-project.pages.dev`
-- You can also add a custom domain in Cloudflare Pages settings
+- Build: `npm run build`; output: `dist`; root: this repository
+- Node: 22 or a compatible later version
+- Framework: Astro/static Pages, not a Worker deployment
+- Production branch: `main`, according to AGENTS.md; confirm dashboard settings before release
 
-### Automatic Deployments
-- Every push to your main branch will trigger a new deployment
-- Preview deployments are created for pull requests
-- You can see deployment history in the Cloudflare dashboard
+The publication integration checks every Astro build, including direct CLI builds.
+It validates before compilation, generates sitemap and public blog exports after
+rendering, then validates output. There is no approval bypass flag. No CI or
+dashboard configuration was changed in Phase A+B.
 
-## Need Help?
+## Static routing and artifacts
 
-If you're still seeing the Wrangler error:
-1. Double-check you're using **Cloudflare Pages**, not Workers
-2. Make sure there's no `wrangler.toml` file in your project
-3. The build command should be `npm run build`, NOT `npx wrangler deploy`
+`src/pages/404.astro` emits `/404.html`; `_redirects` has no homepage catch-all.
+Missing paths must return 404, including unpublished article URLs. See
+https://developers.cloudflare.com/pages/configuration/serving-pages/.
 
-Your project is correctly configured for Cloudflare Pages static site deployment! 🚀
+`sitemap.xml`, `llms.txt`, `llms-full.txt`, and `okf/blog.md` are generated into
+`dist/`; do not recreate copies in `public/`. Sitemap entries come from actual
+built HTML, excluding noindex pages such as the print source and 404. Blog exports
+use centrally eligible articles. Non-blog business copy remains in
+`content-engine/export-templates/` pending human review.
+
+## Pages Functions
+
+`functions/api/track.ts` is compiled by Pages and forwards GA4 events. It requires
+the production `GA4_API_SECRET` Pages secret. Keep secrets out of content, logs
+and client bundles. Analytics, Meta Pixel, enquiry and newsletter code is unchanged.
+
+Local runtime checks use installed Wrangler without production bindings:
+
+```text
+npx wrangler pages dev dist --compatibility-date 2026-06-02
+```
+
+That compatibility date is the project's documented local runtime ceiling.
+Static routing checks should not send analytics or submit subscription forms.
+
+## Release — explicit authorization required
+
+1. Resolve all legacy reviews and approve exact content digests.
+2. Run tests, isolated integration tests, validation and `npm run build`.
+3. Review the diff, routes, sitemap, canonical URLs and conversion paths.
+4. Confirm production Pages settings and secrets without printing their values.
+5. Obtain explicit authorization before committing, pushing, merging or deploying.
+6. A push to `main` deploys production according to AGENTS.md.
+7. If separately authorized, the documented CLI command is
+   `npx wrangler pages deploy dist --project-name haikaitech --branch main`.
+   `--branch production` is a Preview branch for this project.
+8. Check production HTTP statuses and sitemap; retain the previous deployment for rollback.
+
+Direct uploads bypass build checks. Restricted credentials and human-reviewed
+branch protection remain necessary; file checks cannot prevent arbitrary uploads
+by someone who has deployment access.

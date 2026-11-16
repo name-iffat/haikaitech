@@ -1,0 +1,126 @@
+---
+import { Image, getImage } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import UmrahPackageConfigurator from '../../components/UmrahPackageConfigurator';
+import UmrahSitePreview from '../../components/UmrahSitePreview';
+import adyUmrahImage from '../../assets/projects/adyumrah-current.png';
+import murtajizImage from '../../assets/projects/al-murtajiz-travel.webp';
+import hijrahImage from '../../assets/projects/hijrahalharamainhq.webp';
+import '../../styles/workbench.css';
+import '../../styles/umrah-offer.css';
+
+const canonical = 'https://haikaitech.my/bm/umrah-website/';
+const adyPreview = await getImage({ src: adyUmrahImage, width: 1200, format: 'webp' });
+const heroMessage = 'Salam HaikaiTech! Saya nak bincang website untuk agensi umrah saya. Boleh bantu semak pakej dan keperluan saya?';
+const heroWhatsApp = `https://wa.me/60147533499?text=${encodeURIComponent(heroMessage)}`;
+
+const faqs = [
+  ['RM799 tu dapat apa?', 'Starter ialah website custom satu halaman dengan sehingga lima bahagian kandungan, paparan pakej atau promosi, WhatsApp, setup SEO dan AEO asas, optimasi prestasi, SSL, deployment, serta hosting standard dan domain yang layak selama setahun. Skop dan bahan yang perlu disediakan akan disahkan sebelum mula.'],
+  ['Website ni terus boleh terima booking dan bayaran jemaah?', 'Starter tidak termasuk tempahan masa nyata, kutipan bayaran jemaah, CRM atau dashboard admin kompleks. Jika perlukan aliran tempahan dan integrasi bayaran, kita semak keperluan untuk Booking Pro dan sediakan sebut harga.'],
+  ['Hosting dan domain percuma selamanya?', 'Starter merangkumi satu tahun hosting standard dan satu domain standard yang layak. Pembaharuan selepas tahun pertama, domain premium, e-mel, platform berbayar dan caj pihak ketiga akan dinyatakan berasingan jika berkaitan.'],
+  ['Berapa lama website siap?', 'Jadual bergantung pada skop, bahan kandungan dan slot kerja semasa. Kami sahkan jadual dan apa yang perlu disediakan selepas perbincangan.'],
+  ['Macam mana dengan revisi, pembatalan atau bayaran balik?', 'Had revisi, keperluan kandungan, jadual dan terma pembatalan atau bayaran balik khusus untuk skop ini masih perlu disahkan. Kami nyatakan semuanya dalam sebut harga bertulis sebelum anda setuju. Checkout online belum dibuka.'],
+  ['Website boleh buktikan agensi saya berlesen?', 'Website boleh bantu susun maklumat syarikat dan mudahkan orang bertanya. Ia bukan pengesahan lesen, kelulusan atau status agensi; maklumat rasmi perlu disahkan melalui saluran berkuasa.'],
+  ['Boleh terus bayar online?', 'Checkout online belum dibuka. Buat masa ini, WhatsApp kami untuk semak skop, harga yang telah diluluskan dan ketersediaan. Sebarang kerja hanya bermula selepas skop dan terma bertulis dipersetujui.'],
+];
+---
+
+<BaseLayout
+  locale="bm"
+  title="Website untuk Agensi Umrah dari RM799 | HaikaiTech"
+  description="Website untuk agensi umrah dan travel di Malaysia. Bandingkan pakej Starter RM799, Profesional + CMS ringan RM1,700 dan sistem Booking Pro, lihat contoh kerja sebenar dan bincang skop melalui WhatsApp."
+  canonical={canonical}
+>
+  <div class="umrah-page workbench bg-paper">
+    <header class="umrah-nav">
+      <a href="/bm/" class="umrah-brand" aria-label="HaikaiTech, halaman utama"><img src="/favicon-32x32.png" width="32" height="32" alt="" />HAIKAITECH<span>_</span></a>
+      <nav aria-label="Navigasi halaman"><a href="#pakej">Pakej</a><a href="#contoh">Contoh kerja</a><a href="#faq">FAQ</a></nav>
+      <a class="umrah-nav__cta" href={heroWhatsApp} target="_blank" rel="noopener noreferrer" data-offer-cta="umrah-nav">WhatsApp kami <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <main>
+      <section class="umrah-hero" aria-labelledby="hero-title">
+        <div class="umrah-hero__copy">
+          <p class="umrah-kicker"><span></span> WEBSITE UNTUK AGENSI UMRAH & TRAVEL</p>
+          <h1 id="hero-title">Pelanggan nampak pakej anda di Facebook. <em>Mana mereka nak semak selebihnya?</em></h1>
+          <p class="umrah-hero__lead">Susun info syarikat, pakej, tarikh dan cara nak bertanya dalam satu website yang senang dibuka dari telefon. Media sosial tarik perhatian; website bantu jawab soalan asas sebelum orang WhatsApp anda.</p>
+          <div class="umrah-hero__actions"><a class="wb-button wb-primary" href="#pakej">Tengok pilihan pakej <span aria-hidden="true">↓</span></a><a class="umrah-text-link" href={heroWhatsApp} target="_blank" rel="noopener noreferrer" data-offer-cta="umrah-hero">Nak tanya dulu? WhatsApp je <span aria-hidden="true">↗</span></a></div>
+          <div class="umrah-hero__price"><span>Website agensi umrah bermula dari</span><strong>RM799</strong><small>Starter · 1 halaman · sehingga 5 bahagian</small></div>
+          <p class="umrah-hero__fine">Harga Starter untuk skop di bawah. Tempahan online belum dibuka; kami sahkan skop dan ketersediaan dulu.</p>
+        </div>
+        <div class="umrah-hero__visual">
+          <div class="umrah-visual-note"><span class="umrah-visual-note__stamp">KERJA<br />SEBENAR</span><span>Pengalaman projek travel<br /><strong>direka ikut keperluan</strong></span></div>
+          <div class="umrah-hero-preview">
+            <div class="umrah-preview__toolbar"><div class="umrah-preview__browser-dots" aria-hidden="true"><i /><i /><i /></div><span class="umrah-preview__url">adyumrahajj.com</span><span class="umrah-hero-preview__label">PROJEK PELANGGAN</span></div>
+            <Image src={adyUmrahImage} width={1200} widths={[600, 900, 1200]} sizes="(max-width: 760px) 100vw, 48vw" alt="Paparan laman sebenar Ady Umrah Hajj, projek website agensi umrah HaikaiTech" format="webp" loading="eager" fetchpriority="high" />
+            <div class="umrah-hero-preview__caption"><span>Ady Umrah Hajj · projek sebenar</span><a href="#contoh">Lihat preview interaktif <span aria-hidden="true">↓</span></a></div>
+          </div>
+        </div>
+        <div class="umrah-hero__index" aria-hidden="true"><span>HAIKAI / TRAVEL WEB</span><span>MY · 01—03</span></div>
+      </section>
+
+      <section class="umrah-contrast" aria-labelledby="contrast-title">
+        <div class="umrah-section-heading"><p class="umrah-kicker">BILA SEMUA INFO BERSERAK</p><h2 id="contrast-title">Orang berminat, tapi masih kena tanya satu-satu.</h2></div>
+        <div class="umrah-contrast__grid">
+          <article class="umrah-contrast__card umrah-contrast__card--before"><span class="umrah-contrast__label">SEBELUM</span><h3>Info ada, tapi tersebar.</h3><ul><li>Harga dalam poster lama</li><li>Tarikh berlepas kena cari dalam chat</li><li>Soalan sama berulang kali di WhatsApp</li><li>Orang susah nak faham apa langkah seterusnya</li></ul></article>
+          <div class="umrah-contrast__arrow" aria-hidden="true">→</div>
+          <article class="umrah-contrast__card umrah-contrast__card--after"><span class="umrah-contrast__label">DENGAN WEBSITE</span><h3>Maklumat utama senang dirujuk.</h3><ul><li>Pakej dan maklumat disusun ikut halaman</li><li>Orang boleh semak ikut masa mereka</li><li>Butang WhatsApp jelas bila mereka dah bersedia</li><li>Anda masih urus pertanyaan dan follow-up sendiri</li></ul></article>
+        </div>
+        <p class="umrah-contrast__note">Website bantu terangkan tawaran dan mudahkan pertanyaan. Ia tak menjamin tempahan, kedudukan Google atau mengesahkan lesen agensi.</p>
+      </section>
+
+      <section class="umrah-section umrah-section--paper" aria-labelledby="solution-title">
+        <div class="umrah-section-heading umrah-section-heading--split"><div><p class="umrah-kicker">WEBSITE YANG ADA TUJUAN</p><h2 id="solution-title">Bukan sekadar nampak cantik. Biar orang tahu apa nak buat seterusnya.</h2></div><p>Maklumat pakej, profil syarikat dan pertanyaan pelanggan disusun supaya bakal jemaah tak perlu meneka-neka. Kita mula ikut skop yang agensi anda perlukan sekarang.</p></div>
+        <div class="umrah-benefits">
+          <article><span>01</span><div><h3>Pakej lebih mudah dibandingkan</h3><p>Susun kandungan seperti tempoh, tarikh, harga dan apa yang termasuk — ikut bahan rasmi yang anda bekalkan.</p></div></article>
+          <article><span>02</span><div><h3>Info agensi ada satu tempat</h3><p>Letakkan penerangan, maklumat hubungan dan butiran yang anda mahu pelanggan semak sebelum bertanya.</p></div></article>
+          <article><span>03</span><div><h3>Pertanyaan terus ke WhatsApp</h3><p>Orang yang nak tahu lebih lanjut boleh mula chat tanpa mencari nombor atau menyalin semula maklumat.</p></div></article>
+        </div>
+      </section>
+
+      <section class="umrah-section umrah-preview-section" id="contoh" aria-labelledby="preview-title">
+        <div class="umrah-section-heading"><p class="umrah-kicker">LIHAT CONTOH SEBENAR</p><h2 id="preview-title">Website travel yang kami pernah bina.</h2><p>Paparan desktop tunjuk screenshot kerja sebenar. Tukar ke telefon untuk lihat konsep generik susun atur mudah alih.</p></div>
+        <div class="umrah-preview-card"><UmrahSitePreview client:load imageSrc={adyPreview.src} liveUrl="https://adyumrahajj.com" /></div>
+        <p class="umrah-preview-section__disclaimer">Ady Umrah Hajj ialah projek pelanggan sebenar. Ciri dan skopnya berbeza daripada pakej yang disenaraikan di halaman ini.</p>
+      </section>
+
+      <section class="umrah-section umrah-packages-section" id="pakej" aria-labelledby="packages-title">
+        <div class="umrah-section-heading umrah-section-heading--split"><div><p class="umrah-kicker">PILIH IKUT KEPERLUAN ANDA</p><h2 id="packages-title">Mula ringkas. Tambah bila perlu.</h2></div><p>Harga asas dan skop dipaparkan supaya senang nak banding. Add-on ialah pilihan, bukan benda wajib.</p></div>
+        <UmrahPackageConfigurator client:load />
+        <p class="umrah-packages__terms">Harga Growth dan semua add-on bertanda cadangan ialah nilai demo sementara, belum diluluskan. Kami akan sahkan skop, harga, bahan, jadual, hosting/domain dan terma melalui sebut harga bertulis sebelum sebarang persetujuan.</p>
+      </section>
+
+      <section class="umrah-section umrah-work-section" aria-labelledby="work-title">
+        <div class="umrah-section-heading umrah-section-heading--split"><div><p class="umrah-kicker">PENGALAMAN KERJA</p><h2 id="work-title">Beberapa projek travel sebenar.</h2></div><p>Setiap projek ikut objektif dan keperluan pelanggan masing-masing. Ciri yang anda lihat tidak semestinya termasuk dalam Starter.</p></div>
+        <div class="umrah-work-grid">
+          <a class="umrah-work-card" href="https://adyumrahajj.com" target="_blank" rel="noopener noreferrer"><div class="umrah-work-card__image"><Image src={adyUmrahImage} width={900} widths={[450, 700, 900]} sizes="(max-width: 700px) 100vw, 50vw" alt="Paparan website Ady Umrah Hajj, projek agensi umrah HaikaiTech" format="webp" loading="lazy" /></div><div><span>AGENSI UMRAH · KATALOG PAKEJ</span><h3>Ady Umrah Hajj <b aria-hidden="true">↗</b></h3><p>Website agensi umrah dengan katalog pakej dan dashboard admin.</p></div></a>
+          <a class="umrah-work-card" href="https://murtazjiumrah.haikaitech.my/" target="_blank" rel="noopener noreferrer"><div class="umrah-work-card__image"><Image src={murtajizImage} width={900} widths={[450, 700, 900]} sizes="(max-width: 700px) 100vw, 50vw" alt="Paparan website Murtajiz Travel, platform kandungan agensi travel" format="webp" loading="lazy" /></div><div><span>TRAVEL · KANDUNGAN CMS</span><h3>Murtajiz Travel <b aria-hidden="true">↗</b></h3><p>Platform agensi travel dengan kandungan yang diurus melalui CMS.</p></div></a>
+          <a class="umrah-work-card umrah-work-card--wide" href="https://hijrahumrah.haikaitech.my/" target="_blank" rel="noopener noreferrer"><div class="umrah-work-card__image"><Image src={hijrahImage} width={900} widths={[450, 700, 900]} sizes="(max-width: 700px) 100vw, 50vw" alt="Paparan website Hijrah Umrah, projek kandungan berfokus pada keperluan pelanggan" format="webp" loading="lazy" /></div><div><span>UMRAH · PENGALAMAN PELANGGAN</span><h3>Hijrah Umrah <b aria-hidden="true">↗</b></h3><p>Reka bentuk dan kandungan untuk pengalaman digital yang lebih jelas.</p></div></a>
+        </div>
+      </section>
+
+      <section class="umrah-section umrah-process-section" aria-labelledby="process-title">
+        <div class="umrah-section-heading"><p class="umrah-kicker">DARI IDEA KE WEBSITE</p><h2 id="process-title">Mula dengan perbualan yang jelas.</h2></div>
+        <ol class="umrah-process"><li><span>01</span><div><h3>Cerita tentang agensi anda</h3><p>Beritahu jenis pakej, kandungan sedia ada dan apa yang pelanggan selalu tanya.</p></div></li><li><span>02</span><div><h3>Kita sahkan skop dan harga</h3><p>Kami jelaskan apa yang termasuk, apa yang anda sediakan dan jika ada kos tambahan.</p></div></li><li><span>03</span><div><h3>Setuju dulu, baru mula</h3><p>Jadual dan proses kerja disahkan bertulis. Kerja bermula selepas persetujuan dan bahan yang diperlukan diterima.</p></div></li></ol>
+      </section>
+
+      <section class="umrah-section umrah-faq-section" id="faq" aria-labelledby="faq-title">
+        <div class="umrah-faq-layout"><div class="umrah-section-heading"><p class="umrah-kicker">SEBELUM WHATSAPP</p><h2 id="faq-title">Soalan yang mungkin anda nak tanya.</h2><p>Kalau keperluan anda lain daripada yang disenaraikan, cerita je dulu.</p><a class="umrah-text-link" href={heroWhatsApp} target="_blank" rel="noopener noreferrer" data-offer-cta="umrah-faq">Tanya soalan di WhatsApp <span aria-hidden="true">↗</span></a></div><div class="umrah-faq-list">{faqs.map(([question, answer]) => <details><summary>{question}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>)}</div></div>
+      </section>
+
+      <section class="umrah-final-cta" aria-labelledby="final-title"><p class="umrah-kicker">LANGKAH SETERUSNYA</p><h2 id="final-title">Ada website umrah yang anda bayangkan?</h2><p>Cerita pasal agensi anda. Kita tengok pakej mana paling masuk akal dan skop apa yang perlu.</p><a class="wb-button wb-primary" href={heroWhatsApp} target="_blank" rel="noopener noreferrer" data-offer-cta="umrah-final">Jom bincang di WhatsApp <span aria-hidden="true">↗</span></a><small>Tiada bayaran untuk pertanyaan awal. Harga dan jadual disahkan sebelum anda setuju.</small></section>
+    </main>
+
+    <footer class="umrah-footer"><div><a href="/bm/" class="umrah-brand"><img src="/favicon-32x32.png" width="32" height="32" alt="" />HAIKAITECH<span>_</span></a><p>HaikaiTech Solutions · Penang, Malaysia<br />SSM 202603149868 (CA0422517-K)</p></div><nav aria-label="Maklumat syarikat"><a href="mailto:hq@haikaitech.my">hq@haikaitech.my</a><a href="https://wa.me/60147533499" target="_blank" rel="noopener noreferrer">WhatsApp</a><a href="/privacy-policy/">Privasi (EN)</a><a href="/terms-of-service/">Terma (EN)</a><a href="/refund-cancellation-policy/">Polisi bayaran balik (EN)</a></nav></footer>
+  </div>
+</BaseLayout>
+
+<script>
+  import { track } from '../../../components/track';
+
+  document.addEventListener('click', (event) => {
+    const target = event.target instanceof Element ? event.target.closest<HTMLAnchorElement>('a[data-offer-cta]') : null;
+    if (!target) return;
+    track('whatsapp_click', `umrah_website_${target.dataset.offerCta ?? 'unknown'}`);
+  });
+</script>

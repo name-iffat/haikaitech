@@ -3,6 +3,11 @@ title: "How Much Does Website Maintenance Cost in Malaysia?"
 description: "A practical guide to website maintenance costs in Malaysia, including renewals, updates, third-party services and the difference between maintenance and new development."
 pubDate: 2026-08-20
 tags: [websites, maintenance, pricing, malaysia]
+status: published
+authorId: 'iffat-haikal'
+review:
+  evidence: verified
+  disclosure: cleared
 ---
 
 The moment your website goes live, it becomes a running cost. Hosting, domain, SSL, security patches, backups, and those small "can you just change this text?" requests all add up — and how you pay for them changes what the site really costs you over three years.

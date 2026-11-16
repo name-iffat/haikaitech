@@ -3,6 +3,11 @@ title: "Lead Generation Malaysia: 10 Tactics That Actually Work for SMEs"
 description: "A practical guide to lead generation for Malaysian SMEs — WhatsApp-first tactics, reply-speed data, and the channel mix that fills your pipeline without wasting budget."
 pubDate: 2026-08-11
 tags: [lead-generation, whatsapp, malaysia, sme, marketing]
+status: published
+authorId: 'iffat-haikal'
+review:
+  evidence: verified
+  disclosure: cleared
 ---
 
 Most Malaysian business owners don't have a lead generation problem. They have a "waiting for the phone to ring" problem. Posting on Facebook, hoping for walk-ins, and relying on referrals isn't a strategy — it's luck. And luck doesn't scale when a quiet month arrives.

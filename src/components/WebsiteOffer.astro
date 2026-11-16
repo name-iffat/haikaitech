@@ -1,0 +1,175 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WebsiteExpectations from './WebsiteExpectations.astro';
+import tape from '../assets/concept-decorations/refined/hero-masking-tape.webp';
+import hss from '../assets/projects/hss-wireless-cctv-desktop.png';
+import fuzzfloor from '../assets/projects/fuzzfloor.webp';
+import atone from '../assets/projects/atone.webp';
+import '../styles/workbench.css';
+interface Props { locale?: 'en' | 'bm' }
+const { locale = 'en' } = Astro.props;
+const bm = locale === 'bm';
+const t = (en: string, ms: string) => bm ? ms : en;
+const alternates = { en: 'https://haikaitech.my/website/', bm: 'https://haikaitech.my/bm/website/' };
+const message = t('Hi HaikaiTech! I am interested in the website from RM799. My business: __. I need: __. Target launch: __.', 'Salam HaikaiTech! Saya berminat dengan website dari RM799. Perniagaan saya: __. Keperluan: __. Sasaran pelancaran: __.');
+const whatsapp = `https://wa.me/60147533499?text=${encodeURIComponent(message)}`;
+const cta = t('Let’s talk about your website', 'Jom cerita pasal website anda');
+const projects = [
+  { name: 'HSS Wireless CCTV', image: hss, href: 'https://wirelesscctv.com.my/', kind: t('Security services', 'Servis keselamatan') },
+  { name: 'Fuzzfloor', image: fuzzfloor, href: '/projects/fuzzfloor/', kind: t('Flooring services', 'Servis lantai') },
+  { name: 'AT One Construction', image: atone, href: '/projects/atone/', kind: t('Construction', 'Pembinaan') },
+];
+const faqs = [
+  [t('Is RM799 the final price?', 'RM799 tu harga confirm ke?'), t('RM799 covers the one-page starter scope listed above. If you need extra pages, online payments, booking, ecommerce or custom features, we scope those separately and show you the options before you decide. You approve the quotation before paying.', 'RM799 tu untuk skop starter satu halaman yang disenaraikan dekat atas. Kalau perlukan halaman tambahan, bayaran online, tempahan, e-dagang atau ciri tersuai, kami susun skop dan pilihan berasingan dulu. Anda semak dan setuju dengan sebut harga sebelum bayar.')],
+  [t('Are domain and hosting included?', 'Domain dengan hosting sekali ke?'), t('Yes. The starter includes one year of hosting and one standard domain. Renewals after the first year, premium domains, email, paid platforms and other third-party costs are listed separately where they apply.', 'Ya. Skop starter termasuk hosting setahun dan satu domain standard. Renewal selepas tahun pertama, domain premium, e-mel, platform berbayar dan kos pihak ketiga lain dinyatakan berasingan jika berkaitan.')],
+  [t('What do I need to provide?', 'Saya kena sediakan apa?'), t('Your logo, approved text, service details, contact information and photos you have permission to use. Content responsibilities, languages, writing and image sourcing are confirmed in your chosen quotation.', 'Biasanya logo, info servis atau produk, teks, nombor untuk dihubungi dan gambar yang anda boleh guna. Kalau perlukan bantuan menulis, terjemahan atau cari gambar, bagitahu je. Kita tetapkan siapa buat apa dalam sebut harga.')],
+  [t('Are content updates included after launch?', 'Ada kemas kini kandungan lepas launch?'), t('The RM799 starter includes two minor content updates after launch. New pages, major changes and extra updates can be quoted separately.', 'Skop starter RM799 termasuk dua kemas kini kecil kandungan selepas launch. Halaman baharu, perubahan besar dan kemas kini tambahan boleh disebut harga berasingan.')],
+  [t('When can it launch?', 'Berapa lama nak siap?'), t('We confirm availability and a delivery schedule in your quotation after reviewing your content and requirements. Work starts after the agreed deposit and required content are received.', 'Bergantung pada skop, kandungan dan slot kerja kami. Lepas tengok keperluan anda, kami bagi jadual dalam sebut harga. Kerja mula bila deposit dan kandungan yang diperlukan dah diterima.')],
+  [t('How does payment work?', 'Bayar macam mana?'), t('50% to begin and 50% before final launch or handover — the quotation states the exact amounts. Additional scope and third-party costs are confirmed separately.', 'Biasanya 50% untuk mula, baki 50% sebelum launch atau handover — sebut harga akan nyatakan jumlah tepat. Kos tambahan atau pihak ketiga kami jelaskan dalam sebut harga.')],
+  [t('Will the website guarantee enquiries?', 'Bila ada website, confirm dapat pelanggan ke?'), t('No enquiry volume or search ranking is guaranteed. The website gives customers a clear place to understand your services and contact you. Traffic, offer, competition and follow-up also affect results.', 'Tak boleh janji confirm dapat pelanggan. Website bantu orang faham bisnes anda dan senang nak hubungi atau beli. Hasilnya juga bergantung pada trafik, tawaran, persaingan dan macam mana anda follow up.')],
+];
+---
+<BaseLayout locale={locale} title={t('One-Page Website from RM799 | Penang & Selangor | HaikaiTech', 'Website Bisnes Satu Halaman dari RM799 | HaikaiTech Malaysia')} description={t('Custom one-page business website from RM799 for SMEs in Penang, Selangor and across Malaysia — up to five sections, WhatsApp enquiry, basic SEO and AEO, plus one year of hosting and a standard domain. Ecommerce is quoted separately.', 'Website bisnes satu halaman dari RM799, siap sehingga lima bahagian, pertanyaan WhatsApp, SEO dan AEO asas, serta hosting dan domain standard setahun. E-dagang disebut harga berasingan.')} canonical={alternates[locale]} alternates={alternates}>
+  <div class="workbench offer bg-paper bg-grid-pattern">
+    <header class="offer-nav"><a href={bm ? '/bm/' : '/'} class="offer-brand"><img src="/favicon-32x32.png" width="32" height="32" alt="" />HAIKAITECH_</a><a href={bm ? '/website/' : '/bm/website/'} lang={bm ? 'en' : 'ms'}>{bm ? 'English' : 'Bahasa Malaysia'}</a></header>
+    <main>
+      <section class="offer-hero">
+        <div><p class="wb-eyebrow">{t('For Malaysian businesses', 'Untuk bisnes di Malaysia')}</p><h1>{t('You’ve got the business.', 'Bisnes dah ada.')}<br /><em>{t('Let’s build your website.', 'Website pula?')}</em></h1><p class="offer-intro">{t('The RM799 starter is a custom one-page business website with up to five sections. Need more than that? Tell us what you have in mind and we’ll put together clear options for you.', 'Starter RM799 ialah website bisnes satu halaman dengan sehingga lima bahagian. Perlukan lebih daripada tu? Cerita je apa yang anda bayangkan, kami susun beberapa pilihan yang jelas.')}</p><p class="offer-price">{t('Business website starter from', 'Website bisnes starter dari')} <strong>RM799</strong><span>{t('1 page · up to 5 sections · 1 year hosting + standard domain', '1 halaman · sehingga 5 bahagian · hosting + domain standard setahun')}</span></p><a class="wb-button wb-primary wb-button--painted" href={whatsapp} data-offer-cta="hero" target="_blank" rel="noopener noreferrer">{cta}</a><p class="offer-note">{t('Drop us a WhatsApp message. We’ll talk through what fits, what it costs and when we can start.', 'WhatsApp je dulu. Kita bincang apa yang sesuai, berapa kos dan bila boleh mula.')}</p></div>
+        <figure><Image class="offer-tape" src={tape} width={240} alt="" aria-hidden="true" /><div class="offer-browser" aria-hidden="true"><span>● ● ●</span><span>wirelesscctv.com.my</span></div><Image src={hss} width={1000} widths={[400, 700, 1000]} sizes="(max-width: 800px) 100vw, 48vw" alt={t('HSS Wireless CCTV website built by HaikaiTech', 'Laman web HSS Wireless CCTV dibina oleh HaikaiTech')} loading="eager" fetchpriority="high" format="webp" /><figcaption>HSS Wireless CCTV / {t('Real client work', 'Hasil kerja pelanggan')}</figcaption><span class="offer-handnote" aria-hidden="true">{t('real work.\nreal businesses.', 'hasil sebenar.\nbisnes sebenar.')}</span></figure>
+      </section>
+      <WebsiteExpectations locale={locale} whatsapp={whatsapp} />
+      <section class="offer-section" aria-labelledby="work"><p class="wb-eyebrow">{t('Built for real businesses', 'Untuk bisnes macam anda')}</p><h2 id="work">{t('See the work.', 'Ni antara yang kami dah buat.')}</h2><p>{t('Examples of our work. Each project has its own scope; these are not examples of everything included at RM799.', 'Setiap projek ni ikut keperluan pelanggan masing-masing. Jadi, bukan semua ciri yang anda nampak termasuk dalam harga mula RM799.')}</p><div class="offer-projects">{projects.map(project => <a href={project.href} target="_blank" rel="noopener noreferrer"><Image src={project.image} width={600} widths={[300, 600]} sizes="(max-width: 800px) 100vw, 30vw" alt={`${project.name} — ${project.kind}`} format="webp" loading="lazy" /><h3>{project.name}<span aria-hidden="true"> ↗</span></h3><p>{project.kind}</p></a>)}</div></section>
+      <section class="offer-section" aria-labelledby="process"><p class="wb-eyebrow">{t('From first chat to launch', 'Dari perbualan ke pelancaran')}</p><h2 id="process">{t('A simple way to get started.', 'Macam ni kita mula.')}</h2><ol class="offer-process"><li><h3>01 / {t('Share your business', 'Cerita pasal bisnes anda')}</h3><p>{t('Tell us your services, content readiness and target launch date on WhatsApp.', 'WhatsApp kami. Cerita apa bisnes anda buat, apa yang diperlukan dan bila nak siap.')}</p></li><li><h3>02 / {t('Compare three options', 'Kami bagi 3 pilihan')}</h3><p>{t('Compare three tailored options with clear features, scope and pricing. We explain the differences so you can decide.', 'Kami susun 3 pilihan siap dengan ciri, skop dan harga. Tak pasti beza yang mana? Kita bincang sama-sama.')}</p></li><li><h3>03 / {t('Choose and begin', 'Pilih dan mula')}</h3><p>{t('Approve your chosen quotation and pay the agreed deposit. We build, review and launch according to that scope.', 'Dah jumpa pilihan yang sesuai? Setuju dengan sebut harga, bayar deposit dan kita mula. Lepas tu kita bina, semak sama-sama dan launch.')}</p></li></ol></section>
+      <section class="offer-section" aria-labelledby="faq"><h2 id="faq">{t('Before you ask.', 'Mungkin anda tertanya…')}</h2>{faqs.map(([q,a]) => <details><summary>{q}<span aria-hidden="true">+</span></summary><p>{a}</p></details>)}</section>
+      <section class="offer-section offer-final"><p class="wb-eyebrow">{t('Your next step', 'Langkah seterusnya')}</p><h2>{t('Let’s check what your business needs.', 'Ada idea? Jom borak dulu.')}</h2><a class="wb-button wb-primary wb-button--painted" href={whatsapp} data-offer-cta="final" target="_blank" rel="noopener noreferrer">{cta}</a><p>{t('No payment needed to ask about scope.', 'Tanya dulu tak kena bayar pun.')}</p></section>
+    </main>
+    <footer class="offer-footer"><p>HaikaiTech Solutions · Penang, Malaysia<br />SSM 202603149868 (CA0422517-K)</p><nav aria-label={t('Legal and contact', 'Polisi dan hubungan')}><a href="mailto:hq@haikaitech.my">hq@haikaitech.my</a><a href="/privacy-policy/">{t('Privacy', 'Privasi (EN)')}</a><a href="/terms-of-service/">{t('Terms', 'Terma (EN)')}</a><a href="/refund-cancellation-policy/">{t('Refund policy', 'Polisi bayaran balik (EN)')}</a></nav></footer>
+    <a class="offer-sticky wb-button wb-primary wb-button--painted" href={whatsapp} data-offer-cta="sticky" target="_blank" rel="noopener noreferrer">{cta}</a>
+  </div>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', '@type': 'Service', name: t('One-page business website starter', 'Website bisnes starter satu halaman'), provider: { '@type': 'Organization', name: 'HaikaiTech Solutions', url: 'https://haikaitech.my/' }, areaServed: 'Malaysia', offers: { '@type': 'Offer', priceCurrency: 'MYR', price: '799', url: alternates[locale], description: t('Custom one-page business website with up to five sections, enquiry integration, basic SEO and AEO, speed optimisation, SSL and deployment, one year of hosting and a standard domain, and two minor content updates after launch. Extra scope is quoted separately.', 'Website bisnes satu halaman dengan sehingga lima bahagian, integrasi pertanyaan, SEO dan AEO asas, pengoptimuman kelajuan, SSL dan deployment, hosting dan domain standard setahun, serta dua kemas kini kecil kandungan selepas launch. Skop tambahan disebut harga berasingan.') } })} />
+</BaseLayout>
+
+<script>
+  import { track } from '../../components/track';
+  const params = new URLSearchParams(window.location.search);
+  const campaign = params.get('utm_campaign')?.replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 80);
+  document.querySelectorAll<HTMLAnchorElement>('[data-offer-cta]').forEach(link => {
+    if (campaign) {
+      const url = new URL(link.href);
+      url.searchParams.set('text', `${url.searchParams.get('text')} [Campaign: ${campaign}]`);
+      link.href = url.toString();
+    }
+    link.addEventListener('click', () => track('whatsapp_click', `website_starter_${link.dataset.offerCta}`));
+  });
+</script>
+
+<style>
+  .offer { color: var(--wb-ink); background-color: var(--wb-paper); }
+  .offer-nav, main, .offer-footer { max-width: 1280px; margin: auto; padding-inline: 32px; }
+  .offer-nav { display:flex; justify-content:space-between; align-items:center; padding-block:24px; gap:24px; border-bottom:1px solid var(--wb-line); }
+  .offer a:focus-visible, summary:focus-visible { outline:3px solid var(--wb-blue); outline-offset:5px; }
+  .offer-nav a, .offer-footer a { display:inline-flex; align-items:center; min-height:44px; }
+  .offer-brand { font:700 20px 'JetBrains Mono',monospace; }
+  .offer-hero { display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:48px; padding-block:72px; }
+  h1 { font-size:clamp(40px,4.6vw,64px); line-height:1.05; letter-spacing:-.045em; font-weight:700; margin:20px 0 24px; }
+  h1 em { color:var(--wb-blue); font-style:normal; }
+  .offer-intro { font-size:20px; line-height:1.6; max-width:48ch; }
+  .offer-price { margin-block:24px; font-size:18px; }
+  .offer-price strong { display:block; font-size:48px; line-height:1.2; font-weight:700; letter-spacing:-.04em; }
+  .offer-price span { display:block; font-size:14px; margin-top:8px; }
+  .offer-note { margin-top:16px; max-width:48ch; font-size:14px; line-height:1.6; }
+  figure { margin:0; background:var(--wb-white); padding:12px; border:1px solid var(--wb-line); transform:rotate(1deg); }
+  figure img { width:100%; height:auto; }
+  figcaption { padding-top:12px; font:12px/1.6 'JetBrains Mono',monospace; }
+  .offer-section { border-top:1px solid var(--wb-line); padding-block:56px; }
+  h2 { font-size:clamp(28px,3.2vw,40px); font-weight:700; letter-spacing:-.035em; line-height:1.15; margin:12px 0 24px; }
+  h3 { font-size:20px; font-weight:700; line-height:1.4; margin-bottom:12px; }
+  p { line-height:1.7; }
+  .offer-scope { display:grid; grid-template-columns:1.2fr 1fr; gap:48px; }
+  ul { list-style:none; margin:0; padding:0; }
+  li { line-height:1.7; }
+  .offer-scope li { display:flex; gap:16px; padding-block:16px; border-bottom:1px solid var(--wb-line); }
+  li > span { color:var(--wb-blue); font-weight:700; }
+  aside { background:var(--wb-white); padding:32px; border:1px solid var(--wb-line); }
+  aside p { margin-bottom:24px; }
+  .offer-projects, .offer-process { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; margin-top:32px; }
+  .offer-projects img { width:100%; aspect-ratio:4/3; object-fit:cover; object-position:top; border:1px solid var(--wb-line); }
+  .offer-projects h3 { margin-top:16px; margin-bottom:0; }
+  .offer-projects a:hover h3 { text-decoration:underline; text-underline-offset:4px; }
+  .offer-process { list-style:none; padding:0; }
+  details { border-bottom:1px solid var(--wb-line); padding-block:8px; }
+  summary { cursor:pointer; font-weight:600; padding-block:16px; min-height:48px; }
+  details p { max-width:75ch; padding-bottom:16px; }
+  .offer-final { text-align:center; }
+  .offer-final p:last-child { margin-top:16px; }
+  .offer-footer { display:flex; justify-content:space-between; gap:32px; padding-block:32px; border-top:1px solid var(--wb-line); font-size:14px; }
+  .offer-footer nav { display:flex; gap:16px; flex-wrap:wrap; }
+  .offer-sticky { display:none; }
+  /* Campaign page follows the approved HaikaiTech workshop materials. */
+  .offer { background-image:radial-gradient(var(--wb-grid) .7px, transparent .7px); background-size:24px 24px; }
+  .offer-nav { padding-block:20px; }
+  .offer-brand { gap:10px; letter-spacing:.08em; font:700 18px Inter,Arial,sans-serif; }
+  .offer-nav > a:last-child { font:500 11px 'JetBrains Mono',monospace; color:var(--wb-blue); text-transform:uppercase; letter-spacing:.08em; }
+  .offer-hero { padding-block:88px 96px; gap:64px; }
+  h1 { font-size:clamp(48px,5.2vw,72px); line-height:1.02; letter-spacing:-.06em; }
+  .offer-intro { font-size:19px; line-height:1.65; }
+  .offer-price { border-top:1px solid var(--wb-line); padding-top:20px; margin-block:24px 28px; font:500 12px/1.6 'JetBrains Mono',monospace; }
+  .offer-price strong { display:inline-block; margin-left:8px; font:700 40px/1.2 Inter,Arial,sans-serif; color:var(--wb-blue); position:relative; isolation:isolate; }
+  .offer-price strong::after { content:''; position:absolute; bottom:1px; left:-4px; right:-4px; height:10px; background:var(--wb-tape); z-index:-1; transform:rotate(-2deg); }
+  .offer-price span { margin-top:12px; font-size:11px; }
+  .offer .wb-button { font:600 12px/1.5 'JetBrains Mono',monospace; letter-spacing:.035em; min-height:56px; }
+  .offer-note { font-size:13px; }
+  figure { position:relative; padding:12px 12px 0; transform:rotate(-2deg); box-shadow:0 16px 36px rgb(22 32 42 / .12); margin:24px 0 56px; }
+  figure .offer-tape { position:absolute; width:160px; height:auto; left:calc(50% - 80px); top:-25px; z-index:2; transform:rotate(3deg); }
+  .offer-browser { display:flex; gap:20px; align-items:center; padding:12px; border:1px solid var(--wb-line); border-bottom:0; font:10px/1.5 'JetBrains Mono',monospace; color:var(--wb-blue); background:var(--wb-paper); }
+  .offer-browser span:first-child { letter-spacing:3px; }
+  figcaption { padding:16px 4px 20px; font-size:10px; letter-spacing:.04em; }
+  .offer-handnote { position:absolute; bottom:-64px; right:8px; color:var(--wb-blue); font:26px/1.05 'Patrick Hand',cursive; white-space:pre-line; transform:rotate(5deg); }
+  .offer-section { padding-block:64px; background:var(--wb-paper); }
+  .offer-section > .wb-eyebrow { color:var(--wb-blue); }
+  h2 { font-size:clamp(32px,3.5vw,46px); letter-spacing:-.045em; max-width:22ch; }
+  .offer-section > p:not(.wb-eyebrow) { max-width:72ch; }
+  .offer-scope { gap:64px; margin-top:32px; }
+  .offer-scope li { padding-block:20px; }
+  .offer-scope li > span { font:500 11px/2.4 'JetBrains Mono',monospace; min-width:24px; }
+  aside { position:relative; align-self:start; padding:32px; margin-top:16px; background:var(--wb-white); border:1px solid var(--wb-line); box-shadow:5px 5px 0 var(--wb-line); }
+  aside::before { content:''; position:absolute; width:76px; height:22px; top:-12px; right:24px; background:var(--wb-tape); opacity:.8; transform:rotate(4deg); }
+  .offer-projects { gap:32px; margin-top:40px; }
+  .offer-projects img { padding:8px; background:var(--wb-white); box-shadow:0 8px 20px rgb(22 32 42 / .08); }
+  .offer-projects a:nth-child(2) { padding-top:24px; }
+  .offer-projects h3 { font-size:18px; }
+  .offer-projects p { font:11px/1.8 'JetBrains Mono',monospace; color:var(--wb-blue); margin-top:8px; }
+  .offer-process { display:block; margin-top:32px; border-top:1px solid var(--wb-line); }
+  .offer-process li { display:grid; grid-template-columns:1fr 1.2fr; gap:48px; padding-block:28px; border-bottom:1px solid var(--wb-line); }
+  .offer-process h3 { margin:0; color:var(--wb-blue); font-size:20px; }
+  summary { display:flex; justify-content:space-between; gap:24px; font-size:17px; padding-block:20px; }
+  summary::marker { content:''; }
+  summary::-webkit-details-marker { display:none; }
+  summary span { color:var(--wb-blue); font:24px/1 Inter,Arial,sans-serif; }
+  details[open] summary span { transform:rotate(45deg); }
+  .offer-final { text-align:left; padding:48px; margin-block:24px 64px; background:var(--wb-blue); color:var(--wb-paper); position:relative; }
+  .offer-final::before { content:''; position:absolute; width:100px; height:24px; background:var(--wb-tape); top:-12px; right:32px; transform:rotate(3deg); }
+  .offer-final .wb-eyebrow { color:var(--wb-paper); }
+  .offer-final h2 { max-width:24ch; }
+  .offer-final .wb-primary { background:var(--wb-paper); color:var(--wb-blue); border-color:var(--wb-paper); }
+  .offer-footer { background:var(--wb-paper); }
+  @media(max-width:800px) {
+    .offer-nav, main, .offer-footer { padding-inline:24px; }
+    .offer-hero { grid-template-columns:1fr; padding-block:48px 64px; gap:32px; }
+    h1 { font-size:clamp(42px,8vw,62px); }
+    .offer-brand { font-size:15px; letter-spacing:.03em; }
+    .offer-nav { gap:12px; }
+    .offer-nav > a:last-child { font-size:10px; }
+    .offer-price strong { font-size:36px; }
+    .offer-intro { font-size:17px; }
+    .offer-process li { grid-template-columns:1fr; gap:12px; }
+    .offer-final { padding:32px 24px; margin-bottom:40px; }
+    .offer-projects a:nth-child(2) { padding-top:0; }
+    .offer-scope, .offer-projects, .offer-process { grid-template-columns:1fr; gap:24px; }
+    .offer-section { padding-block:40px; }
+    .offer-footer { flex-direction:column; padding-bottom:120px; }
+    .offer-sticky { display:flex; position:fixed; bottom:max(16px,env(safe-area-inset-bottom)); left:16px; right:16px; z-index:40; justify-content:center; }
+    .wb-button { white-space:normal; text-align:center; }
+  }
+</style>

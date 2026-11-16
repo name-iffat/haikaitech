@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "contentId": "hire-web-designer-selangor-checklist",
+  "route": "/blog/hire-web-designer-selangor-checklist/",
+  "decision": "approved",
+  "reviewer": "Iffat Haikal (owner)",
+  "approvedAt": "2026-11-16T02:56:05.164Z",
+  "digest": "sha256:f69e695194f2e6637cc69848eaf3696459c6b56ca105fc0227b6ffcf963849de",
+  "checks": {
+    "accuracy": true,
+    "evidence": true,
+    "disclosure": true,
+    "assetRights": true
+  }
+}

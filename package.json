@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "content:validate": "node scripts/content/validate.mjs",
+    "test": "node --test tests/content/*.test.mjs",
+    "test:content:integration": "node scripts/content/test-build.mjs"
   },
   "dependencies": {
     "@astrojs/react": "^5.0.6",

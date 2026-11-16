@@ -4,6 +4,11 @@ description: "Marketplace memang bagus untuk mula. Tapi bila variasi, stok dan o
 pubDate: 2026-10-03
 lang: ms-MY
 tags: [websites, ecommerce, tiktok, shopee, malaysia, online-business]
+status: published
+authorId: 'iffat-haikal'
+review:
+  evidence: verified
+  disclosure: cleared
 ---
 
 TikTok Shop dan Shopee memang senang untuk mula menjual. Tak perlu bina semua sistem dari kosong, dan pelanggan memang sudah berada di dalam platform tersebut.

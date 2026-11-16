@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "contentId": "website-cost-penang-2026",
+  "route": "/blog/website-cost-penang-2026/",
+  "decision": "approved",
+  "reviewer": "Iffat Haikal (owner)",
+  "approvedAt": "2026-11-16T02:56:05.164Z",
+  "digest": "sha256:2d37ab8eea9e57ebad3c08c508e55ac8f7435e01f67186e0c002ee80172339ce",
+  "checks": {
+    "accuracy": true,
+    "evidence": true,
+    "disclosure": true,
+    "assetRights": true
+  }
+}

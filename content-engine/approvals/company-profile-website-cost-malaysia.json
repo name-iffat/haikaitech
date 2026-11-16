@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "contentId": "company-profile-website-cost-malaysia",
+  "route": "/blog/company-profile-website-cost-malaysia/",
+  "decision": "approved",
+  "reviewer": "Iffat Haikal (owner)",
+  "approvedAt": "2026-11-16T02:56:05.164Z",
+  "digest": "sha256:ebfa624d36d80a90edfb72d751f898b64fafc4795d39e46a36670d67f83b45ff",
+  "checks": {
+    "accuracy": true,
+    "evidence": true,
+    "disclosure": true,
+    "assetRights": true
+  }
+}

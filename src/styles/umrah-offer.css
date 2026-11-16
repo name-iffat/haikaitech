@@ -1,0 +1,169 @@
+.umrah-page { --umrah-olive: #657649; --umrah-olive-dark: #3f5131; --umrah-cream: #f1eee2; --umrah-line: #d6d9cf; --umrah-ink-soft: #56616a; color: var(--wb-ink); background: var(--wb-paper); background-image: radial-gradient(var(--wb-grid) .65px, transparent .65px); background-size: 24px 24px; overflow: clip; }
+.umrah-page :is(a,button,summary,input):focus-visible { outline: 3px solid var(--wb-blue); outline-offset: 4px; }
+.umrah-page a { color: inherit; }
+.umrah-nav { min-height: 76px; max-width: 1320px; margin: auto; padding: 12px 40px; display: flex; align-items: center; justify-content: space-between; gap: 28px; border-bottom: 1px solid var(--umrah-line); }
+.umrah-brand { display: inline-flex; align-items: center; gap: 9px; font: 800 16px/1 Inter,Arial,sans-serif; letter-spacing: .03em; white-space: nowrap; }
+.umrah-brand img { width: 30px; height: 30px; }
+.umrah-brand span { color: var(--wb-blue); margin-left: -9px; }
+.umrah-nav nav { display: flex; align-items: center; gap: 28px; font: 500 11px/1.5 'JetBrains Mono',monospace; text-transform: uppercase; letter-spacing: .05em; }
+.umrah-nav nav a,.umrah-nav__cta { display: inline-flex; min-height: 44px; align-items: center; }
+.umrah-nav nav a:hover,.umrah-nav__cta:hover,.umrah-text-link:hover { color: var(--wb-blue); text-decoration: underline; text-underline-offset: 4px; }
+.umrah-nav__cta { gap: 9px; padding: 0 16px; border: 1px solid var(--wb-ink); font: 600 11px/1.4 'JetBrains Mono',monospace; }
+.umrah-kicker { display: flex; align-items: center; gap: 10px; margin: 0 0 18px; color: var(--umrah-olive-dark); font: 500 10px/1.5 'JetBrains Mono',monospace; letter-spacing: .11em; text-transform: uppercase; }
+.umrah-kicker > span { width: 8px; height: 8px; border-radius: 50%; background: var(--umrah-olive); box-shadow: 0 0 0 4px rgb(101 118 73 / .13); }
+.umrah-hero { position: relative; max-width: 1320px; margin: auto; padding: 76px 40px 72px; display: grid; grid-template-columns: minmax(0,1.02fr) minmax(0,.98fr); align-items: center; gap: clamp(36px,6vw,82px); }
+.umrah-hero__copy { position: relative; z-index: 1; }
+.umrah-hero h1 { max-width: 14ch; margin: 0; font-size: clamp(42px,5.1vw,70px); font-weight: 700; line-height: .99; letter-spacing: -.06em; }
+.umrah-hero h1 em { display: block; margin-top: .14em; color: var(--umrah-olive-dark); font-style: normal; }
+.umrah-hero__lead { max-width: 57ch; margin: 24px 0 0; color: var(--umrah-ink-soft); font-size: clamp(16px,1.5vw,18px); line-height: 1.75; }
+.umrah-hero__actions { display: flex; align-items: center; flex-wrap: wrap; gap: 20px; margin-top: 28px; }
+.umrah-page .wb-button { min-height: 52px; display: inline-flex; align-items: center; justify-content: center; gap: 12px; padding: 13px 20px; border: 1px solid var(--wb-ink); background: var(--wb-ink); color: var(--wb-paper); font: 600 12px/1.5 'JetBrains Mono',monospace; text-align: center; }
+.umrah-page .wb-button:hover { background: var(--umrah-olive-dark); border-color: var(--umrah-olive-dark); text-decoration: none; }
+.umrah-text-link { display: inline-flex; min-height: 44px; align-items: center; gap: 7px; color: var(--umrah-olive-dark)!important; font-size: 14px; font-weight: 600; }
+.umrah-hero__price { display: grid; grid-template-columns: auto 1fr; align-items: baseline; column-gap: 14px; width: fit-content; margin-top: 32px; padding-top: 18px; border-top: 1px solid var(--umrah-line); }
+.umrah-hero__price span { font: 500 11px/1.6 'JetBrains Mono',monospace; }
+.umrah-hero__price strong { color: var(--umrah-olive-dark); font-size: 38px; line-height: 1.1; letter-spacing: -.05em; }
+.umrah-hero__price small { grid-column: 2; color: var(--umrah-ink-soft); font: 10px/1.6 'JetBrains Mono',monospace; }
+.umrah-hero__fine { max-width: 55ch; margin: 12px 0 0; color: var(--umrah-ink-soft); font-size: 11px; line-height: 1.7; }
+.umrah-hero__visual { position: relative; min-width: 0; padding: 12px 0 4px 16px; }
+.umrah-visual-note { position: absolute; z-index: 5; top: -12px; left: -15px; display: flex; align-items: center; gap: 10px; padding: 10px 15px 10px 10px; background: var(--wb-white); border: 1px solid var(--umrah-line); box-shadow: 3px 4px 0 var(--umrah-line); transform: rotate(-3deg); font: 10px/1.5 'JetBrains Mono',monospace; }
+.umrah-visual-note strong { font-weight: 600; }
+.umrah-visual-note__stamp { display: grid; width: 38px; height: 38px; place-content: center; border: 1px solid var(--umrah-olive); color: var(--umrah-olive-dark); font-size: 8px; font-weight: 700; text-align: center; transform: rotate(-8deg); }
+.umrah-hero-preview { min-width: 0; padding: 12px 12px 0; border: 1px solid #cfd4d7; background: #fff; box-shadow: 0 18px 40px rgb(22 32 42 / .12); transform: rotate(1deg); }
+.umrah-hero-preview > img { display: block; width: 100%; height: clamp(260px,31vw,390px); object-fit: cover; object-position: top center; }
+.umrah-hero-preview__label { flex: 0 0 auto; color: var(--umrah-olive-dark); font: 8px/1.5 'JetBrains Mono',monospace; letter-spacing: .07em; }
+.umrah-hero-preview__caption { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 11px 3px 12px; color: #58646b; font: 9px/1.5 'JetBrains Mono',monospace; }
+.umrah-hero-preview__caption a { display: inline-flex; min-height: 32px; align-items: center; gap: 5px; color: var(--umrah-olive-dark); font: 600 9px/1.5 Inter,Arial,sans-serif; white-space: nowrap; }
+.umrah-hero-preview__caption a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.umrah-hero__index { position: absolute; bottom: 14px; left: 40px; right: 40px; display: flex; justify-content: space-between; color: #7b8589; font: 9px/1.5 'JetBrains Mono',monospace; letter-spacing: .1em; }
+.umrah-preview { min-width: 0; padding: 12px; border: 1px solid #cfd4d7; background: #fff; box-shadow: 0 18px 40px rgb(22 32 42 / .12); }
+.umrah-preview__toolbar { display: flex; min-height: 36px; align-items: center; gap: 12px; padding: 0 6px 9px; border-bottom: 1px solid #e4e7e6; }
+.umrah-preview__browser-dots { display: flex; gap: 4px; }
+.umrah-preview__browser-dots i { width: 7px; height: 7px; border-radius: 50%; background: #d7d9d4; }
+.umrah-preview__browser-dots i:first-child { background: #dc8671; }.umrah-preview__browser-dots i:nth-child(2) { background: #e0bd60; }.umrah-preview__browser-dots i:nth-child(3) { background: #7ba786; }
+.umrah-preview__url { min-width: 0; flex: 1; overflow: hidden; color: #758087; font: 9px/1.5 'JetBrains Mono',monospace; text-overflow: ellipsis; white-space: nowrap; }
+.umrah-preview__devices { display: flex; gap: 2px; }
+.umrah-preview__devices button { display: inline-flex; min-height: 32px; align-items: center; gap: 5px; padding: 0 8px; border: 0; background: transparent; color: #5d6870; font: 10px/1.4 Inter,Arial,sans-serif; cursor: pointer; }
+.umrah-preview__devices button svg { width: 14px; height: 14px; }
+.umrah-preview__devices button[aria-pressed="true"] { background: var(--umrah-cream); color: var(--umrah-olive-dark); }
+.umrah-preview__stage { display: flex; min-height: 360px; align-items: flex-start; justify-content: center; overflow: hidden; padding: 14px 0 0; background-color: #f5f5f1; background-image: radial-gradient(#d6d9cf .6px,transparent .6px); background-size: 14px 14px; }
+.umrah-preview__screen { width: 100%; min-height: 345px; overflow: hidden; border: 1px solid #d7dce2; background: #fff; box-shadow: 0 5px 14px rgb(22 32 42 / .12); transition: width .25s ease, border-radius .25s ease, transform .25s ease; }
+.umrah-preview__image-wrap { height: 345px; overflow: hidden; }
+.umrah-preview__image-wrap img { display: block; width: 100%; height: auto; min-height: 100%; object-fit: cover; object-position: top center; }
+.umrah-preview--mobile .umrah-preview__stage { min-height: 420px; align-items: center; padding: 14px; }
+.umrah-preview--mobile .umrah-preview__screen { width: min(216px,72%); min-height: 390px; max-height: 390px; border: 5px solid #26323b; border-radius: 20px; transform: translateY(0); }
+.umrah-preview--mobile .umrah-preview__image-wrap { height: 380px; }
+.umrah-preview--mobile .umrah-preview__image-wrap img { width: 100%; min-height: 380px; object-fit: cover; object-position: top center; }
+.umrah-mobile-demo { height: 380px; overflow: auto; background: #fbfaf5; color: #26333a; font-family: Inter,Arial,sans-serif; }
+.umrah-mobile-demo__bar { display: flex; align-items: center; justify-content: space-between; gap: 5px; padding: 7px 9px; background: #202c34; color: #e9e8dd; font: 6px/1.5 'JetBrains Mono',monospace; letter-spacing: .04em; }
+.umrah-mobile-demo > header { display: flex; align-items: center; gap: 7px; padding: 11px 10px; border-bottom: 1px solid #e1e2da; font-size: 7px; }
+.umrah-mobile-demo > header strong { flex: 1; font-size: 8px; }
+.umrah-mobile-demo__mark { display: grid; width: 19px; height: 19px; place-items: center; background: #536847; color: white; font: 700 7px/1 Inter,Arial,sans-serif; }
+.umrah-mobile-demo__hero { padding: 20px 13px 17px; background: #e9e8dd; }
+.umrah-mobile-demo__hero > span,.umrah-mobile-demo__card > span { color: #526345; font: 600 6px/1.5 'JetBrains Mono',monospace; letter-spacing: .1em; }
+.umrah-mobile-demo__hero h2 { max-width: 18ch; margin: 9px 0; font-size: 18px; font-weight: 650; line-height: 1.08; letter-spacing: -.05em; }
+.umrah-mobile-demo__hero p { margin: 0; color: #58656a; font-size: 8px; line-height: 1.6; }
+.umrah-mobile-demo__hero a { display: inline-flex; min-height: 31px; align-items: center; gap: 6px; margin-top: 12px; padding: 0 10px; background: #354734; color: #fff; font-size: 7px; font-weight: 600; }
+.umrah-mobile-demo__card { display: grid; gap: 6px; margin: 11px; padding: 12px; border: 1px solid #d6dbce; background: #fff; }
+.umrah-mobile-demo__card strong { font-size: 10px; }
+.umrah-mobile-demo__card p { margin: 0; color: #5d6870; font-size: 7px; line-height: 1.5; }
+.umrah-mobile-demo__card div { padding-top: 6px; border-top: 1px solid #e4e6df; color: #596949; font-size: 6px; line-height: 1.5; }
+.umrah-mobile-demo__note { margin: 0 11px 12px; color: #788179; font: 6px/1.5 'JetBrains Mono',monospace; }
+.umrah-preview__caption { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 4px 0; font-size: 11px; }
+.umrah-preview__caption p { margin: 0; color: #526068; }.umrah-preview__caption strong { color: var(--wb-ink); }
+.umrah-preview__caption a { display: inline-flex; min-height: 36px; align-items: center; gap: 5px; color: var(--umrah-olive-dark); font-weight: 600; white-space: nowrap; }
+.umrah-preview__caption a svg { width: 13px; height: 13px; }
+.umrah-preview__scope { margin: 8px 4px 2px; color: #69757a; font-size: 9px; line-height: 1.55; }
+.umrah-contrast { padding: 74px max(40px,calc((100vw - 1240px)/2)); background: #e9e8dd; }
+.umrah-section-heading { max-width: 850px; margin-bottom: 34px; }
+.umrah-section-heading .umrah-kicker { margin-bottom: 14px; }
+.umrah-section-heading h2 { max-width: 20ch; margin: 0; font-size: clamp(32px,4vw,48px); font-weight: 650; line-height: 1.05; letter-spacing: -.05em; }
+.umrah-section-heading > p:not(.umrah-kicker) { max-width: 62ch; margin: 16px 0 0; color: var(--umrah-ink-soft); font-size: 15px; line-height: 1.7; }
+.umrah-contrast__grid { display: grid; grid-template-columns: minmax(0,1fr) 46px minmax(0,1fr); align-items: stretch; gap: 20px; max-width: 1080px; margin: auto; }
+.umrah-contrast__card { padding: clamp(24px,4vw,40px); background: var(--wb-paper); border: 1px solid var(--umrah-line); }
+.umrah-contrast__card--before { background: #f5f1e8; }.umrah-contrast__card--after { background: #fbfcf7; box-shadow: 7px 7px 0 rgb(101 118 73 / .16); }
+.umrah-contrast__label { color: var(--umrah-olive-dark); font: 500 10px/1.5 'JetBrains Mono',monospace; letter-spacing: .1em; }
+.umrah-contrast__card h3 { margin: 15px 0 20px; font-size: clamp(21px,2.2vw,27px); letter-spacing: -.035em; }
+.umrah-contrast__card ul { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+.umrah-contrast__card li { position: relative; padding-left: 22px; color: #536069; font-size: 13px; line-height: 1.55; }
+.umrah-contrast__card li::before { position: absolute; left: 0; color: var(--umrah-olive); content: '—'; }
+.umrah-contrast__arrow { display: grid; place-items: center; color: var(--umrah-olive-dark); font-size: 26px; }
+.umrah-contrast__note { max-width: 1080px; margin: 20px auto 0; color: #627078; font-size: 11px; line-height: 1.7; }
+.umrah-section { padding: 76px max(40px,calc((100vw - 1240px)/2)); }
+.umrah-section--paper { background: #f3f0e7; }
+.umrah-section-heading--split { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(240px,.7fr); align-items: end; gap: 40px; max-width: none; }
+.umrah-section-heading--split > p:not(.umrah-kicker) { justify-self: end; max-width: 43ch; margin: 0 0 3px; }
+.umrah-benefits { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 0; margin-top: 48px; border-top: 1px solid var(--umrah-line); border-bottom: 1px solid var(--umrah-line); }
+.umrah-benefits article { display: flex; gap: 18px; padding: 28px 24px 28px 0; }
+.umrah-benefits article + article { padding-left: 24px; border-left: 1px solid var(--umrah-line); }
+.umrah-benefits article > span { flex: 0 0 auto; color: var(--umrah-olive); font: 11px/1.6 'JetBrains Mono',monospace; }
+.umrah-benefits h3 { margin: 0 0 9px; font-size: 17px; line-height: 1.3; letter-spacing: -.02em; }
+.umrah-benefits p { margin: 0; color: var(--umrah-ink-soft); font-size: 12px; line-height: 1.75; }
+.umrah-preview-section { background: var(--wb-paper); }
+.umrah-preview-card { max-width: 820px; margin: 36px auto 0; }
+.umrah-preview-card .umrah-preview { padding: 16px; }
+.umrah-preview-card .umrah-preview__stage { min-height: 460px; padding-top: 18px; }
+.umrah-preview-card .umrah-preview__screen { min-height: 440px; }
+.umrah-preview-card .umrah-preview__image-wrap { height: 440px; }
+.umrah-preview-card .umrah-preview--mobile .umrah-preview__stage { min-height: 500px; }
+.umrah-preview-card .umrah-preview--mobile .umrah-preview__screen { min-height: 450px; max-height: 450px; }
+.umrah-preview-card .umrah-preview--mobile .umrah-preview__image-wrap { height: 440px; }
+.umrah-preview-section__disclaimer { max-width: 820px; margin: 14px auto 0; color: #68747b; font-size: 11px; line-height: 1.7; }
+.umrah-packages-section { background: #e9e8dd; scroll-margin-top: 24px; }
+.umrah-config { margin-top: 42px; }
+.umrah-config__intro { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 18px; }
+.umrah-config__intro h3 { margin: 0; font-size: clamp(20px,2.5vw,28px); letter-spacing: -.035em; }
+.umrah-config__intro > p:last-child { max-width: 43ch; margin: 0; color: var(--umrah-ink-soft); font-size: 12px; line-height: 1.65; }
+.umrah-package-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 14px; align-items: stretch; }
+.umrah-package { display: flex; min-width: 0; flex-direction: column; align-items: stretch; padding: 22px; border: 1px solid #cbd0c6; background: var(--wb-paper); color: var(--wb-ink); text-align: left; cursor: pointer; transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease; }
+.umrah-package:hover { border-color: var(--umrah-olive); transform: translateY(-2px); }
+.umrah-package--featured { border-color: #88966e; }.umrah-package.is-selected { border: 2px solid var(--umrah-olive-dark); padding: 21px; box-shadow: 5px 5px 0 rgb(101 118 73 / .17); }
+.umrah-package__topline { display: flex; min-height: 22px; justify-content: space-between; align-items: center; gap: 8px; color: var(--umrah-olive-dark); font: 9px/1.5 'JetBrains Mono',monospace; text-transform: uppercase; letter-spacing: .055em; }
+.umrah-package__badge { padding: 4px 6px; background: #e5e7d9; font-size: 8px; }
+.umrah-package__name { display: block; margin-top: 12px; font-size: 26px; font-weight: 700; line-height: 1.1; letter-spacing: -.04em; }
+.umrah-package__price { display: flex; flex-wrap: wrap; align-items: baseline; gap: 7px; min-height: 44px; margin-top: 12px; font-size: 22px; font-weight: 650; letter-spacing: -.035em; }
+.umrah-package__price small { color: #866827; font: 9px/1.4 'JetBrains Mono',monospace; letter-spacing: 0; }
+.umrah-package__description { min-height: 58px; margin: 9px 0 14px; color: #5d6870; font-size: 11px; line-height: 1.65; }
+.umrah-package__features { display: grid; gap: 9px; margin-top: 4px; }
+.umrah-package__features > span { display: flex; align-items: flex-start; gap: 8px; color: #45525b; font-size: 10px; line-height: 1.5; }
+.umrah-package__features svg { width: 13px; height: 13px; flex: 0 0 auto; margin-top: 1px; color: var(--umrah-olive-dark); stroke-width: 2.5; }
+.umrah-package__features .umrah-package__more { display: block; padding-left: 21px; color: var(--umrah-olive-dark); font-weight: 600; }
+.umrah-package__select { display: flex; min-height: 40px; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 18px; color: var(--umrah-olive-dark); font: 600 10px/1.5 'JetBrains Mono',monospace; }
+.umrah-package__select span { display: grid; width: 24px; height: 24px; place-items: center; border: 1px solid currentColor; border-radius: 50%; }
+.umrah-config__details { display: grid; grid-template-columns: minmax(0,1.5fr) minmax(265px,.75fr); align-items: start; gap: 18px; margin-top: 22px; }
+.umrah-addons { padding: 24px; border: 1px solid #cbd0c6; background: #f6f4ed; }
+.umrah-addons__heading { display: flex; align-items: end; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
+.umrah-addons__heading .umrah-kicker { margin-bottom: 6px; }
+.umrah-addons__heading h3 { margin: 0; font-size: 20px; letter-spacing: -.03em; }
+.umrah-draft-tag { display: inline-flex; align-items: center; gap: 5px; padding: 7px 9px; background: #f4eccd; color: #725723; font: 9px/1.4 'JetBrains Mono',monospace; }
+.umrah-draft-tag svg { width: 12px; height: 12px; }
+.umrah-addon-list { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; }
+.umrah-addon { position: relative; display: flex; min-height: 74px; align-items: center; gap: 10px; padding: 11px; border: 1px solid #d9ddd5; background: #fff; cursor: pointer; }
+.umrah-addon:hover,.umrah-addon.is-checked { border-color: var(--umrah-olive); }.umrah-addon.is-checked { background: #f5f6ef; }
+.umrah-addon input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.umrah-addon:focus-within { outline: 3px solid var(--wb-blue); outline-offset: 3px; }
+.umrah-addon__check { display: grid; width: 19px; height: 19px; flex: 0 0 auto; place-items: center; border: 1px solid #aab3aa; color: transparent; }
+.umrah-addon__check svg { width: 13px; height: 13px; }.umrah-addon input:checked + .umrah-addon__check { border-color: var(--umrah-olive-dark); background: var(--umrah-olive-dark); color: #fff; }
+.umrah-addon__copy { min-width: 0; flex: 1; }.umrah-addon__copy strong { display: block; font-size: 10px; line-height: 1.4; }.umrah-addon__copy small { display: block; margin-top: 3px; color: #68747a; font-size: 9px; line-height: 1.45; }
+.umrah-addon__price { flex: 0 0 auto; text-align: right; font: 600 10px/1.4 'JetBrains Mono',monospace; }.umrah-addon__price small { display: block; color: #758087; font-size: 8px; font-weight: 400; }
+.umrah-addons__note { margin: 14px 0 0; color: #7a6533; font-size: 10px; line-height: 1.65; }
+.umrah-addons__quote { padding: 20px; background: #fff; border-left: 3px solid var(--umrah-olive); color: #56616a; font-size: 12px; line-height: 1.7; }.umrah-addons__quote p { margin: 0 0 9px; }.umrah-addons__quote p:last-child { margin-bottom: 0; }
+.umrah-total { position: sticky; top: 20px; padding: 22px; border: 1px solid var(--wb-ink); background: var(--wb-ink); color: var(--wb-paper); box-shadow: 5px 5px 0 rgb(22 32 42 / .2); }
+.umrah-total__label { display: flex; justify-content: space-between; gap: 8px; padding-bottom: 15px; border-bottom: 1px solid rgb(255 255 255 / .25); color: #e8e6da; font: 10px/1.5 'JetBrains Mono',monospace; }.umrah-total__label span:last-child { color: #e9cf82; font-size: 8px; letter-spacing: .06em; }
+.umrah-total__line,.umrah-total__sum { display: flex; justify-content: space-between; gap: 10px; padding: 11px 0 0; font-size: 11px; line-height: 1.45; }.umrah-total__line strong,.umrah-total__sum strong { flex: 0 0 auto; font-weight: 600; }.umrah-total__line--sub { color: #c6cbd0; font-size: 9px; }
+.umrah-total__sum { align-items: baseline; margin-top: 14px; padding-top: 15px; border-top: 1px solid rgb(255 255 255 / .25); font-size: 10px; }.umrah-total__sum strong { color: #f5d870; font-size: 24px; letter-spacing: -.04em; }
+.umrah-total__recurring { display: flex; justify-content: space-between; gap: 8px; margin-top: 10px; padding: 10px; background: rgb(255 255 255 / .1); color: #f2e7bc; font-size: 10px; }.umrah-total__recurring span { display: inline-flex; align-items: center; gap: 6px; }.umrah-total__recurring svg { width: 12px; height: 12px; }.umrah-total__recurring strong { white-space: nowrap; }
+.umrah-total__scope { margin: 12px 0 0; color: #c0c7cc; font-size: 9px; line-height: 1.6; }
+.umrah-total .umrah-total__cta { width: 100%; min-height: 48px; justify-content: space-between; margin-top: 17px; border-color: #f1d36e; background: #f1d36e; color: #19222a; font-size: 10px; }.umrah-total .umrah-total__cta:hover { background: #ffe68a; border-color: #ffe68a; }.umrah-total__cta svg { width: 15px; height: 15px; }
+.umrah-total__disclaimer { margin: 9px 0 0; color: #d3d8dc; font-size: 9px; line-height: 1.6; }.umrah-total__warning { margin: 9px 0 0; color: #f3df9c; font-size: 9px; line-height: 1.6; }
+.umrah-packages__terms { max-width: 100ch; margin: 18px 0 0; color: #667178; font-size: 10px; line-height: 1.7; }
+.umrah-work-section { background: #f5f2e9; }.umrah-work-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; }.umrah-work-card { min-width: 0; background: var(--wb-paper); border: 1px solid var(--umrah-line); transition: transform .2s ease,box-shadow .2s ease; }.umrah-work-card:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgb(22 32 42 / .1); text-decoration: none; }.umrah-work-card__image { overflow: hidden; aspect-ratio: 1.65 / 1; background: #e9e8dd; }.umrah-work-card__image img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform .3s ease; }.umrah-work-card:hover img { transform: scale(1.025); }.umrah-work-card > div:last-child { padding: 20px 22px 22px; }.umrah-work-card > div > span { color: var(--umrah-olive-dark); font: 9px/1.5 'JetBrains Mono',monospace; letter-spacing: .08em; }.umrah-work-card h3 { margin: 9px 0 6px; font-size: 21px; letter-spacing: -.035em; }.umrah-work-card h3 b { float: right; color: var(--umrah-olive); font: 400 18px/1.4 Inter,Arial,sans-serif; }.umrah-work-card p { margin: 0; color: var(--umrah-ink-soft); font-size: 12px; line-height: 1.65; }.umrah-work-card--wide { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0,1.35fr) minmax(240px,.65fr); align-items: center; }.umrah-work-card--wide .umrah-work-card__image { aspect-ratio: 1.8 / 1; }.umrah-work-card--wide > div:last-child { padding: 30px; }
+.umrah-process-section { background: #e9e8dd; }.umrah-process { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 0; margin: 40px 0 0; padding: 0; list-style: none; border-top: 1px solid #c6ccc3; border-bottom: 1px solid #c6ccc3; }.umrah-process li { display: flex; gap: 18px; padding: 26px 22px 26px 0; }.umrah-process li + li { padding-left: 22px; border-left: 1px solid #c6ccc3; }.umrah-process li > span { color: var(--umrah-olive-dark); font: 11px/1.6 'JetBrains Mono',monospace; }.umrah-process h3 { margin: 0 0 8px; font-size: 16px; letter-spacing: -.025em; }.umrah-process p { margin: 0; color: #606b70; font-size: 11px; line-height: 1.7; }
+.umrah-faq-section { background: var(--wb-paper); scroll-margin-top: 24px; }.umrah-faq-layout { display: grid; grid-template-columns: minmax(240px,.72fr) minmax(0,1.28fr); gap: clamp(32px,7vw,90px); }.umrah-faq-layout .umrah-section-heading { align-self: start; }.umrah-faq-layout .umrah-section-heading .umrah-text-link { margin-top: 14px; }.umrah-faq-list details { border-bottom: 1px solid var(--umrah-line); }.umrah-faq-list details:first-child { border-top: 1px solid var(--umrah-line); }.umrah-faq-list summary { display: flex; min-height: 56px; align-items: center; justify-content: space-between; gap: 18px; padding: 14px 0; font-size: 13px; font-weight: 600; line-height: 1.5; cursor: pointer; list-style: none; }.umrah-faq-list summary::-webkit-details-marker { display: none; }.umrah-faq-list summary span { flex: 0 0 auto; color: var(--umrah-olive-dark); font: 24px/1 Inter,Arial,sans-serif; transition: transform .15s ease; }.umrah-faq-list details[open] summary span { transform: rotate(45deg); }.umrah-faq-list details p { max-width: 75ch; margin: 0; padding: 0 28px 18px 0; color: #5f6b71; font-size: 12px; line-height: 1.75; }
+.umrah-final-cta { position: relative; margin: 0 auto; padding: 56px 40px 60px; background: var(--umrah-olive-dark); color: #fbfaf5; text-align: center; }.umrah-final-cta::before { position: absolute; inset: 0; background-image: url('/textures/workbench-grain.svg'); opacity: .1; content: ''; pointer-events: none; }.umrah-final-cta > * { position: relative; }.umrah-final-cta .umrah-kicker { justify-content: center; color: #eee3bc; }.umrah-final-cta h2 { max-width: 18ch; margin: 0 auto; font-size: clamp(32px,4.5vw,52px); line-height: 1.05; letter-spacing: -.05em; }.umrah-final-cta > p:not(.umrah-kicker) { max-width: 54ch; margin: 16px auto 22px; color: #e3e9df; font-size: 13px; line-height: 1.7; }.umrah-final-cta .wb-button { border-color: #f1d36e; background: #f1d36e; color: var(--wb-ink); }.umrah-final-cta .wb-button:hover { background: #ffe68a; }.umrah-final-cta small { display: block; margin-top: 14px; color: #d4ddcf; font-size: 10px; line-height: 1.6; }
+.umrah-footer { display: flex; max-width: 1320px; justify-content: space-between; gap: 32px; margin: auto; padding: 28px 40px 36px; border-top: 1px solid var(--umrah-line); background: var(--wb-paper); }.umrah-footer > div > p { margin: 16px 0 0; color: #657078; font-size: 10px; line-height: 1.7; }.umrah-footer nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 8px 18px; }.umrah-footer nav a { display: inline-flex; min-height: 44px; align-items: center; color: #5f6b71; font-size: 10px; }.umrah-footer nav a:hover { color: var(--umrah-olive-dark); text-decoration: underline; text-underline-offset: 4px; }
+@media (min-width: 1400px) { .umrah-hero { padding-top: 94px; padding-bottom: 84px; } }
+@media (max-width: 1000px) { .umrah-hero { gap: 36px; }.umrah-hero h1 { font-size: clamp(40px,5.4vw,58px); }.umrah-hero-preview > img { height: clamp(240px,35vw,340px); }.umrah-preview__stage { min-height: 300px; }.umrah-preview__screen { min-height: 285px; }.umrah-preview__image-wrap { height: 285px; }.umrah-config__details { grid-template-columns: minmax(0,1.25fr) minmax(245px,.75fr); }.umrah-addon-list { grid-template-columns: 1fr; }.umrah-package { padding: 17px; }.umrah-package.is-selected { padding: 16px; }.umrah-package__name { font-size: 23px; } }
+@media (max-width: 760px) { .umrah-nav { padding: 10px 22px; }.umrah-nav nav { display: none; }.umrah-nav__cta { min-height: 40px; padding-inline: 10px; font-size: 9px; }.umrah-hero { grid-template-columns: 1fr; gap: 42px; padding: 54px 24px 58px; }.umrah-hero h1 { max-width: 15ch; font-size: clamp(42px,9.5vw,64px); }.umrah-hero__lead { font-size: 16px; }.umrah-hero__visual { width: min(100%,600px); margin: 0 auto; padding-left: 10px; }.umrah-visual-note { left: -4px; }.umrah-hero__index { bottom: 12px; left: 24px; right: 24px; }.umrah-contrast,.umrah-section { padding: 54px 24px; }.umrah-contrast__grid { grid-template-columns: 1fr; gap: 12px; }.umrah-contrast__arrow { height: 26px; transform: rotate(90deg); }.umrah-section-heading--split { grid-template-columns: 1fr; gap: 14px; }.umrah-section-heading--split > p:not(.umrah-kicker) { justify-self: start; }.umrah-benefits { grid-template-columns: 1fr; margin-top: 28px; }.umrah-benefits article,.umrah-benefits article + article { padding: 20px 0; border-left: 0; }.umrah-benefits article + article { border-top: 1px solid var(--umrah-line); }.umrah-preview-card .umrah-preview__stage { min-height: 330px; }.umrah-preview-card .umrah-preview__screen { min-height: 310px; }.umrah-preview-card .umrah-preview__image-wrap { height: 310px; }.umrah-preview-card .umrah-preview--mobile .umrah-preview__stage { min-height: 400px; }.umrah-preview-card .umrah-preview--mobile .umrah-preview__screen { min-height: 360px; max-height: 360px; }.umrah-preview-card .umrah-preview--mobile .umrah-preview__image-wrap { height: 350px; }.umrah-config__intro { display: block; }.umrah-config__intro > p:last-child { margin-top: 10px; }.umrah-package-grid { grid-template-columns: 1fr; }.umrah-package { padding: 22px; }.umrah-package.is-selected { padding: 21px; }.umrah-package__description { min-height: 0; }.umrah-package__features { grid-template-columns: repeat(2,minmax(0,1fr)); }.umrah-config__details { grid-template-columns: 1fr; }.umrah-total { position: static; }.umrah-addon-list { grid-template-columns: repeat(2,minmax(0,1fr)); }.umrah-process { grid-template-columns: 1fr; margin-top: 28px; }.umrah-process li,.umrah-process li + li { padding: 20px 0; border-left: 0; }.umrah-process li + li { border-top: 1px solid #c6ccc3; }.umrah-faq-layout { grid-template-columns: 1fr; gap: 24px; }.umrah-final-cta { padding: 48px 24px; }.umrah-footer { flex-direction: column; padding: 26px 24px 32px; }.umrah-footer nav { justify-content: flex-start; } }
+@media (max-width: 480px) { .umrah-hero { padding-inline: 20px; }.umrah-hero__actions { align-items: flex-start; flex-direction: column; gap: 7px; }.umrah-hero__actions .wb-button { width: 100%; }.umrah-hero__price { grid-template-columns: 1fr; gap: 5px; }.umrah-hero__price strong { grid-row: 2; }.umrah-hero__price small { grid-column: 1; }.umrah-hero__visual { padding-left: 4px; }.umrah-visual-note { left: -10px; top: -22px; }.umrah-hero-preview > img { height: 240px; }.umrah-hero-preview__caption { align-items: flex-start; flex-direction: column; gap: 3px; }.umrah-preview { padding: 8px; }.umrah-preview__toolbar { gap: 7px; }.umrah-preview__devices button { padding: 0 5px; }.umrah-preview__devices button span { font-size: 9px; }.umrah-preview__stage { min-height: 250px; }.umrah-preview__screen { min-height: 235px; }.umrah-preview__image-wrap { height: 235px; }.umrah-preview__caption { align-items: flex-start; flex-direction: column; gap: 3px; }.umrah-contrast,.umrah-section { padding-inline: 20px; }.umrah-section-heading h2 { font-size: clamp(30px,8vw,40px); }.umrah-addon-list { grid-template-columns: 1fr; }.umrah-addons { padding: 18px 14px; }.umrah-addons__heading { align-items: flex-start; flex-direction: column; }.umrah-package__features { grid-template-columns: 1fr; }.umrah-total { padding: 18px; }.umrah-work-grid { grid-template-columns: 1fr; gap: 16px; }.umrah-work-card--wide { grid-column: auto; display: block; }.umrah-work-card--wide > div:last-child { padding: 20px 22px 22px; }.umrah-faq-list summary { font-size: 12px; }.umrah-footer nav { gap: 0 12px; } }
+@media (prefers-reduced-motion: reduce) { .umrah-page *, .umrah-page *::before, .umrah-page *::after { scroll-behavior: auto!important; transition-duration: .01ms!important; animation-duration: .01ms!important; animation-iteration-count: 1!important; } }

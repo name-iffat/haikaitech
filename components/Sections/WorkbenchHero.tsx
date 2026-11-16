@@ -18,9 +18,9 @@ export default function WorkbenchHero({ websiteSrc, locale = 'en' }: Props) {
   return (
     <header id="home" className={`workbench wb-hero ${bm ? 'wb-hero--bm' : ''}`}>
       <div className="wb-copy">
-        <p className="wb-eyebrow">{copy?.eyebrow ?? 'Penang-based • For Malaysian SMEs'}</p>
+        <p className="wb-eyebrow">{copy?.eyebrow ?? 'Penang-based • Serving Penang & Selangor SMEs'}</p>
         <h1><span>{bm ? 'Laman web dan sistem' : 'Websites and systems'}</span> <span>{bm ? 'untuk PKS Malaysia.' : 'for Malaysian SMEs.'}</span></h1>
-        <p className="wb-description">{copy?.description ?? 'From RM1,700 websites to RM3,500 stores. Chat on WhatsApp for a fast reply.'}</p>
+        <p className="wb-description">{copy?.description ?? 'From RM799 websites to RM3,500 stores. Chat on WhatsApp for a fast reply.'}</p>
         <div className="wb-actions">
           <a className="wb-button wb-primary" href={bm ? 'https://wa.me/60147533499?text=Salam%20HaikaiTech%2C%20saya%20datang%20dari%20hero%20laman%20utama%20dan%20ingin%20berbincang%20tentang%20projek.' : 'https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%20came%20from%20homepage%20hero%20and%20would%20love%20to%20discuss%20a%20project.'} target="_blank" rel="noopener noreferrer" onClick={() => track('cta_clicked', 'chat_whatsapp_hero')}>{copy?.start ?? 'Chat on WhatsApp'}</a>
           <a className="wb-button wb-secondary" href="#pricing" onClick={() => track('cta_clicked', 'view_pricing_hero')}>{bm ? 'Lihat harga' : 'See pricing'}</a>

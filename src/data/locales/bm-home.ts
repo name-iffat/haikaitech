@@ -2,7 +2,7 @@ export const bmHome = {
   hero: {
     eyebrow: 'Berpangkalan di Pulau Pinang • Untuk PKS Malaysia',
     headline: ['Dibina untuk', 'perniagaan anda.'],
-    description: 'Laman web bermula RM1,700 • Kedai e-dagang bermula RM3,500 • Sistem mengikut sebut harga. Supaya perniagaan anda terus bergerak.',
+    description: 'Laman web bermula RM799 • Kedai e-dagang bermula RM3,500 • Sistem mengikut sebut harga. Supaya perniagaan anda terus bergerak.',
     start: 'Bincang projek',
     work: 'Lihat hasil kerja',
     collage: 'Dari bengkel HaikaiTech',

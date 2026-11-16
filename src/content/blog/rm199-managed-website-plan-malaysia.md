@@ -3,6 +3,12 @@ title: "Website Ownership and Maintenance Costs in Malaysia"
 description: "A practical guide to website ownership, hosting, maintenance and post-launch costs for Malaysian businesses choosing a one-time quoted build."
 pubDate: 2026-08-06
 tags: [websites, maintenance, ownership, malaysia]
+status: published
+authorId: 'iffat-haikal'
+review:
+  evidence: verified
+  disclosure: cleared
+updatedDate: 2026-11-16
 ---
 
 Most Malaysian business owners do not want to become website administrators. They want a website that stays available, remains secure and can be updated when the business changes. The important question is not only what the build costs, but what happens after launch.
@@ -54,7 +60,7 @@ Separating the two avoids a common disagreement: one side expects unlimited impr
 
 ## How HaikaiTech currently works
 
-Selected standard website promotions start from **RM1,500**. The promotion is a starting point for defined scopes, not a universal package price. CMS-heavy websites, ecommerce, booking, payments, integrations and custom systems are quoted according to the real requirements.
+Selected standard website promotions start from **RM799**, with Professional + Lite CMS websites from **RM1,700**. The promotion is a starting point for defined scopes, not a universal package price. Ecommerce, booking, payments, integrations and custom systems are quoted according to the real requirements.
 
 Standard projects generally use a 50% payment to start and 50% before final launch or handover. The formal quotation confirms the exact deliverables, exclusions, ownership terms and ongoing costs.
 

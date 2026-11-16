@@ -1,0 +1,117 @@
+---
+import { Image } from 'astro:assets';
+import mobile from '../assets/projects/fuzzfloor-mobile.png';
+import shop from '../assets/concept-decorations/service-ecommerce-clay.png';
+interface Props { locale: 'en' | 'bm'; whatsapp: string }
+const { locale, whatsapp } = Astro.props;
+const t = (en: string, bm: string) => locale === 'bm' ? bm : en;
+const deliverables = [
+  [t('Design with a job to do', 'Design yang ada tujuan'), t('Your services, work and contact route arranged so visitors can understand the business and take the next step.', 'Servis, hasil kerja dan cara hubungi anda disusun supaya orang faham bisnes anda dan tahu nak buat apa lepas tu.')],
+  [t('A layout that works on phones', 'Buka dekat phone pun selesa'), t('Readable text, useful image sizes and buttons that are easy to reach. We review the agreed pages on mobile and desktop.', 'Teks senang baca, gambar sesuai dan butang senang tekan. Halaman yang dipersetujui disemak untuk mobile dan desktop.')],
+  [t('An enquiry or buying journey', 'Senang nak tanya atau beli'), t('A clear WhatsApp route for service businesses, or a catalogue and checkout flow for an agreed ecommerce scope.', 'Bisnes servis boleh terus ke WhatsApp. Kedai online pula boleh ada katalog dan checkout, ikut skop yang dipilih.')],
+  [t('A build you get to review', 'Anda tengok dulu sebelum launch'), t('Review real pages, share consolidated feedback and agree on changes within the revision rounds in your quotation.', 'Tengok halaman sebenar, kumpulkan feedback dan kita buat perubahan dalam pusingan semakan yang tertulis dalam sebut harga.')],
+];
+const starterGroups = [
+  { title: t('The website', 'Laman web'), items: [t('Custom 1-page business website', 'Website bisnes 1 halaman, direka khas'), t('Up to 5 main content sections', 'Sehingga 5 bahagian kandungan utama'), t('Responsive on mobile and desktop', 'Paparan kemas untuk telefon dan desktop')] },
+  { title: t('Enquiries & discovery', 'Pertanyaan & carian'), items: [t('WhatsApp or enquiry integration', 'Integrasi WhatsApp atau borang pertanyaan'), t('Basic SEO setup', 'Setup asas SEO'), t('Basic AEO and business-friendly content structure', 'AEO asas dan susunan kandungan yang mesra bisnes')] },
+  { title: t('Launch & aftercare', 'Pelancaran & selepas siap'), items: [t('Speed and performance optimisation', 'Pengoptimuman kelajuan dan prestasi'), t('SSL and deployment setup', 'Setup SSL dan deployment'), t('1 year of hosting and a standard domain included', 'Hosting 1 tahun dan domain standard termasuk'), t('2 minor content updates after launch', '2 kemas kini kecil kandungan selepas launch')] },
+];
+const options = [
+  { name: 'Starter', note: t('The RM799 starting scope', 'Skop mula RM799'), text: t('A custom one-page business website with up to five main content sections.', 'Website bisnes satu halaman dengan sehingga lima bahagian kandungan utama.'), items: [t('Mobile and desktop responsive', 'Paparan responsif untuk telefon dan desktop'), t('WhatsApp or enquiry integration', 'Integrasi WhatsApp atau pertanyaan'), t('Basic SEO and AEO setup', 'Setup asas SEO dan AEO')] },
+  { name: 'Business', note: t('Make daily work easier', 'Urus bisnes lebih senang'), text: t('Build on the essentials with features that support your everyday operations.', 'Tambah ciri yang bantu kerja harian, ikut cara bisnes anda berjalan.'), items: [t('More content or catalogue needs', 'Kandungan atau katalog lebih lengkap'), t('Management tools where needed', 'Tools pengurusan bila diperlukan'), t('For ecommerce: discuss stock, vouchers or reporting', 'Untuk e-dagang: bincang stok, voucher atau laporan')] },
+  { name: 'Growth', note: t('Connect the next stage', 'Bersedia untuk langkah seterusnya'), text: t('Explore the extra workflows and customer experiences that your next stage needs.', 'Bincang aliran kerja dan pengalaman pelanggan yang diperlukan untuk langkah seterusnya.'), items: [t('Personalisation or integrations', 'Personalisasi atau integrasi'), t('Marketing workflows where suitable', 'Aliran marketing bila sesuai'), t('Analytics around agreed business questions', 'Analitik untuk soalan bisnes yang dipersetujui')] },
+];
+const handover = [
+  [t('Before we build', 'Sebelum mula'), t('A written scope, chosen option, payment terms, content responsibilities and delivery schedule.', 'Skop bertulis, pilihan pakej, cara bayaran, siapa sediakan kandungan dan jadual kerja.')],
+  [t('Before launch', 'Sebelum launch'), t('Agreed pages and key journeys reviewed together, including enquiries or checkout where applicable.', 'Halaman dan aliran utama disemak sama-sama, termasuk pertanyaan atau checkout jika berkaitan.')],
+  [t('At handover', 'Masa handover'), t('The agreed files, account access and practical guidance for the setup you have chosen, subject to platform licences.', 'Fail, akses akaun dan panduan untuk setup yang anda pilih, ikut perkara yang dipersetujui dan lesen platform.')],
+  [t('After launch', 'Lepas launch'), t('The starter includes two minor content updates after launch. Hosting and a standard domain are included for year one; renewals, maintenance and further changes are stated separately.', 'Skop starter termasuk dua kemas kini kecil kandungan selepas launch. Hosting dan domain standard termasuk untuk tahun pertama; renewal, maintenance dan perubahan tambahan dinyatakan berasingan.')],
+];
+---
+<section class="expect-section expect-starter" aria-labelledby="expect-starter-title">
+  <div class="expect-starter-head">
+    <div><p class="wb-eyebrow">{t('A clear place to start', 'Harga mula yang jelas')}</p><h2 id="expect-starter-title">{t('A professional business website, ready to launch.', 'Website bisnes yang kemas, sedia untuk launch.')}</h2><p>{t('A good fit for small businesses that need a professional online presence without a complicated system.', 'Sesuai untuk bisnes kecil yang perlukan kehadiran online yang profesional tanpa sistem yang rumit.')}</p></div>
+    <aside class="expect-starter-price"><span class="wb-eyebrow">{t('Website starter', 'Website starter')}</span><strong>RM799</strong><p>{t('Final quotation depends on your content, functionality and project scope.', 'Sebut harga akhir bergantung pada kandungan, fungsi dan skop projek anda.')}</p><a class="wb-button wb-primary wb-button--painted" href={whatsapp} target="_blank" rel="noopener noreferrer" data-offer-cta="starter">{t('Ask about this scope', 'Tanya pasal skop ni')}</a></aside>
+  </div>
+  <div class="expect-starter-groups">{starterGroups.map((group, index) => <article><p class="wb-eyebrow">0{index + 1} / {group.title}</p><ul>{group.items.map(item => <li><span aria-hidden="true">✓</span>{item}</li>)}</ul></article>)}</div>
+  <p class="expect-starter-more">{t('Need more later? Extra pages, content updates, online payments, booking, ecommerce, dashboards, automation and other custom features can be added based on your requirements and quoted separately.', 'Perlukan lebih banyak nanti? Halaman tambahan, kemas kini kandungan, bayaran online, tempahan, e-dagang, dashboard, automasi dan ciri tersuai lain boleh ditambah ikut keperluan dan disebut harga berasingan.')}</p>
+</section>
+<section class="expect-section" aria-labelledby="expect-fit">
+  <header><p class="wb-eyebrow">{t('Is this for you?', 'Sesuai untuk anda?')}</p><h2 id="expect-fit">{t('A website with a place in your business.', 'Website yang berguna untuk bisnes anda.')}</h2></header>
+  <div class="expect-fit"><div><h3>{t('A good starting conversation if…', 'Boleh mula borak kalau…')}</h3><ul><li>{t('Customers ask where they can see your services or past work.', 'Pelanggan selalu tanya dekat mana boleh tengok servis atau hasil kerja.')}</li><li>{t('You sell through social platforms and want your own storefront too.', 'Anda jual dekat platform sosial dan nak kedai online sendiri juga.')}</li><li>{t('Your current website no longer reflects the business.', 'Website lama dah tak menggambarkan bisnes anda sekarang.')}</li></ul></div><div class="expect-note"><span class="wb-eyebrow">{t('Need a bigger setup?', 'Perlukan setup yang lebih lengkap?')}</span><p>{t('Tell us what you need beyond the one-page starter. We’ll scope the extra features and show you options before you decide.', 'Cerita je apa lagi yang anda perlukan selain website starter satu halaman ni. Kami susun skop tambahan dan bagi beberapa pilihan sebelum anda buat keputusan.')}</p></div></div>
+</section>
+<section class="expect-section" aria-labelledby="expect-build">
+  <header><p class="wb-eyebrow">{t('Beyond the one-page starter', 'Lebih daripada website starter')}</p><h2 id="expect-build">{t('More than a link on your profile.', 'Bukan setakat link dekat bio.')}</h2><p>{t('These examples show what a larger or different website setup can do. Features beyond the one-page starter are scoped and quoted separately.', 'Contoh ni tunjuk apa yang boleh dibuat dengan setup website yang lebih lengkap. Ciri di luar skop starter satu halaman akan ditentukan dan disebut harga berasingan.')}</p></header>
+  <div class="expect-build"><figure class="expect-phone"><div><Image src={mobile} alt={t('Real Fuzzfloor mobile website showing its services and enquiry route', 'Website mobile Fuzzfloor dengan servis dan saluran pertanyaan')} width={360} format="webp" loading="lazy" /></div><figcaption>Fuzzfloor / {t('Real project', 'Projek sebenar')}</figcaption></figure><div class="expect-register">{deliverables.map(([title, text], index) => <article><span>{String(index + 1).padStart(2, '0')}</span><div><h3>{title}</h3><p>{text}</p></div></article>)}</div></div>
+  <div class="expect-commerce"><div><p class="wb-eyebrow">{t('Selling online?', 'Nak jual online?')}</p><h3>{t('Let’s map the whole order.', 'Kita susun perjalanan order tu.')}</h3><p>{t('Products and variations, cart, payment, delivery and order management all affect the scope. Tell us how you sell now so we can suggest a practical setup.', 'Produk dan variasi, cart, payment, delivery dan urus order semuanya mempengaruhi skop. Cerita macam mana anda jual sekarang supaya kami boleh cadangkan setup yang sesuai.')}</p><ol aria-label={t('Example shopping journey', 'Contoh perjalanan pembelian')}><li>{t('Choose a product', 'Pilih produk')}</li><li>{t('Pick a variation', 'Pilih variasi')}</li><li>Checkout</li><li>{t('Manage the order', 'Urus order')}</li></ol><p class="expect-small">{t('Payment fees, platform costs and advanced features are clarified in your quotation.', 'Caj payment, kos platform dan ciri tambahan dijelaskan dalam sebut harga.')}</p></div><Image src={shop} alt="" aria-hidden="true" width={480} format="webp" loading="lazy" /></div>
+</section>
+<section class="expect-section" aria-labelledby="expect-options">
+  <header><p class="wb-eyebrow">{t('If your needs go beyond the starter', 'Kalau perlukan lebih daripada starter')}</p><h2 id="expect-options">{t('Choose what matters now.', 'Pilih apa yang perlu sekarang.')}</h2><p>{t('The Starter is the RM799 one-page scope above. For larger sites, online stores or custom features, we can put together three options with different scopes and prices.', 'Starter ialah skop satu halaman RM799 yang diterangkan di atas. Untuk laman lebih besar, kedai online atau ciri tersuai, kami boleh susun 3 pilihan dengan skop dan harga berbeza.')}</p></header>
+  <div class="expect-options">{options.map((option, index) => <article><p class="wb-eyebrow">0{index + 1} / {option.note}</p><h3>{option.name}</h3><p>{option.text}</p><ul>{option.items.map(item => <li>{item}</li>)}</ul><span class="expect-option-price">{index === 0 ? t('From RM799', 'Bermula RM799') : t('Priced in your proposal', 'Harga dalam cadangan anda')}</span></article>)}</div>
+  <a class="wb-button wb-primary wb-button--painted" href={whatsapp} target="_blank" rel="noopener noreferrer" data-offer-cta="options">{t('Let’s find my three options', 'Jom tengok pilihan untuk bisnes saya')}</a>
+</section>
+<section class="expect-section" aria-labelledby="expect-handover">
+  <header><p class="wb-eyebrow">{t('Know what happens next', 'Dari mula sampai serah')}</p><h2 id="expect-handover">{t('The work is clear on both sides.', 'Biar jelas dari awal.')}</h2></header><div class="expect-handover">{handover.map(([title,text], index) => <article><span class="wb-eyebrow">0{index + 1}</span><h3>{title}</h3><p>{text}</p></article>)}</div>
+</section>
+<style>
+  .expect-section { padding-block:64px; border-top:1px solid var(--wb-line); background:var(--wb-paper); }
+  header { max-width:760px; margin-bottom:40px; }
+  h2 { font-size:clamp(32px,3.5vw,46px); letter-spacing:-.045em; font-weight:700; line-height:1.1; max-width:24ch; margin:12px 0 24px; }
+  h3 { font-size:22px; font-weight:650; line-height:1.25; margin-bottom:12px; letter-spacing:-.025em; }
+  p, li { line-height:1.75; } p { max-width:68ch; }
+  .wb-eyebrow { color:var(--wb-blue); }
+  .expect-starter { padding-block:56px; }
+  .expect-starter-head { display:grid; grid-template-columns:minmax(0,1fr) minmax(280px,.72fr); gap:48px; align-items:stretch; }
+  .expect-starter-head h2 { max-width:18ch; }
+  .expect-starter-price { display:flex; flex-direction:column; align-items:flex-start; justify-content:center; gap:12px; margin:0; padding:28px; background:var(--wb-ink); color:var(--wb-paper); border:1px solid var(--wb-ink); }
+  .expect-starter-price .wb-eyebrow { color:var(--wb-tape); font:11px/1.6 'JetBrains Mono',monospace; text-transform:uppercase; letter-spacing:.08em; }
+  .expect-starter-price strong { font-size:clamp(42px,5vw,64px); line-height:1; letter-spacing:-.06em; }
+  .expect-starter-price p { margin:0 0 8px; font-size:13px; line-height:1.65; color:var(--wb-paper); }
+  .expect-starter-price .wb-button { min-height:48px; padding:12px 16px; font-size:11px; }
+  .expect-starter-groups { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); margin-top:40px; border-top:1px solid var(--wb-line); border-bottom:1px solid var(--wb-line); }
+  .expect-starter-groups article { padding:24px 24px 20px 0; }
+  .expect-starter-groups article + article { border-left:1px solid var(--wb-line); padding-left:24px; }
+  .expect-starter-groups .wb-eyebrow { font:11px/1.6 'JetBrains Mono',monospace; text-transform:uppercase; letter-spacing:.06em; }
+  .expect-starter-groups ul { margin:12px 0 0; }
+  .expect-starter-groups li { display:flex; align-items:flex-start; gap:10px; padding:10px 0; border:0; font-size:14px; line-height:1.55; }
+  .expect-starter-groups li span { display:inline-flex; flex:0 0 20px; height:20px; justify-content:center; align-items:center; border-radius:50%; background:var(--wb-tape); color:var(--wb-ink); font-size:12px; font-weight:700; }
+  .expect-starter-more { margin:24px 0 0; padding-left:16px; border-left:3px solid var(--wb-blue); font-size:14px; }
+  .expect-fit { display:grid; grid-template-columns:1.2fr 1fr; gap:64px; }
+  ul { list-style:none; padding:0; margin:20px 0 0; }
+  li { padding:12px 0; border-bottom:1px solid var(--wb-line); }
+  .expect-note { align-self:start; background:var(--wb-tape); padding:32px; transform:rotate(-1deg); }
+  .expect-note p { margin-top:16px; }
+  .expect-build { display:grid; grid-template-columns:.75fr 1.25fr; gap:64px; align-items:center; }
+  .expect-phone { margin:0; text-align:center; }
+  .expect-phone > div { max-width:260px; margin:auto; border:10px solid var(--wb-ink); border-radius:32px; overflow:hidden; background:var(--wb-ink); box-shadow:8px 12px 0 var(--wb-line); }
+  .expect-phone img { display:block; width:100%; height:auto; }
+  figcaption { font:11px/1.6 'JetBrains Mono',monospace; margin-top:24px; color:var(--wb-blue); }
+  .expect-register article { display:grid; grid-template-columns:32px 1fr; gap:24px; padding:24px 0; border-bottom:1px solid var(--wb-line); }
+  .expect-register article > span { font:12px/1.8 'JetBrains Mono',monospace; color:var(--wb-blue); }
+  .expect-commerce { display:grid; grid-template-columns:1.25fr .75fr; align-items:center; gap:48px; margin-top:64px; padding:32px; border:1px solid var(--wb-line); }
+  .expect-commerce img { width:100%; height:auto; }
+  .expect-commerce h3 { font-size:30px; margin-top:16px; }
+  .expect-commerce ol { display:flex; flex-wrap:wrap; padding:0; list-style:none; gap:8px; margin-block:24px; }
+  .expect-commerce li { padding:8px 12px; border:1px solid var(--wb-line); font:11px/1.5 'JetBrains Mono',monospace; background:var(--wb-white); }
+  .expect-small { font-size:13px; }
+  .expect-options { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); border-top:1px solid var(--wb-line); margin-bottom:32px; }
+  .expect-options article { padding:32px 24px 24px 0; min-width:0; }
+  .expect-options article + article { border-left:1px solid var(--wb-line); padding-left:24px; }
+  .expect-options h3 { font-size:32px; margin-top:16px; }
+  .expect-options li { font-size:14px; }
+  .expect-option-price { display:block; margin-top:24px; font:11px/1.7 'JetBrains Mono',monospace; color:var(--wb-blue); }
+  .expect-handover { display:grid; grid-template-columns:1fr 1fr; gap:0 48px; }
+  .expect-handover article { padding:28px 0; border-top:1px solid var(--wb-line); }
+  .expect-handover h3 { margin-top:12px; }
+  a:focus-visible { outline:3px solid var(--wb-blue); outline-offset:5px; }
+  @media(max-width:800px) {
+    .expect-section { padding-block:40px; }
+    .expect-fit, .expect-build, .expect-commerce, .expect-options, .expect-handover, .expect-starter-head, .expect-starter-groups { grid-template-columns:1fr; gap:24px; }
+    .expect-starter-groups article, .expect-starter-groups article + article { padding:20px 0; border-left:0; border-bottom:1px solid var(--wb-line); }
+    .expect-phone > div { max-width:220px; }
+    .expect-commerce { margin-top:40px; padding:24px; }
+    .expect-commerce img { max-width:280px; justify-self:center; }
+    .expect-options article, .expect-options article + article { border-left:0; border-bottom:1px solid var(--wb-line); padding:24px 0; }
+    .expect-section .wb-button { white-space:normal; text-align:center; font-size:12px; }
+  }
+</style>

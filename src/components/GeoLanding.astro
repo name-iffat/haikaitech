@@ -1,0 +1,157 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WorkbenchNav from './WorkbenchNav.astro';
+import FooterWorkbench from '../../components/FooterWorkbench';
+import StickyBooking from '../../components/StickyBooking';
+import '../styles/workbench.css';
+
+interface Props {
+  pageTitle: string;
+  pageDescription: string;
+  canonical: string;
+  eyebrow: string;
+  h1Lead: string;
+  h1Emphasis: string;
+  intro: string;
+  baseNote: string;
+  areas: string[];
+  whatsapp: string;
+  whatsappLabel: string;
+  faqs: [string, string][];
+  serviceName: string;
+  serviceDescription: string;
+  areaServedNames: string[];
+}
+
+const {
+  pageTitle, pageDescription, canonical, eyebrow, h1Lead, h1Emphasis,
+  intro, baseNote, areas, whatsapp, whatsappLabel, faqs,
+  serviceName, serviceDescription, areaServedNames,
+} = Astro.props;
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: serviceName,
+  description: serviceDescription,
+  provider: { '@type': 'Organization', name: 'HaikaiTech Solutions', url: 'https://haikaitech.my/' },
+  areaServed: areaServedNames.map((name) => ({ '@type': 'City', name })),
+  offers: {
+    '@type': 'Offer',
+    priceCurrency: 'MYR',
+    price: '799',
+    url: canonical,
+    description: 'Introductory one-page business website: custom mobile-first design with up to five sections, WhatsApp enquiry integration, basic SEO, one year of hosting and a standard domain, plus two minor content updates after launch. Final scope confirmed in a formal quotation.',
+  },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} canonical={canonical}>
+  <div class="workbench geo-landing bg-paper bg-grid-pattern">
+    <WorkbenchNav />
+    <main class="geo-main">
+      <section class="geo-hero" aria-labelledby="geo-title">
+        <nav class="geo-breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Home</a><span aria-hidden="true">/</span><span>{eyebrow}</span>
+        </nav>
+        <p class="wb-eyebrow">{eyebrow}</p>
+        <h1 id="geo-title">{h1Lead}<br /><em>{h1Emphasis}</em></h1>
+        <p class="geo-intro">{intro}</p>
+        <p class="geo-price">Website starter from <strong>RM799</strong><span>one page · up to 5 sections · 1 year hosting + standard domain</span></p>
+        <div class="geo-actions">
+          <a class="wb-button wb-button--painted" href={whatsapp} target="_blank" rel="noopener noreferrer"><span>{whatsappLabel}</span></a>
+          <a class="wb-button wb-secondary" href="/services/"><span>Compare all packages</span></a>
+        </div>
+        <p class="geo-note">{baseNote}</p>
+      </section>
+
+      <section class="geo-section" aria-labelledby="geo-areas">
+        <p class="wb-eyebrow">Areas served</p>
+        <h2 id="geo-areas">Built in Penang, working across {eyebrow.includes('Selangor') ? 'Selangor' : 'the island and the mainland'}.</h2>
+        <ul class="geo-areas">
+          {areas.map((area) => <li>{area}</li>)}
+        </ul>
+        <p>Outside these towns? If your customers are in Malaysia, the process is the same — everything runs over WhatsApp, with reviews on a staging link before launch.</p>
+      </section>
+
+      <section class="geo-section" aria-labelledby="geo-scope">
+        <p class="wb-eyebrow">What RM799 covers</p>
+        <h2 id="geo-scope">A focused starter, scoped before you pay.</h2>
+        <ul class="geo-scope">
+          <li><strong>Custom one-page website</strong> with up to five sections — services, proof, contact, nothing generic.</li>
+          <li><strong>Mobile-first design</strong> matched to your branding and photos.</li>
+          <li><strong>WhatsApp enquiry button</strong> so customers reach you in one tap.</li>
+          <li><strong>Basic SEO setup</strong> — titles, descriptions and sitemap handled.</li>
+          <li><strong>One year of hosting plus a standard domain</strong> included.</li>
+          <li><strong>Two minor content updates</strong> after launch.</li>
+        </ul>
+        <p>Need online payments, booking, a store, or more pages? Those are quoted separately — see the <a href="/services/">full services and pricing</a> or <a href="/services/ecommerce/">ecommerce builds</a>.</p>
+      </section>
+
+      <section class="geo-section" aria-labelledby="geo-work">
+        <p class="wb-eyebrow">Real client work</p>
+        <h2 id="geo-work">Recent builds, real businesses.</h2>
+        <ul class="geo-work">
+          <li><a href="https://wirelesscctv.com.my/" target="_blank" rel="noopener noreferrer"><strong>HSS Wireless CCTV</strong><span>Security services website</span></a></li>
+          <li><a href="/projects/fuzzfloor/"><strong>Fuzzfloor</strong><span>Flooring services</span></a></li>
+          <li><a href="/projects/atone/"><strong>AT One Construction</strong><span>Construction portfolio</span></a></li>
+        </ul>
+      </section>
+
+      <section class="geo-section" aria-labelledby="geo-faq">
+        <p class="wb-eyebrow">Before you ask</p>
+        <h2 id="geo-faq">Common questions.</h2>
+        {faqs.map(([q, a]) => <details><summary>{q}<span aria-hidden="true">+</span></summary><p>{a}</p></details>)}
+      </section>
+
+      <section class="geo-section geo-final" aria-labelledby="geo-start">
+        <p class="wb-eyebrow">Your next step</p>
+        <h2 id="geo-start">Tell us about your business.</h2>
+        <a class="wb-button wb-button--painted" href={whatsapp} target="_blank" rel="noopener noreferrer"><span>{whatsappLabel}</span></a>
+        <p>Asking about scope costs nothing — you approve a formal quotation before paying anything.</p>
+      </section>
+    </main>
+    <FooterWorkbench client:load locale="en" />
+    <StickyBooking client:load locale="en" />
+  </div>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+</BaseLayout>
+
+<style>
+  .geo-landing { min-height: 100vh; }
+  .geo-main { max-width: 880px; margin: 0 auto; padding: 3rem 1.25rem 4rem; }
+  .geo-hero { padding: 2rem 0 2.5rem; border-bottom: 2px dashed rgba(15, 23, 42, 0.15); }
+  .geo-breadcrumb { font-size: 0.85rem; margin-bottom: 1rem; opacity: 0.75; }
+  .geo-breadcrumb a { text-decoration: underline; }
+  .geo-breadcrumb span[aria-hidden="true"] { margin: 0 0.4rem; }
+  .geo-hero h1 { font-size: clamp(2rem, 5vw, 3.25rem); line-height: 1.1; margin: 0.75rem 0 1rem; }
+  .geo-hero h1 em { font-style: italic; }
+  .geo-intro { font-size: 1.1rem; line-height: 1.65; max-width: 62ch; }
+  .geo-price { font-size: 1.05rem; margin-top: 1.25rem; }
+  .geo-price span { display: block; font-size: 0.9rem; opacity: 0.75; }
+  .geo-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1.25rem 0 0.75rem; }
+  .geo-note { font-size: 0.92rem; opacity: 0.8; }
+  .geo-section { padding: 2.5rem 0; border-bottom: 2px dashed rgba(15, 23, 42, 0.15); }
+  .geo-section h2 { font-size: clamp(1.4rem, 3vw, 2rem); margin: 0.6rem 0 1rem; line-height: 1.25; }
+  .geo-section p { line-height: 1.65; max-width: 68ch; }
+  .geo-areas { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; padding: 0; margin: 1rem 0; }
+  .geo-areas li { border: 1.5px solid rgba(15, 23, 42, 0.35); border-radius: 999px; padding: 0.3rem 0.9rem; font-size: 0.92rem; }
+  .geo-scope { line-height: 1.7; padding-left: 1.25rem; max-width: 68ch; }
+  .geo-scope li { margin-bottom: 0.6rem; }
+  .geo-work { list-style: none; padding: 0; margin: 1rem 0; display: grid; gap: 0.75rem; }
+  .geo-work a { display: block; border: 1.5px solid rgba(15, 23, 42, 0.25); border-radius: 0.75rem; padding: 0.9rem 1.1rem; text-decoration: none; }
+  .geo-work a span { display: block; font-size: 0.9rem; opacity: 0.75; }
+  .geo-section details { border-top: 1px solid rgba(15, 23, 42, 0.2); padding: 0.9rem 0; max-width: 68ch; }
+  .geo-section details:last-of-type { border-bottom: 1px solid rgba(15, 23, 42, 0.2); }
+  .geo-section summary { cursor: pointer; font-weight: 600; display: flex; justify-content: space-between; gap: 1rem; }
+  .geo-section summary span { font-weight: 400; }
+  .geo-final { border-bottom: none; }
+  .geo-final .wb-button { margin: 1rem 0; }
+</style>

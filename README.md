@@ -1,20 +1,27 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# HaikaiTech portfolio
 
-# Run and deploy your AI Studio app
+Astro 6 + React 19 static website. Node 22+, npm.
 
-This contains everything you need to run your app locally.
+```text
+npm install
+npm run dev                     # localhost:3000
+npm test
+npm run content:validate
+npm run test:content:integration
+npm run build
+npm run preview
+```
 
-View your app in AI Studio: https://ai.studio/apps/drive/1c8LqLrXIle5p2VKqCW_a7FG67aq9VI3C
+Production builds are intentionally held until the nine legacy articles receive
+explicit human review. None have been automatically approved. Local development
+shows unchanged legacy articles with a review notice and noindex metadata; new
+drafts remain excluded.
 
-## Run Locally
+- Publication workflow: `content-engine/README.md`
+- Pre-change routes: `content-engine/route-baseline.json`
+- Policy/schema: `src/lib/content/`
+- SEO output: `scripts/content/artifacts.mjs`
+- Deployment: `DEPLOYMENT.md`
+- Pricing/claims review: `docs/content-engine-business-review.md`
 
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+No CMS, database, importer or pSEO generator is included.

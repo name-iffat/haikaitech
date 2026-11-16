@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "contentId": "lead-generation-malaysia-sme",
+  "route": "/blog/lead-generation-malaysia-sme/",
+  "decision": "approved",
+  "reviewer": "Iffat Haikal (owner)",
+  "approvedAt": "2026-11-16T02:56:05.164Z",
+  "digest": "sha256:e205a4dc91dd074e3f9bd034ecf452be7f1a06f358f4214820fdb3470bc83879",
+  "checks": {
+    "accuracy": true,
+    "evidence": true,
+    "disclosure": true,
+    "assetRights": true
+  }
+}

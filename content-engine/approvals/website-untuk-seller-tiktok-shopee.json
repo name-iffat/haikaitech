@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "contentId": "website-untuk-seller-tiktok-shopee",
+  "route": "/blog/website-untuk-seller-tiktok-shopee/",
+  "decision": "approved",
+  "reviewer": "Iffat Haikal (owner)",
+  "approvedAt": "2026-11-16T02:56:05.164Z",
+  "digest": "sha256:2c34ec2df08227ec51c759e9c158de967536184f41bcf9668b38dac5f24798b2",
+  "checks": {
+    "accuracy": true,
+    "evidence": true,
+    "disclosure": true,
+    "assetRights": true
+  }
+}

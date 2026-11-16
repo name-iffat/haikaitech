@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "contentId": "how-much-does-a-business-website-cost-in-malaysia",
+  "route": "/blog/how-much-does-a-business-website-cost-in-malaysia/",
+  "decision": "approved",
+  "reviewer": "Iffat Haikal (owner)",
+  "approvedAt": "2026-11-16T02:56:05.164Z",
+  "digest": "sha256:1e2ac2f0b2b1aa0eedd765753bafa3208c2f0736411f9648a73245714b8c30a8",
+  "checks": {
+    "accuracy": true,
+    "evidence": true,
+    "disclosure": true,
+    "assetRights": true
+  }
+}

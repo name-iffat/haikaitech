@@ -31,7 +31,8 @@ const marketRanges = [
 ];
 
 const pricingModels = [
-  { model: 'One-page business website starter', method: 'From RM1,700 for a custom one-page site with up to five sections, first-year hosting and standard domain, and five minor post-launch content updates.', fit: 'Small businesses that need a clear professional online presence', position: 'Extra pages and features are quoted separately' },
+  { model: 'One-page business website starter', method: 'From RM799 for a custom one-page site with up to five sections, first-year hosting and standard domain, and two minor post-launch content updates.', fit: 'Small businesses that need a clear professional online presence', position: 'Extra pages and features are quoted separately' },
+  { model: 'Professional website + Lite CMS', method: 'From RM1,700: everything in the starter, plus an admin login to change images, videos, headlines and promos yourself each month.', fit: 'Owners who want to update basic content without asking us', position: 'Full self-managed content is the RM3,300 route' },
   { model: 'WooCommerce ecom starter', method: 'From RM3,500 for a custom WooCommerce storefront with unlimited products, Chip payments, EasyParcel shipping, English by default, first-year hosting and standard domain, and five minor post-launch content updates.', fit: 'Sellers moving from Shopee / TikTok to their own store', position: 'Custom variants, bookings and integrations quoted separately' },
   { model: 'Scope-based fixed quotation', method: 'Requirements are reviewed before a fixed price and deliverables are issued.', fit: 'CMS, larger websites, ecommerce and integrations', position: 'Main model for most HaikaiTech projects' },
   { model: 'Phased custom build', method: 'A larger system is divided into useful, approved stages.', fit: 'Dashboards, booking systems and workflow tools', position: 'Available where phasing is technically suitable' },
@@ -39,8 +40,8 @@ const pricingModels = [
 ];
 
 const offerRoutes = [
-  { icon: 'globe', label: 'One-page starter', title: 'Business website', price: 'From RM1,700', description: 'Custom one-page website with up to five sections, enquiry integration, SEO/AEO basics, first-year hosting and standard domain, and five minor content updates. Extra scope is quoted separately.', href: '/website/', action: 'See the RM1,700 scope', external: false },
-  { icon: 'layout', label: 'Content-led build', title: 'Business website and CMS', price: 'Quotation', description: 'For larger websites, multiple services, CMS, catalogue management, content updates or lead-generation requirements.', href: whatsapp, action: 'Discuss the website scope', external: true },
+  { icon: 'globe', label: 'One-page starter', title: 'Business website', price: 'From RM799', description: 'Custom one-page website with up to five sections, enquiry integration, SEO/AEO basics, first-year hosting and standard domain, and two minor content updates. Extra scope is quoted separately.', href: '/website/', action: 'See the RM799 scope', external: false },
+  { icon: 'layout', label: 'CMS route', title: 'Professional website + Lite CMS', price: 'From RM1,700', description: 'Everything in the starter, plus an admin login to change images, videos, headlines and promos yourself. For larger websites, catalogues and lead-generation needs.', href: whatsapp, action: 'Discuss the CMS scope', external: true },
   { icon: 'blocks', label: 'Ecom starter', title: 'WooCommerce store setup', price: 'From RM3,500', description: 'Custom WooCommerce storefront, unlimited products, Chip payments, EasyParcel shipping, English by default, first-year hosting and standard domain, plus five minor content updates. Extra scope quoted separately.', href: '/services/ecommerce/', action: 'See the RM3,500 scope', external: false },
   { icon: 'workflow', label: 'Operations route', title: 'Custom systems and automation', price: 'Quotation', description: 'For dashboards, portals, booking systems, internal workflows, integrations, AI agents, automation and custom web applications.', href: '/services/automation/', action: 'Explore automation builds', external: false },
 ] as const;
@@ -68,7 +69,8 @@ const process = [
 
 const faqs = [
   { q: 'How much does a website cost?', a: 'The final price depends on pages, content, revisions, timeline, integrations and ongoing costs, and is confirmed in a formal quotation. A selected promotional route is shown below for focused business-website scopes.' },
-  { q: 'What does the RM1,700 website starter include?', a: 'A custom one-page business website with up to five main content sections, responsive mobile and desktop design, WhatsApp or enquiry integration, basic SEO and AEO, speed optimisation, SSL and deployment setup, one year of hosting and a standard domain, and five minor content updates after launch. Extra pages and features are quoted separately.' },
+  { q: 'What does the RM799 website starter include?', a: 'A custom one-page business website with up to five main content sections, responsive mobile and desktop design, WhatsApp or enquiry integration, basic SEO and AEO, speed optimisation, SSL and deployment setup, one year of hosting and a standard domain, and two minor content updates after launch. Extra pages and features are quoted separately.' },
+  { q: 'What does the RM1,700 Professional + Lite CMS include?', a: 'Everything in the RM799 starter, plus an admin login so you can change images, videos, headlines and promos yourself each month. For full self-managed content — adding, editing and deleting products, galleries and pages — the Full CMS route at RM3,300 applies.' },
   { q: 'What does the RM3,500 WooCommerce starter include?', a: 'A custom WooCommerce storefront with unlimited products, Chip payments, EasyParcel shipping, English by default, first-year hosting and a standard domain, and five minor content updates. Custom variants, bookings, multilingual setup and complex integrations are quoted separately.' },
   { q: 'Why do custom ecommerce and booking builds require a quotation?', a: 'Beyond the RM3,500 starter, cost changes with variants, stock rules, delivery logic, booking flows, personalisation, integrations and third-party services. A quotation prevents a misleading package price.' },
   { q: 'What is the difference between a promotional price and a formal quotation?', a: 'A promotional price is a starting point for a defined type of project. A formal quotation is the project-specific commercial document that confirms the final scope, price, deliverables, exclusions and payment terms.' },
@@ -79,16 +81,16 @@ const faqs = [
 
 const serviceSchema = {
   '@context': 'https://schema.org', '@type': 'Service', name: 'Website design and custom software development',
-  description: 'Custom one-page business website from RM1,700 and WooCommerce store setup from RM3,500, each with one year of hosting and a standard domain. Booking, automation and custom systems are quoted by scope.',
+  description: 'Custom one-page business website from RM799 and Professional + Lite CMS websites from RM1,700, each with one year of hosting and a standard domain. Booking, automation and custom systems are quoted by scope.',
   provider: { '@type': 'Organization', name: 'HaikaiTech Solutions', url: 'https://haikaitech.my/' },
-  areaServed: { '@type': 'Country', name: 'Malaysia' },
-  offers: { '@type': 'Offer', name: 'One-page business website starter', price: '1700', priceCurrency: 'MYR', description: 'Custom one-page business website with up to five sections, enquiry integration, basic SEO and AEO, one year of hosting and a standard domain, and five minor content updates after launch. Extra scope is quoted separately.', url: 'https://haikaitech.my/website/' },
+  areaServed: [{ '@type': 'Country', name: 'Malaysia' }, { '@type': 'AdministrativeArea', name: 'Penang, Malaysia' }, { '@type': 'AdministrativeArea', name: 'Selangor, Malaysia' }],
+  offers: { '@type': 'Offer', name: 'One-page business website starter', price: '799', priceCurrency: 'MYR', description: 'Custom one-page business website with up to five sections, enquiry integration, basic SEO and AEO, one year of hosting and a standard domain, and two minor content updates after launch. Extra scope is quoted separately.', url: 'https://haikaitech.my/website/' },
 };
 
 const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((faq) => ({ '@type': 'Question', name: faq.q, acceptedAnswer: { '@type': 'Answer', text: faq.a } })) };
 ---
 
-<BaseLayout title="Website Pricing Malaysia | Services & Quotations | HaikaiTech" description="One-page business websites from RM1,700, including up to five sections, first-year hosting and a standard domain. Ecommerce, booking, automation and larger builds are quoted by scope." canonical={canonical} alternates={alternates}>
+<BaseLayout title="Web Design Penang & Selangor | Website Pricing | HaikaiTech" description="Business websites for SMEs in Penang, Selangor and across Malaysia. One-page starter from RM799; Professional + Lite CMS websites from RM1,700. Ecommerce, booking, automation and larger builds are quoted by scope." canonical={canonical} alternates={alternates}>
   <div class="workbench wb-pricing-site bg-paper bg-grid-pattern">
     <WorkbenchNav />
     <main class="sp-main">
@@ -96,7 +98,7 @@ const faqSchema = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEn
         <div class="sp-hero-copy">
           <p class="wb-eyebrow"><WorkbenchIcon name="briefcase" size={18} />Services &amp; pricing</p>
           <h1 id="services-title">Website pricing that starts with the <em>real scope.</em></h1>
-          <p class="sp-hero-lede">The RM1,700 starter covers a custom one-page business website with up to five sections. Ecommerce, booking, payments, CMS and business systems are quoted according to their actual scope.</p>
+          <p class="sp-hero-lede">The RM799 starter covers a custom one-page business website with up to five sections. Need to update content yourself? The RM1,700 Professional route adds a Lite CMS. Ecommerce, booking, payments and custom business systems are quoted according to their actual scope.</p>
           <div class="sp-actions"><a class="wb-button wb-button--painted" href={whatsapp} target="_blank" rel="noopener noreferrer"><span>Request a quotation</span></a><a class="wb-button wb-secondary" href="#market-ranges"><span>Understand the ranges</span></a></div>
           <p class="sp-hero-note">Clear scope first. Then the number means something.</p>
         </div>

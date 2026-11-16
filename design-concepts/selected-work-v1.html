@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HaikaiTech V2 — Selected Work concept</title>
+    <style>
+      :root {
+        --paper: #fdfbf7;
+        --ink: #16202a;
+        --blue: #1e3a8a;
+        --tape: #f4d35e;
+        --mint: #0f9f75;
+        --line: #d7dce2;
+        --grid: #cbd5e1;
+      }
+
+      * { box-sizing: border-box; }
+      body { margin: 0; background: var(--paper); color: var(--ink); font-family: Inter, Arial, sans-serif; }
+      .work { width: min(1440px, 100%); margin: 0 auto; padding: 72px 64px 104px; }
+      .section-head { display: grid; grid-template-columns: 1.15fr .85fr; gap: 72px; padding: 0 0 72px; border-top: 1px solid var(--line); }
+      .section-head > * { padding-top: 28px; }
+      .eyebrow, .project-number, .meta, .all-work { font: 500 11px/1.4 'JetBrains Mono', Consolas, monospace; letter-spacing: .1em; text-transform: uppercase; }
+      .eyebrow { margin: 0 0 20px; color: var(--blue); }
+      h1 { margin: 0; max-width: 8ch; font-size: clamp(56px, 6.25vw, 88px); line-height: .92; letter-spacing: -.065em; }
+      .intro { align-self: end; max-width: 28ch; margin: 0; font-size: 20px; line-height: 1.45; }
+      .project { display: grid; grid-template-columns: minmax(240px, .72fr) minmax(0, 1.55fr); gap: 64px; align-items: start; }
+      .project-copy { padding-top: 28px; }
+      .project-number { display: flex; align-items: center; gap: 12px; margin: 0 0 28px; color: var(--blue); }
+      .project-number::after { content: ''; display: block; width: 56px; height: 1px; background: var(--line); }
+      h2 { max-width: 8ch; margin: 0; font-size: clamp(38px, 3.7vw, 56px); line-height: .98; letter-spacing: -.055em; }
+      .meta { display: flex; align-items: center; gap: 12px; margin: 28px 0; color: var(--blue); }
+      .meta i { width: 9px; height: 9px; border-radius: 50%; background: var(--mint); }
+      .description { max-width: 28ch; margin: 0 0 36px; font-size: 17px; line-height: 1.55; }
+      .view-project, .all-work { display: inline-flex; min-height: 44px; align-items: center; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink); }
+      .view-project::after { content: '↗'; margin-left: 12px; font-size: 19px; }
+      .media { position: relative; margin: 0; padding: 12px; background: white; box-shadow: 0 10px 30px rgb(22 32 42 / .08); transform: rotate(.75deg); }
+      .media::before { content: ''; position: absolute; z-index: 1; top: -13px; left: 43%; width: 92px; height: 28px; background: var(--tape); opacity: .9; transform: rotate(-3deg); clip-path: polygon(2% 4%, 98% 0, 96% 24%, 100% 35%, 97% 70%, 100% 94%, 0 100%, 3% 70%, 0 40%); }
+      .media img { width: 100%; height: auto; display: block; }
+      figcaption { display: flex; justify-content: space-between; gap: 16px; padding-top: 14px; color: var(--blue); }
+      .media-caption { font: 500 10px/1.4 'JetBrains Mono', Consolas, monospace; letter-spacing: .08em; text-transform: uppercase; }
+      .note { position: absolute; right: -18px; top: -76px; font: 24px/1 'Patrick Hand', 'Comic Sans MS', cursive; color: var(--blue); transform: rotate(5deg); }
+      .note svg { display: block; width: 68px; height: 52px; margin-left: 12px; }
+      .work-index { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 72px; padding-top: 22px; border-top: 1px solid var(--line); }
+      .work-index p { margin: 0; font: 500 10px/1.5 'JetBrains Mono', Consolas, monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); }
+      .work-index ul { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 24px; margin: 0; padding: 0; list-style: none; font: 500 10px/1.5 'JetBrains Mono', Consolas, monospace; letter-spacing: .08em; text-transform: uppercase; }
+      .work-index li + li { padding-left: 24px; border-left: 1px solid var(--line); }
+
+      @media (max-width: 800px) {
+        .work { padding: 48px 24px 72px; }
+        .section-head { grid-template-columns: 1fr; gap: 20px; padding-bottom: 48px; }
+        .section-head > * { padding-top: 20px; }
+        h1 { max-width: 7ch; font-size: clamp(52px, 15vw, 68px); }
+        .intro { max-width: 29ch; font-size: 17px; }
+        .project { grid-template-columns: 1fr; gap: 36px; }
+        .project-copy { padding-top: 0; }
+        h2 { max-width: 10ch; font-size: 42px; }
+        .description { max-width: 32ch; }
+        .media { padding: 6px; transform: rotate(.35deg); }
+        .media::before { width: 62px; height: 20px; top: -9px; }
+        .note { display: none; }
+        .work-index { align-items: flex-start; flex-direction: column; margin-top: 48px; }
+        .work-index ul { justify-content: flex-start; gap: 12px; }
+        .work-index li + li { padding-left: 12px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="work">
+      <header class="section-head">
+        <div>
+          <p class="eyebrow">03 / Selected work</p>
+          <h1>Useful things.<br />Shipped.</h1>
+        </div>
+        <p class="intro">A focused look at the public sites and business systems we build for real-world use.</p>
+      </header>
+
+      <article class="project">
+        <div class="project-copy">
+          <p class="project-number">01</p>
+          <h2>HSS Wireless CCTV</h2>
+          <p class="meta"><i aria-hidden="true"></i> Website / Live</p>
+          <p class="description">A public-facing website for a Malaysian wireless CCTV provider, built around clear services and a direct quote path.</p>
+          <a class="view-project" href="https://wirelesscctv.com.my/">View website</a>
+        </div>
+
+        <figure class="media">
+          <span class="note">commercial clarity<svg viewBox="0 0 70 56" fill="none" aria-hidden="true"><path d="M4 7c11 3 40 7 55 34m0 0-18-4m18 4-7-17" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+          <img src="../src/assets/projects/hss-wireless-cctv-desktop.png" width="1280" height="960" alt="HSS Wireless CCTV desktop website" />
+          <figcaption><span class="media-caption">HSS Wireless CCTV / Desktop study</span><span class="media-caption">01 / 03</span></figcaption>
+        </figure>
+      </article>
+
+      <footer class="work-index">
+        <p>Next in the workshop</p>
+        <ul><li>MZE Worker System / Demo</li><li>Fuzzfloor / Live</li><li>More work →</li></ul>
+      </footer>
+    </main>
+  </body>
+</html>

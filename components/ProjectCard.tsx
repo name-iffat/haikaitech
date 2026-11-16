@@ -7,9 +7,9 @@ declare global {
   interface Window { dataLayer: unknown[]; }
 }
 
-const track = (action: string, label?: string) => {
+const track = (action: string, label?: string, value?: string) => {
   if (typeof gtag !== 'undefined') {
-    gtag('event', action, { event_label: label });
+    gtag('event', action, { event_label: label, value });
   }
 };
 

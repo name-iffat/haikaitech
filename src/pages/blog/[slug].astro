@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { getCollection, render } from 'astro:content';
+import { render } from 'astro:content';
+import { getPublicPosts } from '../../lib/content/posts';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import WorkbenchNav from '../../components/WorkbenchNav.astro';
 import StickyBooking from '../../../components/StickyBooking';
@@ -9,7 +10,7 @@ import '../../styles/workbench.css';
 import '../../styles/article.css';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
+  const posts = await getPublicPosts();
   return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
 }
 
@@ -38,7 +39,7 @@ const copy = isBm ? {
   keepReading: 'Keep reading.', readNote: 'Read note',
 };
 
-const allPosts = (await getCollection('blog')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const allPosts = (await getPublicPosts()).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const related = allPosts.filter((p) => p.id !== post.id).slice(0, 3);
 
 const readingText = post.body.replace(/<[^>]*>/g, ' ').replace(/\[([^\]]+)\]\([^)]*\)/g, '$1').trim();

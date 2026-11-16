@@ -1,8 +1,14 @@
 ---
 title: "How Much Does a Business Website Cost in Malaysia? (2026 Guide)"
-description: "A practical breakdown of website pricing in Malaysia — indicative market ranges, selected promotions from RM1,500, quotation-based work and the factors that change the final price."
+description: "A practical breakdown of website pricing in Malaysia — indicative market ranges, selected promotions from RM799, quotation-based work and the factors that change the final price."
 pubDate: 2026-08-06
 tags: [websites, pricing, malaysia, sme]
+status: published
+authorId: 'iffat-haikal'
+review:
+  evidence: verified
+  disclosure: cleared
+updatedDate: 2026-11-16
 ---
 
 "How much does a website cost?" is the first question almost every business owner asks — and the answer in Malaysia ranges from a few hundred ringgit to tens of thousands. That range is unhelpful, so let's make it concrete.
@@ -26,7 +32,7 @@ In Malaysia (2026), a professionally built business website typically costs:
 
 Where HaikaiTech currently sits in that market:
 
-- **Selected standard website promotions**: from **RM1,500**.
+- **Website starter**: from **RM799**; **Professional + Lite CMS websites**: from **RM1,700**.
 - **CMS-heavy websites, ecommerce, booking, payments and integrations**: quotation.
 - **Custom platforms, dashboards and automation**: quotation or an approved phased build.
 
@@ -36,9 +42,9 @@ The promotional figure is a starting point for a defined scope, not a promise th
 
 The most useful pricing model depends on how clearly the work can be defined.
 
-### Promotional one-off build: from RM1,500
+### Promotional one-off build: from RM799
 
-Selected focused business websites may fit the current promotion. The exact pages, content responsibilities, revisions, timeline, integrations and handover terms are confirmed in the quotation.
+Selected focused business websites may fit the current promotion: a custom one-page site with up to five sections, WhatsApp enquiry, basic SEO, one year of hosting and a standard domain. Need to update content yourself each month? Professional + Lite CMS websites start from RM1,700. The exact pages, content responsibilities, revisions, timeline, integrations and handover terms are confirmed in the quotation.
 
 ### Scope-based fixed quotation
 
@@ -101,8 +107,8 @@ You can [chat on WhatsApp right here](https://wa.me/60147533499?text=Hi%20Haikai
 
 ## Common questions
 
-**Is RM1,500 cheap or expensive for a website in Malaysia?**
-It's squarely in the range for a professionally built SME website from a registered studio (SSM: 202603149868). Freelance sites start lower; agency sites with branding, copywriting, and CMS often start well above RM5,000.
+**Is RM799 cheap or expensive for a website in Malaysia?**
+It's an entry-level starter from a registered studio (SSM: 202603149868) for a focused one-page scope. Freelance sites start lower; agency sites with branding, copywriting, and CMS often start well above RM5,000.
 
 **Do I need a Malaysian developer?**
 Not necessarily, but a Malaysian provider understands local needs — WhatsApp, Google Business Profile, BM/English bilingual content, e-wallet and bank-transfer realities — and same-timezone support helps.

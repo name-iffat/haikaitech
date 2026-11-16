@@ -55,7 +55,7 @@ const projectImg = projectImages[project.id];
 const related = PROJECTS.filter(p => p.id !== project.id).slice(0, 3);
 ---
 
-<BaseLayout title={`${project.name} — HaikaiTech Portfolio`} description={project.purpose}>
+<BaseLayout title={`${project.name} — HaikaiTech Portfolio`} description={project.purpose} canonical={`https://haikaitech.my/projects/${project.id}/`}>
   <div class="min-h-screen relative font-sans bg-paper bg-grid-pattern selection:bg-yellow-200 selection:text-slate-900">
     <Navbar client:load />
 

@@ -1,1 +1,2 @@
-/*    /index.html   200
+# Static Astro routes are served directly. Missing paths use /404.html.
+# Do not add a catch-all 200 rewrite: it converts missing content into soft 404s.

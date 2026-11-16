@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "contentId": "website-maintenance-cost-malaysia",
+  "route": "/blog/website-maintenance-cost-malaysia/",
+  "decision": "approved",
+  "reviewer": "Iffat Haikal (owner)",
+  "approvedAt": "2026-11-16T02:56:05.164Z",
+  "digest": "sha256:f597aac6222f325594d01d4b2f9665a414cc9e61ba2dee143e807155a7827472",
+  "checks": {
+    "accuracy": true,
+    "evidence": true,
+    "disclosure": true,
+    "assetRights": true
+  }
+}
