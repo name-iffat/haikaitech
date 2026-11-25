@@ -1,101 +1,290 @@
 ---
 import { localizeHref, type SiteLocale } from '../utils/i18n';
 
-interface Props { locale?: SiteLocale; }
+interface Props {
+  locale?: SiteLocale;
+}
 const { locale = 'en' } = Astro.props;
 const isBm = locale === 'bm';
 
-const cards = isBm
+interface PricingCard {
+  id: 'website' | 'ecom' | 'systems';
+  label: string;
+  title: string;
+  pricePrefix: string;
+  priceMain: string;
+  desc: string;
+  points: string[];
+  action: string;
+  wa: string;
+  emailSubject: string;
+  isInset: boolean;
+}
+
+const cards: PricingCard[] = isBm
   ? [
       {
+        id: 'website',
         label: 'Starter laman web',
         title: 'Website Bisnes',
-        price: 'Bermula RM799',
+        pricePrefix: 'Bermula',
+        priceMain: 'RM799',
         desc: 'Laman satu halaman rekaan khas sehingga lima bahagian untuk kehadiran profesional yang jelas.',
-        points: ['Responsif mudah alih & desktop', 'SEO/AEO asas & analitik', 'Tindakan WhatsApp', 'Hos + domain tahun 1', '2 kemas kini kecil'],
+        points: [
+          'Responsif mudah alih & desktop',
+          'SEO/AEO asas & analitik',
+          'Tindakan WhatsApp',
+          'Hos + domain tahun 1',
+          '2 kemas kini kecil',
+        ],
         action: 'Mula dengan RM799',
-        href: '/services/',
         wa: 'https://wa.me/60147533499?text=Salam%20HaikaiTech%2C%20saya%20datang%20dari%20harga%20laman%20utama%20dan%20berminat%20dengan%20Website%20Starter%20RM799.',
+        emailSubject: 'Pertanyaan Starter Website RM799',
+        isInset: false,
       },
       {
+        id: 'ecom',
         label: 'Starter e-dagang',
         title: 'Setup WooCommerce',
-        price: 'Bermula RM3,500',
+        pricePrefix: 'Bermula',
+        priceMain: 'RM3,500',
         desc: 'Kedai rekaan khas dengan produk tanpa had untuk beralih dari Shopee / TikTok ke kedai sendiri.',
-        points: ['Produk tanpa had', 'Bayaran Chip', 'Penghantaran EasyParcel', 'Hos + domain tahun 1', '5 kemas kini kecil'],
+        points: [
+          'Produk tanpa had',
+          'Bayaran Chip',
+          'Penghantaran EasyParcel',
+          'Hos + domain tahun 1',
+          '5 kemas kini kecil',
+        ],
         action: 'Mula dengan RM3,500',
-        href: '/services/ecommerce/',
         wa: 'https://wa.me/60147533499?text=Salam%20HaikaiTech%2C%20saya%20datang%20dari%20harga%20laman%20utama%20dan%20berminat%20dengan%20Ecom%20Starter%20RM3%2C500.',
+        emailSubject: 'Pertanyaan Starter E-dagang WooCommerce RM3,500',
+        isInset: false,
       },
       {
+        id: 'systems',
         label: 'Laluan operasi',
         title: 'Sistem & Automasi',
-        price: 'Sebut harga',
+        pricePrefix: '',
+        priceMain: 'Sebut harga',
         desc: 'Papan pemuka, portal dan automasi mengikut cara pasukan anda bekerja.',
-        points: ['Aliran kerja dalaman', 'Ejen AI & n8n', 'Invois & resit automatik', 'Integrasi alat sedia ada', 'Semakan manusia dilindungi'],
+        points: [
+          'Portal & aliran kerja dalaman khas',
+          'Ejen AI, bot WhatsApp & Telegram',
+          'Invois, resit & laporan automatik',
+          'Integrasi CRM, SQL & alat sedia ada',
+          'Semakan manusia & serahan akaun',
+        ],
         action: 'Bincang sistem anda',
-        href: '/services/automation/',
         wa: 'https://wa.me/60147533499?text=Salam%20HaikaiTech%2C%20saya%20datang%20dari%20harga%20laman%20utama%20dan%20ingin%20berbincang%20tentang%20sistem%20atau%20automasi.',
+        emailSubject: 'Pertanyaan Sistem & Automasi',
+        isInset: true,
       },
     ]
   : [
       {
+        id: 'website',
         label: 'Website starter',
         title: 'Business Website',
-        price: 'From RM799',
+        pricePrefix: 'From',
+        priceMain: 'RM799',
         desc: 'A custom one-page site that makes it easy for customers to understand and contact you.',
-        points: ['Up to 5 sections', 'Mobile-responsive design', 'Basic SEO & analytics', 'WhatsApp enquiry actions', 'Hosting + domain year 1', '2 minor updates'],
+        points: [
+          'Up to 5 sections',
+          'Mobile-responsive design',
+          'Basic SEO & analytics',
+          'WhatsApp enquiry actions',
+          'Hosting + domain year 1',
+          '2 minor updates',
+        ],
         action: 'Start with RM799',
-        href: '/services/',
         wa: 'https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%20came%20from%20homepage%20pricing%20and%20am%20interested%20in%20the%20Website%20Starter%20RM799.',
+        emailSubject: 'Website Starter RM799 enquiry',
+        isInset: false,
       },
       {
+        id: 'ecom',
         label: 'Ecom starter',
         title: 'WooCommerce Setup',
-        price: 'From RM3,500',
+        pricePrefix: 'From',
+        priceMain: 'RM3,500',
         desc: 'A custom storefront with unlimited products for sellers moving off marketplaces.',
-        points: ['Unlimited products', 'Chip payments', 'EasyParcel shipping', 'English by default', 'Hosting + domain year 1', '5 minor updates'],
+        points: [
+          'Unlimited products',
+          'Chip payments',
+          'EasyParcel shipping',
+          'English by default',
+          'Hosting + domain year 1',
+          '5 minor updates',
+        ],
         action: 'Start with RM3,500',
-        href: '/services/ecommerce/',
         wa: 'https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%20came%20from%20homepage%20pricing%20and%20am%20interested%20in%20the%20Ecom%20Starter%20RM3%2C500.',
+        emailSubject: 'WooCommerce Setup RM3,500 enquiry',
+        isInset: false,
       },
       {
+        id: 'systems',
         label: 'Operations route',
         title: 'Systems & Automation',
-        price: 'Quotation',
+        pricePrefix: '',
+        priceMain: 'Quotation',
         desc: 'Dashboards, portals and automations built around how your team works.',
-        points: ['Internal workflows', 'AI agents & n8n', 'Auto invoices & receipts', 'Connect existing tools', 'Human review kept'],
+        points: [
+          'Custom portals & internal workflows',
+          'AI agents, WhatsApp & Telegram bots',
+          'Auto invoices, receipts & reporting',
+          'CRM, SQL & existing tool integrations',
+          'Human review & full account handover',
+        ],
         action: 'Discuss your system',
-        href: '/services/automation/',
         wa: 'https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%20came%20from%20homepage%20pricing%20and%20would%20like%20to%20discuss%20a%20system%20or%20automation.',
+        emailSubject: 'Systems & Automation enquiry',
+        isInset: true,
       },
     ];
 ---
 
-<section class="workbench wb-pricing" aria-labelledby="pricing-title">
-  <header class="wb-pricing-head">
-    <div>
-      <p class="wb-eyebrow">{isBm ? 'Harga jelas' : 'Clear pricing'}</p>
-      <h2 id="pricing-title">{isBm ? <>Mula dengan harga<br />yang jelas.</> : <>Start with<br />clear pricing.</>}</h2>
+<section class="ht-pricing" aria-labelledby="pricing-title">
+  <div class="tines-container">
+    <header class="ht-pricing__head">
+      <p class="ht-pricing__pill">
+        <span class="ht-pricing__dot" aria-hidden="true"></span>
+        {isBm ? 'Harga jelas' : 'Clear pricing'}
+      </p>
+      <h2 id="pricing-title" class="ht-pricing__title">
+        {isBm ? 'Mula dengan harga yang jelas.' : 'Start with clear pricing.'}
+      </h2>
+      <p class="ht-pricing__intro">
+        {isBm
+          ? 'Tiga laluan. Pilih yang paling hampir: sebut harga rasmi akan sahkan skop akhir.'
+          : 'Three routes. Pick the closest: the formal quotation confirms final scope.'}
+      </p>
+    </header>
+
+    <div class="ht-pricing__slab">
+      {cards.map((card) => (
+        <article class={`ht-pricing__tier ${card.isInset ? 'ht-pricing__tier--inset' : ''}`}>
+          <div class="ht-pricing__tier-top">
+            <span class="ht-pricing__tag">
+              <i class="ht-pricing__tick ht-pricing__tick--tl" aria-hidden="true"></i>
+              <i class="ht-pricing__tick ht-pricing__tick--tr" aria-hidden="true"></i>
+              <i class="ht-pricing__tick ht-pricing__tick--bl" aria-hidden="true"></i>
+              <i class="ht-pricing__tick ht-pricing__tick--br" aria-hidden="true"></i>
+              {card.label}
+            </span>
+
+            {card.id === 'website' && (
+              <svg class="ht-pricing__art" width="56" height="56" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                <ellipse cx="32" cy="56" rx="19" ry="3.2" fill="#0B1322" fill-opacity="0.45" />
+                <path d="M29 22c-1-6 4-12 10-12 0 6-4 11-10 12Z" fill="#22C58B" stroke="#FAF8F3" stroke-width="1.6" stroke-linejoin="round" />
+                <path d="M29 22c-5-2-9-7-8-13 6 1 9 6 8 13Z" fill="#F4D35E" stroke="#FAF8F3" stroke-width="1.6" stroke-linejoin="round" />
+                <rect x="12" y="21" width="40" height="30" rx="5" fill="#1E3354" stroke="#FAF8F3" stroke-width="1.7" />
+                <path d="M12 29h40" stroke="#FAF8F3" stroke-width="1.5" />
+                <circle cx="17" cy="25" r="1.4" fill="#F4D35E" />
+                <circle cx="22" cy="25" r="1.4" fill="#22C58B" />
+                <rect x="17" y="34" width="14" height="12" rx="2.5" fill="#60A5FA" stroke="#FAF8F3" stroke-width="1.4" />
+                <path d="M35 36h11M35 41h9M35 46h6" stroke="#F4D35E" stroke-width="1.7" stroke-linecap="round" />
+              </svg>
+            )}
+
+            {card.id === 'ecom' && (
+              <svg class="ht-pricing__art" width="56" height="56" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                <ellipse cx="32" cy="56" rx="19" ry="3.2" fill="#0B1322" fill-opacity="0.45" />
+                <rect x="15" y="26" width="34" height="25" rx="4" fill="#1E3354" stroke="#FAF8F3" stroke-width="1.7" />
+                <path d="M11 26 15 15h34l4 11" fill="#F28466" stroke="#FAF8F3" stroke-width="1.7" stroke-linejoin="round" />
+                <path d="M11 26c0 3 4 5 7 5s7-2 7-5M25 26c0 3 3.5 5 7 5s7-2 7-5M39 26c0 3 3.5 5 7 5s7-2 7-5" stroke="#FAF8F3" stroke-width="1.6" stroke-linecap="round" />
+                <rect x="20" y="34" width="14" height="17" rx="2" fill="#7DD3FC" stroke="#FAF8F3" stroke-width="1.5" />
+                <circle cx="43" cy="39" r="5" fill="#F4D35E" stroke="#FAF8F3" stroke-width="1.5" />
+                <path d="M43 37v4M41 39h4" stroke="#152238" stroke-width="1.4" stroke-linecap="round" />
+                <circle cx="51" cy="11" r="1.6" fill="#F4D35E" />
+                <circle cx="12" cy="11" r="1.4" fill="#7DD3FC" />
+              </svg>
+            )}
+
+            {card.id === 'systems' && (
+              <svg class="ht-pricing__art" width="56" height="56" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                <ellipse cx="32" cy="57" rx="16" ry="3" fill="#16202A" fill-opacity="0.16" />
+                <circle cx="32" cy="30" r="17" fill="#1368E6" stroke="#16202A" stroke-width="1.8" />
+                <ellipse cx="32" cy="30" rx="8.5" ry="17" fill="#BFD8FF" fill-opacity="0.32" stroke="#16202A" stroke-width="1.5" />
+                <path d="M15.5 25h33M15.5 35h33" stroke="#16202A" stroke-width="1.4" />
+                <ellipse cx="32" cy="30" rx="25" ry="8" transform="rotate(-24 32 30)" stroke="#16202A" stroke-width="1.5" />
+                <circle cx="51" cy="17" r="4.5" fill="#F4D35E" stroke="#16202A" stroke-width="1.6" />
+                <circle cx="13" cy="40" r="4" fill="#0E8A68" stroke="#16202A" stroke-width="1.6" />
+                <path d="M48 45l1 2.2 2.2 1-2.2 1-1 2.2-1-2.2-2.2-1 2.2-1 1-2.2Z" fill="#1368E6" />
+              </svg>
+            )}
+          </div>
+
+          <div class="ht-pricing__price-wrap">
+            <h3 class="ht-pricing__name">{card.title}</h3>
+            <p class="ht-pricing__price">
+              {card.pricePrefix && <span class="ht-pricing__prefix">{card.pricePrefix}</span>}
+              <span class="ht-pricing__amount">{card.priceMain}</span>
+            </p>
+          </div>
+
+          <p class="ht-pricing__desc">{card.desc}</p>
+
+          <div class="ht-pricing__included">
+            <p class="ht-pricing__inc-title">
+              {card.id === 'systems' ? (
+                <>
+                  {isBm ? 'Apa Yang Boleh ' : 'What We Can '}
+                  <span>{isBm ? 'Dibina' : 'Build'}</span>
+                </>
+              ) : (
+                <>
+                  {isBm ? 'Apa yang ' : "What's "}
+                  <span>{isBm ? 'Termasuk' : 'Included'}</span>
+                </>
+              )}
+            </p>
+            <ul class="ht-pricing__list">
+              {card.points.map((pt) => (
+                <li>
+                  <span class="ht-pricing__check" aria-hidden="true">
+                    <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
+                      <path
+                        d="M2.5 6.2 4.8 8.5 9.5 3.5"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </span>
+                  <span>{pt}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="ht-pricing__actions">
+            <a class="ht-pricing__cta" href={card.wa} target="_blank" rel="noopener noreferrer">
+              <svg class="ht-pricing__cta-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m5.81 13.97c-.24.68-1.41 1.3-1.95 1.38-.5.07-1.13.1-1.82-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.79-4.18-4.94-4.38-.14-.2-1.18-1.57-1.18-3s.75-2.13 1.01-2.42c.27-.29.58-.36.77-.36.19 0 .39 0 .56.01.18.01.42-.07.66.5.24.58.82 2 .89 2.15.07.14.12.31.02.5-.1.2-.15.31-.29.48-.15.17-.3.38-.44.51-.14.15-.3.3-.13.59.17.29.75 1.24 1.62 2.01 1.11.99 2.05 1.3 2.34 1.44.29.15.46.12.63-.07.17-.2.73-.85.92-1.14.19-.29.39-.24.65-.14.27.1 1.69.8 1.98.94.29.15.48.22.55.34.07.12.07.7-.17 1.38Z" />
+              </svg>
+              <span>{card.action}</span>
+              <span class="ht-pricing__arrow" aria-hidden="true">&#8594;</span>
+            </a>
+            <a
+              class="ht-pricing__wa"
+              href={`mailto:haikaitechsolutions@gmail.com?subject=${encodeURIComponent(card.emailSubject)}`}
+              aria-label={isBm ? 'E-mel haikaitechsolutions@gmail.com' : 'Email haikaitechsolutions@gmail.com'}
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="m3 7 9 6 9-6" />
+              </svg>
+              <span>{isBm ? 'Lebih suka e-mel?' : 'Prefer email?'}</span>
+            </a>
+          </div>
+        </article>
+      ))}
     </div>
-    <p class="wb-pricing-intro">{isBm ? 'Tiga laluan. Pilih yang paling hampir — sebut harga rasmi akan sahkan skop akhir.' : 'Three routes. Pick the closest — the formal quotation confirms final scope.'}</p>
-  </header>
-  <div class="wb-pricing-grid">
-    {cards.map((card) => (
-      <article class="wb-price-card">
-        <p class="wb-price-label">{card.label}</p>
-        <h3>{card.title}</h3>
-        <p class="wb-price-value">{card.price}</p>
-        <p class="wb-price-desc">{card.desc}</p>
-        <ul>
-          {card.points.map((pt) => <li>{pt}</li>)}
-        </ul>
-        <div class="wb-price-actions">
-          <a class="wb-button wb-primary" href={localizeHref(card.href, locale)}>{card.action}</a>
-          <a class="wb-price-wa" href={card.wa} target="_blank" rel="noopener noreferrer">{isBm ? 'Lebih suka WhatsApp?' : 'Prefer WhatsApp?'}</a>
-        </div>
-      </article>
-    ))}
+
+    <p class="ht-pricing__note">
+      {isBm ? 'Bayaran fleksibel ikut fasa atau ansuran • Skop jelas sebelum mula' : 'Flexible milestone or installment terms • Scope agreed upfront'} · <a href={localizeHref('/services/', locale)}>{isBm ? 'Lihat semua harga & skop' : 'See full services & pricing'}</a>
+    </p>
   </div>
-  <p class="wb-pricing-note">{isBm ? 'Bayaran 50% mula / 50% serahan • Skop sebelum harga' : '50% to start / 50% on handover • Scope before price'} — <a href={localizeHref('/services/', locale)}>{isBm ? 'Lihat semua harga & skop' : 'See full services & pricing'}</a></p>
 </section>

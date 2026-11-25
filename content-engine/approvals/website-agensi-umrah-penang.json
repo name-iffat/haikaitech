@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "contentId": "website-agensi-umrah-penang",
+  "route": "/blog/website-agensi-umrah-penang/",
+  "decision": "approved",
+  "reviewer": "Iffat Haikal (owner)",
+  "approvedAt": "2026-11-23T04:29:52.489Z",
+  "digest": "sha256:65cc0cee30544e9df89a812527d954e64b8fd72db26953cd1b972103cff7ccd4",
+  "checks": {
+    "accuracy": true,
+    "evidence": true,
+    "disclosure": true,
+    "assetRights": true
+  }
+}

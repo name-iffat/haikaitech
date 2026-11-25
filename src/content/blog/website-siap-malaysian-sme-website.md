@@ -13,6 +13,8 @@ updatedDate: 2026-11-16
 
 "Website Siap" is our promotional starting route for selected Malaysian SME website scopes. Prices start from **RM799** for the one-page starter, with Professional + Lite CMS websites from **RM1,700** — but the final quotation, not the headline, confirms the pages, content, revisions, timeline, integrations, ownership and recurring costs.
 
+> TL;DR: Website Siap is a defined-scope promotion from RM799 (one page, five sections, WhatsApp, basic SEO, hosting plus domain, staging review, 50/50 payment, full handover). Anything beyond the listed scope — CMS, ecommerce, booking, extra languages — is quoted separately in the formal quotation.
+
 ## What a suitable promotional scope may include
 
 | Included | Notes |
@@ -75,6 +77,8 @@ HaikaiTech does not currently offer a public monthly website subscription. Read 
 6. **Receive the agreed handover** — credentials, source and deliverables subject to third-party licences.
 
 Ready to discuss the scope? [Chat on WhatsApp](https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%27d%20like%20to%20discuss%20the%20website%20promotion.) or read the full [services & pricing guide](/services/).
+
+**Key takeaway:** The promotion is a starting route for a defined scope, not a fixed product. If your scope fits the inclusions list, it applies; if it doesn't, the same quotation process prices the real scope.
 
 ## Where we work
 

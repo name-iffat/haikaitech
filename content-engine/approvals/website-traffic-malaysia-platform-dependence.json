@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "contentId": "website-traffic-malaysia-platform-dependence",
+  "route": "/blog/website-traffic-malaysia-platform-dependence/",
+  "decision": "approved",
+  "reviewer": "Iffat Haikal (owner)",
+  "approvedAt": "2026-11-23T04:29:52.489Z",
+  "digest": "sha256:44c0fce8d4ab10dd3015a057d47c687aaeaff3ba22bbe40a73a8f9f4afdd0bfd",
+  "checks": {
+    "accuracy": true,
+    "evidence": true,
+    "disclosure": true,
+    "assetRights": true
+  }
+}

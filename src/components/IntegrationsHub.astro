@@ -1,0 +1,362 @@
+---
+import type { SiteLocale } from '../utils/i18n';
+
+interface Props {
+  locale?: SiteLocale;
+}
+
+const { locale = 'en' } = Astro.props;
+const isBm = locale === 'bm';
+
+type CustomIconKey = 'superset' | 'sqlserver' | 'playwright' | 'excelvba' | 'chip';
+
+interface TechNode {
+  name: string;
+  color: string;
+  slug?: string;
+  customIcon?: CustomIconKey;
+}
+
+interface TechLane {
+  labelEn: string;
+  labelBm: string;
+  items: TechNode[];
+}
+
+const customIconPaths: Record<CustomIconKey, string[]> = {
+  superset: [
+    'M3 16.5c2.2-4.5 4.3-6.5 6.8-4.2 2.4 2.2 4.3 1.8 6.5-2.8L20 5',
+    'M3 19.5c3-2 5.4-1.5 7.8.4 2.4 1.8 5.2.6 8.2-4.4',
+  ],
+  sqlserver: [
+    'M19 6.5c0 1.55-3.13 2.8-7 2.8S5 8.05 5 6.5 8.13 3.7 12 3.7s7 1.25 7 2.8Z',
+    'M5 6.5v11c0 1.55 3.13 2.8 7 2.8s7-1.25 7-2.8v-11',
+    'M5 12c0 1.55 3.13 2.8 7 2.8s7-1.25 7-2.8',
+  ],
+  playwright: [
+    'M4 6.5c3.5-1.5 7-1 8 1.5.5 1.5.5 5.5-2 7.5-2.5 1.8-5.5 0-6-3V6.5Z',
+    'M20 8.5c-3.5-1.5-7-1-8 1.5-.5 1.5-.5 5.5 2 7.5 2.5 1.8 5.5 0 6-3V8.5Z',
+  ],
+  excelvba: [
+    'M5 4h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z',
+    'M8.5 8.5l7 7',
+    'M15.5 8.5l-7 7',
+  ],
+  chip: [
+    'M3.5 6.5h17a1.5 1.5 0 0 1 1.5 1.5v8a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 16V8a1.5 1.5 0 0 1 1.5-1.5Z',
+    'M2 10.5h20',
+    'M6.5 14h4',
+  ],
+};
+
+const leftLanes: TechLane[] = [
+  {
+    labelEn: 'WEB FRONTEND',
+    labelBm: 'WEB FRONTEND',
+    items: [
+      { name: 'Astro', slug: 'astro', color: '#FF5D01' },
+      { name: 'React', slug: 'react', color: '#087EA4' },
+      { name: 'Next.js', slug: 'nextdotjs', color: '#1B2430' },
+    ],
+  },
+  {
+    labelEn: 'STYLING & MOBILE',
+    labelBm: 'UI & MUDAH ALIH',
+    items: [
+      { name: 'TailwindCSS', slug: 'tailwindcss', color: '#0284C7' },
+      { name: 'TypeScript', slug: 'typescript', color: '#3178C6' },
+      { name: 'Flutter', slug: 'flutter', color: '#02569B' },
+    ],
+  },
+  {
+    labelEn: 'NATIVE & 3D',
+    labelBm: 'NATIF & 3D',
+    items: [
+      { name: 'React Native & Expo', slug: 'expo', color: '#1B2430' },
+      { name: 'Unity 3D', slug: 'unity', color: '#1B2430' },
+      { name: 'ASP.NET', slug: 'dotnet', color: '#512BD4' },
+    ],
+  },
+  {
+    labelEn: 'ENTERPRISE & PHP',
+    labelBm: 'SISTEM & PHP',
+    items: [
+      { name: 'Blazor & WPF', slug: 'dotnet', color: '#512BD4' },
+      { name: 'Laravel', slug: 'laravel', color: '#FF2D20' },
+      { name: 'CodeIgniter', slug: 'php', color: '#EE4323' },
+    ],
+  },
+  {
+    labelEn: 'EDGE & AUTOMATION',
+    labelBm: 'AWAN & AUTOMASI',
+    items: [
+      { name: 'Cloudflare', slug: 'cloudflare', color: '#F38020' },
+      { name: 'Playwright', customIcon: 'playwright', color: '#2EAD33' },
+      { name: 'Excel VBA', customIcon: 'excelvba', color: '#1D6F42' },
+    ],
+  },
+];
+
+const rightLanes: TechLane[] = [
+  {
+    labelEn: 'CLOUD DATABASES',
+    labelBm: 'PANGKALAN DATA AWAN',
+    items: [
+      { name: 'Supabase', slug: 'supabase', color: '#16A34A' },
+      { name: 'Firebase', slug: 'firebase', color: '#DD2C00' },
+      { name: 'PostgreSQL', slug: 'postgresql', color: '#336791' },
+    ],
+  },
+  {
+    labelEn: 'SQL & BI',
+    labelBm: 'SQL & ANALITIK',
+    items: [
+      { name: 'SQL Server', customIcon: 'sqlserver', color: '#CC2927' },
+      { name: 'MySQL', slug: 'mysql', color: '#00758F' },
+      { name: 'Apache Superset', customIcon: 'superset', color: '#0E8A68' },
+    ],
+  },
+  {
+    labelEn: 'COMMERCE & CMS',
+    labelBm: 'E-DAGANG & CMS',
+    items: [
+      { name: 'Shopify', slug: 'shopify', color: '#5E8E3E' },
+      { name: 'WooCommerce', slug: 'woocommerce', color: '#7F54B3' },
+      { name: 'WordPress', slug: 'wordpress', color: '#21759B' },
+    ],
+  },
+  {
+    labelEn: 'PAYMENTS & CRM',
+    labelBm: 'BAYARAN & CRM',
+    items: [
+      { name: 'CHIP Payment', customIcon: 'chip', color: '#1368E6' },
+      { name: 'HubSpot CRM', slug: 'hubspot', color: '#FF7A59' },
+      { name: 'WhatsApp', slug: 'whatsapp', color: '#16A34A' },
+    ],
+  },
+  {
+    labelEn: 'TRACKING & BOTS',
+    labelBm: 'ANALITIK & BOT',
+    items: [
+      { name: 'Google Analytics', slug: 'googleanalytics', color: '#E37400' },
+      { name: 'Meta Pixel', slug: 'meta', color: '#0866FF' },
+      { name: 'Telegram Bot', slug: 'telegram', color: '#26A5E4' },
+    ],
+  },
+];
+
+const leftMobileNodes: TechNode[] = leftLanes.flatMap((lane) => lane.items);
+const rightMobileNodes: TechNode[] = rightLanes.flatMap((lane) => lane.items);
+
+const trunkWiresLeft = [
+  'M 0 44 C 38 44, 30 164, 66 164',
+  'M 0 122 C 36 122, 32 182, 66 182',
+  'M 0 200 L 66 200',
+  'M 0 278 C 36 278, 32 218, 66 218',
+  'M 0 356 C 38 356, 30 236, 66 236',
+];
+
+const trunkWiresRight = [
+  'M 182 164 C 218 164, 210 44, 248 44',
+  'M 182 182 C 216 182, 212 122, 248 122',
+  'M 182 200 L 248 200',
+  'M 182 218 C 216 218, 212 278, 248 278',
+  'M 182 236 C 218 236, 210 356, 248 356',
+];
+
+const dockingPins = [
+  { cx: 66, cy: 164 },
+  { cx: 66, cy: 182 },
+  { cx: 66, cy: 200 },
+  { cx: 66, cy: 218 },
+  { cx: 66, cy: 236 },
+  { cx: 182, cy: 164 },
+  { cx: 182, cy: 182 },
+  { cx: 182, cy: 200 },
+  { cx: 182, cy: 218 },
+  { cx: 182, cy: 236 },
+];
+---
+
+<section
+  id="stack"
+  class="ht-hub"
+  aria-labelledby="integrations-hub-title"
+>
+  <div class="tines-container">
+    <header class="ht-hub__head">
+      <p class="ht-hub__pill">
+        <span class="ht-hub__dot" aria-hidden="true"></span>
+        {isBm ? 'Teknologi & Integrasi' : 'Stack & Integrations'}
+      </p>
+      <h2 id="integrations-hub-title" class="ht-hub__title">
+        {isBm
+          ? 'Bersambung dengan platform perniagaan anda.'
+          : 'Connected to the tools your business runs on.'}
+      </h2>
+      <p class="ht-hub__sub">
+        {isBm
+          ? 'Dari laman web Astro, WordPress dan Laravel hingga aplikasi Flutter, sistem ASP.NET, bayaran CHIP, HubSpot CRM, dan analitik.'
+          : 'From Astro, WordPress, WooCommerce and Laravel builds to Flutter apps, ASP.NET systems, CHIP payments, HubSpot CRM, and analytics.'}
+      </p>
+    </header>
+
+    <div class="ht-hub__board">
+      <!-- Left 5 circuit lanes -->
+      <div class="ht-hub__side ht-hub__side--left">
+        {leftLanes.map((lane) => (
+          <div class="ht-hub__lane ht-hub__lane--left">
+            <span class="ht-hub__lane-label">{isBm ? lane.labelBm : lane.labelEn}</span>
+            <div class="ht-hub__lane-track">
+              <span class="ht-hub__lane-wire" aria-hidden="true"></span>
+              {lane.items.map((node) => (
+                <span class="ht-hub__pill-node">
+                  <span class="ht-hub__icon-well" style={`--node-color: ${node.color};`} aria-hidden="true">
+                    {node.customIcon ? (
+                      <svg class="ht-hub__pill-svg" width="14" height="14" viewBox="0 0 24 24" fill="none">
+                        {customIconPaths[node.customIcon].map((d) => (
+                          <path d={d} stroke="var(--node-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        ))}
+                      </svg>
+                    ) : (
+                      <span
+                        class="ht-hub__icon-mask"
+                        style={`--icon-url: url('https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/${node.slug}.svg');`}
+                      ></span>
+                    )}
+                  </span>
+                  <span>{node.name}</span>
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Center SVG Trunk + HT Blueprint Hub -->
+      <div class="ht-hub__trunk">
+        <svg class="ht-hub__trunk-svg" viewBox="0 0 248 376" fill="none" preserveAspectRatio="none" aria-hidden="true">
+          <rect
+            x="54"
+            y="130"
+            width="140"
+            height="140"
+            rx="24"
+            stroke="rgba(19, 104, 230, 0.2)"
+            stroke-width="1"
+            stroke-dasharray="4 4"
+          />
+
+          {trunkWiresLeft.map((d) => (
+            <path class="ht-hub__wire" d={d} />
+          ))}
+          {trunkWiresRight.map((d) => (
+            <path class="ht-hub__wire" d={d} />
+          ))}
+
+          <path class="ht-hub__pulse" d={trunkWiresLeft[0]} />
+          <path class="ht-hub__pulse ht-hub__pulse--delay-1" d={trunkWiresLeft[3]} />
+          <path class="ht-hub__pulse ht-hub__pulse--gold" d={trunkWiresLeft[2]} />
+          <path class="ht-hub__pulse ht-hub__pulse--delay-2" d={trunkWiresRight[1]} />
+          <path class="ht-hub__pulse ht-hub__pulse--delay-3" d={trunkWiresRight[4]} />
+
+          {dockingPins.map((pin) => (
+            <circle cx={pin.cx} cy={pin.cy} r="2.6" fill="#FAF8F3" stroke="#1368E6" stroke-width="1.4" />
+          ))}
+        </svg>
+
+        <div class="ht-hub__center" aria-label="HaikaiTech Core">
+          <span class="ht-hub__cross ht-hub__cross--tl" aria-hidden="true">+</span>
+          <span class="ht-hub__cross ht-hub__cross--tr" aria-hidden="true">+</span>
+          <span class="ht-hub__cross ht-hub__cross--bl" aria-hidden="true">+</span>
+          <span class="ht-hub__cross ht-hub__cross--br" aria-hidden="true">+</span>
+          <div class="ht-hub__center-card">
+            <svg width="36" height="36" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+              <rect width="40" height="40" rx="10" fill="#1368E6" />
+              <path
+                d="M11 12.5v15M11 20h7.5M18.5 12.5v15M22.5 12.5H30M26.25 12.5v15"
+                stroke="#FAF8F3"
+                stroke-width="2.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <span class="ht-hub__center-tag" aria-hidden="true">CORE</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right 5 circuit lanes -->
+      <div class="ht-hub__side ht-hub__side--right">
+        {rightLanes.map((lane) => (
+          <div class="ht-hub__lane ht-hub__lane--right">
+            <span class="ht-hub__lane-label">{isBm ? lane.labelBm : lane.labelEn}</span>
+            <div class="ht-hub__lane-track">
+              <span class="ht-hub__lane-wire" aria-hidden="true"></span>
+              {lane.items.map((node) => (
+                <span class="ht-hub__pill-node">
+                  <span class="ht-hub__icon-well" style={`--node-color: ${node.color};`} aria-hidden="true">
+                    {node.customIcon ? (
+                      <svg class="ht-hub__pill-svg" width="14" height="14" viewBox="0 0 24 24" fill="none">
+                        {customIconPaths[node.customIcon].map((d) => (
+                          <path d={d} stroke="var(--node-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        ))}
+                      </svg>
+                    ) : (
+                      <span
+                        class="ht-hub__icon-mask"
+                        style={`--icon-url: url('https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/${node.slug}.svg');`}
+                      ></span>
+                    )}
+                  </span>
+                  <span>{node.name}</span>
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Mobile / Tablet opposing dual horizontal marquee fallback -->
+    <div class="ht-hub__mobile" aria-label={isBm ? 'Senarai teknologi dan platform' : 'Tech stack and platforms'}>
+      <div class="ht-hub__mobile-center">
+        <span class="ht-hub__mobile-mark" aria-hidden="true">HT</span>
+        <span>{isBm ? 'Teras sistem & laman web anda' : 'Your website & system core'}</span>
+      </div>
+
+      {[
+        { items: leftMobileNodes, reverse: false },
+        { items: rightMobileNodes, reverse: true },
+      ].map(({ items, reverse }) => (
+        <div class="ht-hub__marquee">
+          <div class={`ht-hub__marquee-track${reverse ? ' ht-hub__marquee-track--reverse' : ''}`}>
+            {[false, true].map((isDup) => (
+              <div class="ht-hub__marquee-group" {...(isDup ? { 'aria-hidden': 'true' } : {})}>
+                {items.map((node) => (
+                  <span class="ht-hub__chip">
+                    <span class="ht-hub__icon-well" style={`--node-color: ${node.color};`} aria-hidden="true">
+                      {node.customIcon ? (
+                        <svg class="ht-hub__pill-svg" width="14" height="14" viewBox="0 0 24 24" fill="none">
+                          {customIconPaths[node.customIcon].map((d) => (
+                            <path d={d} stroke="var(--node-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                          ))}
+                        </svg>
+                      ) : (
+                        <span
+                          class="ht-hub__icon-mask"
+                          style={`--icon-url: url('https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/${node.slug}.svg');`}
+                        ></span>
+                      )}
+                    </span>
+                    <span>{node.name}</span>
+                  </span>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

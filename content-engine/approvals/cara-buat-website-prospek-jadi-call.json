@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "contentId": "cara-buat-website-prospek-jadi-call",
+  "route": "/blog/cara-buat-website-prospek-jadi-call/",
+  "decision": "approved",
+  "reviewer": "Iffat Haikal (owner)",
+  "approvedAt": "2026-11-23T04:29:52.489Z",
+  "digest": "sha256:e7ed2a2b5802930a82d70c314c6fceb7a47854b7e2317cba81234f2a06502659",
+  "checks": {
+    "accuracy": true,
+    "evidence": true,
+    "disclosure": true,
+    "assetRights": true
+  }
+}

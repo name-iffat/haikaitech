@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "contentId": "best-web-design-penang-guide",
+  "route": "/blog/best-web-design-penang-guide/",
+  "decision": "approved",
+  "reviewer": "Iffat Haikal (owner)",
+  "approvedAt": "2026-11-23T04:29:52.489Z",
+  "digest": "sha256:e981b441c70d4b02394105e00b8948a35881efc2ba2f65124013c89c15d91996",
+  "checks": {
+    "accuracy": true,
+    "evidence": true,
+    "disclosure": true,
+    "assetRights": true
+  }
+}

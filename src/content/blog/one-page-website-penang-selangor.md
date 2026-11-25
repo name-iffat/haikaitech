@@ -13,6 +13,8 @@ review:
 
 Most SMEs in Penang and Selangor do not need a twenty-page corporate site. They need one page that answers three questions: what do you do, why should I trust you, and how do I contact you. That is exactly what a one-page website does — and when it fits, it is the fastest and cheapest route to a professional presence.
 
+> TL;DR: One page is enough when you sell a small set of services, enquiries close over WhatsApp or walk-in, and the business fits five sections (hero, services, proof, about, contact). You need more when you sell online, take bookings, or run high-volume ads.
+
 ## When one page is enough
 
 - Your business offers a small set of services (salon, workshop, clinic, contractor, kedai makan, homestay).
@@ -38,5 +40,7 @@ One page still needs real content: your logo, service descriptions in your own w
 ## The honest bit
 
 A one-page site will not outperform a bad offer, and no build guarantees enquiries or rankings. What it does is remove friction: every prospective customer who searches for you finds one clear, fast, credible page instead of a dead Facebook page or nothing at all.
+
+**Key takeaway:** If your business fits the five-section shape above, launch the one-pager now and extend later — a good build adds pages without starting over.
 
 If that sounds like your business, [chat with us on WhatsApp](https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%20read%20your%20one-page%20guide%20and%20would%20like%20a%20quotation.) — you approve a formal quotation before paying anything.

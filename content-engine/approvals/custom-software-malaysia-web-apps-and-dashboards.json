@@ -4,8 +4,8 @@
   "route": "/blog/custom-software-malaysia-web-apps-and-dashboards/",
   "decision": "approved",
   "reviewer": "Iffat Haikal (owner)",
-  "approvedAt": "2026-11-16T02:56:05.164Z",
-  "digest": "sha256:a9fba403604c335208d469d053b9f1e6fd04235e6ed0b6cd335b793800d6bdc9",
+  "approvedAt": "2026-11-23T04:29:52.489Z",
+  "digest": "sha256:0637e49e61656f44dc45799ca1d5744bbc83eba09072402037d45cabc19ecfc5",
   "checks": {
     "accuracy": true,
     "evidence": true,

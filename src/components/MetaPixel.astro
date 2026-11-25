@@ -1,13 +1,15 @@
 ---
-interface Props { locale?: 'en' | 'bm' }
-const { locale = 'en' } = Astro.props;
+interface Props { locale?: 'en' | 'bm'; inlineChoice?: boolean }
+const { locale = 'en', inlineChoice = false } = Astro.props;
 const bm = locale === 'bm';
 // Public identifier only. Never expose a Conversions API token here.
 const pixelId = import.meta.env.PUBLIC_META_PIXEL_ID?.trim() ?? '';
 const enabled = /^\d{5,25}$/.test(pixelId);
+// The two homepages supply an in-flow choice immediately after the hero.
+const homepage = ['/', '/bm', '/bm/'].includes(Astro.url.pathname);
 ---
-{enabled && <>
-  <div id="meta-preference" data-pixel-id={pixelId}>
+{enabled && (inlineChoice || !homepage) && <>
+  <div id="meta-preference" class:list={[inlineChoice && 'meta-inline']} data-pixel-id={pixelId}>
     <section id="meta-choice" hidden aria-label={bm ? 'Pilihan iklan' : 'Advertising preferences'}>
       <p>{bm ? 'Benarkan Meta Pixel untuk mengukur iklan Facebook dan Instagram? Pilihan ini berasingan daripada analitik laman web.' : 'Allow Meta Pixel to measure Facebook and Instagram ads? This choice is separate from site analytics.'} <a href="/privacy-policy/">{bm ? 'Privasi (EN)' : 'Privacy'}</a></p>
       <div><button type="button" data-meta-choice="denied">{bm ? 'Tolak' : 'Decline'}</button><button type="button" data-meta-choice="granted">{bm ? 'Benarkan' : 'Allow'}</button></div>
@@ -81,4 +83,11 @@ const enabled = /^\d{5,25}$/.test(pixelId);
   #meta-choice a { text-decoration:underline; }
   #meta-settings { position:fixed; right:16px; bottom:80px; z-index:90; min-height:44px; padding:8px 12px; background:#fdfbf7; color:#16202a; border:1px solid #16202a; border-radius:4px; font:12px/1.5 Inter,Arial,sans-serif; }
   #meta-preference :is(a,button):focus-visible { outline:3px solid #1e3a8a; outline-offset:4px; }
+  .meta-inline { background: #faf6eb; padding: 0 max(20px, calc((100% - 1312px) / 2)); }
+  .meta-inline #meta-choice { position: static; max-width: none; margin: 0; padding: 12px 0; border: 0; border-top: 1px solid #d8d0c2; background: transparent; box-shadow: none; }
+  .meta-inline #meta-choice:not([hidden]) { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .meta-inline #meta-choice p { max-width: 70ch; }
+  .meta-inline #meta-choice div { margin: 0; gap: 8px; }
+  .meta-inline #meta-settings { position: static; border: 0; background: transparent; text-decoration: underline; text-underline-offset: 3px; }
+  .meta-inline:has(#meta-choice:not([hidden])) #meta-settings { display: none; }
 </style>

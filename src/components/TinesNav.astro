@@ -7,21 +7,23 @@ interface Props {
 const { locale = 'en' } = Astro.props;
 const isBm = locale === 'bm';
 const homePath = isBm ? '/bm/' : '/';
+const isHome = Astro.url.pathname === '/' || Astro.url.pathname === '/bm' || Astro.url.pathname === '/bm/';
+const anchorBase = isHome ? '' : homePath;
 
 const navLinks = isBm
   ? [
-      { label: 'Servis', href: '#services', hasCaret: true },
-      { label: 'Projek', href: '#projects', hasCaret: true },
+      { label: 'Servis', href: `${anchorBase}#services`, hasCaret: true },
+      { label: 'Projek', href: isHome ? '#projects' : localizeHref('/projects/', locale), hasCaret: true },
       { label: 'Sistem', href: localizeHref('/services/automation/', locale), hasCaret: false },
-      { label: 'Harga', href: '#pricing', hasCaret: false },
-      { label: 'Ruang Bina', href: '#workbench-playground', hasCaret: false },
+      { label: 'Harga', href: `${anchorBase}#pricing`, hasCaret: false },
+      { label: 'Ruang Bina', href: `${anchorBase}#workbench-playground`, hasCaret: false },
     ]
   : [
-      { label: 'Services', href: '#services', hasCaret: true },
-      { label: 'Projects', href: '#projects', hasCaret: true },
+      { label: 'Services', href: `${anchorBase}#services`, hasCaret: true },
+      { label: 'Projects', href: isHome ? '#projects' : '/projects/', hasCaret: true },
       { label: 'Systems', href: '/services/automation/', hasCaret: false },
-      { label: 'Pricing', href: '#pricing', hasCaret: false },
-      { label: 'Playground', href: '#workbench-playground', hasCaret: false },
+      { label: 'Pricing', href: `${anchorBase}#pricing`, hasCaret: false },
+      { label: 'Playground', href: `${anchorBase}#workbench-playground`, hasCaret: false },
     ];
 
 const whatsappHref =
@@ -67,7 +69,7 @@ const switchToMalay = localeSwitchHref(Astro.url.pathname, 'bm');
         <a href={switchToMalay} lang="ms-MY" aria-current={isBm ? 'page' : undefined}>BM</a>
       </div>
 
-      <a class="tines-header__textlink" href="#pricing">
+      <a class="tines-header__textlink" href={`${anchorBase}#pricing`}>
         {isBm ? 'Harga' : 'Pricing'}
       </a>
 
@@ -83,7 +85,7 @@ const switchToMalay = localeSwitchHref(Astro.url.pathname, 'bm');
 
       <a
         class="tines-header__search"
-        href="#projects"
+        href={isHome ? '#projects' : localizeHref('/projects/', locale)}
         aria-label={isBm ? 'Teroka projek' : 'Explore projects'}
         title={isBm ? 'Teroka projek' : 'Explore projects'}
       >

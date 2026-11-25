@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "contentId": "home-service-website-content-ideas-malaysia",
+  "route": "/blog/home-service-website-content-ideas-malaysia/",
+  "decision": "approved",
+  "reviewer": "Iffat Haikal (owner)",
+  "approvedAt": "2026-11-23T04:29:52.489Z",
+  "digest": "sha256:bd718b7bd24975b75e6fe490515763c52b3b43dc8beac2c17402409b4dcf4dd5",
+  "checks": {
+    "accuracy": true,
+    "evidence": true,
+    "disclosure": true,
+    "assetRights": true
+  }
+}

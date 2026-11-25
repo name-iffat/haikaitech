@@ -222,6 +222,7 @@ const services = englishServices.map((service, index) => isBm
 
   <footer class="wb-services-footer">
     <p>{isBm ? 'Website bermula RM799 • E-dagang bermula RM3,500 • Sistem sebut harga' : 'Websites from RM799 • Ecom from RM3,500 • Systems by quotation'}</p>
+    <p>{isBm ? <>Studio di Penang — <a href="/web-design-penang/">web design Penang</a> & <a href="/web-design-selangor/">Selangor</a>.</> : <>Penang-based studio — <a href="/web-design-penang/">web design in Penang</a> & <a href="/web-design-selangor/">Selangor</a>.</>}</p>
     <a class="wb-button wb-primary" href={localizeHref('/services/', locale)}>{isBm ? bmHome.services.pricing : 'Explore services &amp; pricing'}</a>
   </footer>
 </section>

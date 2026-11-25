@@ -24,11 +24,11 @@ export default function FooterWorkbench({ newsletterSource = 'footer', locale = 
       </section>
       <nav aria-label="Footer explore" className="wb-footer-links">
         <h3>{copy?.explore ?? 'Explore'}</h3>
-        <a href={localizeHref('/#projects', locale)}>{copy?.work ?? 'Work'}</a><a href={localizeHref('/services/', locale)}>{copy?.services ?? 'Services'}</a><a href={localizeHref('/#about', locale)}>{copy?.about ?? 'About'}</a><a href="/blog/">{copy?.insights ?? 'Insights'}</a>
+        <a href={localizeHref('/#projects', locale)}>{copy?.work ?? 'Work'}</a><a href={localizeHref('/services/', locale)}>{copy?.services ?? 'Services'}</a><a href={localizeHref('/#about', locale)}>{copy?.about ?? 'About'}</a><a href="/blog/">{copy?.insights ?? 'Insights'}</a>{!bm && <><a href="/web-design-penang/">Web Design Penang</a><a href="/web-design-selangor/">Web Design Selangor</a></>}
       </nav>
       <div className="wb-footer-directory">
         <nav aria-label="Footer resources" className="wb-footer-links">
-          <h3>{copy?.resources ?? 'Resources'}</h3><a href="/toolkit/">{copy?.toolkit ?? 'Business Toolkit'}</a><a href="/guide/">{copy?.guide ?? '2026 Lead Generation Guide'}</a>
+          <h3>{copy?.resources ?? 'Resources'}</h3><a href="/toolkit/">{copy?.toolkit ?? 'Business Toolkit'}</a><a href="https://invoice.haikaitech.my/">Free Invoice Generator</a><a href="/guide/">{copy?.guide ?? '2026 Lead Generation Guide'}</a>{!bm && <a href="/hermes-guide/">Hermes Desktop Guide (Ebook)</a>}
         </nav>
         <nav aria-label="Footer contact and social links" className="wb-footer-links">
           <h3>{copy?.elsewhere ?? 'Elsewhere'}</h3>

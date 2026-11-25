@@ -6,6 +6,7 @@ import TinesHero from '../../components/TinesHero.astro';
 import TinesEditorialAndPillars from '../../components/TinesEditorialAndPillars.astro';
 import TinesBentoAndProof from '../../components/TinesBentoAndProof.astro';
 import SelectedWorkSection from '../../components/SelectedWorkSection.astro';
+import IntegrationsHub from '../../components/IntegrationsHub.astro';
 import PricingWorkbench from '../../components/PricingWorkbench.astro';
 import InsightsNotebook from '../../components/InsightsNotebook.astro';
 import ContactSection from '../../../components/Sections/ContactWorkbench';
@@ -38,6 +39,7 @@ const alternates = { en: 'https://haikaitech.my/', bm: 'https://haikaitech.my/bm
       <TinesEditorialAndPillars locale="bm" />
       <TinesBentoAndProof locale="bm" />
       <SelectedWorkSection locale="bm" />
+      <IntegrationsHub locale="bm" />
       <div id="pricing" class="scroll-mt-24"><PricingWorkbench locale="bm" /></div>
       <InsightsNotebook locale="bm" posts={blogPosts} />
       <div id="start" class="scroll-mt-28"><ContactSection client:load locale="bm" /></div>

@@ -1,0 +1,237 @@
+---
+import WorkbenchIcon from './WorkbenchIcon.astro';
+import { localizeHref, type SiteLocale } from '../utils/i18n';
+import '../styles/koji-preview.css';
+
+interface Props {
+  locale: SiteLocale;
+}
+
+const { locale } = Astro.props;
+const bm = locale === 'bm';
+const preview = '/design/koji-preview/';
+const home = localizeHref('/', locale);
+const servicePage = localizeHref('/services/', locale);
+const work = home + '#projects';
+const whatsapp = 'https://wa.me/60147533499?text=' + encodeURIComponent(
+  bm ? 'Salam HaikaiTech, saya ingin bincang projek untuk perniagaan saya.'
+    : 'Hi HaikaiTech, I’d like to discuss a project for my business.',
+);
+const asset = '/design/koji/';
+const copy = bm ? {
+  skip: 'Langkau ke kandungan', nav: 'Navigasi utama', home: 'Laman Utama',
+  work: 'Projek', services: 'Servis', pricing: 'Harga', about: 'Tentang',
+  language: 'Pilih bahasa', location: 'Studio digital / Pulau Pinang',
+  title: 'Laman web yang bekerja.', titleStart: 'Sistem yang', titleEnd: 'memudahkan.',
+  intro: 'Kami membina laman web, e-dagang dan sistem digital untuk membantu perniagaan Malaysia berkembang.',
+  contact: 'Bincang projek', seeWork: 'Lihat hasil kerja',
+  workspace: 'Workspace HaikaiTech', workspaceNav: 'Teroka HaikaiTech',
+  welcome: 'Selamat datang,', workspaceTitle: 'Mari bina idea anda.',
+  servicesLabel: 'Apa yang kami bina', servicesStart: 'Penyelesaian digital untuk',
+  servicesEm: 'perniagaan', servicesEnd: 'anda.',
+  servicesIntro: 'Daripada laman web hingga automasi AI, kami bina penyelesaian yang praktikal, berskala dan mudah diurus.',
+  seeServices: 'Lihat semua servis',
+} : {
+  skip: 'Skip to content', nav: 'Main navigation', home: 'Home',
+  work: 'Work', services: 'Services', pricing: 'Pricing', about: 'About',
+  language: 'Choose language', location: 'Digital studio / Penang',
+  title: 'Websites that work.', titleStart: 'Systems that', titleEnd: 'simplify.',
+  intro: 'We build websites, online stores and digital systems to help Malaysian businesses grow.',
+  contact: 'Discuss a project', seeWork: 'See our work',
+  workspace: 'HaikaiTech Workspace', workspaceNav: 'Explore HaikaiTech',
+  welcome: 'Welcome in.', workspaceTitle: 'Let’s build your idea.',
+  servicesLabel: 'What we build', servicesStart: 'Digital solutions for',
+  servicesEm: 'your', servicesEnd: 'business.',
+  servicesIntro: 'From websites to AI automation, we build practical solutions that can grow with your business and stay easy to manage.',
+  seeServices: 'See all services',
+};
+
+const navigation = [
+  { label: copy.home, href: '#home' },
+  { label: copy.work, href: work },
+  { label: copy.services, href: '#services' },
+  { label: copy.pricing, href: servicePage + '#pricing' },
+  { label: copy.about, href: home + '#about' },
+];
+
+const services = [
+  {
+    id: 'web', icon: 'layout', label: bm ? 'Laman Web & E-dagang' : 'Websites & Ecommerce',
+    short: bm ? 'Laman web & e-dagang' : 'Websites & ecommerce', tone: 'sky',
+    description: bm ? 'Laman web profesional dan kedai dalam talian yang membantu anda menjual.'
+      : 'Professional websites and online stores built to help you sell.',
+    href: servicePage,
+  },
+  {
+    id: 'systems', icon: 'blocks', label: bm ? 'Sistem & Dashboard' : 'Systems & Dashboards',
+    short: bm ? 'Sistem & dashboard' : 'Systems & dashboards', tone: 'lavender',
+    description: bm ? 'Sistem khas dan papan pemuka untuk operasi perniagaan anda.'
+      : 'Custom systems and dashboards for your day-to-day operations.',
+    href: servicePage + '#custom-software',
+  },
+  {
+    id: 'ai', icon: 'bot', label: bm ? 'Automasi AI' : 'AI Automation',
+    short: bm ? 'Automasi AI' : 'AI automation', tone: 'apricot',
+    description: bm ? 'Automasi tugasan berulang dengan AI supaya pasukan anda ada lebih masa.'
+      : 'Automate repetitive tasks with AI and give your team more time.',
+    href: localizeHref('/services/automation/', locale),
+  },
+  {
+    id: 'support', icon: 'wrench', label: bm ? 'Sokongan & Penyelenggaraan' : 'Support & Maintenance',
+    short: bm ? 'Sokongan & penyelenggaraan' : 'Support & maintenance', tone: 'mint',
+    description: bm ? 'Penyelenggaraan, kemas kini dan sokongan berterusan untuk laman web anda.'
+      : 'Ongoing maintenance, updates and support for your website.',
+    href: servicePage + '#maintenance',
+  },
+] as const;
+---
+
+<!doctype html>
+<html lang={bm ? 'ms-MY' : 'en'}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href={new URL(bm ? preview : preview + 'en/', Astro.site).href} />
+    <meta name="theme-color" content="#FCF8F4" />
+    <title>HaikaiTech · Koji Preview</title>
+    <link rel="icon" href="/favicon.ico" />
+  </head>
+  <body class="koji-preview">
+    <a class="koji-skip" href="#home">{copy.skip}</a>
+    <header class="koji-header">
+      <a class="koji-brand" href="#home" aria-label="HaikaiTech">
+        <img src="/haikaitech-mark.png" width="34" height="34" alt="" />
+        <span>HAIKAITECH<span aria-hidden="true">_</span></span>
+      </a>
+      <nav class="koji-nav" aria-label={copy.nav}>
+        {navigation.map(({ label, href }) => <a href={href}>{label}</a>)}
+      </nav>
+      <nav class="koji-languages" aria-label={copy.language}>
+        <a href={preview + 'en/'} lang="en" aria-current={!bm ? 'page' : undefined}>EN</a>
+        <span aria-hidden="true">/</span>
+        <a href={preview} lang="ms-MY" aria-current={bm ? 'page' : undefined}>BM</a>
+      </nav>
+      <a class="koji-button koji-button--primary koji-header-cta" href={whatsapp}>{copy.contact}<span class="koji-arrow koji-arrow--external" aria-hidden="true"></span></a>
+      <details class="koji-menu">
+        <summary>Menu</summary>
+        <nav aria-label={copy.nav}>
+          {navigation.map(({ label, href }) => <a href={href}>{label}</a>)}
+          <a href={whatsapp}>{copy.contact}</a>
+        </nav>
+      </details>
+    </header>
+
+    <main id="home">
+      <section class="koji-hero" aria-labelledby="koji-hero-title">
+        <div class="koji-hero-inner">
+          <div class="koji-flying" aria-hidden="true">
+            <img class="koji-flying-cloud" src={asset + 'clouds.svg'} alt="" />
+            <img class="koji-flying-accent" src={asset + 'accents.svg'} alt="" />
+            <img class="koji-flying-pose" src={asset + 'koji-flying.webp'} width="306" height="297" alt="" fetchpriority="high" />
+          </div>
+          <div class="koji-hero-copy">
+            <p class="koji-chip"><WorkbenchIcon name="globe" size={18} />{copy.location}</p>
+            <h1 id="koji-hero-title">
+              <span>{copy.title}</span>
+              <span>{copy.titleStart} <strong>{copy.titleEnd}</strong></span>
+            </h1>
+            <p class="koji-lead">{copy.intro}</p>
+            <div class="koji-actions">
+              <a class="koji-button koji-button--primary" href={whatsapp}>{copy.contact}<span class="koji-arrow koji-arrow--external" aria-hidden="true"></span></a>
+              <a class="koji-button koji-button--outline" href={work}>{copy.seeWork}</a>
+            </div>
+          </div>
+          <ul class="koji-quick-services">
+            {services.map((service) => (
+              <li><a href={'#koji-service-' + service.id}><WorkbenchIcon name={service.icon} size={27} /><span>{service.short}</span></a></li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="koji-scene">
+          <div class="koji-landscape" aria-hidden="true">
+            <img class="koji-scene-clouds" src={asset + 'clouds.svg'} alt="" />
+            <img class="koji-scene-clouds koji-scene-clouds--left" src={asset + 'clouds.svg'} alt="" />
+            <img class="koji-scene-skyline" src={asset + 'skyline.svg'} alt="" />
+            <img class="koji-scene-flowers" src={asset + 'flowers.svg'} alt="" />
+            <img class="koji-scene-trees" src={asset + 'trees.svg'} alt="" />
+            <img class="koji-scene-bushes koji-scene-bushes--left" src={asset + 'bushes.svg'} alt="" />
+            <img class="koji-scene-bushes koji-scene-bushes--right" src={asset + 'bushes.svg'} alt="" />
+          </div>
+          <div class="koji-workspace">
+            <div class="koji-workspace-chrome">
+              <span class="koji-window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span>{copy.workspace}</span>
+            </div>
+            <div class="koji-workspace-body">
+              <nav class="koji-workspace-nav" aria-label={copy.workspaceNav}>
+                <a href={work}><WorkbenchIcon name="briefcase" size={19} />{copy.work}</a>
+                {services.slice(1).map((service) => (
+                  <a href={'#koji-service-' + service.id}><WorkbenchIcon name={service.icon} size={19} />{service.short}</a>
+                ))}
+              </nav>
+              <div class="koji-workspace-main">
+                <p>{copy.welcome}</p>
+                <h2>{copy.workspaceTitle}</h2>
+                <ul>
+                  {services.map((service) => (
+                    <li class:list={['koji-' + service.tone]}>
+                      <a href={'#koji-service-' + service.id}>
+                        <WorkbenchIcon name={service.icon} size={24} /><span>{service.short}</span><span class="koji-arrow" aria-hidden="true"></span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="koji-services" id="services" aria-labelledby="koji-services-title">
+        <div class="koji-services-inner">
+          <div class="koji-services-intro">
+            <p class="koji-chip"><WorkbenchIcon name="blocks" size={18} />{copy.servicesLabel}</p>
+            <h2 id="koji-services-title">{copy.servicesStart} <strong>{copy.servicesEm}</strong> {copy.servicesEnd}</h2>
+            <p class="koji-lead">{copy.servicesIntro}</p>
+            <a class="koji-button koji-button--primary" href={servicePage}>{copy.seeServices}<span class="koji-arrow koji-arrow--external" aria-hidden="true"></span></a>
+            <div class="koji-working" aria-hidden="true">
+              <img class="koji-working-cloud" src={asset + 'clouds.svg'} alt="" />
+              <img class="koji-working-plant" src={asset + 'plants.svg'} alt="" />
+              <img class="koji-working-accent" src={asset + 'accents.svg'} alt="" />
+              <img class="koji-working-pose" src={asset + 'koji-working.webp'} width="256" height="256" alt="" loading="lazy" />
+            </div>
+          </div>
+
+          <ul class="koji-service-grid">
+            {services.map((service) => (
+              <li id={'koji-service-' + service.id} class:list={['koji-service', 'koji-' + service.tone]}>
+                <a href={service.href}>
+                  <img src={asset + 'service-' + service.id + '.svg'} width="300" height="155" loading="lazy" alt="" />
+                  <h3>{service.label}</h3>
+                  <p>{service.description}</p>
+                  <span class="koji-card-arrow" aria-hidden="true"><span class="koji-arrow"></span></span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <img class="koji-services-cloud" src={asset + 'clouds.svg'} alt="" loading="lazy" />
+      </section>
+    </main>
+    <script>
+      const menu = document.querySelector<HTMLDetailsElement>('.koji-menu');
+      menu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => { menu.open = false; }));
+      menu?.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && menu.open) {
+          menu.open = false;
+          menu.querySelector('summary')?.focus();
+        }
+      });
+    </script>
+  </body>
+</html>
+
+
+

@@ -1,9 +1,9 @@
 ---
 import { Image } from 'astro:assets';
 import bentoPenangDiorama from '../assets/hero/bento-haikai-penang-diorama.webp';
-import avsbinaPreview from '../assets/projects/avsbina.webp';
+import hssPreview from '../assets/projects/hss-wireless-cctv-desktop.png';
 import fuzzfloorLogo from '../assets/logos/fuzzfloor-logo.png';
-import avsLogo from '../assets/logos/avsbina-logo.png';
+import hssLogo from '../assets/logos/hss-logo.png';
 import type { SiteLocale } from '../utils/i18n';
 
 interface Props {
@@ -52,12 +52,12 @@ const copy = isBm
         href: 'https://fuzzfloor.com',
       },
       proofRight: {
-        badge: 'PROJEK PILIHAN · ALIRAN 3D',
-        quote: 'Platform konsultasi 3D yang membantu pasukan reka bentuk dan binaan Malaysia menukar prospek bernilai tinggi.',
-        chips: ['Paparan 3D', 'Aliran Tempahan', 'Astro + Motion'],
-        name: 'AVS Design & Construction',
-        role: 'avsbina.com.my',
-        href: 'https://avsbina.com.my',
+        badge: 'LAMAN B2B · SLOT TV3',
+        quote: 'Laman web B2B CCTV wireless untuk kedai, kilang dan projek besar seluruh Malaysia, lengkap dengan bukti paparan slot TV3 Borak Kopitiam.',
+        chips: ['Katalog B2B', 'Bukti Slot TV3', 'Sebut Harga WhatsApp'],
+        name: 'HSS Wireless CCTV',
+        role: 'wirelesscctv.com.my',
+        href: 'https://wirelesscctv.com.my/',
       },
     }
   : {
@@ -99,12 +99,12 @@ const copy = isBm
         href: 'https://fuzzfloor.com',
       },
       proofRight: {
-        badge: 'FEATURED BUILD · 3D FLOW',
-        quote: '3D-first consultation platform helping a Malaysian design and build team turn high-value leads into enquiries.',
-        chips: ['3D Showcase', 'Booking Flow', 'Astro + Motion'],
-        name: 'AVS Design & Construction',
-        role: 'avsbina.com.my',
-        href: 'https://avsbina.com.my',
+        badge: 'B2B WEBSITE · TV3 FEATURED',
+        quote: 'B2B wireless CCTV website built for Malaysian shops, factories and commercial projects, featuring their TV3 Borak Kopitiam slot.',
+        chips: ['B2B Catalog', 'TV3 Slot Proof', 'WhatsApp Quote'],
+        name: 'HSS Wireless CCTV',
+        role: 'wirelesscctv.com.my',
+        href: 'https://wirelesscctv.com.my/',
       },
     };
 ---
@@ -122,10 +122,10 @@ const copy = isBm
       </div>
 
       <ol class="tines-bento__list">
-        {copy.principles.map((item, idx) => (
+        {copy.principles.map((item) => (
           <li class="tines-bento__item">
             <div class="tines-bento__icon">
-              <span class="tines-bento__icon-fallback" aria-hidden="true">{String(idx + 1).padStart(2, '0')}</span>
+              <span class="tines-bento__icon-fallback" aria-hidden="true"></span>
               <canvas
                 class="tines-bento__lottie"
                 width="112"
@@ -136,10 +136,7 @@ const copy = isBm
               ></canvas>
             </div>
             <div class="tines-bento__copy">
-              <div class="tines-bento__row-head">
-                <h3>{item.title}</h3>
-                <span class="tines-bento__step" aria-hidden="true">{String(idx + 1).padStart(2, '0')}</span>
-              </div>
+              <h3>{item.title}</h3>
               <p>{item.body}</p>
             </div>
           </li>
@@ -222,11 +219,11 @@ const copy = isBm
                 <span></span>
                 <span></span>
               </span>
-              <span>avsbina.com.my</span>
+              <span>{copy.proofRight.role}</span>
             </div>
             <Image
               class="tines-proof-card__preview-img"
-              src={avsbinaPreview}
+              src={hssPreview}
               width={520}
               format="webp"
               quality={86}
@@ -243,12 +240,12 @@ const copy = isBm
             <span>{copy.proofRight.role}</span>
           </div>
           <Image
-            class="tines-proof-card__logo tines-proof-card__logo--avs"
-            src={avsLogo}
+            class="tines-proof-card__logo tines-proof-card__logo--hss"
+            src={hssLogo}
             width={160}
             format="webp"
             quality={85}
-            alt="AVS Design & Construction"
+            alt="HSS Wireless CCTV"
             loading="lazy"
             decoding="async"
           />

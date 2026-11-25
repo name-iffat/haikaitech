@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "contentId": "harga-buat-website-jangan-tunggu-orang-jumpa",
+  "route": "/blog/harga-buat-website-jangan-tunggu-orang-jumpa/",
+  "decision": "approved",
+  "reviewer": "Iffat Haikal (owner)",
+  "approvedAt": "2026-11-24T00:57:24.243Z",
+  "digest": "sha256:caa0dae59cb0a40f7618e81871f9758e8df9ac72f1febb68a4b808c299446053",
+  "checks": {
+    "accuracy": true,
+    "evidence": true,
+    "disclosure": true,
+    "assetRights": true
+  }
+}

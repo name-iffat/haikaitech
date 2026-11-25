@@ -15,6 +15,8 @@ Most Malaysian business owners do not want to become website administrators. The
 
 HaikaiTech no longer offers a public monthly website subscription. Current work is scoped through a promotional starting point, a fixed quotation or an approved phased build. This guide explains the ownership and maintenance questions to settle before accepting any quotation.
 
+> TL;DR: Settle six questions before signing any website quotation: what credentials and files transfer, which costs recur, who owns each account, what launch support is included, how future work is quoted, and what happens if you move providers. Maintenance keeps the build working; new features are separate development.
+
 ## What ownership should mean
 
 For a completed one-time quoted project, the quotation should identify what is handed over after final payment. Depending on the project, that may include:
@@ -63,6 +65,8 @@ Separating the two avoids a common disagreement: one side expects unlimited impr
 Selected standard website promotions start from **RM799**, with Professional + Lite CMS websites from **RM1,700**. The promotion is a starting point for defined scopes, not a universal package price. Ecommerce, booking, payments, integrations and custom systems are quoted according to the real requirements.
 
 Standard projects generally use a 50% payment to start and 50% before final launch or handover. The formal quotation confirms the exact deliverables, exclusions, ownership terms and ongoing costs.
+
+**Key takeaway:** Ownership is paperwork, not vibes. If the quotation doesn't name every account, file, and recurring cost, don't pay the deposit yet.
 
 [Request a quotation on WhatsApp](https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%27d%20like%20a%20quotation%20for%20a%20website.) or review the current [services and pricing guide](/services/).
 

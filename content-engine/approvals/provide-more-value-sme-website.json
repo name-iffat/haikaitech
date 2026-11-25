@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "contentId": "provide-more-value-sme-website",
+  "route": "/blog/provide-more-value-sme-website/",
+  "decision": "approved",
+  "reviewer": "Iffat Haikal (owner)",
+  "approvedAt": "2026-11-23T04:29:52.489Z",
+  "digest": "sha256:4091d7420d7662f3efcc4a4292aeb2a9f0ce55775948862b53bf26c86c67ff65",
+  "checks": {
+    "accuracy": true,
+    "evidence": true,
+    "disclosure": true,
+    "assetRights": true
+  }
+}

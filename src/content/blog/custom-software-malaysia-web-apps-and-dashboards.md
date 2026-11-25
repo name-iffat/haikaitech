@@ -1,6 +1,6 @@
 ---
-title: "Custom Software in Malaysia: Web Apps, Dashboards, .NET, and Unity"
-description: "When a website isn't enough — custom web apps, business dashboards, .NET/Blazor systems, and Unity visualizations for Malaysian businesses. How quotation-based pricing works and how to start."
+title: "Custom Business Systems Malaysia 2026: SME Pricing, Demos & What We Build"
+description: "Custom business systems, booking portals and dashboards for Malaysian SMEs — what we build, single-tenant ownership, and transparent RM quotation-based pricing."
 pubDate: 2026-08-06
 tags: [custom-software, dashboards, malaysia, development]
 status: published
@@ -14,6 +14,8 @@ updatedDate: 2026-11-16
 At some point, a business hits the wall where a website or an off-the-shelf app stops being enough. Maybe you're running your operations on a spreadsheet that's become a full-time job. Maybe you need a dashboard that shows live KPIs. Maybe you need a system built around *your* workflow, not the other way around.
 
 That's custom software. This post explains what it is, what it costs in Malaysia, and how the process actually works.
+
+> TL;DR: When spreadsheets and off-the-shelf apps can't fit your workflow, custom software — web apps, dashboards, .NET systems — is quoted by scope with a fixed price before work starts. You own the source, credentials, and handover.
 
 ## When a website isn't enough
 
@@ -70,6 +72,8 @@ The single biggest driver of custom-software cost is **scope creep** — feature
 
 1. **The quote is the contract.** The fixed price covers the agreed scope; anything genuinely new is quoted separately and agreed first.
 2. **We build the boring core first.** The 80% of features you'll actually use daily, shipped and in use, before the nice-to-haves.
+
+**Key takeaway:** If the problem is clear, a scoping call plus a fixed quotation is the whole starting process — you'll know whether it's a website project or a custom build before paying anything.
 
 ## Getting started
 

@@ -2,6 +2,7 @@ export type SiteLocale = 'en' | 'bm';
 
 const translatedRoutes = new Set([
   '/',
+  '/projects/',
   '/services/',
   '/services/automation/',
   '/services/ecommerce/',

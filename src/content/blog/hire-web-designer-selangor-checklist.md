@@ -13,6 +13,8 @@ review:
 
 Every week, a business owner in Shah Alam or Petaling Jaya opens Google, searches "web designer Selangor", and gets back a confusing mix of freelancers, agencies and platforms — with prices from RM500 to RM50,000. This post is a checklist for making that decision well, whether your designer is in Selangor, Penang, or anywhere else in Malaysia.
 
+> TL;DR: Designer location barely matters — same timezone and WhatsApp workflow matter more. Hire on six checks: published prices, ownership in writing, after-launch updates, real included SEO basics, clear content responsibilities, and zero guaranteed customers or rankings.
+
 ## The location question, settled
 
 Here is a truth that saves most people hours of anxiety: **for a business website, where your designer is physically located barely matters.**
@@ -50,5 +52,7 @@ No enquiry volume or search ranking can be guaranteed by a build. Promises of ei
 ## A note on working with us from Selangor
 
 Day-to-day work runs over WhatsApp and scheduled calls, with reviews on a staging link before launch. If an in-person session in the Klang Valley would genuinely help, tell us and we will arrange it and state it in the quotation.
+
+**Key takeaway:** Run every candidate — Selangor or otherwise — through the six checks above, and only pay a deposit against a quotation that answers them in writing.
 
 If you want a number for your scope, [chat with us on WhatsApp](https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%20read%20your%20Selangor%20checklist%20and%20would%20like%20a%20quotation.) — you approve a formal quotation before paying anything.

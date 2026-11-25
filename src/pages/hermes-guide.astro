@@ -1,0 +1,150 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import WorkbenchNav from '../components/WorkbenchNav.astro';
+import FooterWorkbench from '../../components/FooterWorkbench';
+import StickyBooking from '../../components/StickyBooking';
+import '../styles/workbench.css';
+import coverArt from '../assets/guide/hermes-ebook-cover.jpg';
+
+const canonical = 'https://haikaitech.my/hermes-guide/';
+const gumroad = 'https://haikaitech.gumroad.com/l/hermes-desktop-ebook-guide';
+const whatsapp = 'https://wa.me/60147533499?text=' + encodeURIComponent(
+  'Hi HaikaiTech! I got the Hermes Desktop guide and would like help setting it up for my business.'
+);
+
+const faqs: [string, string][] = [
+  ['Is this an official Hermes product?', 'No. This is an independent, practical guide written by HaikaiTech Solutions. Hermes Desktop is built by Nous Research; the guide teaches you how to set it up and use it for everyday business tasks, with screenshots, examples and troubleshooting.'],
+  ['What exactly do I get?', 'A digital PDF with ten illustrated chapters (218 pages), real screenshots, exercises, a glossary and business-memory starter material, plus a ZIP with the lightweight invoice browser kit. Bonus sections list curated open-source tools. The 20-prompt pack is also available separately for free — the paid guide adds the walkthroughs, stories and context around them.'],
+  ['How much does it cost?', 'You name a fair price starting from RM24.65 on Gumroad. Note: model providers and optional tools may charge separately for usage.'],
+  ['I am not technical. Is this for me?', 'Yes — it is written for freelancers, entrepreneurs and small-business owners with little technical experience, from planning the setup to practising useful business tasks.'],
+  ['Can I get a refund?', 'Gumroad lists this product as no refunds, so please read the product page carefully before buying. If you are unsure, start with the free 20-prompt pack first.'],
+  ['Can HaikaiTech set this up for me instead?', 'Yes. If you want Hermes Desktop configured around your business — instructions, context, research and drafting workflows — chat with us on WhatsApp and we will quote it as an automation setup.'],
+];
+
+const bookSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Book',
+  name: 'Your Own AI Business Assistant: A Practical Guide to Getting Started with Hermes Desktop',
+  author: { '@type': 'Organization', name: 'HaikaiTech Solutions', url: 'https://haikaitech.my/' },
+  inLanguage: 'en',
+  numberOfPages: 218,
+  bookFormat: 'EBook',
+  url: canonical,
+  offers: {
+    '@type': 'Offer',
+    priceCurrency: 'MYR',
+    price: '24.65',
+    availability: 'https://schema.org/InStock',
+    url: gumroad,
+  },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+};
+---
+
+<BaseLayout
+  title="Hermes Desktop Guide for Business | Ebook by HaikaiTech"
+  description="Your Own AI Business Assistant: a practical 218-page illustrated guide to setting up Hermes Desktop for everyday business tasks. From RM24.65 on Gumroad — written by HaikaiTech Solutions, Penang."
+  canonical={canonical}
+  socialImage="https://haikaitech.my/og/hermes-guide-og.jpg"
+  socialImageAlt="Your Own AI Business Assistant — a practical illustrated guide to Hermes Desktop, by Iffat Haikal, HaikaiTech"
+>
+  <div class="workbench hg-page bg-paper bg-grid-pattern">
+    <WorkbenchNav />
+    <main class="hg-main">
+      <nav class="hg-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span aria-hidden="true">/</span><span>Own products</span><span aria-hidden="true">/</span><span>Hermes guide</span>
+      </nav>
+      <section class="hg-hero" aria-labelledby="hg-title">
+        <div class="hg-copy">
+          <p class="wb-eyebrow">Own product · Ebook · 218 pages</p>
+          <h1 id="hg-title">Your own AI business assistant.<br /><em>Without hiring anyone.</em></h1>
+          <p class="hg-intro">A practical, illustrated guide to getting started with Hermes Desktop: plan your setup, give your assistant clear instructions, and use it for everyday business tasks — client messages, research notes, invoice and email drafts — with you in control of the decisions.</p>
+          <p class="hg-price">Ebook from <strong>RM24.65</strong><span>you name a fair price · PDF + ZIP · 28 MB</span></p>
+          <div class="hg-actions">
+            <a class="wb-button wb-button--painted" href={gumroad} target="_blank" rel="noopener noreferrer"><span>Get the ebook</span></a>
+            <a class="wb-button wb-secondary" href={whatsapp} target="_blank" rel="noopener noreferrer"><span>Want setup help instead?</span></a>
+          </div>
+          <p class="hg-note">Independent guide by HaikaiTech Solutions. Hermes Desktop is built by Nous Research — this book teaches you how to use it, step by step, with screenshots.</p>
+        </div>
+        <div class="hg-cover">
+          <Image src={coverArt} width={1000} widths={[480, 720, 1000]} sizes="(max-width: 760px) 90vw, 400px" alt="Your Own AI Business Assistant — a practical illustrated guide to getting started with Hermes Desktop, by Iffat Haikal" format="webp" loading="eager" fetchpriority="high" />
+        </div>
+      </section>
+
+      <section class="hg-section" aria-labelledby="hg-inside">
+        <p class="wb-eyebrow">Inside the book</p>
+        <h2 id="hg-inside">Ten chapters, zero fluff.</h2>
+        <ul class="hg-list">
+          <li><strong>Plan your setup</strong> — connect a model provider and know where to check usage and costs.</li>
+          <li><strong>Shape your assistant</strong> — find conversations again and write instructions it actually follows.</li>
+          <li><strong>Feed it context</strong> — supply business context and decide when an extra capability is worth it.</li>
+          <li><strong>Do real work</strong> — research notes, invoice drafts and client-email drafts, then verify facts before using them.</li>
+          <li><strong>Fix things</strong> — troubleshooting plus honest limits of optional connections and maintenance.</li>
+          <li><strong>Keep going</strong> — glossary, exercises and business-memory starter material.</li>
+        </ul>
+        <p>Bonus: a curated open-source tools list — and 20 standalone prompts that are also free on their own. The paid guide adds the stories, walkthroughs and context around them. The ZIP includes the lightweight invoice browser kit.</p>
+      </section>
+
+      <section class="hg-section" aria-labelledby="hg-who">
+        <p class="wb-eyebrow">Who it is for</p>
+        <h2 id="hg-who">Freelancers, founders, small teams.</h2>
+        <p>Written for people with little technical experience. If you can use WhatsApp and email, you can follow this book. Model providers and optional tools may charge separately for usage — the book shows you where to check.</p>
+      </section>
+
+      <section class="hg-section" aria-labelledby="hg-faq">
+        <p class="wb-eyebrow">Before you buy</p>
+        <h2 id="hg-faq">Fair questions.</h2>
+        {faqs.map(([q, a]) => <details><summary>{q}<span aria-hidden="true">+</span></summary><p>{a}</p></details>)}
+      </section>
+
+      <section class="hg-section hg-final" aria-labelledby="hg-start">
+        <p class="wb-eyebrow">Your next step</p>
+        <h2 id="hg-start">Start with the book. Or skip to done-for-you.</h2>
+        <div class="hg-actions">
+          <a class="wb-button wb-button--painted" href={gumroad} target="_blank" rel="noopener noreferrer"><span>Get the ebook from RM24.65</span></a>
+          <a class="wb-button wb-secondary" href="/services/automation/"><span>See automation services</span></a>
+        </div>
+        <p>The ebook teaches you to fish. If you would rather we cook — <a href={whatsapp} target="_blank" rel="noopener noreferrer">WhatsApp us for an automation setup quote</a>.</p>
+      </section>
+    </main>
+    <FooterWorkbench client:load locale="en" />
+    <StickyBooking client:load locale="en" />
+  </div>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(bookSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+</BaseLayout>
+
+<style>
+  .hg-main { max-width: 880px; margin: 0 auto; padding: 3rem 1.25rem 4rem; }
+  .hg-breadcrumb { font-size: 0.85rem; margin-bottom: 1rem; opacity: 0.75; }
+  .hg-breadcrumb a { text-decoration: underline; }
+  .hg-breadcrumb span[aria-hidden="true"] { margin: 0 0.4rem; }
+  .hg-hero { display: grid; grid-template-columns: 1.4fr 1fr; gap: 2rem; align-items: center; padding: 2rem 0 2.5rem; border-bottom: 2px dashed rgba(15, 23, 42, 0.15); }
+  .hg-hero h1 { font-size: clamp(2rem, 5vw, 3.1rem); line-height: 1.1; margin: 0.75rem 0 1rem; }
+  .hg-hero h1 em { font-style: italic; }
+  .hg-intro { font-size: 1.08rem; line-height: 1.65; }
+  .hg-price { font-size: 1.05rem; margin-top: 1.25rem; }
+  .hg-price span { display: block; font-size: 0.9rem; opacity: 0.75; }
+  .hg-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1.25rem 0 0.75rem; }
+  .hg-note { font-size: 0.92rem; opacity: 0.8; }
+  .hg-cover { display: flex; justify-content: center; }
+  .hg-book { width: 240px; height: 340px; background: #16224d; color: #f5efe0; border-radius: 6px 14px 14px 6px; padding: 2rem 1.5rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 12px 12px 0 #e8b64c, 24px 24px 0 rgba(15,23,42,0.15); font-weight: 800; }
+  .hg-book span { font-size: 1.6rem; line-height: 1.25; }
+  .hg-book small { font-weight: 400; font-size: 0.9rem; opacity: 0.85; }
+  .hg-section { padding: 2.5rem 0; border-bottom: 2px dashed rgba(15, 23, 42, 0.15); }
+  .hg-section h2 { font-size: clamp(1.4rem, 3vw, 2rem); margin: 0.6rem 0 1rem; line-height: 1.25; }
+  .hg-section p { line-height: 1.65; max-width: 68ch; }
+  .hg-list { line-height: 1.7; padding-left: 1.25rem; max-width: 68ch; }
+  .hg-list li { margin-bottom: 0.6rem; }
+  .hg-section details { border-top: 1px solid rgba(15, 23, 42, 0.2); padding: 0.9rem 0; max-width: 68ch; }
+  .hg-section details:last-of-type { border-bottom: 1px solid rgba(15, 23, 42, 0.2); }
+  .hg-section summary { cursor: pointer; font-weight: 600; display: flex; justify-content: space-between; gap: 1rem; }
+  .hg-final { border-bottom: none; }
+  @media (max-width: 760px) { .hg-hero { grid-template-columns: 1fr; } }
+</style>

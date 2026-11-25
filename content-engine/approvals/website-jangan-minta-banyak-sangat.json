@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "contentId": "website-jangan-minta-banyak-sangat",
+  "route": "/blog/website-jangan-minta-banyak-sangat/",
+  "decision": "approved",
+  "reviewer": "Iffat Haikal (owner)",
+  "approvedAt": "2026-11-23T04:29:52.489Z",
+  "digest": "sha256:755f38299a5698b6cf20dc85d8e1bf87fa2f4f0984f39e29d0683a018a439d63",
+  "checks": {
+    "accuracy": true,
+    "evidence": true,
+    "disclosure": true,
+    "assetRights": true
+  }
+}

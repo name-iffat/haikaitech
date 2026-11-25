@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "contentId": "website-content-question-planning",
+  "route": "/blog/website-content-question-planning/",
+  "decision": "approved",
+  "reviewer": "Iffat Haikal (owner)",
+  "approvedAt": "2026-11-23T04:29:52.489Z",
+  "digest": "sha256:c994c3debec86c088feff10727484eeead32e981b76b5bc74be23761299041ff",
+  "checks": {
+    "accuracy": true,
+    "evidence": true,
+    "disclosure": true,
+    "assetRights": true
+  }
+}

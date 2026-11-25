@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "contentId": "web-design-selangor-ai-seo-add-on",
+  "route": "/blog/web-design-selangor-ai-seo-add-on/",
+  "decision": "approved",
+  "reviewer": "Iffat Haikal (owner)",
+  "approvedAt": "2026-11-23T04:29:52.489Z",
+  "digest": "sha256:8f3a2905a8799895e44c5d765652952ffacd7be3f11f29700620501610698255",
+  "checks": {
+    "accuracy": true,
+    "evidence": true,
+    "disclosure": true,
+    "assetRights": true
+  }
+}

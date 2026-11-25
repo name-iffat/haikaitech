@@ -1,0 +1,290 @@
+@font-face {
+  font-family: 'Koji Inter';
+  src: url('/design/koji/inter-latin.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+}
+
+.koji-preview {
+  --paper: #fcf8f4;
+  --ink: #162951;
+  --blue: #1e3a8a;
+  --cobalt: #2047c7;
+  --border: #cfc7f4;
+  --width: min(1290px, calc(100% - 96px));
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 1rem/1.45 'Koji Inter', Inter, Arial, sans-serif;
+  margin: 0;
+}
+.koji-preview *, .koji-preview *::before, .koji-preview *::after { box-sizing: border-box; }
+.koji-preview :where(h1, h2, h3, p, ul) { margin: 0; }
+.koji-preview ul { list-style: none; padding: 0; }
+.koji-preview a { color: inherit; text-decoration: none; }
+.koji-preview img { display: block; max-width: 100%; }
+.koji-preview a:focus-visible, .koji-preview summary:focus-visible {
+  outline: 3px solid var(--cobalt);
+  outline-offset: 4px;
+}
+.koji-preview ::selection { background: #dcd3ff; color: var(--ink); }
+.koji-skip {
+  position: absolute;
+  z-index: 20;
+  top: 8px;
+  left: 8px;
+  background: white;
+  padding: 12px 16px;
+  transform: translateY(-150%);
+}
+.koji-skip:focus { transform: none; }
+.koji-header {
+  position: relative;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto;
+  align-items: center;
+  gap: 26px;
+  width: var(--width);
+  min-height: 88px;
+  margin-inline: auto;
+  color: var(--blue);
+  font-weight: 700;
+}
+.koji-brand { display: inline-flex; gap: 8px; align-items: center; justify-self: start; font-weight: 850; letter-spacing: -.045em; font-size: 22px; white-space: nowrap; }
+.koji-brand img { object-fit: contain; }
+.koji-nav, .koji-languages { display: flex; align-items: center; font-size: 14px; }
+.koji-nav { gap: clamp(16px, 2.6vw, 40px); }
+.koji-nav a, .koji-languages a { display: grid; align-items: center; min-height: 44px; }
+.koji-nav a:first-child, .koji-languages [aria-current] { text-decoration: underline; text-underline-offset: 7px; }
+.koji-languages { justify-self: end; gap: 8px; }
+.koji-languages span { color: #677199; }
+.koji-menu { display: none; align-self: center; }
+.koji-menu summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; font-size: 13px; }
+.koji-menu summary::marker, .koji-menu summary::-webkit-details-marker { display: none; }
+.koji-menu nav { position: absolute; top: 100%; right: 0; min-width: 190px; display: grid; padding: 6px 12px; background: var(--paper); border: 1px solid var(--border); border-radius: 13px; box-shadow: 0 10px 22px #2b26541e; }
+.koji-menu nav a { padding: 12px 8px; }
+.koji-button {
+  display: inline-flex;
+  min-height: 47px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 770;
+  line-height: 1.15;
+  text-align: center;
+  text-transform: uppercase;
+}
+.koji-preview .koji-button--primary { background: var(--blue); color: white; }
+.koji-preview .koji-button--primary:hover { background: #153070; }
+.koji-preview .koji-button--outline { border-color: var(--cobalt); color: var(--blue); }
+.koji-preview .koji-button--outline:hover { background: #eeeaff; }
+.koji-header-cta { font-size: 12px; min-height: 40px; white-space: nowrap; }
+.koji-arrow {
+  --length: 14px;
+  position: relative;
+  display: inline-block;
+  width: var(--length);
+  height: 14px;
+  flex: 0 0 var(--length);
+}
+.koji-arrow::before, .koji-arrow::after { content: ''; position: absolute; }
+.koji-arrow::before { width: 100%; inset: 6px 0 auto; border-top: 1.7px solid currentColor; }
+.koji-arrow::after { width: 7px; height: 7px; top: 3px; right: 1px; border: solid currentColor; border-width: 1.7px 1.7px 0 0; transform: rotate(45deg); }
+.koji-arrow--external { transform: rotate(-45deg); --length: 12px; }
+
+.koji-hero { position: relative; isolation: isolate; overflow: clip; }
+.koji-hero-inner { width: var(--width); margin: auto; position: relative; padding-top: 31px; z-index: 2; }
+.koji-hero-copy { text-align: center; position: relative; max-width: 950px; margin: auto; }
+.koji-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #c8b9fb;
+  border-radius: 30px;
+  background: #efe8fc;
+  color: #4c2caa;
+  padding: 6px 13px;
+  font-size: 12px;
+  font-weight: 780;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+}
+.koji-hero h1 { color: var(--ink); font-size: clamp(40px, 4.18vw, 66px); line-height: 1.01; font-weight: 850; letter-spacing: -.058em; margin-top: 22px; }
+.koji-hero h1 span { display: block; }
+.koji-preview :where(h1, h2) strong { color: var(--cobalt); font-weight: inherit; }
+.koji-lead { font-size: clamp(17px, 1.61vw, 23px); line-height: 1.36; letter-spacing: -.023em; }
+.koji-hero .koji-lead { max-width: 640px; margin: 15px auto 0; color: var(--blue); }
+.koji-actions { display: flex; gap: 17px; justify-content: center; margin-top: 18px; }
+.koji-actions a { min-width: 194px; }
+.koji-flying { width: clamp(144px, 18.6vw, 306px); position: absolute; left: -16px; top: 104px; z-index: -1; }
+.koji-flying-pose { position: relative; width: 100%; height: auto; }
+.koji-flying-cloud { position: absolute; bottom: -7%; left: -18%; width: 54%; }
+.koji-flying-accent { position: absolute; width: 52%; right: -8%; top: -13%; }
+.koji-quick-services { display: grid; grid-template-columns: repeat(4, 1fr); width: min(730px, 74%); margin: 24px auto 0 !important; color: var(--blue); }
+.koji-quick-services li + li { border-left: 1px solid var(--border); }
+.koji-quick-services a { display: flex; align-items: center; justify-content: center; gap: 9px; min-height: 44px; padding: 0 12px; font-size: 13px; font-weight: 720; line-height: 1.13; }
+.koji-quick-services a:hover { text-decoration: underline; }
+.koji-quick-services svg { flex: 0 0 auto; color: var(--cobalt); }
+.koji-quick-services span { max-width: 133px; }
+
+.koji-scene { position: relative; isolation: isolate; padding-top: 51px; }
+.koji-landscape, .koji-landscape img { position: absolute; pointer-events: none; }
+.koji-landscape { inset: 0; }
+.koji-scene-clouds { top: -73px; right: -7%; width: 30%; min-width: 250px; }
+.koji-scene-clouds--left { top: auto; bottom: 55px; right: auto; left: -12%; width: 37%; }
+.koji-scene-skyline { bottom: 44px; left: 1%; width: min(30%, 390px); }
+.koji-scene-flowers { width: min(30%, 425px); top: -20px; right: 14%; }
+.koji-scene-trees { width: min(16%, 210px); bottom: 104px; right: 1.5%; }
+.koji-scene-bushes { z-index: 2; width: min(29%, 430px); bottom: 0; }
+.koji-scene-bushes--left { left: -9%; transform: scaleX(-1); }
+.koji-scene-bushes--right { right: -8%; }
+.koji-workspace {
+  position: relative;
+  z-index: 3;
+  width: min(1040px, 76%);
+  margin-inline: auto;
+  border: 1px solid var(--border);
+  border-bottom: 0;
+  border-radius: 22px 22px 0 0;
+  background: #f0ecfc;
+  color: var(--blue);
+  box-shadow: 0 12px 32px #291c6825;
+}
+.koji-workspace-chrome { display: flex; align-items: center; gap: 18px; padding: 12px 18px; font-size: 12px; font-weight: 780; }
+.koji-window-dots { display: flex; gap: 6px; }
+.koji-window-dots i { width: 9px; height: 9px; background: #e16561; border-radius: 50%; }
+.koji-window-dots i:nth-child(2) { background: #f6b638; }
+.koji-window-dots i:nth-child(3) { background: #42a978; }
+.koji-workspace-body { display: grid; grid-template-columns: 170px minmax(0, 1fr); background: #e9e3fa url('/design/koji/workspace-pattern.svg') 0 0 / 28px; border-radius: 17px 17px 0 0; padding: 10px 10px 0; }
+.koji-workspace-nav { display: grid; align-content: start; padding: 12px 13px 16px 1px; gap: 6px; font-size: 12px; font-weight: 680; }
+.koji-workspace-nav a { display: flex; align-items: center; gap: 7px; padding: 9px 6px; border-radius: 7px; min-height: 41px; }
+.koji-workspace-nav a:first-child, .koji-workspace-nav a:hover { background: #dcd5fb; }
+.koji-workspace-nav svg { flex-shrink: 0; }
+.koji-workspace-main { padding: 22px 23px 25px; background: #fbf7f6; border: 1px solid #dcd1fa; border-bottom: 0; border-radius: 14px 14px 0 0; }
+.koji-workspace-main > p { font-size: 14px; font-weight: 700; }
+.koji-workspace-main h2 { font-size: 25px; line-height: 1.13; letter-spacing: -.048em; }
+.koji-workspace-main ul { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 9px; margin-top: 15px; }
+.koji-workspace-main li { background: var(--tint); border-radius: 11px; }
+.koji-workspace-main li a { display: grid; align-content: start; gap: 5px; min-height: 107px; padding: 12px; font-size: 13px; line-height: 1.16; font-weight: 720; }
+.koji-workspace-main li a:hover { text-decoration: underline; }
+.koji-workspace-main li .koji-arrow { justify-self: end; }
+.koji-sky { --tint: #e4edfc; --tile-edge: #d5e3fc; }
+.koji-lavender { --tint: #eee5fa; --tile-edge: #e8dafa; }
+.koji-apricot { --tint: #fcf0e2; --tile-edge: #fae8d5; }
+.koji-mint { --tint: #e8f4ee; --tile-edge: #daeee5; }
+
+.koji-services { position: relative; isolation: isolate; overflow: clip; background: #fffaf7; }
+.koji-services-inner { display: grid; grid-template-columns: minmax(0,.92fr) minmax(0,1.58fr); gap: clamp(25px,4vw,64px); width: var(--width); margin-inline: auto; padding: 67px 0 72px; }
+.koji-services-intro { position: relative; }
+.koji-services-intro h2 { position: relative; font-size: clamp(36px, 3.65vw, 56px); font-weight: 840; line-height: 1.02; letter-spacing: -.062em; margin-top: 18px; }
+.koji-services-intro .koji-lead { max-width: 424px; margin-top: 18px; }
+.koji-services-intro .koji-button { margin-top: 24px; }
+.koji-service-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; align-self: start; }
+.koji-service { background: var(--tint); border: 1px solid var(--tile-edge); border-radius: 24px; min-width: 0; scroll-margin-top: 20px; }
+.koji-service a { min-height: 100%; display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto auto 1fr; position: relative; padding: 14px 20px 19px; border-radius: inherit; }
+.koji-service a:hover { background: #ffffff60; }
+.koji-service img { display: block; object-fit: contain; justify-self: center; grid-column: 1/-1; width: min(100%, 280px); height: auto; }
+.koji-service h3 { color: var(--blue); grid-column: 1/-1; font-size: clamp(17px, 1.65vw, 25px); font-weight: 800; line-height: 1.13; letter-spacing: -.045em; margin-top: 4px; }
+.koji-service p { font-size: clamp(14px, 1.17vw, 17px); line-height: 1.32; margin-top: 8px; padding-right: 8px; }
+.koji-card-arrow { color: var(--blue); align-self: end; display: grid; place-items: center; width: 35px; height: 35px; border-radius: 50%; border: 1px solid var(--tile-edge); background: #ffffffb9; }
+.koji-working { position: relative; isolation: isolate; width: 100%; height: 262px; margin-top: 26px; }
+.koji-working::before { content: ''; position: absolute; bottom: -72px; left: -52%; height: 154px; width: 148%; border-radius: 48% 53% 0 0/100% 100% 0 0; background: #2444a5; border-top: 2px solid #6972d7; }
+.koji-working-pose { position: absolute; bottom: 23px; left: 22%; width: min(51%, 232px); height: auto; }
+.koji-working-cloud { position: absolute; z-index: -1; left: -20%; bottom: 35px; width: 112%; }
+.koji-working-plant { position: absolute; left: 5%; bottom: 35px; width: 22%; }
+.koji-working-accent { position: absolute; top: 7%; right: 8%; width: 22%; transform: rotate(-8deg); }
+.koji-services-cloud { position: absolute; width: 27%; min-width: 190px; bottom: -105px; right: -3%; z-index: -1; opacity: .64; pointer-events: none; }
+
+@media (max-width: 1230px) {
+  .koji-preview { --width: calc(100% - 66px); }
+  .koji-header { gap: 17px; }
+  .koji-hero-copy { max-width: 78%; }
+  .koji-flying { left: -9px; top: 120px; width: 17.2vw; }
+  .koji-working-pose { width: 60%; }
+}
+@media (max-width: 900px) {
+  .koji-header { grid-template-columns: 1fr auto auto; min-height: 65px; gap: 12px; }
+  .koji-nav, .koji-preview .koji-header-cta { display: none; }
+  .koji-menu { display: block; }
+  .koji-workspace { width: 86%; }
+  .koji-quick-services { width: 90%; }
+  .koji-services-inner { gap: 20px; }
+}
+@media (max-width: 700px) {
+  .koji-preview { --width: calc(100% - 32px); }
+  .koji-brand { font-size: 17px; gap: 6px; }
+  .koji-brand img { width: 26px; height: 26px; }
+  .koji-languages { font-size: 12px; gap: 5px; }
+  .koji-hero-inner { padding-top: 5px; }
+  .koji-flying { width: 112px; margin: 0 auto 15px; position: relative; left: auto; top: auto; }
+  .koji-flying-accent { width: 59%; right: -28%; top: 0; }
+  .koji-flying-cloud { width: 61%; left: -26%; }
+  .koji-hero-copy { max-width: 100%; }
+  .koji-chip { font-size: 10px; padding: 4px 10px; }
+  .koji-chip svg { width: 15px; height: 15px; }
+  .koji-hero h1 { font-size: clamp(29px, 7.55vw, 46px); margin-top: 13px; line-height: 1.04; text-wrap: balance; letter-spacing: -.055em; }
+  .koji-hero .koji-lead { max-width: 440px; margin-top: 10px; }
+  .koji-lead { font-size: 16px; }
+  .koji-actions { gap: 8px; margin-top: 16px; }
+  .koji-actions a { min-width: 0; flex: 0 1 164px; }
+  .koji-button { font-size: 11px; padding: 9px 10px; min-height: 44px; border-radius: 9px; }
+  .koji-quick-services { grid-template-columns: repeat(2,1fr); width: min(100%,365px); margin-top: 14px !important; }
+  .koji-quick-services li:nth-child(3) { border-left: 0; }
+  .koji-quick-services a { font-size: 11px; padding: 3px 7px; gap: 6px; justify-content: start; }
+  .koji-quick-services svg { width: 20px; height: 20px; }
+  .koji-scene { padding-top: 41px; }
+  .koji-workspace { width: calc(100% - 38px); border-radius: 15px 15px 0 0; }
+  .koji-workspace-chrome { padding: 8px 11px; font-size: 10px; gap: 10px; }
+  .koji-window-dots i { width: 7px; height: 7px; }
+  .koji-workspace-body { grid-template-columns: 1fr; padding: 5px 5px 0; }
+  .koji-workspace-nav { display: none; }
+  .koji-workspace-main { padding: 12px 10px 15px; border-radius: 10px 10px 0 0; }
+  .koji-workspace-main > p { font-size: 12px; }
+  .koji-workspace-main h2 { font-size: 20px; }
+  .koji-workspace-main ul { grid-template-columns: repeat(2,minmax(0,1fr)); margin-top: 9px; gap: 6px; }
+  .koji-workspace-main li a { display: flex; align-items: center; min-height: 50px; padding: 7px; gap: 4px; font-size: 10px; overflow-wrap: anywhere; }
+  .koji-workspace-main li a svg { width: 15px; height: 15px; flex-shrink: 0; }
+  .koji-workspace-main .koji-arrow { display: none; }
+  .koji-scene-clouds { top: -30px; right: -120px; min-width: 230px; }
+  .koji-scene-clouds--left { top: auto; bottom: 1px; left: -107px; }
+  .koji-scene-skyline { width: 175px; bottom: 30px; left: -77px; }
+  .koji-scene-flowers { width: 177px; top: 0; right: 3%; }
+  .koji-scene-trees { width: 110px; bottom: 45px; right: -42px; }
+  .koji-scene-bushes { width: 160px; }
+  .koji-scene-bushes--left { left: -102px; }
+  .koji-scene-bushes--right { right: -102px; }
+  .koji-services-inner { grid-template-columns: 1fr; padding: 39px 0 42px; gap: 20px; }
+  .koji-services-intro { min-height: 265px; }
+  .koji-services-intro h2 { font-size: clamp(34px, 8vw, 46px); margin-top: 12px; }
+  .koji-services-intro .koji-lead { margin-top: 9px; padding-right: 21%; }
+  .koji-services-intro .koji-button { margin-top: 14px; }
+  .koji-working { position: absolute; width: 102px; height: 102px; right: 0; bottom: -11px; margin: 0; }
+  .koji-working::before { width: 108%; height: 30%; bottom: -2%; left: 0; border-radius: 75% 65% 35% 40%; }
+  .koji-working-pose { width: 77%; bottom: 4%; left: 23%; }
+  .koji-working-cloud { width: 90%; left: -9%; bottom: 10%; }
+  .koji-working-accent { top: 15%; right: -2%; }
+  .koji-working-plant { width: 27%; left: 6%; bottom: 12%; }
+  .koji-service-grid { grid-template-columns: 1fr; gap: 11px; }
+  .koji-service { border-radius: 18px; }
+  .koji-service a { grid-template-columns: 95px minmax(0,1fr) 25px; grid-template-rows: auto 1fr; column-gap: 9px; padding: 11px 10px; align-items: center; }
+  .koji-service img { grid-row: 1/3; grid-column: 1; width: 100%; }
+  .koji-service h3 { grid-column: 2/4; grid-row: 1; font-size: 16px; }
+  .koji-service p { grid-column: 2; grid-row: 2; font-size: 13px; padding-right: 0; margin-top: 4px; }
+  .koji-card-arrow { grid-column: 3; grid-row: 2; width: 25px; height: 25px; }
+}
+@media (max-width: 359px) {
+  .koji-preview { --width: calc(100% - 24px); }
+  .koji-header { gap: 8px; }
+  .koji-brand { font-size: 15px; gap: 4px; }
+  .koji-services-intro .koji-lead { padding-right: 0; }
+  .koji-service a { grid-template-columns: 72px minmax(0,1fr) 25px; }
+  .koji-workspace { width: calc(100% - 28px); }
+}
+
+
+

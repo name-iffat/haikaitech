@@ -1,0 +1,328 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TinesNav from './TinesNav.astro';
+import MetaPixel from './MetaPixel.astro';
+import LenisScroll from './LenisScroll.astro';
+import FooterWorkbench from '../../components/FooterWorkbench';
+import StickyBooking from '../../components/StickyBooking';
+import { getWorkCatalog } from '../data/projects-catalog';
+import type { SiteLocale } from '../utils/i18n';
+import '../styles/workbench.css';
+import '../styles/tines-home.css';
+
+interface Props {
+  locale?: SiteLocale;
+}
+const { locale = 'en' } = Astro.props;
+const isBm = locale === 'bm';
+
+const { industries, industryById, allProjects, totalCount, liveCount } = getWorkCatalog(locale);
+
+const homeHref = isBm ? '/bm/' : '/';
+const canonical = isBm ? 'https://haikaitech.my/bm/projects/' : 'https://haikaitech.my/projects/';
+const alternates = {
+  en: 'https://haikaitech.my/projects/',
+  bm: 'https://haikaitech.my/bm/projects/',
+};
+
+const pageTitle = isBm
+  ? 'Semua Projek & Demo | HaikaiTech Pulau Pinang'
+  : 'All Projects & Live Builds | HaikaiTech';
+const pageDesc = isBm
+  ? `Teroka semua ${totalCount} laman web, kedai dalam talian dan sistem operasi yang dibina oleh HaikaiTech untuk perniagaan Malaysia.`
+  : `Browse all ${totalCount} real websites, ordering flows, and internal business systems built by HaikaiTech across Malaysia.`;
+---
+
+<BaseLayout
+  locale={locale}
+  title={pageTitle}
+  description={pageDesc}
+  canonical={canonical}
+  alternates={alternates}
+>
+  <div class="tines-home min-h-screen relative selection:bg-violet-200 selection:text-slate-900">
+    <TinesNav locale={locale} />
+
+    <main class="ht-archive-main">
+      <section class="ht-archive-page" id="archive-directory" data-locale={locale} data-total={totalCount} data-live={liveCount}>
+        <div class="tines-container">
+          <div class="ht-archive-hero">
+            <a class="ht-archive-back" href={homeHref}>
+              <span aria-hidden="true">&#8592;</span>
+              <span>{isBm ? 'Kembali ke halaman utama' : 'Back to home'}</span>
+            </a>
+
+            <svg class="ht-work__crest" width="84" height="86" viewBox="0 0 84 86" fill="none" aria-hidden="true">
+              <path
+                d="M17 6c2 0 3.7 1.4 4.1 3.2h3.8C25.3 7.4 27 6 29 6s3.7 1.4 4.1 3.2h3.8C37.3 7.4 39 6 41 6s3.7 1.4 4.1 3.2h3.8C49.3 7.4 51 6 53 6s3.7 1.4 4.1 3.2H65c1.1 0 2 .9 2 2v5.4c1.8.4 3.2 2.1 3.2 4.1s-1.4 3.7-3.2 4.1v4c1.8.4 3.2 2.1 3.2 4.1s-1.4 3.7-3.2 4.1v4c1.8.4 3.2 2.1 3.2 4.1s-1.4 3.7-3.2 4.1v4c1.8.4 3.2 2.1 3.2 4.1s-1.4 3.7-3.2 4.1v4c1.8.4 3.2 2.1 3.2 4.1s-1.4 3.7-3.2 4.1v4.4c0 1.1-.9 2-2 2h-4.4c-.4 1.8-2.1 3.2-4.1 3.2s-3.7-1.4-4.1-3.2h-3.8c-.4 1.8-2.1 3.2-4.1 3.2s-3.7-1.4-4.1-3.2h-3.8c-.4 1.8-2.1 3.2-4.1 3.2s-3.7-1.4-4.1-3.2h-3.8c-.4 1.8-2.1 3.2-4.1 3.2s-3.7-1.4-4.1-3.2H17c-1.1 0-2-.9-2-2v-4.4c-1.8-.4-3.2-2.1-3.2-4.1s1.4-3.7 3.2-4.1v-4c-1.8-.4-3.2-2.1-3.2-4.1s1.4-3.7 3.2-4.1v-4c-1.8-.4-3.2-2.1-3.2-4.1s1.4-3.7 3.2-4.1v-4c-1.8-.4-3.2-2.1-3.2-4.1s1.4-3.7 3.2-4.1v-4c-1.8-.4-3.2-2.1-3.2-4.1s1.4-3.7 3.2-4.1V8c0-1.1.9-2 2-2z"
+                fill="#FAF8F3"
+                stroke="#1D4ED8"
+                stroke-width="1.5"
+              />
+              <rect x="20" y="13" width="42" height="52" rx="2" fill="#1D4ED8" />
+              <path d="M27.5 49V31.5l3.5-5 3.5 5V49" fill="#FAF8F3" />
+              <rect x="30.2" y="21.5" width="1.6" height="4.5" fill="#FAF8F3" />
+              <path d="M36.5 49V37h17v12H36.5Z" fill="#FAF8F3" />
+              <path d="M39 37l4-5.5h6l4 5.5H39Z" fill="#FAF8F3" />
+              <rect x="39.5" y="40.5" width="3" height="4.5" rx="0.8" fill="#1D4ED8" />
+              <rect x="44.5" y="40.5" width="3" height="4.5" rx="0.8" fill="#1D4ED8" />
+              <rect x="49.5" y="40.5" width="2.5" height="4.5" rx="0.8" fill="#1D4ED8" />
+              <path d="M23.5 55.5c4.5-2.6 9-2.6 13.5 0s9 2.6 13.5 0c2.6-1.5 5-2 7.5-1.6" stroke="#FAF8F3" stroke-width="1.8" stroke-linecap="round" />
+              <path d="M23.5 60.2c4.5-2.2 9-2.2 13.5 0s9 2.2 13.5 0c2.6-1.3 5-1.7 7.5-1.3" stroke="#FAF8F3" stroke-width="1.4" stroke-linecap="round" opacity="0.72" />
+              <circle cx="52" cy="21.5" r="1.4" fill="#FAF8F3" />
+              <path d="M26 19.5l.6 1.5 1.5.6-1.5.6-.6 1.5-.6-1.5-1.5-.6 1.5-.6.6-1.5z" fill="#FAF8F3" />
+              <circle cx="20" cy="60" r="14" fill="#FAF8F3" fill-opacity="0.88" stroke="#1D4ED8" stroke-width="1.5" />
+              <circle cx="20" cy="60" r="10.2" stroke="#1D4ED8" stroke-width="1" stroke-dasharray="2.4 1.8" />
+              <path d="M13 58c2.2-1.2 4.4-1.2 6.6 0s4.4 1.2 6.6 0" stroke="#1D4ED8" stroke-width="1.15" stroke-linecap="round" />
+              <path d="M13 62c2.2-1.2 4.4-1.2 6.6 0s4.4 1.2 6.6 0" stroke="#1D4ED8" stroke-width="1.15" stroke-linecap="round" />
+            </svg>
+
+            <h1 class="ht-work__title">
+              {isBm ? 'Semua binaan & demo kami.' : 'All shipped builds & demos.'}
+            </h1>
+            <p class="ht-work__sub">
+              {isBm
+                ? `Koleksi lengkap ${totalCount} laman web, sistem operasi dan produk digital dari studio HaikaiTech Pulau Pinang.`
+                : `Full archive of ${totalCount} client websites, ordering flows, and internal business systems built by our Penang studio.`}
+            </p>
+          </div>
+
+          <MetaPixel inlineChoice />
+
+          <div class="ht-archive-toolbar">
+            <div class="ht-archive-filters" role="group" aria-label={isBm ? 'Tapis mengikut kategori' : 'Filter by industry or status'}>
+              <button type="button" class="ht-work-tab" data-archive-filter="all" aria-pressed="true">
+                {isBm ? `Semua (${totalCount})` : `All (${totalCount})`}
+              </button>
+              <button type="button" class="ht-work-tab" data-archive-filter="live" aria-pressed="false">
+                {isBm ? `Aktif (${liveCount})` : `Live (${liveCount})`}
+              </button>
+              {industries.map((ind) => (
+                <button
+                  type="button"
+                  class="ht-work-tab"
+                  data-archive-filter={ind.id}
+                  data-title={ind.title}
+                  aria-pressed="false"
+                >
+                  {ind.title} ({ind.count})
+                </button>
+              ))}
+            </div>
+
+            <p class="ht-work-bar__status" role="status" aria-live="polite" data-archive-status>
+              {isBm ? `Memaparkan semua ${totalCount} projek` : `Showing all ${totalCount} builds`}
+            </p>
+          </div>
+
+          <ul class="ht-archive-grid">
+            {allProjects.map((project) => {
+              const ind = industryById[project.industry];
+              const primaryHref = project.caseStudyHref ?? project.href;
+              const isExternal = !project.caseStudyHref;
+              const statusLabel = isBm
+                ? project.status === 'demo'
+                  ? 'Demo'
+                  : 'Aktif'
+                : project.status === 'demo'
+                  ? 'Demo'
+                  : 'Live';
+
+              return (
+                <li
+                  class="ht-archive-card"
+                  data-industry={project.industry}
+                  data-status={project.status}
+                >
+                  <div class="ht-crawford-card__head">
+                    <div class="ht-crawford-card__info">
+                      <div class="ht-crawford-card__tags">
+                        <span
+                          class="ht-work-card__ind"
+                          style={`--ind-color: ${ind.color}; --ind-tint: ${ind.tint};`}
+                        >
+                          {ind.short}
+                        </span>
+                        <span class={`ht-work-card__status ht-work-card__status--${project.status}`}>
+                          <i aria-hidden="true"></i>
+                          {statusLabel}
+                        </span>
+                      </div>
+                      <h2 class="ht-crawford-card__title">
+                        <a
+                          href={primaryHref}
+                          {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                        >
+                          {project.name}
+                        </a>
+                      </h2>
+                    </div>
+
+                    <a
+                      class="ht-crawford-card__arrow"
+                      href={project.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={isBm ? `Buka ${project.name}` : `Open ${project.name}`}
+                    >
+                      &#8599;
+                    </a>
+                  </div>
+
+                  <a
+                    class="ht-crawford-card__stage ht-archive-card__stage-link"
+                    style={`--stage-bg: ${project.stageBg};`}
+                    href={primaryHref}
+                    {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                    aria-label={isBm ? `Lihat ${project.name}` : `Inspect ${project.name}`}
+                  >
+                    {project.showcaseImage ? (
+                      <Image
+                        class="ht-crawford-card__composite"
+                        src={project.showcaseImage}
+                        width={720}
+                        widths={[420, 720]}
+                        sizes="(max-width: 640px) 92vw, (max-width: 1080px) 46vw, 390px"
+                        format="webp"
+                        quality={86}
+                        alt={project.alt}
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    ) : (
+                      <div class="ht-crawford-card__staged">
+                        {typeof project.image === 'string' ? (
+                          <img
+                            class="ht-crawford-card__staged-frame"
+                            src={project.image}
+                            width={640}
+                            height={400}
+                            alt={project.alt}
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        ) : (
+                          <Image
+                            class="ht-crawford-card__staged-frame"
+                            src={project.image}
+                            width={640}
+                            widths={[360, 640]}
+                            sizes="(max-width: 640px) 84vw, (max-width: 1080px) 42vw, 360px"
+                            format="webp"
+                            quality={84}
+                            alt={project.alt}
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        )}
+                        {project.mobileImage && (
+                          <div class="ht-crawford-card__staged-mobile" aria-hidden="true">
+                            <Image
+                              src={project.mobileImage}
+                              width={240}
+                              format="webp"
+                              quality={82}
+                              alt=""
+                              loading="lazy"
+                              decoding="async"
+                            />
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </a>
+
+                  <p class="ht-archive-card__purpose">{project.purpose}</p>
+                  <p class="ht-work-card__stack">{project.skills.join(' · ')}</p>
+
+                  <div class="ht-archive-card__actions">
+                    {project.caseStudyHref && (
+                      <a class="ht-work-card__link" href={project.caseStudyHref}>
+                        {isBm ? 'Butiran projek' : 'Case study'}
+                      </a>
+                    )}
+                    <a
+                      class="ht-work-card__link ht-work-card__link--primary"
+                      href={project.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {isBm ? (project.status === 'demo' ? 'Buka demo' : 'Buka laman') : project.status === 'demo' ? 'Open demo' : 'Open live'}{' '}
+                      <span aria-hidden="true">&#8599;</span>
+                    </a>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <FooterWorkbench client:load locale={locale} />
+    <StickyBooking client:load locale={locale} />
+    <LenisScroll />
+  </div>
+</BaseLayout>
+
+<script>
+  function initProjectsArchiveFilter(): void {
+    const root = document.getElementById('archive-directory');
+    if (!root || root.dataset.archiveInit === '1') return;
+
+    const filterBtns = Array.from(root.querySelectorAll<HTMLButtonElement>('[data-archive-filter]'));
+    const cards = Array.from(root.querySelectorAll<HTMLLIElement>('.ht-archive-card'));
+    const statusEl = root.querySelector<HTMLElement>('[data-archive-status]');
+    if (!filterBtns.length || !cards.length) return;
+
+    root.dataset.archiveInit = '1';
+    const isBm = root.dataset.locale === 'bm';
+    const totalCount = root.dataset.total || String(cards.length);
+
+    const applyFilter = (key: string): void => {
+      filterBtns.forEach((btn) => {
+        btn.setAttribute('aria-pressed', String(btn.dataset.archiveFilter === key));
+      });
+
+      let visible = 0;
+      cards.forEach((card) => {
+        const show =
+          key === 'all'
+            ? true
+            : key === 'live'
+              ? card.dataset.status === 'live'
+              : card.dataset.industry === key;
+
+        card.hidden = !show;
+        if (show) visible += 1;
+      });
+
+      if (statusEl) {
+        if (key === 'all') {
+          statusEl.textContent = isBm
+            ? `Memaparkan semua ${totalCount} projek`
+            : `Showing all ${totalCount} builds`;
+        } else if (key === 'live') {
+          statusEl.textContent = isBm
+            ? `Laman web aktif · ${visible} projek`
+            : `Live deployments · ${visible} builds`;
+        } else {
+          const btn = filterBtns.find((b) => b.dataset.archiveFilter === key);
+          const title = btn?.dataset.title ?? key;
+          statusEl.textContent = isBm ? `${title} · ${visible} projek` : `${title} · ${visible} builds`;
+        }
+      }
+    };
+
+    filterBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const key = btn.dataset.archiveFilter;
+        if (key) applyFilter(key);
+      });
+    });
+  }
+
+  initProjectsArchiveFilter();
+  document.addEventListener('astro:page-load', initProjectsArchiveFilter);
+</script>

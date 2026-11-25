@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "contentId": "hermes-desktop-kl-selangor-business-guide",
+  "route": "/blog/hermes-desktop-kl-selangor-business-guide/",
+  "decision": "approved",
+  "reviewer": "Iffat Haikal (owner)",
+  "approvedAt": "2026-11-23T04:29:52.489Z",
+  "digest": "sha256:81b157044a5ace72d2276bf46f5de759c3b29250bc45fcd1e9999bea4fbfe54d",
+  "checks": {
+    "accuracy": true,
+    "evidence": true,
+    "disclosure": true,
+    "assetRights": true
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "contentId": "website-agensi-umrah-selangor-kl",
+  "route": "/blog/website-agensi-umrah-selangor-kl/",
+  "decision": "approved",
+  "reviewer": "Iffat Haikal (owner)",
+  "approvedAt": "2026-11-23T04:29:52.489Z",
+  "digest": "sha256:4489103a8d9e3029f7e0d56cc5f95d40e5eafa441359a5ea937b33b9b1f551f7",
+  "checks": {
+    "accuracy": true,
+    "evidence": true,
+    "disclosure": true,
+    "assetRights": true
+  }
+}

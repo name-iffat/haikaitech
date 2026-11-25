@@ -1,0 +1,251 @@
+---
+interface Props {
+  class?: string;
+}
+const { class: className = '' } = Astro.props;
+---
+
+<svg
+  class={className}
+  viewBox="0 0 220 250"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+>
+  <defs>
+    <linearGradient id="shophouse-screen-glow" x1="48" y1="26" x2="132" y2="92" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3B82F6" />
+      <stop offset="65%" stop-color="#1368E6" />
+      <stop offset="100%" stop-color="#0D47A1" />
+    </linearGradient>
+    <linearGradient id="shophouse-roof-grad" x1="46" y1="74" x2="152" y2="128" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#EB6B44" />
+      <stop offset="100%" stop-color="#C94726" />
+    </linearGradient>
+  </defs>
+
+  <!-- Subtle Ground Shadow -->
+  <ellipse cx="106" cy="236" rx="54" ry="7.5" fill="#1B2430" opacity="0.11" />
+
+  <!-- Comic Motion Ticks Upper-Left -->
+  <path
+    d="M36 22L32 10M24 31L13 22M20 45L8 43"
+    stroke="#1B2430"
+    stroke-width="2.4"
+    stroke-linecap="round"
+  />
+
+  <!-- Glowing Cobalt Browser Window Rising from Roof -->
+  <g transform="rotate(-5 92 60)">
+    <rect x="42" y="20" width="96" height="76" rx="8" fill="#FAF8F3" stroke="#1B2430" stroke-width="2.5" />
+    <path d="M42 28C42 23.582 45.582 20 50 20H130C134.418 20 138 23.582 138 28V36H42V28Z" fill="#1368E6" stroke="#1B2430" stroke-width="2.4" />
+    <!-- Browser Window Dots -->
+    <circle cx="52" cy="28" r="2.6" fill="#F59E0B" stroke="#1B2430" stroke-width="1.3" />
+    <circle cx="61" cy="28" r="2.6" fill="#10B981" stroke="#1B2430" stroke-width="1.3" />
+    <circle cx="70" cy="28" r="2.6" fill="#FAF8F3" stroke="#1B2430" stroke-width="1.3" />
+    <!-- Glowing Blue Screen -->
+    <rect x="48" y="42" width="84" height="46" rx="4" fill="url(#shophouse-screen-glow)" stroke="#1B2430" stroke-width="2" />
+    <!-- Subtle Code / UI Highlight Lines -->
+    <path d="M56 54H84M56 62H74" stroke="#DCE8FA" stroke-width="2.2" stroke-linecap="round" opacity="0.7" />
+    <circle cx="116" cy="64" r="7" fill="#FAF8F3" opacity="0.22" />
+  </g>
+
+  <!-- Left Mechanical Arm (behind side wall) -->
+  <path
+    d="M42 152C28 156 22 167 27 177"
+    stroke="#1B2430"
+    stroke-width="10"
+    stroke-linecap="round"
+  />
+  <path
+    d="M42 152C28 156 22 167 27 177"
+    stroke="#CBD5E1"
+    stroke-width="5.5"
+    stroke-linecap="round"
+  />
+  <circle cx="42" cy="152" r="5" fill="#94A3B8" stroke="#1B2430" stroke-width="2.2" />
+  <circle cx="27" cy="178" r="5.5" fill="#94A3B8" stroke="#1B2430" stroke-width="2.2" />
+
+  <!-- Mechanical Legs in Bouncy Walking Stride -->
+  <!-- Back/Right Leg -->
+  <path d="M126 196L134 214L142 225" stroke="#1B2430" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M126 196L134 214L142 225" stroke="#94A3B8" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="134" cy="213" r="5" fill="#CBD5E1" stroke="#1B2430" stroke-width="2" />
+  <path
+    d="M134 224H156C159.5 224 162 226.5 162 230V232H131V227C131 225.2 132.4 224 134 224Z"
+    fill="#334155"
+    stroke="#1B2430"
+    stroke-width="2.4"
+    stroke-linejoin="round"
+  />
+
+  <!-- Front/Left Leg -->
+  <path d="M84 198L76 216L68 228" stroke="#1B2430" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M84 198L76 216L68 228" stroke="#CBD5E1"
+    stroke-width="7"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <circle cx="76" cy="215" r="5" fill="#94A3B8" stroke="#1B2430" stroke-width="2" />
+  <path
+    d="M52 227H74C75.8 227 77 228.4 77 230V234H47V232C47 229 49.4 227 52 227Z"
+    fill="#334155"
+    stroke="#1B2430"
+    stroke-width="2.4"
+    stroke-linejoin="round"
+  />
+
+  <!-- Shophouse Left Gable Side Wall -->
+  <polygon
+    points="36,120 68,94 68,196 36,184"
+    fill="#EFE3C8"
+    stroke="#1B2430"
+    stroke-width="2.4"
+    stroke-linejoin="round"
+  />
+  <!-- Side Window & Mini Terracotta Awning -->
+  <rect x="44" y="138" width="16" height="20" rx="2" fill="#0E8A68" stroke="#1B2430" stroke-width="2" />
+  <path d="M48 138V158M52 138V158M56 138V158" stroke="#1B2430" stroke-width="1.3" />
+  <path d="M41 138L44 131H61L63 138H41Z" fill="#E25833" stroke="#1B2430" stroke-width="2" stroke-linejoin="round" />
+
+  <!-- Shophouse Front Facade -->
+  <polygon
+    points="68,122 154,112 154,196 68,206"
+    fill="#FAF2DF"
+    stroke="#1B2430"
+    stroke-width="2.4"
+    stroke-linejoin="round"
+  />
+
+  <!-- Fluted Cream Pilasters Left & Right -->
+  <polygon points="70,122 80,121 80,204 70,205" fill="#F3E6CE" stroke="#1B2430" stroke-width="2" stroke-linejoin="round" />
+  <polygon points="142,113 152,112 152,196 142,197" fill="#F3E6CE" stroke="#1B2430" stroke-width="2" stroke-linejoin="round" />
+
+  <!-- Wooden Signboard Plaque -->
+  <polygon points="94,126 128,122 128,133 94,137" fill="#C08B5C" stroke="#1B2430" stroke-width="2" stroke-linejoin="round" />
+
+  <!-- Central Arched Wooden Double Door + Emerald Fanlight -->
+  <path
+    d="M101 202V162C101 154 106 149 111 148C116 147 121 151 121 159V200L101 202Z"
+    fill="#B4693E"
+    stroke="#1B2430"
+    stroke-width="2.2"
+    stroke-linejoin="round"
+  />
+  <!-- Emerald Arched Fanlight -->
+  <path
+    d="M101 163C101 154 106 149 111 148C116 147 121 151 121 160L101 163Z"
+    fill="#0E8A68"
+    stroke="#1B2430"
+    stroke-width="2"
+    stroke-linejoin="round"
+  />
+  <!-- Door Center Line & Panels -->
+  <path d="M111 161V201" stroke="#1B2430" stroke-width="1.8" />
+  <rect x="104" y="168" width="4" height="10" rx="0.5" fill="#9A542D" stroke="#1B2430" stroke-width="1.2" />
+  <rect x="114" y="167" width="4" height="10" rx="0.5" fill="#9A542D" stroke="#1B2430" stroke-width="1.2" />
+
+  <!-- Left Front Arched Louvered Window -->
+  <path
+    d="M84 184V161C84 155 87 151 90 151C93 151 96 154 96 160V183L84 184Z"
+    fill="#B4693E"
+    stroke="#1B2430"
+    stroke-width="2"
+    stroke-linejoin="round"
+  />
+  <path d="M84 162C84 155 87 151 90 151C93 151 96 154 96 161L84 162Z" fill="#0E8A68" stroke="#1B2430" stroke-width="1.6" />
+  <path d="M90 161V183" stroke="#1B2430" stroke-width="1.4" />
+
+  <!-- Right Front Arched Louvered Window -->
+  <path
+    d="M126 180V156C126 150 129 146 132 146C135 146 138 149 138 155V179L126 180Z"
+    fill="#B4693E"
+    stroke="#1B2430"
+    stroke-width="2"
+    stroke-linejoin="round"
+  />
+  <path d="M126 157C126 150 129 146 132 146C135 146 138 149 138 156L126 157Z" fill="#0E8A68" stroke="#1B2430" stroke-width="1.6" />
+  <path d="M132 156V179" stroke="#1B2430" stroke-width="1.4" />
+
+  <!-- Terracotta Pitched Tiled Roof -->
+  <!-- Left Gable Eave Trim -->
+  <path
+    d="M30 123L52 84L70 123"
+    fill="none"
+    stroke="#1B2430"
+    stroke-width="4.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M30 123L52 84L70 123"
+    fill="none"
+    stroke="#E25833"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <!-- Main Sloped Terracotta Roof -->
+  <polygon
+    points="52,84 139,74 162,111 70,122"
+    fill="url(#shophouse-roof-grad)"
+    stroke="#1B2430"
+    stroke-width="2.5"
+    stroke-linejoin="round"
+  />
+  <!-- Roof Tile Ribs -->
+  <path
+    d="M68 82L85 120M84 80L101 118M100 78L117 116M116 76L133 114M131 75L148 112"
+    stroke="#1B2430"
+    stroke-width="1.7"
+    stroke-linecap="round"
+  />
+  <path
+    d="M58 96L146 86M64 109L154 99"
+    stroke="#1B2430"
+    stroke-width="1.5"
+    stroke-linecap="round"
+  />
+
+  <!-- Right Articulated Robot Arm Waving Silver Wrench -->
+  <circle cx="155" cy="156" r="5" fill="#94A3B8" stroke="#1B2430" stroke-width="2.2" />
+  <path
+    d="M156 156C172 162 184 152 184 136"
+    stroke="#1B2430"
+    stroke-width="10"
+    stroke-linecap="round"
+  />
+  <path
+    d="M156 156C172 162 184 152 184 136"
+    stroke="#CBD5E1"
+    stroke-width="5.5"
+    stroke-linecap="round"
+  />
+  <circle cx="174" cy="157" r="4.2" fill="#94A3B8" stroke="#1B2430" stroke-width="2" />
+
+  <!-- Silver Open-Ended Wrench Held Upright -->
+  <g transform="rotate(-12 184 128)">
+    <rect x="180" y="114" width="8" height="28" rx="3" fill="#CBD5E1" stroke="#1B2430" stroke-width="2.2" />
+    <path
+      d="M174 106C174 100.5 178.5 97 184 97C189.5 97 194 100.5 194 106C194 110.5 191 114 187 115H181C177 114 174 110.5 174 106Z"
+      fill="#E2E8F0"
+      stroke="#1B2430"
+      stroke-width="2.2"
+    />
+    <!-- Wrench Jaw Cutout -->
+    <path d="M180 97V105H188V97" fill="#FAF8F3" stroke="#1B2430" stroke-width="2" stroke-linejoin="round" />
+    <!-- Bottom Closed Box Wrench End -->
+    <circle cx="184" cy="144" r="6" fill="#CBD5E1" stroke="#1B2430" stroke-width="2.2" />
+    <circle cx="184" cy="144" r="2.2" fill="#1B2430" />
+  </g>
+  <!-- Robot Hand Clamping Wrench -->
+  <ellipse cx="184" cy="133" rx="6" ry="4.5" fill="#94A3B8" stroke="#1B2430" stroke-width="2.2" />
+
+  <!-- Wrench Waving Motion Swooshes -->
+  <path
+    d="M199 98C203 102 204 107 202 112M206 102C208 105 208 109 207 113"
+    stroke="#1B2430"
+    stroke-width="2"
+    stroke-linecap="round"
+  />
+</svg>

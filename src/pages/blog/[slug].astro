@@ -50,6 +50,16 @@ const formatDate = (date: Date) =>
 const pubDate = new Date(post.data.pubDate).toISOString();
 const canonical = `https://haikaitech.my/blog/${post.id}/`;
 
+const coverMap: Record<string, { image: string; alt: string }> = {
+  'best-web-design-penang-guide': { image: 'https://haikaitech.my/og/blog-best-web-design-penang-guide.png', alt: 'Best Web Design Penang? 2026 Guide — papercut cover by HaikaiTech' },
+  'harga-buat-website-malaysia': { image: 'https://haikaitech.my/og/blog-harga-buat-website-malaysia.png', alt: 'Harga Buat Website 2026, mula RM799 — papercut cover by HaikaiTech' },
+  'cara-buat-website-sendiri': { image: 'https://haikaitech.my/og/blog-cara-buat-website-sendiri.png', alt: 'Buat Sendiri vs Upah? Panduan Jujur 2026 — papercut cover by HaikaiTech' },
+  'website-cost-selangor-2026': { image: 'https://haikaitech.my/og/blog-website-cost-selangor-2026.png', alt: 'Website Cost Selangor 2026 Guide, from RM799 — papercut cover by HaikaiTech' },
+  'web-design-selangor-ai-seo-add-on': { image: 'https://haikaitech.my/og/blog-web-design-selangor-ai-seo-add-on.png', alt: 'AI SEO Perlu Bayar? Semak Dulu — papercut cover by HaikaiTech' },
+  'provide-more-value-sme-website': { image: 'https://haikaitech.my/og/blog-provide-more-value-sme-website.png', alt: 'More Value, Less Effort — SME Guide 2026 — papercut cover by HaikaiTech' },
+};
+const cover = coverMap[post.id];
+
 const blogSchema = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
@@ -75,7 +85,7 @@ const blogSchema = {
 };
 ---
 
-<BaseLayout title={`${post.data.title} | HaikaiTech Blog`} description={post.data.description} canonical={canonical} locale={locale}>
+<BaseLayout title={`${post.data.title} | HaikaiTech Blog`} description={post.data.description} canonical={canonical} locale={locale}{...(cover ? { socialImage: cover.image, socialImageAlt: cover.alt } : {})}>
   <div class="workbench wb-article-page">
     <script is:inline type="application/ld+json" set:html={JSON.stringify(blogSchema, null, 2)}></script>
     <WorkbenchNav locale={locale} />

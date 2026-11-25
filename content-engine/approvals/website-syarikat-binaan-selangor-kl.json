@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "contentId": "website-syarikat-binaan-selangor-kl",
+  "route": "/blog/website-syarikat-binaan-selangor-kl/",
+  "decision": "approved",
+  "reviewer": "Iffat Haikal (owner)",
+  "approvedAt": "2026-11-23T04:29:52.489Z",
+  "digest": "sha256:3edc4b90509f02061f546ff7126ca60fc03fc37e0bf650a3d3403057b9ac113f",
+  "checks": {
+    "accuracy": true,
+    "evidence": true,
+    "disclosure": true,
+    "assetRights": true
+  }
+}

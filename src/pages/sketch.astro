@@ -1,0 +1,306 @@
+---
+import { Image } from 'astro:assets';
+import { primaryNavigation, serviceNavigation } from '../data/services';
+import projectSketch from '../assets/projects/hss-pen-sketch.webp';
+import projectScreenshot from '../assets/projects/hss-wireless-cctv-desktop.png';
+import workforceSketch from '../assets/sketch/mze-workforce-pen.webp';
+import kioskSketch from '../assets/sketch/aa-burger-pen.webp';
+import tapeSketch from '../assets/sketch/masking-tape-pen.webp';
+import pinSketch from '../assets/sketch/pushpin-pen.webp';
+import logoSketch from '../assets/sketch/haikaitech-mark-scribble.png';
+
+const whatsapp = 'https://wa.me/60147533499';
+const project = 'https://wirelesscctv.com.my/';
+const work = [
+  { title: 'MZE Worker System', href: 'https://mzdemo.haikaitech.my/', image: workforceSketch, alt: 'Pen drawing of a workforce dashboard on a laptop' },
+  { title: 'AA Burger Kiosk', href: 'https://aaburger.haikaitech.my/', image: kioskSketch, alt: 'Pen drawing of a burger menu and order summary on a kiosk screen' },
+];
+const quoteOptions = [
+  { title: 'Business website', description: 'Share the pages you need and how you’d like customers to contact you.', action: 'Get a website quote', request: 'a business website' },
+  { title: 'Online store', description: 'Tell us what you sell and how you want to handle payments and delivery.', action: 'Get an online store quote', request: 'an online store' },
+  { title: 'Systems and automation', description: 'Describe the task you want to simplify and the tools your team already uses.', action: 'Get a systems quote', request: 'a custom system or automation' },
+];
+const navHref = (href: string) => {
+  if (href === '#home') return '/sketch/';
+  if (href === '#projects') return '#work';
+  if (href === '/services/#pricing') return '#pricing';
+  return href.startsWith('#') ? `/${href}` : href;
+};
+---
+
+<!doctype html>
+<html lang="en" data-type="service">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, follow" />
+    <meta name="page-type" content="service" />
+    <meta name="site-kind" content="other" />
+    <meta name="description" content="A pen-drawn HaikaiTech studio demo for Malaysian small businesses." />
+    <title>HaikaiTech Sketch | Websites and Systems for Malaysian SMEs</title>
+    <link rel="canonical" href="https://haikaitech.my/sketch/" />
+    <link rel="icon" href={logoSketch.src} type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header nav wrap">
+      <a class="wordmark" href="/sketch/">
+        <img src={logoSketch.src} width="32" height="32" alt="" />
+        <span>HaikaiTech</span>
+      </a>
+      <details class="mobile-menu" open>
+        <summary>Menu <span class="chevron" aria-hidden="true"></span></summary>
+        <nav class="pen-outline" aria-label="Main navigation">
+          <ul class="nav-list">
+            {primaryNavigation.map(({ label, href }) => (
+              <li>
+                {label === 'Services' ? (
+                  <details class="service-menu">
+                    <summary>Services <span class="chevron" aria-hidden="true"></span></summary>
+                    <ul class="service-list pen-outline">
+                      {serviceNavigation.map((service) => <li><a href={service.href}>{service.label}</a></li>)}
+                    </ul>
+                  </details>
+                ) : (
+                  <a href={navHref(href)} aria-current={label === 'Home' ? 'page' : undefined}>
+                    <span class:list={[label === 'Home' && 'pen-circle']}>{label}</span>
+                  </a>
+                )}
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </details>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <section class="hero wrap" aria-labelledby="sketch-title">
+        <div class="hero-copy">
+          <p class="location">Based in Penang</p>
+          <h1 id="sketch-title">Websites and<br />systems for<br /><span>Malaysian SMEs.</span></h1>
+          <p class="offer">Business websites, online stores, and tools for your day-to-day work.</p>
+          <div class="actions">
+            <a class="pen-button pen-outline" href={whatsapp}>Chat on WhatsApp</a>
+            <a class="pen-link" href="#pricing">Get a quote</a>
+          </div>
+        </div>
+        <div class="hero-project">
+          <a class="project-link" href={project} data-preview aria-label="Preview the HSS Wireless CCTV project">
+            <Image src={projectSketch} alt="Blue pen sketch of the HSS Wireless CCTV website and a dome camera" widths={[480, 800, 1120]} sizes="(max-width: 900px) min(74vw, 28rem), 47vw" loading="eager" fetchpriority="high" />
+          </a>
+          <Image class="tape-sketch" src={tapeSketch} alt="" width={240} loading="eager" />
+        </div>
+        <p class="trust">Trusted by 9+ Malaysian businesses</p>
+      </section>
+
+      <section class="work wrap" id="work" aria-labelledby="work-title" tabindex="-1">
+        <h2 id="work-title">Selected work <Image class="pin-sketch" src={pinSketch} alt="" width={96} /></h2>
+        <ul class="work-list">
+          {work.map(({ title, href, image, alt }) => (
+            <li>
+              <a class="work-link" href={href}>
+                <span class="pen-circle">{title}</span>
+                <Image src={image} alt={alt} widths={[480, 800, 1120]} sizes="(max-width: 900px) 88vw, 44vw" />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="pricing wrap" id="pricing" aria-labelledby="pricing-title" tabindex="-1">
+        <h2 id="pricing-title">Request a quote</h2>
+        <p class="quote-intro">Tell us what you’d like to build and when you need it. We’ll agree on the scope with you and send a written quote.</p>
+        <div class="quote-options">
+          {quoteOptions.map(({ title, description, action, request }) => (
+            <div class="quote-option">
+              <h3>{title}</h3>
+              <p>{description}</p>
+              <a class="pen-link" href={`${whatsapp}?text=${encodeURIComponent(`Hi HaikaiTech, I’d like a quote for ${request}.`)}`}>{action}</a>
+            </div>
+          ))}
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer wrap">
+      <span>HaikaiTech · Penang, Malaysia</span>
+      <a class="pen-link" href="/">Visit the main site</a>
+    </footer>
+
+    <dialog class="preview" aria-labelledby="preview-title">
+      <div class="preview-head">
+        <h2 id="preview-title">HSS Wireless CCTV</h2>
+        <button type="button" class="pen-button pen-outline" data-close>Close</button>
+      </div>
+      <Image src={projectScreenshot} alt="Screenshot of the real HSS Wireless CCTV homepage" widths={[640, 1100]} sizes="(max-width: 880px) 90vw, 840px" />
+      <a class="pen-link" href={project}>Visit the HSS website</a>
+    </dialog>
+  </body>
+</html>
+
+<script>
+  const mobileMenu = document.querySelector<HTMLDetailsElement>('.mobile-menu')!;
+  const serviceMenu = document.querySelector<HTMLDetailsElement>('.service-menu')!;
+  const mobileWidth = window.matchMedia('(max-width: 900px)');
+
+  function syncMenu() {
+    mobileMenu.open = !mobileWidth.matches;
+    serviceMenu.open = false;
+  }
+
+  syncMenu();
+  mobileWidth.addEventListener('change', syncMenu);
+
+  document.addEventListener('click', (event) => {
+    if (!(event.target instanceof Element)) return;
+    if (!serviceMenu.contains(event.target)) serviceMenu.open = false;
+    if (mobileWidth.matches && (!mobileMenu.contains(event.target) || event.target.closest('a'))) {
+      mobileMenu.open = false;
+    }
+  });
+
+  mobileMenu.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
+    const menu = serviceMenu.open ? serviceMenu : mobileWidth.matches ? mobileMenu : null;
+    if (!menu?.open) return;
+    menu.open = false;
+    menu.querySelector('summary')?.focus();
+  });
+
+  const preview = document.querySelector<HTMLDialogElement>('.preview')!;
+  const previewLink = document.querySelector<HTMLAnchorElement>('[data-preview]')!;
+  previewLink.addEventListener('click', (event) => {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || !preview.showModal) return;
+    event.preventDefault();
+    preview.showModal();
+  });
+  preview.querySelector('[data-close]')?.addEventListener('click', () => preview.close());
+</script>
+
+<style>
+  :global(*) { box-sizing: border-box; }
+  :global(body) {
+    --ink: #172f9f;
+    --text: #192447;
+    --rule: #aab6df;
+    --hand: 'Nothing You Could Do', 'Segoe Print', cursive;
+    margin: 0;
+    background: #fff;
+    color: var(--text);
+    font: 1rem/1.55 var(--hand);
+  }
+  a { color: var(--ink); }
+  :global(:focus-visible) { outline: 2px solid var(--ink); outline-offset: 4px; }
+  .wrap { width: min(76rem, calc(100% - 2 * clamp(1.25rem, 6vw, 6rem))); margin-inline: auto; }
+  .skip { position: absolute; z-index: 5; top: .75rem; left: .75rem; padding: .65rem; background: #fff; }
+  .skip:not(:focus) { clip-path: inset(50%); }
+  .site-header { min-height: 6rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; position: sticky; top: 0; z-index: 4; background: #fff; }
+  .wordmark { display: inline-flex; align-items: center; gap: .5rem; font: clamp(1.8rem, 2.7vw, 2.5rem)/1 var(--hand); text-decoration: none; white-space: nowrap; }
+  .wordmark img { flex: none; width: clamp(1.4rem, 2.25vw, 2rem); height: auto; }
+  .nav-list, .service-list { list-style: none; padding: 0; margin: 0; }
+  .nav-list { display: flex; column-gap: clamp(.4rem, 1.4vw, 1.6rem); }
+  .nav-list a, summary { display: flex; align-items: center; min-height: 44px; padding: .15rem .35rem; color: var(--ink); font: 1.27rem/1.2 var(--hand); }
+  .nav-list a { text-decoration: none; }
+  summary { list-style: none; cursor: pointer; gap: .55rem; }
+  summary::-webkit-details-marker { display: none; }
+  .mobile-menu > summary { display: none; }
+  .chevron { width: .43rem; height: .43rem; border: solid currentColor; border-width: 0 1px 1px 0; transform: rotate(45deg); margin-top: -.22rem; }
+  details[open] > summary > .chevron { transform: rotate(225deg); margin-top: .2rem; }
+  .service-menu { position: relative; }
+  .service-list { position: absolute; top: 100%; left: 0; z-index: 3; background: #fff; padding: .45rem .75rem; width: max-content; }
+  .hero { min-height: calc(100svh - 6rem); display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr auto; align-items: center; gap: 2rem clamp(2rem, 6vw, 6rem); padding-block: 2.5rem 2rem; color: var(--ink); font-family: var(--hand); }
+  .location { margin: 0 0 1.75rem; font-size: 1.35rem; }
+  h1 { margin: 0; font: clamp(2.2rem, 5.1vw, 5.1rem)/1.07 var(--hand); }
+  h1 span { position: relative; display: inline-block; }
+  h1 span::after { content: ''; position: absolute; inset: auto -1% -.1em; height: .12em; background: currentColor; clip-path: polygon(0 71%, 16% 43%, 38% 48%, 63% 18%, 86% 25%, 100% 3%, 94% 31%, 63% 39%, 38% 68%, 16% 62%, 0 86%); }
+  .offer { font-size: clamp(1.22rem, 2.15vw, 1.65rem); margin: 1.6rem 0 1.4rem; }
+  .actions { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; align-items: center; }
+  .pen-button, .pen-link { display: inline-flex; align-items: center; min-height: 44px; font: 1.28rem var(--hand); color: var(--ink); }
+  .pen-button { position: relative; background: #fff; border: 0; text-decoration: none; padding: .38rem .95rem; cursor: pointer; }
+  .pen-outline::before, .pen-outline::after { content: ''; position: absolute; pointer-events: none; border: 0 solid var(--ink); }
+  .pen-outline::before { inset: 1px 1px -1px 0; border-width: 1px 0 0 1px; transform: skew(-1.5deg, -.65deg); }
+  .pen-outline::after { inset: -1px -1px 1px 2px; border-width: 0 1px 1px 0; transform: skew(.9deg, -.35deg); }
+  .mobile-menu nav::before, .mobile-menu nav::after { display: none; }
+  .pen-link, .pen-circle { position: relative; text-decoration: none; }
+  .pen-circle { display: inline-block; }
+  .pen-link::after, .pen-circle::after {
+    content: '';
+    position: absolute;
+    inset: calc(50% - .8em) -.36em auto;
+    height: 1.6em;
+    border: solid currentColor;
+    border-width: 1px 1px 2px;
+    border-radius: 52% 44% 49% 43% / 46% 54% 43% 52%;
+    transform: rotate(-3deg);
+    pointer-events: none;
+  }
+  .pen-link::before, .pen-circle::before {
+    content: '';
+    position: absolute;
+    top: calc(50% - .72em);
+    right: 4%;
+    width: 28%;
+    height: .3em;
+    border-top: 1px solid currentColor;
+    border-radius: 12% 77% 0 0;
+    transform: rotate(7deg);
+    pointer-events: none;
+  }
+  .project-link { display: block; }
+  .hero-project { position: relative; }
+  .tape-sketch { position: absolute; top: 2%; left: 9%; width: clamp(3.75rem, 21%, 7rem); height: auto; transform: rotate(-9deg); pointer-events: none; }
+  .project-link img, .work-link img, .preview img { display: block; width: 100%; height: auto; }
+  .trust { grid-column: 1 / -1; text-align: center; margin: 0; font-size: clamp(1.25rem, 2.15vw, 1.65rem); }
+  .work, .pricing { padding-block: clamp(2.5rem, 7vw, 6rem); scroll-margin-top: 6rem; }
+  .work, .pricing, .site-footer, .quote-option { position: relative; }
+  .work::before, .pricing::before, .site-footer::before, .quote-option::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto;
+    height: 5px;
+    background: var(--rule);
+    clip-path: polygon(0 54%, 7% 30%, 19% 39%, 29% 17%, 42% 31%, 52% 47%, 65% 24%, 78% 35%, 91% 14%, 100% 36%, 100% 45%, 91% 33%, 78% 59%, 65% 42%, 52% 69%, 42% 59%, 29% 37%, 19% 63%, 7% 49%, 0 67%);
+    pointer-events: none;
+  }
+  .work { min-height: calc(100svh - 6rem); display: grid; align-content: center; }
+  .work h2, .pricing h2 { color: var(--ink); font: clamp(2.5rem, 5vw, 4rem)/1.05 var(--hand); margin: 0; }
+  .pin-sketch { display: inline-block; vertical-align: top; width: clamp(1.4rem, 3vw, 2.5rem); height: auto; margin-inline-start: .2em; }
+  .work-list { list-style: none; margin: 1.75rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+  .work-link { display: block; font: 1.55rem/1.2 var(--hand); text-decoration: none; }
+  .work-link img { margin-top: .65rem; }
+  .quote-intro { max-width: 38rem; }
+  .quote-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+  .quote-option { display: flex; flex-direction: column; align-items: start; padding-top: 1rem; }
+  .quote-option::before { background: var(--ink); }
+  .quote-option:nth-child(even)::before { transform: scaleY(-1); }
+  .quote-option h3 { color: var(--ink); font: 1.65rem/1.12 var(--hand); margin: 0; }
+  .quote-option .pen-link { margin-top: auto; }
+  .site-footer { padding-block: .8rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .25rem 1rem; }
+  .preview { width: min(55rem, calc(100% - 2rem)); max-height: calc(100% - 2rem); border: 1px solid var(--ink); padding: clamp(1rem, 3vw, 1.6rem); color: var(--ink); }
+  .preview::backdrop { background: rgb(25 36 71 / .42); }
+  .preview-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+  .preview h2 { font: 400 clamp(1.65rem, 4vw, 2.4rem)/1.1 var(--hand); margin: 0; }
+  @media (max-width: 900px) {
+    .site-header { min-height: 4.5rem; gap: .75rem; }
+    .wordmark { font-size: clamp(1.6rem, 8.2vw, 2rem); }
+    .mobile-menu > summary { display: flex; }
+    .mobile-menu nav { position: absolute; background: #fff; top: 100%; inset-inline: 0; z-index: 2; padding: 0 .65rem; }
+    .mobile-menu nav::before, .mobile-menu nav::after { display: block; }
+    .nav-list { display: block; }
+    .mobile-menu .nav-list { max-height: 75svh; overflow: auto; padding: .45rem; }
+    .service-list { position: static; width: auto; padding-block: 0; }
+    .service-list::before, .service-list::after { display: none; }
+    .service-list a { font-size: 1.12rem; }
+    .hero { min-height: calc(100svh - 4.5rem); grid-template-columns: 1fr; grid-template-rows: auto auto auto; padding-top: 1.2rem; gap: 1.25rem; }
+    .location { margin-bottom: .6rem; }
+    .offer { margin-block: 1.25rem .75rem; }
+    .hero-project { width: min(85%, 28rem); margin-inline: auto; }
+    .work, .pricing { scroll-margin-top: 4.5rem; }
+    .work { min-height: calc(100svh - 4.5rem); }
+    .work-list { grid-template-columns: 1fr; }
+    .quote-options { grid-template-columns: 1fr; }
+  }
+</style>

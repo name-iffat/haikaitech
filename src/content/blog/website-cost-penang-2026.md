@@ -13,6 +13,8 @@ review:
 
 "How much does a website cost in Penang?" is the first question almost every business owner asks — and the answers range from a few hundred ringgit to tens of thousands. That range is unhelpful, so let's make it concrete.
 
+> TL;DR: A basic 3–5 page site in Penang typically runs RM1,500–RM5,000; our introductory one-page starter is RM799. Five factors move every quotation: page count, design complexity, content readiness, payments and integrations, and ongoing costs.
+
 ## The short answer
 
 In Penang (2026), a professionally built business website typically costs:
@@ -49,5 +51,7 @@ The same five factors move every quotation, in Penang or anywhere else:
 ## The honest bit
 
 No enquiry volume or search ranking is guaranteed by any website. The site gives customers a clear place to understand your services and contact you — traffic, offer, competition and follow-up do the rest. Anyone promising customers or a #1 spot as part of the build price is selling something else.
+
+**Key takeaway:** Price the scope, not the postcode — Penang costs the same five factors as anywhere else. Get them itemised in the quotation before the deposit.
 
 If you run a Penang SME and want a number for *your* scope, [chat with us on WhatsApp](https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%20read%20your%20Penang%20pricing%20guide%20and%20would%20like%20a%20quotation.) — you approve the quotation before paying anything.

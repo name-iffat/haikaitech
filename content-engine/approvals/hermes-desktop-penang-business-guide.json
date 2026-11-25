@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "contentId": "hermes-desktop-penang-business-guide",
+  "route": "/blog/hermes-desktop-penang-business-guide/",
+  "decision": "approved",
+  "reviewer": "Iffat Haikal (owner)",
+  "approvedAt": "2026-11-23T04:29:52.489Z",
+  "digest": "sha256:c15ce3a554023ed5a34d4343edba963b99d53e87dd3d093dfe6843e2a1485523",
+  "checks": {
+    "accuracy": true,
+    "evidence": true,
+    "disclosure": true,
+    "assetRights": true
+  }
+}

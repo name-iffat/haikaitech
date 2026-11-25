@@ -15,6 +15,8 @@ updatedDate: 2026-11-16
 
 Here is a practical market comparison, where HaikaiTech's current promotion sits, and what actually drives a formal quotation up or down.
 
+> TL;DR: A basic 3–5 page business website in Malaysia typically runs RM1,500–RM5,000; our starter starts from RM799 for a focused one-page scope. The final number tracks pages, customisation, content readiness, integrations, and ongoing costs — all confirmed in a formal quotation, not the headline.
+
 ## The short answer
 
 In Malaysia (2026), a professionally built business website typically costs:
@@ -104,6 +106,8 @@ Pricing guides are only useful if they lead somewhere. Here's our four-step proc
 6. **Receive the agreed handover** — credentials, source and deliverables are transferred subject to the quotation and third-party licences.
 
 You can [chat on WhatsApp right here](https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%27d%20like%20a%20quote%20for%20a%20business%20website.) — or read our full [services and pricing page](/services/).
+
+**Key takeaway:** Compare the market band for your site type, then get one fixed quotation that itemises scope, handover, and recurring costs. Any quote that can't do that isn't cheaper — it's unfinished.
 
 ## Common questions
 

@@ -1,0 +1,67 @@
+---
+import { Image } from 'astro:assets';
+import kiosk from '../assets/hero/aa-burger-order-screen.webp';
+import receipt from '../assets/hero/counter-receipt.webp';
+import { bmHome } from '../data/locales/bm-home';
+import { localizeHref, type SiteLocale } from '../utils/i18n';
+
+interface Props { locale?: SiteLocale }
+const { locale = 'en' } = Astro.props;
+const copy = locale === 'bm' ? bmHome.hero : {
+  location: 'Digital studio in Penang, Malaysia',
+  headline: ['Websites for', 'customers.', 'Systems for', 'staff.'],
+  description: 'We build online stores, dashboards and AI automation for Malaysian businesses, from the first enquiry to the work behind each order.',
+  start: 'Chat on WhatsApp',
+  message: 'Hi HaikaiTech, I’d like to discuss a project for my business.',
+  work: 'See our work',
+  projectType: 'Ordering system',
+  projectLink: 'Visit the AA Burger Kiosk project (opens in a new tab)',
+  kioskAlt: 'AA Burger’s ordering screen with drive-through and takeaway options.',
+  websitePrice: 'One-page websites',
+  storePrice: 'Online stores',
+  from: 'from',
+  pricing: 'See pricing',
+};
+const chat = 'https://wa.me/60147533499?text=' + encodeURIComponent(copy.message);
+---
+<section class="counter-hero" id="home" aria-labelledby="counter-title" tabindex="-1">
+  <div class="counter-layout">
+    <div class="counter-copy">
+      <p class="counter-location"><span aria-hidden="true"></span>{copy.location}</p>
+      <h1 id="counter-title">
+        <span>{copy.headline[0]} <b>{copy.headline[1]}</b></span>
+        <em>{copy.headline[2]} <b>{copy.headline[3]}</b></em>
+      </h1>
+      <p class="counter-intro">{copy.description}</p>
+      <div class="counter-actions">
+        <a class="counter-chat" href={chat} target="_blank" rel="noopener noreferrer" data-counter-event="chat_whatsapp_hero">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M21 11.6a9 9 0 0 1-13.3 7.9l-5 1.3 1.4-4.8A9 9 0 1 1 21 11.6Z"/><path d="M8.5 7.4c-.9 1.2-.5 3.1 1.6 5.2s4 2.7 5.3 1.6l.6-.9-2.5-1.2-.8.9c-1.2-.5-2.4-1.7-3-2.9l.8-.9-1-2.1Z" fill="currentColor" stroke="none"/></svg>
+          {copy.start}
+        </a>
+        <a class="counter-work" href="#projects" data-counter-event="view_work_hero">{copy.work}<span aria-hidden="true">↓</span></a>
+      </div>
+    </div>
+    <a class="counter-case" href="https://aaburger.haikaitech.my/" target="_blank" rel="noopener noreferrer" aria-label={copy.projectLink} data-counter-event="aa_burger_hero" data-enter>
+      <div class="counter-case-heading">
+        <div><p class="counter-kind">{copy.projectType}</p><h2>AA Burger Kiosk</h2></div>
+        <span class="counter-open" aria-hidden="true">↗</span>
+      </div>
+      <div class="counter-stage">
+        <Image class="counter-photo" src={receipt} widths={[480, 760, 990]} sizes="(max-width: 760px) 100vw, 49vw" alt="" loading="eager" />
+        <div class="counter-screen"><Image src={kiosk} alt={copy.kioskAlt} width={448} loading="eager" fetchpriority="high" /></div>
+      </div>
+    </a>
+  </div>
+  <div class="counter-prices">
+    <p>{copy.websitePrice} <span>{copy.from} <strong>RM799</strong></span></p>
+    <p>{copy.storePrice} <span>{copy.from} <strong>RM3,500</strong></span></p>
+    <a href={localizeHref('/services/#pricing', locale)} data-counter-event="view_pricing_hero">{copy.pricing} <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+<script>
+  import { track } from '../../components/track';
+  document.querySelectorAll<HTMLAnchorElement>('[data-counter-event]').forEach(link => {
+    link.addEventListener('click', () => track('cta_clicked', link.dataset.counterEvent));
+  });
+</script>
+

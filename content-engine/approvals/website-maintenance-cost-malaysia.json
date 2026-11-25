@@ -4,8 +4,8 @@
   "route": "/blog/website-maintenance-cost-malaysia/",
   "decision": "approved",
   "reviewer": "Iffat Haikal (owner)",
-  "approvedAt": "2026-11-16T02:56:05.164Z",
-  "digest": "sha256:f597aac6222f325594d01d4b2f9665a414cc9e61ba2dee143e807155a7827472",
+  "approvedAt": "2026-11-23T04:29:52.489Z",
+  "digest": "sha256:4ea615e9901de0a61e6638ebe1a8d1ec0554ab25e9d4085c4ddf5c14ca08c982",
   "checks": {
     "accuracy": true,
     "evidence": true,

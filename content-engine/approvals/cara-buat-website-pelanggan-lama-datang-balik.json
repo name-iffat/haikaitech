@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "contentId": "cara-buat-website-pelanggan-lama-datang-balik",
+  "route": "/blog/cara-buat-website-pelanggan-lama-datang-balik/",
+  "decision": "approved",
+  "reviewer": "Iffat Haikal (owner)",
+  "approvedAt": "2026-11-23T04:29:52.489Z",
+  "digest": "sha256:f97546f733aa7a218a5c0c5f106dca472eacbf4aed9fed8406f9ea7f3cd4e86e",
+  "checks": {
+    "accuracy": true,
+    "evidence": true,
+    "disclosure": true,
+    "assetRights": true
+  }
+}

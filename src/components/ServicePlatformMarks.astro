@@ -7,9 +7,10 @@ const { kind } = Astro.props;
 
 const marks = kind === 'automation'
   ? [
+      { label: 'Hermes Agent', src: '/logos/tools/hermes.png', alt: 'Hermes Agent logo' },
+      { label: 'Codex', src: '/logos/tools/codex.svg', alt: 'Codex logo' },
+      { label: 'Claude Code', src: '/logos/tools/claude-code.svg', alt: 'Claude Code logo' },
       { label: 'n8n', src: 'https://cdn.simpleicons.org/n8n/1E3A8A', alt: 'n8n logo' },
-      { label: 'Hermes Agent', src: 'https://raw.githubusercontent.com/NousResearch/hermes-agent/main/web/public/favicon.ico', alt: 'Hermes Agent logo' },
-      { label: 'Custom scripts', src: '', alt: '' },
     ]
   : [
       { label: 'Shopify', src: 'https://cdn.simpleicons.org/shopify/1E3A8A', alt: 'Shopify logo' },

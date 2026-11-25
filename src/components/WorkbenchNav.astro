@@ -52,6 +52,7 @@ const currentPage = (href: string) => (href === '#home' && isHome) || href === A
 const switchToEnglish = localeSwitchHref(Astro.url.pathname, 'en');
 const switchToMalay = localeSwitchHref(Astro.url.pathname, 'bm');
 ---
+{isHome && <a class="counter-skip" href="#home">{isBm ? 'Langkau ke kandungan' : 'Skip to content'}</a>}
 <header class="workbench wb-nav">
   <a class="wb-wordmark" href={destination('#home')} aria-label={isBm ? 'Laman utama HaikaiTech' : 'HaikaiTech home'}>
     <img src="/haikaitech-mark.png" width="32" height="32" alt="" aria-hidden="true" />

@@ -4,8 +4,8 @@
   "route": "/blog/rm199-managed-website-plan-malaysia/",
   "decision": "approved",
   "reviewer": "Iffat Haikal (owner)",
-  "approvedAt": "2026-11-16T02:56:05.164Z",
-  "digest": "sha256:8d4538fab26adf71667978754647ff83171d411c4d1c10d1ce825374c0711643",
+  "approvedAt": "2026-11-23T04:29:52.489Z",
+  "digest": "sha256:789e3b8b4871acd4a5e5370ce0869f90342956de8ee47f9faf3d23f07e36117e",
   "checks": {
     "accuracy": true,
     "evidence": true,

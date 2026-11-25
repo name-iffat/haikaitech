@@ -1,6 +1,6 @@
 ---
-title: "How Much Does a Company Profile Website Cost in Malaysia?"
-description: "Company profile pricing in Malaysia — how document design, website scope, content readiness and quotation terms change the final cost."
+title: "Company Profile Website Malaysia 2026: Packages From RM799 + Live Samples"
+description: "Company profile website prices in Malaysia 2026 — compare SME, contractor and corporate tiers from RM799, see live samples, and avoid hidden fees."
 pubDate: 2026-08-13
 tags: [company-profile, pricing, malaysia, sme]
 status: published
@@ -12,6 +12,8 @@ updatedDate: 2026-11-16
 ---
 
 If you run an SME in Malaysia, a company profile is the document you send to tender committees, banks, and corporate clients before they take you seriously. These days it comes in three forms — a designed PDF, a printed booklet, and increasingly a website. Here is exactly what each one costs with HaikaiTech Solutions.
+
+> TL;DR: A designed company profile PDF costs RM800–RM1,200, a company profile website starts from RM799, and both together are quoted on combined scope. The formal quotation — not the headline — confirms pages, content, revisions, timeline, and ownership.
 
 ## The short answer
 
@@ -78,5 +80,7 @@ Yes — copywriting is quoted separately, or you can bundle it. We don't publish
 
 **We're based in Kuala Lumpur — do you work with KL companies?**
 Yes. We're a Penang-based studio serving businesses across all of Malaysia — most of our clients are in Kuala Lumpur, and everything runs remotely with calls and WhatsApp.
+
+**Key takeaway:** Start from the document you need for tenders, then publish the approved content as a website — one source, two formats, one combined quotation.
 
 Ready to scope your company profile? [Chat on WhatsApp](https://wa.me/60147533499?text=Hi%20HaikaiTech!%20I%27d%20like%20a%20quote%20for%20a%20company%20profile.) — or see the full [services and pricing page](/services/).

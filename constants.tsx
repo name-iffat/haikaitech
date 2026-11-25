@@ -219,28 +219,28 @@ export const PROJECTS: Project[] = [
 export const SKILLS: SkillGroup[] = [
   {
     category: 'Languages',
-    description: 'Fluency in the core technologies that drive modern software engineering and logic.',
-    items: ['TypeScript', 'JavaScript', 'C#', 'Python', 'C++', 'Java', 'PHP', 'Dart', 'SQL', 'HTML/CSS']
+    description: 'Core languages powering business web apps, enterprise systems, and automation.',
+    items: ['C#', 'TypeScript', 'JavaScript', 'SQL', 'PHP', 'Python', 'Java', 'C++', 'Dart', 'HTML/CSS']
   },
   {
-    category: 'Frameworks & Frontend',
-    description: 'Structural components for building responsive, accessible, and performant user interfaces.',
-    items: ['React', 'Next.js', 'React Native', 'Expo', 'TailwindCSS', '.NET (Blazor/WPF)', 'Playwright']
+    category: 'Frontend & Mobile',
+    description: 'Fast static sites, interactive React dashboards, Blazor interfaces, and cross-platform mobile apps.',
+    items: ['Astro', 'React', 'Next.js', 'Flutter', 'React Native', 'Expo', 'Blazor Server', 'TailwindCSS', 'DaisyUI', 'WPF (MVVM)']
   },
   {
     category: 'Backend & Data',
-    description: 'Systems design for reliability, data integrity, and scalable server-side architecture.',
-    items: ['Supabase', 'Firebase', 'SQL Server', 'MySQL', 'CodeIgniter', 'Apache Superset']
+    description: 'Reliable APIs, relational schemas, CMS/e-commerce, and real-time production data pipelines.',
+    items: ['ASP.NET', '.NET', 'Laravel', 'CodeIgniter', 'WordPress', 'WooCommerce', 'Supabase', 'PostgreSQL', 'SQL Server', 'MySQL', 'Drizzle ORM', 'TanStack', 'Firebase', 'REST APIs']
   },
   {
-    category: 'Interactive & Creative',
-    description: 'Bridging the gap between functional code and engaging visual experiences.',
-    items: ['Unity 3D', 'UI Systems', 'Figma', 'Prototyping', 'Aseprite', 'Adobe Photoshop']
+    category: 'Cloud, Automation & BI',
+    description: 'Edge hosting, payments, CRM, analytics, messaging bots, browser automation, and KPI visualization.',
+    items: ['Cloudflare Pages', 'Cloudflare Workers', 'CHIP Payment', 'HubSpot CRM', 'Google Analytics', 'Meta Pixel', 'Telegram Bot', 'WhatsApp', 'Playwright', 'Apache Superset', 'Excel Automation (VBA)', 'Git', 'GitLab', 'GitHub']
   },
   {
-    category: 'Tools & Capabilities',
-    description: 'The specialized utility belt for automation, prototyping, hardware integration, and deployment.',
-    items: ['Visual Studio', 'Git', 'Excel Automation (VBA)', 'IoT Fundamentals', 'AR (Vuforia)']
+    category: 'Interactive, Tools & AI',
+    description: 'Real-time 3D dashboards, UI systems, hardware/AR prototyping, and AI-assisted delivery.',
+    items: ['Unity 3D', 'Figma', 'Visual Studio', 'Android Studio', 'AI-Assisted Development', 'Prompt Engineering', 'Vuforia AR', 'IoT (Raspberry Pi)']
   }
 ];
 

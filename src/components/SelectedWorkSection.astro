@@ -1,244 +1,432 @@
 ---
 import { Image } from 'astro:assets';
-import type { ImageMetadata } from 'astro';
-import hssDesktopImg from '../assets/projects/hss-wireless-cctv-desktop.png';
-import workforceDemoImg from '../assets/projects/mze-workforce-demo.png';
-import aaBurgerImg from '../assets/projects/aaburger-kiosk-desktop.png';
-import cityThreeImg from '../assets/projects/citythree-desktop.png';
-import kopiTebuImg from '../assets/projects/kopitebu-desktop.png';
-import { PROJECTS } from '../../constants';
-import { bmHome } from '../data/locales/bm-home';
-import type { SiteLocale } from '../utils/i18n';
+import { getWorkCatalog } from '../data/projects-catalog';
+import { localizeHref, type SiteLocale } from '../utils/i18n';
 
-interface Props { locale?: SiteLocale; }
+interface Props {
+  locale?: SiteLocale;
+}
 const { locale = 'en' } = Astro.props;
 const isBm = locale === 'bm';
 
-const featuredProjects = [
-  {
-    id: 'mze',
-    name: 'MZE Worker System',
-    type: 'System',
-    status: 'demo',
-    href: 'https://mzdemo.haikaitech.my/',
-    image: workforceDemoImg,
-    alt: isBm ? 'Papan pemuka pengurusan tenaga kerja MZE Worker System dalam mod demo' : 'MZE Worker System workforce management dashboard in demo mode',
-    presentation: 'laptop',
-    purpose: isBm ? 'Papan pemuka pengurusan tenaga kerja.' : 'Workforce management dashboard.',
-  },
-  {
-    id: 'hss',
-    name: 'HSS Wireless CCTV',
-    type: 'Website',
-    status: 'live',
-    href: 'https://wirelesscctv.com.my/',
-    image: hssDesktopImg,
-    alt: isBm ? 'Laman utama desktop HSS Wireless CCTV' : 'HSS Wireless CCTV desktop website homepage',
-    attachment: 'tape',
-    presentation: 'browser',
-    purpose: isBm ? 'Laman web perniagaan CCTV.' : 'CCTV business website.',
-  },
-  {
-    id: 'aaburger',
-    name: 'AA Burger Kiosk',
-    type: 'Ordering',
-    status: 'live',
-    href: 'https://aaburger.haikaitech.my/',
-    image: aaBurgerImg,
-    alt: isBm ? 'Antara muka pesanan AA Burger Kiosk' : 'AA Burger Kiosk ordering interface',
-    presentation: 'tablet',
-    purpose: isBm ? 'Antara muka pesanan kiosk.' : 'Ordering kiosk interface.',
-  },
-  {
-    id: 'citythree',
-    name: 'CityThree',
-    type: 'Website',
-    status: 'live',
-    href: 'https://citythree.my/',
-    image: cityThreeImg,
-    alt: isBm ? 'Laman utama desktop CityThree' : 'CityThree desktop website homepage',
-    attachment: 'pin',
-    presentation: 'browser',
-    purpose: isBm ? 'Laman web kredit komuniti.' : 'Community credit business website.',
-  },
-  {
-    id: 'kopitebu',
-    name: 'Kopi Tebu',
-    type: 'Website',
-    status: 'live',
-    href: 'https://kopitebu-website.pages.dev/',
-    image: kopiTebuImg,
-    alt: isBm ? 'Laman utama desktop Kopi Tebu' : 'Kopi Tebu desktop website homepage',
-    presentation: 'browser',
-    purpose: isBm ? 'Laman web kafe tepi pantai.' : 'Beachside café website.',
-  },
-];
-
-const archiveImages = Object.values(import.meta.glob<ImageMetadata>('../assets/projects/*.{png,webp}', { eager: true, import: 'default' }));
-const archiveProjects = PROJECTS.map((project) => ({
-  ...project,
-  name: project.name,
-  status: project.status,
-  href: project.link,
-  purpose: isBm ? bmHome.projects.archivePurpose[project.id] ?? project.purpose : project.purpose,
-  screenshot: archiveImages.find(image => image.src === project.image),
-}));
+const { industries, industryById, allProjects, totalCount, flagshipCount } = getWorkCatalog(locale);
+const archiveHref = localizeHref('/projects/', locale);
 ---
 
-<section id="projects" class="workbench wb-selected-work" aria-labelledby="selected-work-title">
-  <header class="wb-selected-head">
-    <div>
-      <p class="wb-eyebrow">{isBm ? bmHome.projects.eyebrow : 'Selected work'}</p>
-      <h2 id="selected-work-title">{isBm ? <>{bmHome.projects.title[0]}<br />{bmHome.projects.title[1]}</> : <>Useful things.<br />Shipped.</>}</h2>
-    </div>
-    <p class="wb-selected-intro">{isBm ? bmHome.projects.intro : 'Five recent builds, from public-facing sites to an operational system. Each screen is real work, not a placeholder.'}</p>
-  </header>
+<section
+  id="projects"
+  class="ht-work"
+  aria-labelledby="selected-work-title"
+  data-locale={locale}
+  data-flagship={flagshipCount}
+>
+  <div class="tines-container">
+    <header class="ht-work__head">
+      <svg class="ht-work__crest" width="84" height="86" viewBox="0 0 84 86" fill="none" aria-hidden="true">
+        <path
+          d="M17 6c2 0 3.7 1.4 4.1 3.2h3.8C25.3 7.4 27 6 29 6s3.7 1.4 4.1 3.2h3.8C37.3 7.4 39 6 41 6s3.7 1.4 4.1 3.2h3.8C49.3 7.4 51 6 53 6s3.7 1.4 4.1 3.2H65c1.1 0 2 .9 2 2v5.4c1.8.4 3.2 2.1 3.2 4.1s-1.4 3.7-3.2 4.1v4c1.8.4 3.2 2.1 3.2 4.1s-1.4 3.7-3.2 4.1v4c1.8.4 3.2 2.1 3.2 4.1s-1.4 3.7-3.2 4.1v4c1.8.4 3.2 2.1 3.2 4.1s-1.4 3.7-3.2 4.1v4c1.8.4 3.2 2.1 3.2 4.1s-1.4 3.7-3.2 4.1v4.4c0 1.1-.9 2-2 2h-4.4c-.4 1.8-2.1 3.2-4.1 3.2s-3.7-1.4-4.1-3.2h-3.8c-.4 1.8-2.1 3.2-4.1 3.2s-3.7-1.4-4.1-3.2h-3.8c-.4 1.8-2.1 3.2-4.1 3.2s-3.7-1.4-4.1-3.2h-3.8c-.4 1.8-2.1 3.2-4.1 3.2s-3.7-1.4-4.1-3.2H17c-1.1 0-2-.9-2-2v-4.4c-1.8-.4-3.2-2.1-3.2-4.1s1.4-3.7 3.2-4.1v-4c-1.8-.4-3.2-2.1-3.2-4.1s1.4-3.7 3.2-4.1v-4c-1.8-.4-3.2-2.1-3.2-4.1s1.4-3.7 3.2-4.1v-4c-1.8-.4-3.2-2.1-3.2-4.1s1.4-3.7 3.2-4.1v-4c-1.8-.4-3.2-2.1-3.2-4.1s1.4-3.7 3.2-4.1V8c0-1.1.9-2 2-2z"
+          fill="#FAF8F3"
+          stroke="#1D4ED8"
+          stroke-width="1.5"
+        />
+        <rect x="20" y="13" width="42" height="52" rx="2" fill="#1D4ED8" />
+        <path d="M27.5 49V31.5l3.5-5 3.5 5V49" fill="#FAF8F3" />
+        <rect x="30.2" y="21.5" width="1.6" height="4.5" fill="#FAF8F3" />
+        <path d="M36.5 49V37h17v12H36.5Z" fill="#FAF8F3" />
+        <path d="M39 37l4-5.5h6l4 5.5H39Z" fill="#FAF8F3" />
+        <rect x="39.5" y="40.5" width="3" height="4.5" rx="0.8" fill="#1D4ED8" />
+        <rect x="44.5" y="40.5" width="3" height="4.5" rx="0.8" fill="#1D4ED8" />
+        <rect x="49.5" y="40.5" width="2.5" height="4.5" rx="0.8" fill="#1D4ED8" />
+        <path d="M23.5 55.5c4.5-2.6 9-2.6 13.5 0s9 2.6 13.5 0c2.6-1.5 5-2 7.5-1.6" stroke="#FAF8F3" stroke-width="1.8" stroke-linecap="round" />
+        <path d="M23.5 60.2c4.5-2.2 9-2.2 13.5 0s9 2.2 13.5 0c2.6-1.3 5-1.7 7.5-1.3" stroke="#FAF8F3" stroke-width="1.4" stroke-linecap="round" opacity="0.72" />
+        <circle cx="52" cy="21.5" r="1.4" fill="#FAF8F3" />
+        <path d="M26 19.5l.6 1.5 1.5.6-1.5.6-.6 1.5-.6-1.5-1.5-.6 1.5-.6.6-1.5z" fill="#FAF8F3" />
+        <circle cx="20" cy="60" r="14" fill="#FAF8F3" fill-opacity="0.88" stroke="#1D4ED8" stroke-width="1.5" />
+        <circle cx="20" cy="60" r="10.2" stroke="#1D4ED8" stroke-width="1" stroke-dasharray="2.4 1.8" />
+        <path d="M13 58c2.2-1.2 4.4-1.2 6.6 0s4.4 1.2 6.6 0" stroke="#1D4ED8" stroke-width="1.15" stroke-linecap="round" />
+        <path d="M13 62c2.2-1.2 4.4-1.2 6.6 0s4.4 1.2 6.6 0" stroke="#1D4ED8" stroke-width="1.15" stroke-linecap="round" />
+      </svg>
 
-  <div class="wb-work-wall" aria-label={isBm ? bmHome.projects.wall : 'Five recent HaikaiTech projects'}>
-    {featuredProjects.map((project, index) => (
-      <figure class={`wb-project-sheet wb-project-sheet--${project.id}`}>
-        {project.id === 'mze' && (
-          <span class="wb-project-sheet__note" aria-hidden="true">
-            <span>{isBm ? <>di sebalik<br />kerja harian</> : <>behind the<br />day-to-day</>}</span>
-            <svg viewBox="0 0 70 56" fill="none"><path d="M4 7c11 3 40 7 55 34m0 0-18-4m18 4-7-17" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg>
+      <h2 id="selected-work-title" class="ht-work__title">
+        {isBm ? 'Teroka kerja mengikut industri.' : 'Explore work by industry.'}
+      </h2>
+      <p class="ht-work__sub">
+        {isBm
+          ? `Pilih industri untuk melihat ${totalCount} laman web, aliran pesanan dan sistem perniagaan sebenar dari studio Pulau Pinang kami.`
+          : `Pick an industry to browse ${totalCount} real websites, ordering flows and business systems built at our Penang studio.`}
+      </p>
+    </header>
+
+    <div
+      class="ht-industries"
+      role="group"
+      aria-label={isBm ? 'Tapis projek mengikut industri' : 'Filter shipped builds by industry'}
+    >
+      {industries.map((ind) => (
+        <button
+          type="button"
+          class="ht-industry-card"
+          data-industry={ind.id}
+          data-count={ind.count}
+          data-title={ind.title}
+          aria-pressed="false"
+          style={`--ind-color: ${ind.color}; --ind-tint: ${ind.tint};`}
+        >
+          <span class="ht-industry-card__icon" aria-hidden="true">
+            {ind.id === 'construction' && (
+              <svg viewBox="0 0 36 36" fill="none">
+                <path d="M5 17 18 6l13 11v13H5V17Z" fill="var(--ind-color)" fill-opacity="0.14" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+                <path d="M3 18.5 18 5.5l15 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M11 30v-8.5c0-1.9 1.6-3.5 3.5-3.5S18 19.6 18 21.5V30" stroke="currentColor" stroke-width="1.5" />
+                <rect x="21" y="18.5" width="6" height="7" rx="1" fill="var(--ind-color)" fill-opacity="0.22" stroke="currentColor" stroke-width="1.4" />
+                <path d="M21 22h6" stroke="currentColor" stroke-width="1.2" />
+              </svg>
+            )}
+            {ind.id === 'travel' && (
+              <svg viewBox="0 0 36 36" fill="none">
+                <path d="M9 28v-5c0-5 4-9 9-12 5 3 9 7 9 12v5H9Z" fill="var(--ind-color)" fill-opacity="0.14" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+                <path d="M18 6v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                <path d="M20.2 5.5a2.4 2.4 0 1 1-3.2 2.2 2 2 0 0 0 3.2-2.2Z" fill="currentColor" />
+                <path d="M14.5 28v-6.5a3.5 3.5 0 0 1 7 0V28" stroke="currentColor" stroke-width="1.5" />
+                <path d="M5.5 28h25" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                <circle cx="29" cy="10" r="3" stroke="currentColor" stroke-width="1.4" />
+              </svg>
+            )}
+            {ind.id === 'fnb-retail' && (
+              <svg viewBox="0 0 36 36" fill="none">
+                <path d="M6 14h24v15H6V14Z" fill="var(--ind-color)" fill-opacity="0.12" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+                <path d="M4.5 14 7.5 7h21l3 7" fill="var(--ind-color)" fill-opacity="0.22" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+                <path d="M4.5 14a3.4 3.4 0 0 0 6.7 0 3.4 3.4 0 0 0 6.8 0 3.4 3.4 0 0 0 6.8 0 3.4 3.4 0 0 0 6.7 0" stroke="currentColor" stroke-width="1.5" />
+                <rect x="11" y="19" width="7" height="10" rx="1" stroke="currentColor" stroke-width="1.5" />
+                <rect x="21" y="19" width="6" height="5.5" rx="1" fill="var(--ind-color)" fill-opacity="0.22" stroke="currentColor" stroke-width="1.4" />
+              </svg>
+            )}
+            {ind.id === 'b2b' && (
+              <svg viewBox="0 0 36 36" fill="none">
+                <rect x="5" y="11" width="19" height="11" rx="3" fill="var(--ind-color)" fill-opacity="0.16" stroke="currentColor" stroke-width="1.6" />
+                <circle cx="20" cy="16.5" r="2.2" fill="currentColor" />
+                <path d="M12 22v5.5H8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M27 12.5a6.5 6.5 0 0 1 0 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                <path d="M30 9.5a10.5 10.5 0 0 1 0 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+              </svg>
+            )}
+            {ind.id === 'clinics-edu' && (
+              <svg viewBox="0 0 36 36" fill="none">
+                <path d="M5.5 8.5C5.5 7.1 6.6 6 8 6h10v22H8c-1.4 0-2.5 1.1-2.5 2.5V8.5Z" fill="var(--ind-color)" fill-opacity="0.14" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+                <path d="M30.5 8.5C30.5 7.1 29.4 6 28 6H18v22h10c1.4 0 2.5 1.1 2.5 2.5V8.5Z" fill="var(--ind-color)" fill-opacity="0.08" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+                <path d="M12 13v6M9 16h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                <path d="M21.5 14h5.5M21.5 18.5h4.5M21.5 23h5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              </svg>
+            )}
+            {ind.id === 'systems-apps' && (
+              <svg viewBox="0 0 36 36" fill="none">
+                <rect x="4.5" y="7" width="27" height="20" rx="3" fill="var(--ind-color)" fill-opacity="0.14" stroke="currentColor" stroke-width="1.6" />
+                <path d="M4.5 13h27" stroke="currentColor" stroke-width="1.5" />
+                <circle cx="8.5" cy="10" r="1" fill="currentColor" />
+                <circle cx="12" cy="10" r="1" fill="currentColor" />
+                <rect x="9" y="19" width="4" height="5" rx="0.8" fill="currentColor" />
+                <rect x="15.5" y="16.5" width="4" height="7.5" rx="0.8" fill="var(--ind-color)" fill-opacity="0.35" stroke="currentColor" stroke-width="1.3" />
+                <rect x="22" y="18" width="4.5" height="6" rx="0.8" stroke="currentColor" stroke-width="1.3" />
+                <path d="M13 30.5h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+              </svg>
+            )}
           </span>
-        )}
-        <div class={`wb-project-stage wb-project-stage--${project.presentation}`}>
-          <a class={`wb-project-visual wb-project-visual--${project.presentation}`} href={project.href} target="_blank" rel="noopener noreferrer" aria-label={isBm ? `Buka ${project.name}` : `Open ${project.name}`}>
-            {project.attachment === 'tape' && <span class="wb-project-sheet__tape" aria-hidden="true"></span>}
-            {project.attachment === 'pin' && <span class="wb-pin wb-project-sheet__pin" aria-hidden="true"></span>}
-            {project.presentation === 'browser' && <span class="wb-project-browser-bar" aria-hidden="true"><i></i><i></i><i></i></span>}
-            <span class={project.presentation === 'laptop' ? 'wb-laptop-screen' : project.presentation === 'tablet' ? 'wb-project-tablet-screen' : 'wb-project-browser-screen'}>
-              <Image src={project.image} alt={project.alt} loading={index === 0 ? 'eager' : 'lazy'} widths={[320, 640, 960, 1280]} sizes={project.presentation === 'tablet' ? '(max-width: 1023px) 480px, 430px' : project.id === 'mze' ? '(max-width: 1023px) calc(100vw - 64px), (max-width: 1279px) 56vw, 720px' : '(max-width: 1023px) calc(100vw - 64px), 40vw'} />
+
+          <span class="ht-industry-card__title">{ind.title}</span>
+          <span class="ht-industry-card__desc">{ind.desc}</span>
+
+          <span class="ht-industry-card__cta">
+            <span class="ht-industry-card__cta-idle">
+              {isBm ? `LIHAT ${ind.count} BINAAN` : `VIEW ${ind.count} BUILDS`} <span aria-hidden="true">&darr;</span>
             </span>
-            {project.presentation === 'laptop' && <span class="wb-laptop-base" aria-hidden="true"></span>}
-          </a>
+            <span class="ht-industry-card__cta-active">
+              {isBm ? `PAPAR ${ind.count} · SET SEMULA` : `SHOWING ${ind.count} · RESET`}
+            </span>
+          </span>
+        </button>
+      ))}
+    </div>
+
+    <div class="ht-work-shelf">
+      <div class="ht-work-bar">
+        <p class="ht-work-bar__status" role="status" aria-live="polite" data-work-status>
+          {isBm ? `Pilihan utama · ${flagshipCount} binaan` : `Flagship showcase · ${flagshipCount} builds`}
+        </p>
+
+        <div class="ht-rail-controls">
+          <button type="button" class="ht-rail-reset" data-rail-reset hidden>
+            {isBm ? `Papar ${flagshipCount} pilihan` : `Show flagship ${flagshipCount}`}
+          </button>
+
+          <button
+            type="button"
+            class="ht-rail-btn"
+            data-rail-dir="-1"
+            aria-label={isBm ? 'Projek sebelumnya' : 'Previous builds'}
+            aria-controls="work-shelf-rail"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m15 18-6-6 6-6" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="ht-rail-btn"
+            data-rail-dir="1"
+            aria-label={isBm ? 'Projek seterusnya' : 'Next builds'}
+            aria-controls="work-shelf-rail"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="m9 18 6-6-6-6" />
+            </svg>
+          </button>
         </div>
-        <figcaption>
-          <h3>{project.name}</h3>
-          <p>{project.purpose}</p>
-          <div class="wb-project-sheet__links">
-            <small class={`wb-project-sheet__status wb-project-sheet__status--${project.status}`}>{isBm ? bmHome.projects.types[project.type] : project.type} / {isBm ? bmHome.projects.status(project.status) : project.status}</small>
-            <a class="wb-project-sheet__visit" href={project.href} target="_blank" rel="noopener noreferrer" aria-label={isBm ? `Buka ${project.name}` : `View ${project.name}${project.status === 'demo' ? ' demo' : ' project'}`}>
-              {isBm ? project.status === 'demo' ? 'Lihat demo' : 'Lihat projek' : project.status === 'demo' ? 'View demo' : 'View project'}
-            </a>
-          </div>
-        </figcaption>
-      </figure>
-    ))}
+      </div>
+    </div>
   </div>
 
-  <section id="workshop-archive" class="wb-archive" aria-labelledby="archive-title" data-locale={locale}>
-    <header class="wb-archive-head">
-      <div>
-        <p class="wb-archive-tab">{archiveProjects.length} {isBm ? 'projek' : 'projects'}</p>
-        <h3 id="archive-title">{isBm ? bmHome.projects.archive : 'Explore the rest.'}</h3>
-        <p class="wb-archive-intro">{isBm ? 'Laman web, demo dan eksperimen dari bengkel kami.' : 'Websites, demos and experiments from the workshop.'}</p>
-      </div>
-      <div class="wb-archive-navigation" hidden>
-        <div class="wb-archive-filters" role="group" aria-label={isBm ? 'Tapis projek' : 'Filter projects'}>
-          <button type="button" data-filter="all" aria-pressed="true" aria-controls="archive-rail">{isBm ? 'Semua projek' : 'All projects'}</button>
-          <button type="button" data-filter="live" aria-pressed="false" aria-controls="archive-rail">{isBm ? 'Aktif' : 'Live'}</button>
-          <button type="button" data-filter="demo" aria-pressed="false" aria-controls="archive-rail">{isBm ? 'Demo' : 'Demos'}</button>
-        </div>
-        <div class="wb-archive-controls">
-          <button type="button" data-direction="-1" aria-label={isBm ? bmHome.projects.previous : 'Previous projects'} aria-controls="archive-rail"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m14 6-6 6 6 6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" /></svg></button>
-          <button type="button" data-direction="1" aria-label={isBm ? bmHome.projects.next : 'Next projects'} aria-controls="archive-rail"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m10 6 6 6-6 6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" /></svg></button>
-        </div>
-      </div>
-    </header>
-    <ul id="archive-rail" class="wb-archive-rail" tabindex="0" aria-label={isBm ? bmHome.projects.past : 'Previous projects and demos; scroll horizontally'}>
-      {archiveProjects.map((project) => (
-        <li class="wb-archive-sheet" data-status={project.status}>
-          <a class="wb-archive-image" href={`/projects/${project.id}/`} aria-label={isBm ? `Lihat pratonton ${project.name}; butiran projek dalam Bahasa Inggeris` : `View ${project.name} project preview`}>
-            <Image src={project.screenshot ?? project.image} width={600} height={project.screenshot ? undefined : 450} widths={[320, 600, 900]} sizes="(max-width: 600px) 80vw, (max-width: 1023px) 43vw, 380px" alt={isBm ? `Pratonton projek ${project.name}` : `${project.name} project preview`} loading="lazy" />
-          </a>
-          <div class="wb-archive-copy">
-            <h4><a href={`/projects/${project.id}/`}>{project.name}</a>{isBm && <span class="wb-archive-language">(EN)</span>}</h4>
-            <p>{project.purpose}</p>
-            <div class="wb-archive-links">
-              <small class={`wb-project-sheet__status wb-project-sheet__status--${project.status}`}>{isBm ? bmHome.projects.status(project.status) : project.status}</small>
-              <a href={`/projects/${project.id}/`}>{isBm ? 'Lihat projek' : 'View project'}</a>
-              <a href={project.href} target="_blank" rel="noopener noreferrer">{isBm ? project.status === 'demo' ? 'Buka demo' : 'Buka laman web' : project.status === 'demo' ? 'Open demo' : 'Open live site'}</a>
-            </div>
-            <div class="wb-archive-tools">
-              <h5>{isBm ? bmHome.projects.tech : <>Tech, tools &amp; toys</>}</h5>
-              <ul>{project.skills.slice(0, 3).map(skill => <li>{skill}</li>)}</ul>
-              {project.skills.length > 3 && <details><summary><span class="wb-tools-show">{isBm ? 'Lihat semua alat' : 'Show all tools'}</span><span class="wb-tools-hide">{isBm ? 'Lihat lebih sedikit' : 'Show fewer tools'}</span></summary><ul>{project.skills.slice(3).map(skill => <li>{skill}</li>)}</ul></details>}
-            </div>
-          </div>
-        </li>
-      ))}
-    </ul>
-    <p class="wb-archive-empty" hidden>{isBm ? 'Tiada projek dalam pilihan ini. Pilih Semua projek.' : 'No projects in this selection. Choose All projects.'}</p>
-    <footer class="wb-archive-footer">
-      <div class="wb-archive-progress" aria-hidden="true" hidden><span></span></div>
-      <p class="wb-archive-position" role="status" aria-live="polite" aria-atomic="true"></p>
-      <p class="wb-archive-hint">{isBm ? 'Skrol atau leret untuk meneroka' : 'Scroll or swipe to explore'}</p>
-    </footer>
-  </section>
+  <ul
+    id="work-shelf-rail"
+    class="ht-work-rail"
+    tabindex="0"
+    aria-label={isBm ? 'Baris projek mendatar' : 'Horizontal project showcase row'}
+  >
+        {allProjects.map((project) => {
+          const ind = industryById[project.industry];
+          const primaryHref = project.caseStudyHref ?? project.href;
+          const isExternal = !project.caseStudyHref;
+          const statusLabel = isBm
+            ? project.status === 'demo'
+              ? 'Demo'
+              : 'Aktif'
+            : project.status === 'demo'
+              ? 'Demo'
+              : 'Live';
+
+          return (
+            <li
+              class="ht-crawford-card"
+              data-industry={project.industry}
+              data-flagship={project.flagship ? '1' : '0'}
+              hidden={!project.flagship}
+            >
+              <a
+                class="ht-crawford-card__inner"
+                href={primaryHref}
+                {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+              >
+                <div class="ht-crawford-card__head">
+                  <div class="ht-crawford-card__info">
+                    <div class="ht-crawford-card__tags">
+                      <span
+                        class="ht-work-card__ind"
+                        style={`--ind-color: ${ind.color}; --ind-tint: ${ind.tint};`}
+                      >
+                        {ind.short}
+                      </span>
+                      <span class={`ht-work-card__status ht-work-card__status--${project.status}`}>
+                        <i aria-hidden="true"></i>
+                        {statusLabel}
+                      </span>
+                    </div>
+                    <h3 class="ht-crawford-card__title">{project.name}</h3>
+                  </div>
+                  <span class="ht-crawford-card__arrow" aria-hidden="true">
+                    &#8594;
+                  </span>
+                </div>
+
+                <div class="ht-crawford-card__stage" style={`--stage-bg: ${project.stageBg};`}>
+                  {project.showcaseImage ? (
+                    <Image
+                      class="ht-crawford-card__composite"
+                      src={project.showcaseImage}
+                      width={1080}
+                      widths={[480, 720, 1080]}
+                      sizes="(max-width: 640px) 88vw, (max-width: 1200px) 46vw, 604px"
+                      format="webp"
+                      quality={86}
+                      alt={project.alt}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  ) : (
+                    <div class="ht-crawford-card__staged">
+                      {typeof project.image === 'string' ? (
+                        <img
+                          class="ht-crawford-card__staged-frame"
+                          src={project.image}
+                          width={640}
+                          height={400}
+                          alt={project.alt}
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      ) : (
+                        <Image
+                          class="ht-crawford-card__staged-frame"
+                          src={project.image}
+                          width={640}
+                          widths={[360, 640]}
+                          sizes="(max-width: 640px) 78vw, 380px"
+                          format="webp"
+                          quality={84}
+                          alt={project.alt}
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      )}
+                      {project.mobileImage && (
+                        <div class="ht-crawford-card__staged-mobile" aria-hidden="true">
+                          <Image
+                            src={project.mobileImage}
+                            width={240}
+                            format="webp"
+                            quality={82}
+                            alt=""
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              </a>
+            </li>
+          );
+        })}
+  </ul>
+
+  <div class="tines-container">
+    <div class="ht-work-foot">
+      <a class="ht-work-all-btn" href={archiveHref}>
+        <span>{isBm ? 'Lihat semua projek' : 'View all builds'}</span>
+        <span aria-hidden="true">&#8594;</span>
+      </a>
+      <p class="ht-work-foot__hint">
+        {isBm ? 'Skrol mendatar atau pilih industri di atas' : 'Scroll horizontally or pick an industry above'}
+      </p>
+    </div>
+  </div>
 </section>
 
 <script>
-  document.querySelectorAll<HTMLElement>('.wb-archive').forEach(archive => {
-    const rail = archive.querySelector<HTMLElement>('.wb-archive-rail');
-    if (!rail) return;
-    const buttons = archive.querySelectorAll<HTMLButtonElement>('[data-direction]');
-    const filters = archive.querySelectorAll<HTMLButtonElement>('[data-filter]');
-    const sheets = [...rail.querySelectorAll<HTMLElement>('.wb-archive-sheet')];
-    const position = archive.querySelector<HTMLElement>('.wb-archive-position');
-    const progress = archive.querySelector<HTMLElement>('.wb-archive-progress span');
-    const empty = archive.querySelector<HTMLElement>('.wb-archive-empty');
-    const isBm = archive.dataset.locale === 'bm';
-    const visibleSheets = () => sheets.filter(sheet => !sheet.hidden);
-    let announceTimer: ReturnType<typeof setTimeout>;
-    const update = () => {
-      const items = visibleSheets();
-      const bounds = rail.getBoundingClientRect();
-      // Count mostly visible prints, not the deliberately clipped next preview.
-      const visible = items.map((sheet, index) => ({ bounds: sheet.getBoundingClientRect(), index }))
-        .filter(item => Math.min(bounds.right, item.bounds.right) - Math.max(bounds.left, item.bounds.left) >= item.bounds.width * .6);
-      const first = (visible[0]?.index ?? 0) + 1;
-      const last = (visible.at(-1)?.index ?? 0) + 1;
-      buttons.forEach(button => {
-        button.disabled = !items.length || (button.dataset.direction === '-1' ? rail.scrollLeft <= 2 : rail.scrollLeft >= rail.scrollWidth - rail.clientWidth - 2);
+  function initSelectedWorkRail(): void {
+    const section = document.getElementById('projects');
+    if (!section || section.dataset.workInit === '1') return;
+
+    const industryButtons = Array.from(
+      section.querySelectorAll<HTMLButtonElement>('.ht-industry-card[data-industry]')
+    );
+    const rail = section.querySelector<HTMLElement>('#work-shelf-rail');
+    const cards = Array.from(section.querySelectorAll<HTMLLIElement>('.ht-crawford-card'));
+    const statusEl = section.querySelector<HTMLElement>('[data-work-status]');
+    const resetBtn = section.querySelector<HTMLButtonElement>('[data-rail-reset]');
+    const prevBtn = section.querySelector<HTMLButtonElement>('[data-rail-dir="-1"]');
+    const nextBtn = section.querySelector<HTMLButtonElement>('[data-rail-dir="1"]');
+    const shelfEl = section.querySelector<HTMLElement>('.ht-work-shelf');
+
+    if (!rail || !cards.length) return;
+    section.dataset.workInit = '1';
+
+    const isBm = section.dataset.locale === 'bm';
+    const flagshipCount = section.dataset.flagship || '6';
+    let activeIndustry: string | null = null;
+
+    const updateNavButtons = (): void => {
+      if (!prevBtn || !nextBtn) return;
+      const maxScroll = Math.max(0, rail.scrollWidth - rail.clientWidth);
+      prevBtn.disabled = rail.scrollLeft <= 4;
+      nextBtn.disabled = maxScroll <= 4 || rail.scrollLeft >= maxScroll - 4;
+    };
+
+    const applyIndustryFilter = (industry: string | null): void => {
+      activeIndustry = industry;
+
+      industryButtons.forEach((btn) => {
+        btn.setAttribute('aria-pressed', String(industry !== null && btn.dataset.industry === industry));
       });
-      if (progress) progress.style.transform = `scaleX(${items.length ? last / items.length : 0})`;
-      // Announce only after scrolling settles, rather than every animation frame.
-      clearTimeout(announceTimer);
-      announceTimer = setTimeout(() => {
-        if (position) position.textContent = items.length
-          ? isBm ? `Memaparkan ${first}–${last} daripada ${items.length}` : `Showing ${first}–${last} of ${items.length}`
-          : isBm ? '0 projek' : '0 projects';
-      }, 150);
-    };
-    const move = (direction: number) => {
-      const step = (visibleSheets()[0]?.getBoundingClientRect().width ?? rail.clientWidth) + parseFloat(getComputedStyle(rail).columnGap);
-      rail.scrollBy({ left: direction * step, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
-    };
-    buttons.forEach(button => button.addEventListener('click', () => move(Number(button.dataset.direction))));
-    filters.forEach(button => button.addEventListener('click', () => {
-      const filter = button.dataset.filter;
-      filters.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
-      sheets.forEach(sheet => { sheet.hidden = filter !== 'all' && sheet.dataset.status !== filter; });
-      if (empty) empty.hidden = visibleSheets().length !== 0;
+
+      let visibleCount = 0;
+      cards.forEach((card) => {
+        const match = industry ? card.dataset.industry === industry : card.dataset.flagship === '1';
+        const show = match && visibleCount < 6;
+        card.hidden = !show;
+        if (show) visibleCount += 1;
+      });
+
+      if (resetBtn) {
+        resetBtn.hidden = industry === null;
+      }
+
+      if (statusEl) {
+        if (industry) {
+          const btn = industryButtons.find((b) => b.dataset.industry === industry);
+          const title = btn?.dataset.title ?? industry;
+          statusEl.textContent = isBm
+            ? `${title} · ${visibleCount} binaan`
+            : `${title} · ${visibleCount} builds`;
+        } else {
+          statusEl.textContent = isBm
+            ? `Pilihan utama · ${flagshipCount} binaan`
+            : `Flagship showcase · ${flagshipCount} builds`;
+        }
+      }
+
       rail.scrollTo({ left: 0, behavior: 'instant' });
-      update();
-    }));
-    rail.addEventListener('keydown', event => {
+      requestAnimationFrame(updateNavButtons);
+    };
+
+    const scrollByCard = (direction: number): void => {
+      const firstVisible = cards.find((c) => !c.hidden);
+      const cardW = firstVisible?.getBoundingClientRect().width ?? 380;
+      const gap = Number.parseFloat(getComputedStyle(rail).columnGap || getComputedStyle(rail).gap || '20') || 20;
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      rail.scrollBy({
+        left: direction * (cardW + gap),
+        behavior: reduced ? 'instant' : 'smooth',
+      });
+    };
+
+    industryButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const indId = btn.dataset.industry ?? null;
+        if (!indId) return;
+
+        if (activeIndustry === indId) {
+          applyIndustryFilter(null);
+          return;
+        }
+
+        applyIndustryFilter(indId);
+        if (window.innerWidth < 768 && shelfEl) {
+          const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          shelfEl.scrollIntoView({ behavior: reduced ? 'instant' : 'smooth', block: 'nearest' });
+        }
+      });
+    });
+
+    resetBtn?.addEventListener('click', () => applyIndustryFilter(null));
+    prevBtn?.addEventListener('click', () => scrollByCard(-1));
+    nextBtn?.addEventListener('click', () => scrollByCard(1));
+
+    rail.addEventListener('scroll', updateNavButtons, { passive: true });
+    rail.addEventListener('keydown', (event) => {
       if (event.target !== rail) return;
-      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+      if (event.key === 'ArrowRight') {
         event.preventDefault();
-        move(event.key === 'ArrowLeft' ? -1 : 1);
-      } else if (event.key === 'Home' || event.key === 'End') {
+        scrollByCard(1);
+      } else if (event.key === 'ArrowLeft') {
         event.preventDefault();
-        rail.scrollTo({ left: event.key === 'Home' ? 0 : rail.scrollWidth, behavior: 'instant' });
+        scrollByCard(-1);
       }
     });
-    rail.addEventListener('scroll', update, { passive: true });
-    new ResizeObserver(update).observe(rail);
-    archive.querySelectorAll<HTMLElement>('.wb-archive-navigation, .wb-archive-progress').forEach(element => { element.hidden = false; });
-    archive.dataset.enhanced = 'true';
-    update();
-  });
+
+    new ResizeObserver(updateNavButtons).observe(rail);
+    applyIndustryFilter(null);
+  }
+
+  initSelectedWorkRail();
+  document.addEventListener('astro:page-load', initSelectedWorkRail);
 </script>

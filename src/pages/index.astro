@@ -7,6 +7,7 @@ import TinesBentoAndProof from '../components/TinesBentoAndProof.astro';
 import '../styles/workbench.css';
 import '../styles/tines-home.css';
 import SelectedWorkSection from '../components/SelectedWorkSection.astro';
+import IntegrationsHub from '../components/IntegrationsHub.astro';
 import PricingWorkbench from '../components/PricingWorkbench.astro';
 import OwnProducts from '../components/OwnProducts.astro';
 import InsightsNotebook from '../components/InsightsNotebook.astro';
@@ -35,8 +36,9 @@ const blogPosts = (await getPublicPosts())
       <TinesEditorialAndPillars />
       <TinesBentoAndProof />
       <SelectedWorkSection />
+      <IntegrationsHub />
       <div id="pricing" class="scroll-mt-24"><PricingWorkbench /></div>
-      <OwnProducts />
+      <OwnProducts posts={blogPosts.slice(0, 3)} />
       <InsightsNotebook posts={blogPosts} />
       <div id="start" class="scroll-mt-28"><ContactSection client:load /></div>
     </main>

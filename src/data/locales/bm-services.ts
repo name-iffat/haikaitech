@@ -18,12 +18,13 @@ export const bmServiceDetails = {
         ],
       },
       {
-        title: 'Bengkel ini menggunakan tiga alat.',
+        title: 'Bengkel, sistem dan alat kami.',
         intro: 'Pilih lapisan paling ringkas yang menyelesaikan tugas. Teknologi mengikut aliran kerja, bukan sebaliknya.',
         rows: [
+          ['Latihan AI (Hermes, Codex & Claude Code)', 'Sesi praktikal 1-ke-1 atau berkumpulan untuk membina aliran kerja bisnes dan saluran kod menggunakan Hermes, OpenAI Codex dan Claude Code.'],
           ['Ejen Hermes', 'Sediakan ejen untuk menjalankan tugasan dengan skop dan arahan yang jelas, serta semakan manusia apabila diperlukan.'],
           ['Aliran kerja n8n', 'Sambungkan servis dan langkah berulang secara visual supaya setiap serahan mudah diperiksa dan diselenggara.'],
-          ['Skrip tersuai', 'Kendalikan kes khas yang tidak sesuai untuk penyambung sedia ada dengan skrip kecil berdasarkan proses sebenar anda.'],
+          ['Sistem operasi & binaan tersuai', 'Bina platform Web B2B, sistem Tempahan & Order WhatsApp, Inventori & POS, CRM Tersuai dan ERP Tersuai mengikut pasukan anda.'],
         ],
       },
       {

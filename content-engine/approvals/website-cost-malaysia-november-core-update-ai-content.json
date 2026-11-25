@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "contentId": "website-cost-malaysia-november-core-update-ai-content",
+  "route": "/blog/website-cost-malaysia-november-core-update-ai-content/",
+  "decision": "approved",
+  "reviewer": "Iffat Haikal (owner)",
+  "approvedAt": "2026-11-23T04:29:52.489Z",
+  "digest": "sha256:ec1136adf0a9076a40ecd5fc3ccc4b0d01b8d2daa10342b90119b9814184201a",
+  "checks": {
+    "accuracy": true,
+    "evidence": true,
+    "disclosure": true,
+    "assetRights": true
+  }
+}

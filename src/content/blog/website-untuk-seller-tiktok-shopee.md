@@ -17,6 +17,8 @@ Tapi bila produk, variasi dan order semakin banyak, kerja harian boleh mula jadi
 
 Itu bukan bermaksud anda perlu tinggalkan TikTok Shop atau Shopee. Dalam banyak keadaan, marketplace masih berguna untuk reach dan discovery. Tetapi bila operasi mula susah dikawal, website sendiri boleh dipertimbangkan sebagai **saluran tambahan** untuk menyusun katalog, customer journey dan enquiry. Untuk gambaran tentang scope dan kos, lihat [panduan kos website di Malaysia](/blog/how-much-does-a-business-website-cost-in-malaysia/).
 
+> TL;DR: Kekal di marketplace untuk reach dan discovery; tambah website sendiri bila variasi, stok dan order merentas channel mula serabut. Website ialah saluran tambahan untuk katalog, customer journey dan enquiry — bukan pengganti automatik, dan sync stok tidak berlaku sendiri.
+
 ## Marketplace untuk mula, website sendiri bila operasi mula serabut
 
 Marketplace sudah menyediakan banyak fungsi asas. Seller boleh mengurus listing, variasi produk, order, penghantaran, customer service dan promosi dalam platform masing-masing.
@@ -162,6 +164,8 @@ Tiada jaminan automatik. Website boleh membantu menyusun customer journey dan ow
 - [TikTok for WooCommerce setup guide](https://ads.tiktok.com/resources/help/article/tiktok-woocommerce-set-up-guide)
 - [TikTok for WooCommerce documentation](https://woocommerce.com/document/tiktok-for-woocommerce/)
 - [WooCommerce Shopee Integration documentation](https://woocommerce.com/document/shopee-integration-for-woocommerce/) — contoh connector, bukan bukti capability semasa; halaman tersebut menyatakan produk itu tidak lagi tersedia dan tidak lagi dikemas kini.
+
+**Kesimpulan:** Jangan bina website sebab jualan tinggi; bina bila operasi serabut. Sediakan senarai 10 perkara di atas dulu — ia tentukan sama ada anda perlu storefront, integration, atau cuma proses yang lebih kemas.
 
 ## Nak semak flow dulu?
 

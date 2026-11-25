@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "contentId": "cara-buat-website-sendiri",
+  "route": "/blog/cara-buat-website-sendiri/",
+  "decision": "approved",
+  "reviewer": "Iffat Haikal (owner)",
+  "approvedAt": "2026-11-23T04:29:52.489Z",
+  "digest": "sha256:aaadbe22a02af890b472f0df433fc6fb20f5c0726549d5fdc36bf4205227c561",
+  "checks": {
+    "accuracy": true,
+    "evidence": true,
+    "disclosure": true,
+    "assetRights": true
+  }
+}
