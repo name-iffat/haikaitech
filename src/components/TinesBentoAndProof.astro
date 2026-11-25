@@ -1,0 +1,435 @@
+---
+import { Image } from 'astro:assets';
+import bentoPenangDiorama from '../assets/hero/bento-haikai-penang-diorama.webp';
+import avsbinaPreview from '../assets/projects/avsbina.webp';
+import fuzzfloorLogo from '../assets/logos/fuzzfloor-logo.png';
+import avsLogo from '../assets/logos/avsbina-logo.png';
+import type { SiteLocale } from '../utils/i18n';
+
+interface Props {
+  locale?: SiteLocale;
+}
+const { locale = 'en' } = Astro.props;
+const isBm = locale === 'bm';
+
+const copy = isBm
+  ? {
+      studioBadge: 'STUDIO PULAU PINANG · BERDAFTAR SSM',
+      bentoTitle: 'Satu studio, dari mula hingga siap',
+      bentoSub: 'Kerjasama terus daripada penemuan skop hingga pelancaran sebenar.',
+      principles: [
+        {
+          title: 'Terus dengan pembina',
+          body: 'Berurusan terus dengan jurutera yang mereka bentuk dan membina produk anda.',
+          lottie: '/lottie/direct-with-the-builder.lottie',
+          restFrame: 36,
+        },
+        {
+          title: 'Skop jelas sebelum harga',
+          body: 'Hasil kerja dan tempoh masa yang telus dipersetujui sebelum projek bermula.',
+          lottie: '/lottie/clear-scope-before-price.lottie',
+          restFrame: 58,
+        },
+        {
+          title: 'Milik penuh, bukan sewa',
+          body: 'Kod yang kemas dan akaun domain serta hos didaftarkan atas nama perniagaan anda.',
+          lottie: '/lottie/built-to-own-not-rent.lottie',
+          restFrame: 41,
+        },
+        {
+          title: 'Semakan manusia dikekalkan',
+          body: 'Automasi praktikal yang mempercepatkan kerja tanpa menghilangkan kawalan pasukan anda.',
+          lottie: '/lottie/human-review-kept.lottie',
+          restFrame: 38,
+        },
+      ],
+      proofLeft: {
+        badge: 'SIAP DILANCAR · SEO TEMPATAN',
+        quote: 'Laman pakar lantai berasaskan servis yang dibina untuk menarik pertanyaan carian tempatan di Pulau Pinang dan KL.',
+        chips: ['SEO Servis', 'Pulau Pinang + KL', 'Sebut Harga WhatsApp'],
+        name: 'Fuzzfloor',
+        role: 'fuzzfloor.com',
+        href: 'https://fuzzfloor.com',
+      },
+      proofRight: {
+        badge: 'PROJEK PILIHAN · ALIRAN 3D',
+        quote: 'Platform konsultasi 3D yang membantu pasukan reka bentuk dan binaan Malaysia menukar prospek bernilai tinggi.',
+        chips: ['Paparan 3D', 'Aliran Tempahan', 'Astro + Motion'],
+        name: 'AVS Design & Construction',
+        role: 'avsbina.com.my',
+        href: 'https://avsbina.com.my',
+      },
+    }
+  : {
+      studioBadge: 'PENANG STUDIO · SSM REGISTERED',
+      bentoTitle: 'One studio, start to finish',
+      bentoSub: 'Direct collaboration from discovery to launch.',
+      principles: [
+        {
+          title: 'Direct with the builder',
+          body: 'Work directly with the engineer designing and shipping your product.',
+          lottie: '/lottie/direct-with-the-builder.lottie',
+          restFrame: 36,
+        },
+        {
+          title: 'Clear scope before price',
+          body: 'Fixed deliverables and transparent timelines agreed upfront.',
+          lottie: '/lottie/clear-scope-before-price.lottie',
+          restFrame: 58,
+        },
+        {
+          title: 'Built to own, not rent',
+          body: 'Clean codebases and accounts registered under your business.',
+          lottie: '/lottie/built-to-own-not-rent.lottie',
+          restFrame: 41,
+        },
+        {
+          title: 'Human review kept',
+          body: 'Practical automation that speeds up work while keeping your team in control.',
+          lottie: '/lottie/human-review-kept.lottie',
+          restFrame: 38,
+        },
+      ],
+      proofLeft: {
+        badge: 'SHIPPED · LOCAL SEO',
+        quote: 'Service-led flooring website built to capture local Penang and KL search enquiries.',
+        chips: ['Service SEO', 'Penang + KL', 'WhatsApp Quote'],
+        name: 'Fuzzfloor',
+        role: 'fuzzfloor.com',
+        href: 'https://fuzzfloor.com',
+      },
+      proofRight: {
+        badge: 'FEATURED BUILD · 3D FLOW',
+        quote: '3D-first consultation platform helping a Malaysian design and build team turn high-value leads into enquiries.',
+        chips: ['3D Showcase', 'Booking Flow', 'Astro + Motion'],
+        name: 'AVS Design & Construction',
+        role: 'avsbina.com.my',
+        href: 'https://avsbina.com.my',
+      },
+    };
+---
+
+<section class="tines-bento-section" id="about" aria-labelledby="tines-bento-title">
+  <div class="tines-container">
+    <div class="tines-bento">
+      <div class="tines-bento__intro">
+        <p class="tines-bento__kicker">
+          <span class="tines-bento__kicker-dot" aria-hidden="true"></span>
+          {copy.studioBadge}
+        </p>
+        <h2 id="tines-bento-title" class="tines-bento__title">{copy.bentoTitle}</h2>
+        <p class="tines-bento__sub">{copy.bentoSub}</p>
+      </div>
+
+      <ol class="tines-bento__list">
+        {copy.principles.map((item, idx) => (
+          <li class="tines-bento__item">
+            <div class="tines-bento__icon">
+              <span class="tines-bento__icon-fallback" aria-hidden="true">{String(idx + 1).padStart(2, '0')}</span>
+              <canvas
+                class="tines-bento__lottie"
+                width="112"
+                height="112"
+                data-lottie-src={item.lottie}
+                data-lottie-rest-frame={item.restFrame}
+                aria-hidden="true"
+              ></canvas>
+            </div>
+            <div class="tines-bento__copy">
+              <div class="tines-bento__row-head">
+                <h3>{item.title}</h3>
+                <span class="tines-bento__step" aria-hidden="true">{String(idx + 1).padStart(2, '0')}</span>
+              </div>
+              <p>{item.body}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+
+      <div class="tines-bento__art" aria-hidden="true">
+        <Image
+          class="tines-bento__meadow"
+          src={bentoPenangDiorama}
+          width={960}
+          format="webp"
+          quality={90}
+          alt=""
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+    </div>
+
+    <div class="tines-proof-grid">
+      <a class="tines-proof-card tines-proof-card--mint" href={copy.proofLeft.href} target="_blank" rel="noopener noreferrer">
+        <div class="tines-proof-card__top">
+          <span class="tines-proof-card__pill">
+            <span class="tines-proof-card__dot" aria-hidden="true"></span>
+            {copy.proofLeft.badge}
+          </span>
+          <span class="tines-proof-card__arrow" aria-hidden="true">&#8599;</span>
+        </div>
+
+        <p class="tines-proof-card__quote">{copy.proofLeft.quote}</p>
+
+        <ul class="tines-proof-card__chips" aria-label={isBm ? 'Ciri utama' : 'Key deliverables'}>
+          {copy.proofLeft.chips.map((chip) => (
+            <li>{chip}</li>
+          ))}
+        </ul>
+
+        <div class="tines-proof-card__foot">
+          <div class="tines-proof-card__meta">
+            <strong>{copy.proofLeft.name}</strong>
+            <span>{copy.proofLeft.role}</span>
+          </div>
+          <Image
+            class="tines-proof-card__logo tines-proof-card__logo--fuzzfloor"
+            src={fuzzfloorLogo}
+            width={160}
+            format="webp"
+            quality={85}
+            alt="Fuzzfloor"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </a>
+
+      <a class="tines-proof-card tines-proof-card--peach" href={copy.proofRight.href} target="_blank" rel="noopener noreferrer">
+        <div class="tines-proof-card__top">
+          <span class="tines-proof-card__pill">
+            <span class="tines-proof-card__dot" aria-hidden="true"></span>
+            {copy.proofRight.badge}
+          </span>
+          <span class="tines-proof-card__arrow" aria-hidden="true">&#8599;</span>
+        </div>
+
+        <div class="tines-proof-card__split">
+          <div class="tines-proof-card__content">
+            <p class="tines-proof-card__quote tines-proof-card__quote--featured">{copy.proofRight.quote}</p>
+            <ul class="tines-proof-card__chips" aria-label={isBm ? 'Ciri utama' : 'Key deliverables'}>
+              {copy.proofRight.chips.map((chip) => (
+                <li>{chip}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="tines-proof-card__preview" aria-hidden="true">
+            <div class="tines-proof-card__preview-bar">
+              <span class="tines-proof-card__preview-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
+              <span>avsbina.com.my</span>
+            </div>
+            <Image
+              class="tines-proof-card__preview-img"
+              src={avsbinaPreview}
+              width={520}
+              format="webp"
+              quality={86}
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </div>
+
+        <div class="tines-proof-card__foot">
+          <div class="tines-proof-card__meta">
+            <strong>{copy.proofRight.name}</strong>
+            <span>{copy.proofRight.role}</span>
+          </div>
+          <Image
+            class="tines-proof-card__logo tines-proof-card__logo--avs"
+            src={avsLogo}
+            width={160}
+            format="webp"
+            quality={85}
+            alt="AVS Design & Construction"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  import wasmUrl from '@lottiefiles/dotlottie-web/dotlottie-player.wasm?url';
+
+  interface LoadedEntry {
+    player: import('@lottiefiles/dotlottie-web').DotLottie;
+    restFrame: number;
+    loaded: boolean;
+  }
+
+  function initAboutLottie(): void {
+    const section = document.getElementById('about');
+    if (!section || section.dataset.lottieInit === '1') return;
+
+    const canvases = Array.from(
+      section.querySelectorAll<HTMLCanvasElement>('canvas.tines-bento__lottie[data-lottie-src]')
+    );
+    if (canvases.length === 0) return;
+
+    section.dataset.lottieInit = '1';
+
+    const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let reducedMotion = reducedMotionQuery.matches;
+    let isInView = false;
+    let destroyed = false;
+    let viewObserver: IntersectionObserver | null = null;
+    const entries: LoadedEntry[] = [];
+    const cleanups: Array<() => void> = [];
+
+    const syncPlayback = (): void => {
+      for (const entry of entries) {
+        if (!entry.loaded) continue;
+        if (reducedMotion) {
+          entry.player.setFrame(entry.restFrame);
+          entry.player.pause();
+        } else if (isInView) {
+          entry.player.play();
+        } else {
+          entry.player.pause();
+        }
+      }
+    };
+
+    const boot = async (): Promise<void> => {
+      if (destroyed) return;
+      const { DotLottie } = await import('@lottiefiles/dotlottie-web');
+      if (destroyed) return;
+
+      DotLottie.setWasmUrl(wasmUrl);
+
+      const rect = section.getBoundingClientRect();
+      isInView = rect.top < window.innerHeight && rect.bottom > 0;
+
+      viewObserver = new IntersectionObserver(
+        (ioEntries) => {
+          isInView = ioEntries.some((ioEntry) => ioEntry.isIntersecting);
+          syncPlayback();
+        },
+        { threshold: 0.05 }
+      );
+      viewObserver.observe(section);
+
+      for (const canvas of canvases) {
+        const src = canvas.dataset.lottieSrc;
+        if (!src) continue;
+
+        const parsedFrame = Number.parseInt(canvas.dataset.lottieRestFrame || '36', 10);
+        const restFrame = Number.isFinite(parsedFrame) ? parsedFrame : 36;
+        const iconWrap = canvas.closest('.tines-bento__icon');
+
+        const player = new DotLottie({
+          canvas,
+          src,
+          loop: true,
+          autoplay: false,
+          renderConfig: {
+            autoResize: true,
+            devicePixelRatio: Math.min(Math.max(window.devicePixelRatio || 1, 2), 3),
+          },
+        });
+
+        const record: LoadedEntry = {
+          player,
+          restFrame,
+          loaded: false,
+        };
+        entries.push(record);
+
+        const onLoad = (): void => {
+          if (destroyed) return;
+          record.loaded = true;
+          iconWrap?.classList.add('is-ready');
+          player.resize();
+          if (reducedMotion) {
+            player.setFrame(restFrame);
+            player.pause();
+          } else if (isInView) {
+            player.play();
+          } else {
+            player.setFrame(restFrame);
+          }
+        };
+
+        const onLoadError = (): void => {
+          record.loaded = false;
+        };
+
+        player.addEventListener('load', onLoad);
+        player.addEventListener('loadError', onLoadError);
+
+        const card = canvas.closest<HTMLElement>('.tines-bento__item');
+        if (card) {
+          const onEnter = (): void => {
+            if (reducedMotion || !record.loaded) return;
+            player.setSpeed(1.25);
+            player.play();
+          };
+          const onLeave = (): void => {
+            if (reducedMotion || !record.loaded) return;
+            player.setSpeed(1);
+            if (!isInView) {
+              player.pause();
+            }
+          };
+          card.addEventListener('mouseenter', onEnter);
+          card.addEventListener('mouseleave', onLeave);
+          cleanups.push(() => {
+            card.removeEventListener('mouseenter', onEnter);
+            card.removeEventListener('mouseleave', onLeave);
+          });
+        }
+
+        cleanups.push(() => {
+          player.removeEventListener('load', onLoad);
+          player.removeEventListener('loadError', onLoadError);
+          player.destroy();
+        });
+      }
+    };
+
+    const onMotionChange = (event: MediaQueryListEvent): void => {
+      reducedMotion = event.matches;
+      syncPlayback();
+    };
+    reducedMotionQuery.addEventListener('change', onMotionChange);
+    cleanups.push(() => {
+      reducedMotionQuery.removeEventListener('change', onMotionChange);
+    });
+
+    const loaderObserver = new IntersectionObserver(
+      (ioEntries) => {
+        if (ioEntries.some((ioEntry) => ioEntry.isIntersecting)) {
+          loaderObserver.disconnect();
+          void boot();
+        }
+      },
+      { rootMargin: '260px 0px' }
+    );
+    loaderObserver.observe(section);
+
+    const teardown = (): void => {
+      destroyed = true;
+      loaderObserver.disconnect();
+      viewObserver?.disconnect();
+      for (const fn of cleanups) {
+        fn();
+      }
+      delete section.dataset.lottieInit;
+    };
+
+    document.addEventListener('astro:before-swap', teardown, { once: true });
+  }
+
+  initAboutLottie();
+  document.addEventListener('astro:page-load', initAboutLottie);
+</script>

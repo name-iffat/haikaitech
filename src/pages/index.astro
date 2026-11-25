@@ -1,37 +1,25 @@
 ---
-import { getImage } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import WorkbenchNav from '../components/WorkbenchNav.astro';
-import TrustProof from '../components/TrustProof.astro';
-import WorkbenchHero from '../../components/Sections/WorkbenchHero';
+import TinesNav from '../components/TinesNav.astro';
+import TinesHero from '../components/TinesHero.astro';
+import TinesEditorialAndPillars from '../components/TinesEditorialAndPillars.astro';
+import TinesBentoAndProof from '../components/TinesBentoAndProof.astro';
 import '../styles/workbench.css';
+import '../styles/tines-home.css';
 import SelectedWorkSection from '../components/SelectedWorkSection.astro';
-import ServicesWorkbench from '../components/ServicesWorkbench.astro';
 import PricingWorkbench from '../components/PricingWorkbench.astro';
-import AboutWorkbench from '../components/AboutWorkbench.astro';
 import OwnProducts from '../components/OwnProducts.astro';
 import InsightsNotebook from '../components/InsightsNotebook.astro';
 import ContactSection from '../../components/Sections/ContactWorkbench';
 import FooterWorkbench from '../../components/FooterWorkbench';
 import StickyBooking from '../../components/StickyBooking';
 import { getPublicPosts } from '../lib/content/posts';
-
-import workforceDemoImg from '../assets/projects/mze-workforce-demo.png';
-import fuzzfloorMobileImg from '../assets/projects/fuzzfloor-mobile.png';
-import hssDesktopImg from '../assets/projects/hss-wireless-cctv-desktop.png';
-import heroTapeImg from '../assets/concept-decorations/refined/hero-masking-tape.webp';
-import heroPinImg from '../assets/concept-decorations/refined/hero-clay-pin.webp';
-
-const heroWebsite = await getImage({ src: hssDesktopImg, width: 1280, format: 'webp' });
-const heroFuzzfloor = await getImage({ src: fuzzfloorMobileImg, width: 600, format: 'webp' });
-const heroDashboard = await getImage({ src: workforceDemoImg, width: 1200, format: 'webp' });
-const heroTape = await getImage({ src: heroTapeImg, width: 360, format: 'webp' });
-const heroPin = await getImage({ src: heroPinImg, width: 120, format: 'webp' });
+import MetaPixel from '../components/MetaPixel.astro';
+import LenisScroll from '../components/LenisScroll.astro';
 
 const blogPosts = (await getPublicPosts())
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 4);
-
 ---
 
 <BaseLayout
@@ -39,15 +27,15 @@ const blogPosts = (await getPublicPosts())
   description="Penang-based web studio building business websites, ecommerce and automation for SMEs in Penang, Selangor and across Malaysia. WhatsApp for a fast reply."
   canonical="https://haikaitech.my/"
   alternates={{ en: 'https://haikaitech.my/', bm: 'https://haikaitech.my/bm/' }}>
-  <div class="min-h-screen relative font-sans bg-paper bg-grid-pattern selection:bg-yellow-200 selection:text-slate-900">
-    <WorkbenchNav />
-    <main class="bg-paper">
-      <WorkbenchHero client:load websiteSrc={heroWebsite.src} fuzzfloorSrc={heroFuzzfloor.src} dashboardSrc={heroDashboard.src} tapeSrc={heroTape.src} pinSrc={heroPin.src} />
-      <TrustProof />
+  <div class="tines-home min-h-screen relative selection:bg-violet-200 selection:text-slate-900">
+    <TinesNav />
+    <main>
+      <TinesHero />
+      <MetaPixel inlineChoice />
+      <TinesEditorialAndPillars />
+      <TinesBentoAndProof />
       <SelectedWorkSection />
-      <ServicesWorkbench />
-      <PricingWorkbench />
-      <AboutWorkbench />
+      <div id="pricing" class="scroll-mt-24"><PricingWorkbench /></div>
       <OwnProducts />
       <InsightsNotebook posts={blogPosts} />
       <div id="start" class="scroll-mt-28"><ContactSection client:load /></div>
@@ -56,5 +44,6 @@ const blogPosts = (await getPublicPosts())
     <FooterWorkbench client:load />
 
     <StickyBooking client:load />
+    <LenisScroll />
   </div>
 </BaseLayout>

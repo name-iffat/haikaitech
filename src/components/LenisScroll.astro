@@ -1,0 +1,35 @@
+---
+---
+
+<script>
+  import Lenis from 'lenis';
+  import 'lenis/dist/lenis.css';
+
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!reduced) {
+    const win = window as Window & {
+      __haikaiLenis?: Lenis;
+      __haikaiLenisRaf?: number;
+    };
+
+    if (win.__haikaiLenisRaf) {
+      cancelAnimationFrame(win.__haikaiLenisRaf);
+    }
+    win.__haikaiLenis?.destroy();
+
+    const lenis = new Lenis({
+      lerp: 0.1,
+      smoothWheel: true,
+      anchors: true,
+    });
+
+    win.__haikaiLenis = lenis;
+
+    const raf = (time: number) => {
+      lenis.raf(time);
+      win.__haikaiLenisRaf = requestAnimationFrame(raf);
+    };
+    win.__haikaiLenisRaf = requestAnimationFrame(raf);
+  }
+</script>

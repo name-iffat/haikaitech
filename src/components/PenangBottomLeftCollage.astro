@@ -1,0 +1,418 @@
+---
+interface Props {
+  class?: string;
+}
+const { class: className = '' } = Astro.props;
+---
+
+<svg
+  class={className}
+  viewBox="0 0 340 420"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+>
+  <defs>
+    <!-- Continuous die-cut white sticker rim + dark charcoal outer contour -->
+    <filter
+      id="penang-bl-diecut"
+      x="-15%"
+      y="-15%"
+      width="130%"
+      height="130%"
+      color-interpolation-filters="sRGB"
+    >
+      <feMorphology in="SourceAlpha" operator="dilate" radius="4.8" result="rim-raw" />
+      <feGaussianBlur in="rim-raw" stdDeviation="1.6" result="rim-blur" />
+      <feComponentTransfer in="rim-blur" result="rim-mask">
+        <feFuncA type="linear" slope="20" intercept="-8.5" />
+      </feComponentTransfer>
+      <feFlood flood-color="#FFFFFF" result="white-fill" />
+      <feComposite in="white-fill" in2="rim-mask" operator="in" result="innerWhite" />
+
+      <feMorphology in="SourceAlpha" operator="dilate" radius="7.6" result="ink-raw" />
+      <feGaussianBlur in="ink-raw" stdDeviation="1.6" result="ink-blur" />
+      <feComponentTransfer in="ink-blur" result="ink-mask">
+        <feFuncA type="linear" slope="20" intercept="-8.5" />
+      </feComponentTransfer>
+      <feFlood flood-color="#1B2430" result="ink-fill" />
+      <feComposite in="ink-fill" in2="ink-mask" operator="in" result="outerInk" />
+
+      <feMerge>
+        <feMergeNode in="outerInk" />
+        <feMergeNode in="innerWhite" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Reusable ornate Penang Peranakan ceramic floral tile (104x104) -->
+    <g id="penang-bl-tile">
+      <rect x="0" y="0" width="104" height="104" rx="8" fill="#1B2430" />
+      <rect x="6" y="6" width="92" height="92" rx="4" fill="#FAF8F3" />
+      <rect
+        x="10.5"
+        y="10.5"
+        width="83"
+        height="83"
+        rx="2.5"
+        stroke="#F59E0B"
+        stroke-width="2"
+      />
+      <rect
+        x="10.5"
+        y="10.5"
+        width="83"
+        height="83"
+        rx="2.5"
+        stroke="#1B2430"
+        stroke-width="1.2"
+      />
+
+      <!-- Corner marigold and coral buds -->
+      <path d="M12 12H24C21 19 18 22 12 24Z" fill="#F59E0B" stroke="#1B2430" stroke-width="1.6" stroke-linejoin="round" />
+      <path d="M92 12H80C83 19 86 22 92 24Z" fill="#F59E0B" stroke="#1B2430" stroke-width="1.6" stroke-linejoin="round" />
+      <path d="M12 92H24C21 85 18 82 12 80Z" fill="#F59E0B" stroke="#1B2430" stroke-width="1.6" stroke-linejoin="round" />
+      <path d="M92 92H80C83 85 86 82 92 80Z" fill="#F59E0B" stroke="#1B2430" stroke-width="1.6" stroke-linejoin="round" />
+
+      <!-- Symmetrical emerald and cobalt diagonal leaf sprays -->
+      <path d="M52 52C38 44 26 30 22 20C32 23 44 35 52 52Z" fill="#10B981" stroke="#1B2430" stroke-width="1.8" stroke-linejoin="round" />
+      <path d="M52 52C66 44 78 30 82 20C72 23 60 35 52 52Z" fill="#10B981" stroke="#1B2430" stroke-width="1.8" stroke-linejoin="round" />
+      <path d="M52 52C38 60 26 74 22 84C32 81 44 69 52 52Z" fill="#10B981" stroke="#1B2430" stroke-width="1.8" stroke-linejoin="round" />
+      <path d="M52 52C66 60 78 74 82 84C72 81 60 69 52 52Z" fill="#10B981" stroke="#1B2430" stroke-width="1.8" stroke-linejoin="round" />
+
+      <!-- Cobalt cardinal acanthus scrolls -->
+      <path d="M52 16C58 26 57 38 52 46C47 38 46 26 52 16Z" fill="#1368E6" stroke="#1B2430" stroke-width="1.8" stroke-linejoin="round" />
+      <path d="M52 88C58 78 57 66 52 58C47 66 46 78 52 88Z" fill="#1368E6" stroke="#1B2430" stroke-width="1.8" stroke-linejoin="round" />
+      <path d="M16 52C26 46 38 47 46 52C38 57 26 58 16 52Z" fill="#1368E6" stroke="#1B2430" stroke-width="1.8" stroke-linejoin="round" />
+      <path d="M88 52C78 46 66 47 58 52C66 57 78 58 88 52Z" fill="#1368E6" stroke="#1B2430" stroke-width="1.8" stroke-linejoin="round" />
+
+      <!-- Accent emerald outer petals -->
+      <circle cx="30" cy="52" r="4" fill="#059669" stroke="#1B2430" stroke-width="1.5" />
+      <circle cx="74" cy="52" r="4" fill="#059669" stroke="#1B2430" stroke-width="1.5" />
+      <circle cx="52" cy="30" r="4" fill="#059669" stroke="#1B2430" stroke-width="1.5" />
+      <circle cx="52" cy="74" r="4" fill="#059669" stroke="#1B2430" stroke-width="1.5" />
+
+      <!-- Center 8-petal coral lotus blossom -->
+      <ellipse cx="52" cy="40" rx="4.6" ry="9" fill="#EF4444" stroke="#1B2430" stroke-width="1.7" />
+      <ellipse cx="52" cy="64" rx="4.6" ry="9" fill="#EF4444" stroke="#1B2430" stroke-width="1.7" />
+      <ellipse cx="40" cy="52" rx="9" ry="4.6" fill="#EF4444" stroke="#1B2430" stroke-width="1.7" />
+      <ellipse cx="64" cy="52" rx="9" ry="4.6" fill="#EF4444" stroke="#1B2430" stroke-width="1.7" />
+      <ellipse cx="43.5" cy="43.5" rx="4.2" ry="8" transform="rotate(-45 43.5 43.5)" fill="#F87171" stroke="#1B2430" stroke-width="1.6" />
+      <ellipse cx="60.5" cy="43.5" rx="4.2" ry="8" transform="rotate(45 60.5 43.5)" fill="#F87171" stroke="#1B2430" stroke-width="1.6" />
+      <ellipse cx="43.5" cy="60.5" rx="4.2" ry="8" transform="rotate(45 43.5 60.5)" fill="#F87171" stroke="#1B2430" stroke-width="1.6" />
+      <ellipse cx="60.5" cy="60.5" rx="4.2" ry="8" transform="rotate(-45 60.5 60.5)" fill="#F87171" stroke="#1B2430" stroke-width="1.6" />
+      <circle cx="52" cy="52" r="7" fill="#F59E0B" stroke="#1B2430" stroke-width="2" />
+      <circle cx="52" cy="52" r="2.6" fill="#FAF8F3" />
+    </g>
+  </defs>
+
+  <g filter="url(#penang-bl-diecut)">
+    <!-- Back foliage peeking under upper-right edge toward workbench corner -->
+    <path
+      d="M178 242C198 214 238 206 266 226C250 246 218 264 178 268Z"
+      fill="#059669"
+      stroke="#1B2430"
+      stroke-width="2.6"
+      stroke-linejoin="round"
+    />
+
+    <!-- Sweeping emerald palm frond along bottom-right edge -->
+    <g transform="rotate(4 252 360)">
+      <path
+        d="M188 352C212 326 246 312 288 318C272 329 258 334 244 335C268 333 294 333 316 344C295 352 274 354 254 352C280 356 304 364 322 378C296 382 268 378 246 370C266 380 286 392 300 404C272 403 242 390 218 376C204 368 194 360 188 352Z"
+        fill="#10B981"
+        stroke="#1B2430"
+        stroke-width="2.6"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M192 354C226 346 264 352 298 372"
+        stroke="#1B2430"
+        stroke-width="2.2"
+        stroke-linecap="round"
+      />
+      <path
+        d="M214 344C236 333 256 326 276 322M224 363C248 372 270 384 288 396"
+        stroke="#059669"
+        stroke-width="2"
+        stroke-linecap="round"
+      />
+    </g>
+
+    <!-- Fenestrated emerald monstera leaf fanning out on the far left -->
+    <g>
+      <path
+        d="M84 286C52 292 22 274 18 246C34 252 46 250 54 244C32 238 20 222 24 202C42 214 54 218 66 216C50 202 48 186 58 172C74 186 84 198 94 214C106 232 108 264 84 286Z"
+        fill="#10B981"
+        stroke="#1B2430"
+        stroke-width="2.7"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M90 282C76 254 68 228 62 192"
+        stroke="#1B2430"
+        stroke-width="2.2"
+        stroke-linecap="round"
+      />
+      <path
+        d="M78 256L38 252M70 232L36 218"
+        stroke="#059669"
+        stroke-width="2"
+        stroke-linecap="round"
+      />
+    </g>
+
+    <!-- Upper-left origami paper airplane & flight curve -->
+    <g transform="rotate(-14 60 44)">
+      <path
+        d="M24 44L84 22L64 62L50 48L24 44Z"
+        fill="#60A5FA"
+        stroke="#1B2430"
+        stroke-width="2.6"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M84 22L50 48L54 62L64 46"
+        fill="#1368E6"
+        stroke="#1B2430"
+        stroke-width="2.4"
+        stroke-linejoin="round"
+      />
+    </g>
+    <path
+      d="M24 66C18 78 20 92 28 102"
+      stroke="#1B2430"
+      stroke-width="2.2"
+      stroke-linecap="round"
+      stroke-dasharray="4 5"
+    />
+
+    <!-- Isometric blue mechanical </> keycap -->
+    <g transform="translate(36 46) rotate(-11 54 44)">
+      <!-- Keycap base skirt -->
+      <path
+        d="M12 24C12 17 17 12 24 12H84C91 12 96 17 96 24V68C96 76 90 82 82 82H26C18 82 12 76 12 68V24Z"
+        fill="#1368E6"
+        stroke="#1B2430"
+        stroke-width="3"
+        stroke-linejoin="round"
+      />
+      <!-- Darker bevel right wall -->
+      <path
+        d="M78 16H84C89 16 93 20 93 25V67C93 73 88 79 81 79H74L78 52V16Z"
+        fill="#0D47A1"
+      />
+      <!-- Top cap surface -->
+      <rect
+        x="21"
+        y="17"
+        width="59"
+        height="46"
+        rx="10"
+        fill="#60A5FA"
+        stroke="#1B2430"
+        stroke-width="2.7"
+      />
+      <!-- Bold dark ink </> symbol -->
+      <path
+        d="M40 34L31 40L40 46M61 34L70 40L61 46M54 32L47 48"
+        stroke="#1B2430"
+        stroke-width="3.2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </g>
+
+    <!-- Mid-left first ornate Peranakan tile -->
+    <use href="#penang-bl-tile" transform="translate(26 138) rotate(-11 52 52)" />
+
+    <!-- Bottom flank second ornate Peranakan tile -->
+    <use href="#penang-bl-tile" transform="translate(154 294) rotate(8 52 52) scale(0.92)" />
+
+    <!-- Classic Penang Kopitiam Cup & Saucer (hero corner anchor) -->
+    <g transform="translate(36 238) rotate(-6 74 72)">
+      <!-- Saucer back/plate -->
+      <ellipse
+        cx="78"
+        cy="118"
+        rx="60"
+        ry="21"
+        fill="#FAF8F3"
+        stroke="#1B2430"
+        stroke-width="3"
+      />
+      <ellipse
+        cx="78"
+        cy="116"
+        rx="45"
+        ry="13"
+        fill="#EDE4D0"
+        stroke="#1B2430"
+        stroke-width="2"
+      />
+      <path
+        d="M25 117C42 128 114 128 131 117"
+        stroke="#0E8A68"
+        stroke-width="2.4"
+        stroke-linecap="round"
+      />
+
+      <!-- Chunky cup handle left -->
+      <path
+        d="M42 64C22 62 18 89 39 95"
+        stroke="#1B2430"
+        stroke-width="11"
+        stroke-linecap="round"
+      />
+      <path
+        d="M42 64C22 62 18 89 39 95"
+        stroke="#FAF8F3"
+        stroke-width="5.5"
+        stroke-linecap="round"
+      />
+
+      <!-- Porcelain cup body -->
+      <path
+        d="M36 52H120V78C120 103 102 117 78 117C54 117 36 103 36 78V52Z"
+        fill="#FAF8F3"
+        stroke="#1B2430"
+        stroke-width="3"
+        stroke-linejoin="round"
+      />
+      <!-- Cel shadow on right curve of cup -->
+      <path
+        d="M99 54H118V78C118 99 104 112 86 115C98 106 102 90 102 74L99 54Z"
+        fill="#EDE4D0"
+      />
+      <!-- Heritage green rim band -->
+      <path
+        d="M37.5 64C58 68.5 98 68.5 118.5 64"
+        stroke="#0E8A68"
+        stroke-width="3.2"
+        stroke-linecap="round"
+      />
+      <!-- Painted floral motif on kopitiam cup belly -->
+      <circle cx="75" cy="91" r="6" fill="#EF4444" stroke="#1B2430" stroke-width="1.8" />
+      <circle cx="75" cy="91" r="2.2" fill="#FBBF24" />
+      <path
+        d="M62 93C64 87 69 87 71 91M89 93C87 87 82 87 80 91M75 97V104"
+        stroke="#0E8A68"
+        stroke-width="2.2"
+        stroke-linecap="round"
+      />
+
+      <!-- Cup top rim & warm roasted kopi fill -->
+      <ellipse
+        cx="78"
+        cy="52"
+        rx="42"
+        ry="14"
+        fill="#FAF8F3"
+        stroke="#1B2430"
+        stroke-width="3"
+      />
+      <ellipse
+        cx="78"
+        cy="53"
+        rx="34"
+        ry="10"
+        fill="#78350F"
+        stroke="#1B2430"
+        stroke-width="2.2"
+      />
+      <path
+        d="M54 52C62 48 76 47 92 50"
+        stroke="#D97706"
+        stroke-width="2.6"
+        stroke-linecap="round"
+      />
+
+      <!-- Playful comic steam curls -->
+      <path
+        d="M64 31C59 24 67 16 62 9M82 28C78 21 86 14 81 6"
+        stroke="#1B2430"
+        stroke-width="2.5"
+        stroke-linecap="round"
+      />
+    </g>
+
+    <!-- Cheerful coral-red 5-petal tropical hibiscus overlapping lower cup & tile -->
+    <g transform="translate(132 320)">
+      <path
+        d="M42 12C54 12 60 26 48 36C44 40 40 40 36 36C24 26 30 12 42 12Z"
+        fill="#EF4444"
+        stroke="#1B2430"
+        stroke-width="2.5"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M72 34C74 46 62 54 48 44C45 41 44 37 48 34C58 22 70 24 72 34Z"
+        fill="#EF4444"
+        stroke="#1B2430"
+        stroke-width="2.5"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M60 69C48 72 38 62 44 48C46 44 50 43 54 46C66 54 69 66 60 69Z"
+        fill="#EF4444"
+        stroke="#1B2430"
+        stroke-width="2.5"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M22 69C13 62 18 48 32 46C36 45 40 47 41 51C44 65 32 75 22 69Z"
+        fill="#EF4444"
+        stroke="#1B2430"
+        stroke-width="2.5"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M12 34C14 24 28 22 36 34C39 38 38 42 34 44C20 52 10 46 12 34Z"
+        fill="#EF4444"
+        stroke="#1B2430"
+        stroke-width="2.5"
+        stroke-linejoin="round"
+      />
+      <circle cx="42" cy="42" r="9" fill="#B91C1C" stroke="#1B2430" stroke-width="2" />
+      <!-- Golden hibiscus stamen -->
+      <path
+        d="M42 42L46 21"
+        stroke="#1B2430"
+        stroke-width="4.4"
+        stroke-linecap="round"
+      />
+      <path
+        d="M42 42L46 21"
+        stroke="#FBBF24"
+        stroke-width="2.4"
+        stroke-linecap="round"
+      />
+      <circle cx="46" cy="20" r="3.6" fill="#FBBF24" stroke="#1B2430" stroke-width="1.6" />
+      <circle cx="40" cy="26" r="2.2" fill="#FBBF24" stroke="#1B2430" stroke-width="1.2" />
+      <circle cx="51" cy="26" r="2.2" fill="#FBBF24" stroke="#1B2430" stroke-width="1.2" />
+    </g>
+
+    <!-- Comic 4-point sparkles (far-left and lower-right) -->
+    <path
+      d="M30 112L34 123L45 127L34 131L30 142L26 131L15 127L26 123Z"
+      fill="#F59E0B"
+      stroke="#1B2430"
+      stroke-width="2.4"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M274 374L278 384L288 388L278 392L274 402L270 392L260 388L270 384Z"
+      fill="#F59E0B"
+      stroke="#1B2430"
+      stroke-width="2.4"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M302 362L305 370L313 373L305 376L302 384L299 376L291 373L299 370Z"
+      fill="#1368E6"
+      stroke="#1B2430"
+      stroke-width="2.2"
+      stroke-linejoin="round"
+    />
+  </g>
+</svg>

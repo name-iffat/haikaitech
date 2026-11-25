@@ -1,0 +1,403 @@
+---
+import { localizeHref, type SiteLocale } from '../utils/i18n';
+
+interface Props {
+  locale?: SiteLocale;
+}
+const { locale = 'en' } = Astro.props;
+const isBm = locale === 'bm';
+
+const waBase = 'https://wa.me/60147533499?text=';
+const waLink = (msg: string) => `${waBase}${encodeURIComponent(msg)}`;
+
+const copy = isBm
+  ? {
+      kicker: 'CARA KAMI MEMBINA',
+      heading: 'Bina perisian mengikut cara perniagaan anda bekerja.',
+      body: 'Kami mereka dan membina laman web pantas, kedai dalam talian, sistem operasi dalaman dan aliran kerja AI yang dibentuk mengikut operasi harian anda.',
+      cta: 'TEROKA SERVIS & HARGA',
+      pillars: [
+        {
+          id: 'websites',
+          tone: 'blue',
+          title: 'Laman Web & Web B2B',
+          row1: 'Laman web B2B, profil syarikat & SEO tempatan',
+          row2: 'Bermula RM799 · CMS Ringan RM1,700',
+          href: localizeHref('/services/', locale),
+          linkLabel: 'Lihat pelan laman web →',
+        },
+        {
+          id: 'ecommerce',
+          tone: 'orange',
+          title: 'Kedai & Order WhatsApp',
+          row1: 'WooCommerce, Chip FPX & tempahan/order WhatsApp',
+          row2: 'Bermula RM3,500 · Aliran tempahan ikut skop',
+          href: localizeHref('/services/ecommerce/', locale),
+          linkLabel: 'Lihat e-dagang →',
+        },
+        {
+          id: 'systems',
+          tone: 'green',
+          title: 'Sistem Tersuai & Operasi',
+          row1: 'Sistem Inventori & POS, CRM & ERP Tersuai',
+          row2: 'Skop jelas awal · Milik penuh anda',
+          href: localizeHref('/services/automation/', locale),
+          linkLabel: 'Lihat automasi & sistem →',
+        },
+      ],
+      coaching: {
+        badge: 'BAHARU · LATIHAN PRAKTIKAL',
+        title: 'Latihan Automasi AI untuk Pengasas & Pasukan',
+        body: 'Sesi praktikal 1-ke-1 atau berkumpulan untuk membina aliran kerja harian, automasi kod dan pembantu bisnes AI menggunakan alat sebenar yang kami guna.',
+        primaryLabel: 'TEMPAH LATIHAN DI WHATSAPP →',
+        primaryHref: waLink(
+          'Salam HaikaiTech, saya berminat dengan Latihan Automasi AI (Hermes, Codex & Claude Code) untuk pasukan kami.'
+        ),
+        secondaryLabel: 'Lihat automasi & latihan →',
+        secondaryHref: localizeHref('/services/automation/', locale),
+        tools: [
+          { id: 'hermes', name: 'Hermes', logo: '/logos/tools/hermes.png', sub: 'Ejen AI Bisnes' },
+          { id: 'codex', name: 'Codex', logo: '/logos/tools/codex.svg', sub: 'Ejen Kod OpenAI' },
+          {
+            id: 'claude-code',
+            name: 'Claude Code',
+            logo: '/logos/tools/claude-code.svg',
+            sub: 'Ejen Terminal Anthropic',
+          },
+        ],
+      },
+      specialtyHeading: 'BINAAN KHUSUS YANG KAMI SEDIAKAN',
+      specialties: [
+        {
+          id: 'b2b',
+          art: '/design/koji/specialty-b2b.svg',
+          title: 'Web B2B',
+          body: 'Katalog korporat, borang sebut harga & laman B2B',
+          href: waLink('Salam HaikaiTech, saya ingin berbincang tentang projek Web B2B.'),
+        },
+        {
+          id: 'whatsapp',
+          art: '/design/koji/specialty-whatsapp.svg',
+          title: 'Tempahan & Order WhatsApp',
+          body: 'Aliran tempahan, jadual slot & balasan pantas',
+          href: waLink('Salam HaikaiTech, saya berminat dengan sistem Tempahan & Order WhatsApp.'),
+        },
+        {
+          id: 'pos',
+          art: '/design/koji/specialty-pos.svg',
+          title: 'Sistem Inventori & POS',
+          body: 'Stok masa nyata, POS kaunter & jualan cawangan',
+          href: waLink('Salam HaikaiTech, saya perlukan Sistem Inventori & POS untuk bisnes kami.'),
+        },
+        {
+          id: 'crm',
+          art: '/design/koji/specialty-crm.svg',
+          title: 'CRM Tersuai',
+          body: 'Saluran prospek, susulan WhatsApp & papan pemuka',
+          href: waLink('Salam HaikaiTech, saya ingin berbincang tentang pembangunan CRM Tersuai.'),
+        },
+        {
+          id: 'erp',
+          art: '/design/koji/specialty-erp.svg',
+          title: 'ERP Tersuai',
+          body: 'Sebut harga, invois, belian, stok & staf dalam satu sistem',
+          href: waLink('Salam HaikaiTech, saya ingin berbincang tentang pembangunan ERP Tersuai.'),
+        },
+      ],
+    }
+  : {
+      kicker: 'HOW WE BUILD',
+      heading: 'Build software around how your business works.',
+      body: 'We design and build fast websites, online stores, internal systems, and hands-on AI workflows shaped around your daily operations.',
+      cta: 'EXPLORE SERVICES & PRICING',
+      pillars: [
+        {
+          id: 'websites',
+          tone: 'blue',
+          title: 'Websites & B2B Web',
+          row1: 'B2B corporate sites, SME profiles & local SEO',
+          row2: 'From RM799 · Lite CMS RM1,700',
+          href: '/services/',
+          linkLabel: 'Explore website plans →',
+        },
+        {
+          id: 'ecommerce',
+          tone: 'orange',
+          title: 'Stores & WhatsApp Order',
+          row1: 'WooCommerce, Chip FPX & WhatsApp booking/order',
+          row2: 'From RM3,500 · Booking flows by scope',
+          href: '/services/ecommerce/',
+          linkLabel: 'Explore e-commerce →',
+        },
+        {
+          id: 'systems',
+          tone: 'green',
+          title: 'Custom Systems & Ops',
+          row1: 'Inventory & POS, Custom CRM & Custom ERP',
+          row2: 'Scoped upfront · Built to own',
+          href: '/services/automation/',
+          linkLabel: 'Explore systems & AI →',
+        },
+      ],
+      coaching: {
+        badge: 'NEW · HANDS-ON COACHING',
+        title: 'AI Automation Coaching for Founders & Teams',
+        body: 'Practical 1-on-1 or team sessions to build real daily workflows, coding pipelines, and AI business assistants using the exact tools we ship with.',
+        primaryLabel: 'BOOK COACHING ON WHATSAPP →',
+        primaryHref: waLink(
+          'Hi HaikaiTech! I want to book AI Automation Coaching (Hermes, Codex & Claude Code) for my team.'
+        ),
+        secondaryLabel: 'See automation & coaching →',
+        secondaryHref: '/services/automation/',
+        tools: [
+          { id: 'hermes', name: 'Hermes', logo: '/logos/tools/hermes.png', sub: 'Business AI Agent' },
+          { id: 'codex', name: 'Codex', logo: '/logos/tools/codex.svg', sub: 'OpenAI Coding Agent' },
+          {
+            id: 'claude-code',
+            name: 'Claude Code',
+            logo: '/logos/tools/claude-code.svg',
+            sub: 'Anthropic Terminal Agent',
+          },
+        ],
+      },
+      specialtyHeading: 'SPECIALIST BUILDS WE DELIVER',
+      specialties: [
+        {
+          id: 'b2b',
+          art: '/design/koji/specialty-b2b.svg',
+          title: 'B2B Web',
+          body: 'Corporate catalogues, quote flows & tender-ready B2B sites',
+          href: waLink('Hi HaikaiTech! I want to discuss a B2B Web project.'),
+        },
+        {
+          id: 'whatsapp',
+          art: '/design/koji/specialty-whatsapp.svg',
+          title: 'WhatsApp Booking & Order',
+          body: 'Direct ordering flows, slot bookings & instant replies',
+          href: waLink('Hi HaikaiTech! I need a WhatsApp Booking & Order system.'),
+        },
+        {
+          id: 'pos',
+          art: '/design/koji/specialty-pos.svg',
+          title: 'Inventory & POS System',
+          body: 'Live stock tracking, cashier POS & multi-outlet sales',
+          href: waLink('Hi HaikaiTech! I need a custom Inventory & POS system.'),
+        },
+        {
+          id: 'crm',
+          art: '/design/koji/specialty-crm.svg',
+          title: 'Custom CRM',
+          body: 'Lead pipelines, WhatsApp follow-ups & team dashboards',
+          href: waLink('Hi HaikaiTech! I want to discuss a Custom CRM build.'),
+        },
+        {
+          id: 'erp',
+          art: '/design/koji/specialty-erp.svg',
+          title: 'Custom ERP',
+          body: 'Quoting, invoicing, purchasing, stock & HR in one system',
+          href: waLink('Hi HaikaiTech! I want to discuss a Custom ERP build.'),
+        },
+      ],
+    };
+---
+
+<section class="tines-editorial" id="services" aria-labelledby="tines-editorial-title">
+  <div class="tines-container">
+    <div class="tines-split">
+      <div class="tines-split__copy">
+        <p class="tines-kicker">{copy.kicker}</p>
+        <h2 id="tines-editorial-title" class="tines-serif-h2">{copy.heading}</h2>
+        <p class="tines-split__body">{copy.body}</p>
+      </div>
+
+      <div class="tines-split__art" aria-hidden="true">
+        <div class="koji-editorial-stage">
+          <img
+            class="koji-scene__clouds"
+            src="/design/koji/clouds.svg"
+            width="280"
+            height="119"
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            class="koji-scene__skyline"
+            src="/design/koji/skyline.svg"
+            width="340"
+            height="223"
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            class="koji-scene__plant"
+            src="/design/koji/plants.svg"
+            width="66"
+            height="60"
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            class="koji-scene__koji"
+            src="/design/koji/koji-working.webp"
+            width="196"
+            height="195"
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            class="koji-scene__accents"
+            src="/design/koji/accents.svg"
+            width="66"
+            height="43"
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="tines-pillars">
+      {copy.pillars.map((pillar) => (
+        <a class={`tines-pillar tines-pillar--${pillar.tone}`} href={pillar.href}>
+          <div class="tines-pillar__head">
+            <span class="tines-pillar__icon" aria-hidden="true">
+              {pillar.id === 'websites' && (
+                <img
+                  class="tines-pillar__art"
+                  src="/design/koji/service-web.svg"
+                  width="164"
+                  height="85"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
+                />
+              )}
+              {pillar.id === 'ecommerce' && (
+                <img
+                  class="tines-pillar__art"
+                  src="/design/koji/service-systems.svg"
+                  width="164"
+                  height="85"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
+                />
+              )}
+              {pillar.id === 'systems' && (
+                <img
+                  class="tines-pillar__art"
+                  src="/design/koji/service-ai.svg"
+                  width="164"
+                  height="85"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
+                />
+              )}
+            </span>
+            <h3>{pillar.title}</h3>
+          </div>
+          <div class="tines-pillar__rows">
+            <p>{pillar.row1}</p>
+            <p class="tines-pillar__price">{pillar.row2}</p>
+          </div>
+          <span class="tines-pillar__more">{pillar.linkLabel}</span>
+        </a>
+      ))}
+    </div>
+
+    <!-- New Featured Spotlight: AI Automation Coaching (Hermes, Codex & Claude Code) -->
+    <div class="tines-coaching-card">
+      <div class="tines-coaching-card__copy">
+        <span class="tines-coaching-badge">{copy.coaching.badge}</span>
+        <h3>{copy.coaching.title}</h3>
+        <p>{copy.coaching.body}</p>
+        <div class="tines-coaching-actions">
+          <a
+            class="tines-btn tines-btn--cobalt"
+            href={copy.coaching.primaryHref}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {copy.coaching.primaryLabel}
+          </a>
+          <a class="tines-coaching-link" href={copy.coaching.secondaryHref}>
+            {copy.coaching.secondaryLabel}
+          </a>
+        </div>
+      </div>
+
+      <div class="tines-tool-pills">
+        {copy.coaching.tools.map((tool) => (
+          <div class="tines-tool-pill">
+            <img
+              class="tines-tool-pill__logo"
+              src={tool.logo}
+              width="34"
+              height="34"
+              alt={`${tool.name} logo`}
+              loading="lazy"
+              decoding="async"
+            />
+            <span class="tines-tool-pill__name">{tool.name}</span>
+            <span class="tines-tool-pill__sub">{tool.sub}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Specialist Builds Strip -->
+    <div class="tines-specialty-strip">
+      <p class="tines-specialty-label">{copy.specialtyHeading}</p>
+      <div class="tines-specialty-grid">
+        {copy.specialties.map((item) => (
+          <a
+            class={`tines-specialty-card tines-specialty-card--${item.id}`}
+            href={item.href}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div class="tines-specialty-card__art-wrap" aria-hidden="true">
+              <img
+                class="tines-specialty-card__art"
+                src={item.art}
+                width="180"
+                height="93"
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="tines-specialty-card__body">
+              <div class="tines-specialty-card__head">
+                <h4>{item.title}</h4>
+                <span class="tines-specialty-card__arrow" aria-hidden="true">↗</span>
+              </div>
+              <p>{item.body}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <div class="tines-pillars__cta-wrap">
+      <a class="tines-btn-rainbow" href={localizeHref('/services/', locale)}>
+        <span>{copy.cta}</span>
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,151 @@
+---
+import { localizeHref, localeSwitchHref, type SiteLocale } from '../utils/i18n';
+
+interface Props {
+  locale?: SiteLocale;
+}
+const { locale = 'en' } = Astro.props;
+const isBm = locale === 'bm';
+const homePath = isBm ? '/bm/' : '/';
+
+const navLinks = isBm
+  ? [
+      { label: 'Servis', href: '#services', hasCaret: true },
+      { label: 'Projek', href: '#projects', hasCaret: true },
+      { label: 'Sistem', href: localizeHref('/services/automation/', locale), hasCaret: false },
+      { label: 'Harga', href: '#pricing', hasCaret: false },
+      { label: 'Ruang Bina', href: '#workbench-playground', hasCaret: false },
+    ]
+  : [
+      { label: 'Services', href: '#services', hasCaret: true },
+      { label: 'Projects', href: '#projects', hasCaret: true },
+      { label: 'Systems', href: '/services/automation/', hasCaret: false },
+      { label: 'Pricing', href: '#pricing', hasCaret: false },
+      { label: 'Playground', href: '#workbench-playground', hasCaret: false },
+    ];
+
+const whatsappHref =
+  'https://wa.me/60147533499?text=' +
+  encodeURIComponent(
+    isBm
+      ? 'Salam HaikaiTech, saya ingin berbincang tentang projek untuk perniagaan saya.'
+      : "Hi HaikaiTech, I'd like to discuss a project for my business."
+  );
+
+const switchToEnglish = localeSwitchHref(Astro.url.pathname, 'en');
+const switchToMalay = localeSwitchHref(Astro.url.pathname, 'bm');
+---
+
+<a class="tines-skip" href="#home">{isBm ? 'Langkau ke kandungan' : 'Skip to content'}</a>
+
+<header class="tines-header" data-tines-header>
+  <div class="tines-header__bar">
+    <div class="tines-header__left">
+      <a class="tines-brand" href={homePath} aria-label={isBm ? 'Laman utama HaikaiTech' : 'HaikaiTech home'}>
+        <img class="tines-brand__logo" src="/haikaitech-mark.png" width="34" height="34" alt="" aria-hidden="true" />
+        <span class="tines-brand__word">haikaitech<span class="tines-brand__cobalt">_</span></span>
+      </a>
+
+      <nav class="tines-nav" aria-label={isBm ? 'Navigasi utama' : 'Primary navigation'}>
+        {navLinks.map((item) => (
+          <a class="tines-nav__link" href={item.href}>
+            <span>{item.label}</span>
+            {item.hasCaret && (
+              <svg class="tines-nav__caret" width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                <path d="M2.2 3.8L5 6.6L7.8 3.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            )}
+          </a>
+        ))}
+      </nav>
+    </div>
+
+    <div class="tines-header__right">
+      <div class="tines-locale" aria-label={isBm ? 'Pilih bahasa' : 'Choose language'}>
+        <a href={switchToEnglish} lang="en" aria-current={!isBm ? 'page' : undefined}>EN</a>
+        <span aria-hidden="true">/</span>
+        <a href={switchToMalay} lang="ms-MY" aria-current={isBm ? 'page' : undefined}>BM</a>
+      </div>
+
+      <a class="tines-header__textlink" href="#pricing">
+        {isBm ? 'Harga' : 'Pricing'}
+      </a>
+
+      <a
+        class="tines-btn tines-btn--slate tines-header__cta"
+        href={whatsappHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-tines-event="chat_whatsapp_nav"
+      >
+        {isBm ? 'WHATSAPP KAMI' : 'CHAT ON WHATSAPP'}
+      </a>
+
+      <a
+        class="tines-header__search"
+        href="#projects"
+        aria-label={isBm ? 'Teroka projek' : 'Explore projects'}
+        title={isBm ? 'Teroka projek' : 'Explore projects'}
+      >
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="7.5" />
+          <path d="m20 20-3.8-3.8" />
+        </svg>
+      </a>
+
+      <details class="tines-mobile-menu">
+        <summary aria-label={isBm ? 'Buka menu' : 'Toggle menu'}>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+        </summary>
+        <div class="tines-mobile-drawer">
+          <nav aria-label={isBm ? 'Navigasi mudah alih' : 'Mobile navigation'}>
+            {navLinks.map((item) => (
+              <a href={item.href}>{item.label}</a>
+            ))}
+          </nav>
+          <div class="tines-mobile-drawer__foot">
+            <div class="tines-locale">
+              <a href={switchToEnglish} lang="en" aria-current={!isBm ? 'page' : undefined}>English</a>
+              <span aria-hidden="true">/</span>
+              <a href={switchToMalay} lang="ms-MY" aria-current={isBm ? 'page' : undefined}>Bahasa Malaysia</a>
+            </div>
+            <a
+              class="tines-btn tines-btn--cobalt"
+              href={whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-tines-event="chat_whatsapp_mobile_nav"
+            >
+              {isBm ? 'WHATSAPP KAMI' : 'CHAT ON WHATSAPP'}
+            </a>
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+</header>
+
+<script>
+  import { track } from '../../components/track';
+
+  const header = document.querySelector<HTMLElement>('[data-tines-header]');
+  const onScroll = () => {
+    if (!header) return;
+    header.dataset.scrolled = window.scrollY > 24 ? 'true' : 'false';
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  const mobileMenu = document.querySelector<HTMLDetailsElement>('.tines-mobile-menu');
+  mobileMenu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      if (mobileMenu) mobileMenu.open = false;
+    });
+  });
+
+  document.querySelectorAll<HTMLAnchorElement>('[data-tines-event]').forEach((el) => {
+    el.addEventListener('click', () => track('cta_clicked', el.dataset.tinesEvent));
+  });
+</script>

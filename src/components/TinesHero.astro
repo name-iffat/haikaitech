@@ -1,0 +1,292 @@
+---
+import { getImage, Image } from 'astro:assets';
+import PenangBottomLeftCollage from './PenangBottomLeftCollage.astro';
+import ToyboxShowcaseIsland from '../../components/ToyboxShowcaseIsland';
+import penangToyboxCollage from '../assets/hero/penang-toybox-collage.webp';
+
+import avsbinaSrc from '../assets/projects/avsbina.webp';
+import fuzzfloorSrc from '../assets/projects/fuzzfloor.webp';
+import fuzzfloorMobileSrc from '../assets/projects/fuzzfloor-mobile.png';
+import medinSrc from '../assets/projects/medin-fragrances.webp';
+import adyumrahSrc from '../assets/projects/adyumrah-current.png';
+import mzeSrc from '../assets/projects/mze-workforce-demo.png';
+import aaBurgerSrc from '../assets/projects/aaburger-kiosk-desktop.png';
+import aaBurgerMobileSrc from '../assets/hero/aa-burger-order-screen.webp';
+import hawkerrewardsSrc from '../assets/projects/hawkerrewards.webp';
+import atoneSrc from '../assets/projects/atone.webp';
+
+import avsLogo from '../assets/logos/avsbina-logo.png';
+import adyUmrahLogo from '../assets/logos/adyumrah-logo.png';
+import fuzzfloorLogo from '../assets/logos/fuzzfloor-logo.png';
+import atOneLogo from '../assets/logos/atone-logo.png';
+import aaBurgerLogo from '../assets/logos/AAburger-kiosk-logo.png';
+import cityThreeLogo from '../assets/logos/citythree-logo.png';
+import hssLogo from '../assets/logos/hss-logo.png';
+import kopiTebuLogo from '../assets/logos/kopitebu-logo.png';
+import zakrulLogo from '../assets/logos/logo-ghost-outline.webp';
+
+import type { SiteLocale } from '../utils/i18n';
+
+interface Props {
+  locale?: SiteLocale;
+}
+const { locale = 'en' } = Astro.props;
+const isBm = locale === 'bm';
+
+const [
+  avsbinaOpt,
+  fuzzfloorOpt,
+  fuzzfloorMobileOpt,
+  medinOpt,
+  adyumrahOpt,
+  mzeOpt,
+  aaBurgerOpt,
+  aaBurgerMobileOpt,
+  hawkerrewardsOpt,
+  atoneOpt,
+] = await Promise.all([
+  getImage({ src: avsbinaSrc, width: 760, format: 'webp' }),
+  getImage({ src: fuzzfloorSrc, width: 760, format: 'webp' }),
+  getImage({ src: fuzzfloorMobileSrc, width: 380, format: 'webp' }),
+  getImage({ src: medinSrc, width: 760, format: 'webp' }),
+  getImage({ src: adyumrahSrc, width: 520, format: 'webp' }),
+  getImage({ src: mzeSrc, width: 760, format: 'webp' }),
+  getImage({ src: aaBurgerSrc, width: 760, format: 'webp' }),
+  getImage({ src: aaBurgerMobileSrc, width: 380, format: 'webp' }),
+  getImage({ src: hawkerrewardsSrc, width: 520, format: 'webp' }),
+  getImage({ src: atoneSrc, width: 520, format: 'webp' }),
+]);
+
+const showcaseImages = {
+  avsbina: avsbinaOpt.src,
+  fuzzfloor: fuzzfloorOpt.src,
+  fuzzfloorMobile: fuzzfloorMobileOpt.src,
+  medin: medinOpt.src,
+  adyumrah: adyumrahOpt.src,
+  mze: mzeOpt.src,
+  aaBurger: aaBurgerOpt.src,
+  aaBurgerMobile: aaBurgerMobileOpt.src,
+  hawkerrewards: hawkerrewardsOpt.src,
+  atone: atoneOpt.src,
+};
+
+const clientLogos = [
+  { id: 'avs', name: 'AVS Design & Construction', href: '/projects/avsbina/', logo: avsLogo },
+  { id: 'adyumrah', name: 'Ady Umrah Hajj', href: '/projects/adyumrah/', logo: adyUmrahLogo },
+  { id: 'fuzzfloor', name: 'Fuzzfloor', href: '/projects/fuzzfloor/', logo: fuzzfloorLogo },
+  { id: 'atone', name: 'AT One Construction', href: '/projects/atone/', logo: atOneLogo },
+  { id: 'aaburger', name: 'AA Burger Kiosk', href: 'https://aaburger.haikaitech.my/', logo: aaBurgerLogo, external: true },
+  { id: 'citythree', name: 'CityThree', href: 'https://citythree.my/', logo: cityThreeLogo, external: true },
+  { id: 'hss', name: 'HSS Wireless CCTV', href: 'https://wirelesscctv.com.my/', logo: hssLogo, external: true },
+  { id: 'kopitebu', name: 'Kopi Tebu', href: 'https://kopitebu-website.pages.dev/', logo: kopiTebuLogo, external: true },
+  { id: 'zakrul', name: 'Zakrul', href: 'https://zakrul.com/', logo: zakrulLogo, external: true },
+];
+
+const copy = isBm
+  ? {
+      badgeLeft: 'DIBINA DI PULAU PINANG',
+      badgeRight: 'Lihat cara kami membina →',
+      h1Line1: 'Laman web untuk pelanggan.',
+      h1Line2: 'Sistem untuk pasukan anda.',
+      subtitle:
+        'Kedai dalam talian, papan pemuka dan pembantu AI, dibina dalam satu studio praktikal untuk PKS Malaysia.',
+      ctaPrimary: 'WHATSAPP KAMI',
+      ctaSecondary: 'LIHAT PROJEK',
+      waDefault: 'Salam HaikaiTech, saya ingin berbincang tentang projek untuk perniagaan saya.',
+    }
+  : {
+      badgeLeft: 'BUILT IN PENANG',
+      badgeRight: 'Watch how we ship →',
+      h1Line1: 'Websites for customers.',
+      h1Line2: 'Systems for staff.',
+      subtitle:
+        'Stores, dashboards and AI helpers, crafted in one hands-on studio for Malaysian SMEs.',
+      ctaPrimary: 'CHAT ON WHATSAPP',
+      ctaSecondary: 'EXPLORE WORK',
+      waDefault: "Hi HaikaiTech, I'd like to discuss a project for my business.",
+    };
+
+const whatsappHref = 'https://wa.me/60147533499?text=' + encodeURIComponent(copy.waDefault);
+---
+
+<section class="tines-hero" id="home" aria-labelledby="tines-hero-title" tabindex="-1">
+  <div class="tines-hero__inner">
+    <!-- Soft Clay Split Announcement Pill -->
+    <a class="tines-split-pill" href="#workbench-playground" data-hero-enter>
+      <span class="tines-split-pill__kicker">{copy.badgeLeft}</span>
+      <span class="tines-split-pill__text">{copy.badgeRight}</span>
+    </a>
+
+    <!-- 2-Line Display H1 + Flying Koji Mascot -->
+    <div class="tines-hero__title-wrap">
+      <div class="tines-hero__shophouse-anchor" data-hero-shophouse>
+        <img
+          class="tines-hero__koji-accents"
+          src="/design/koji/accents.svg"
+          width="74"
+          height="48"
+          alt=""
+          aria-hidden="true"
+          loading="eager"
+          decoding="async"
+        />
+        <img
+          class="tines-hero__koji-mascot"
+          src="/design/koji/koji-flying.webp"
+          width="174"
+          height="168"
+          alt=""
+          aria-hidden="true"
+          loading="eager"
+          decoding="async"
+        />
+      </div>
+
+      <h1 id="tines-hero-title" class="tines-hero__title" data-hero-enter>
+        <span class="tines-hero__line-dark">{copy.h1Line1}</span>
+        <span class="tines-hero__line-cobalt">{copy.h1Line2}</span>
+      </h1>
+    </div>
+
+    <!-- Humanist serif subtitle -->
+    <p class="tines-hero__subtitle" data-hero-enter>{copy.subtitle}</p>
+
+    <!-- Authentic Client Logo Strip (3-Group Seamless Marquee) -->
+    <div
+      class="tines-marquee"
+      aria-label={isBm ? 'Pelanggan dan projek HaikaiTech' : 'HaikaiTech clients and projects'}
+      data-hero-enter
+    >
+      <div class="tines-marquee__track">
+        <div class="tines-marquee__group">
+          {clientLogos.map((client) => (
+            <a
+              class="tines-logo-item"
+              href={client.href}
+              title={client.name}
+              aria-label={isBm ? `Lihat projek ${client.name}` : `View ${client.name} project`}
+              target={client.external ? '_blank' : undefined}
+              rel={client.external ? 'noopener noreferrer' : undefined}
+            >
+              <Image
+                class={`tines-logo-img tines-logo-img--${client.id}`}
+                src={client.logo}
+                width={220}
+                format="webp"
+                quality={85}
+                alt={client.name}
+                loading="eager"
+                decoding="async"
+              />
+            </a>
+          ))}
+        </div>
+        {[0, 1].map(() => (
+          <div class="tines-marquee__group tines-marquee__group--dup" aria-hidden="true">
+            {clientLogos.map((client) => (
+              <span class="tines-logo-item">
+                <Image
+                  class={`tines-logo-img tines-logo-img--${client.id}`}
+                  src={client.logo}
+                  width={220}
+                  format="webp"
+                  quality={85}
+                  alt=""
+                  loading="eager"
+                  decoding="async"
+                />
+              </span>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Centered Dual Soft-Clay Pill CTAs -->
+    <div class="tines-hero__actions" data-hero-enter>
+      <a
+        class="tines-btn tines-btn--cobalt"
+        href={whatsappHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-tines-event="chat_whatsapp_hero"
+      >
+        {copy.ctaPrimary}
+      </a>
+      <a class="tines-btn tines-btn--outline" href="#projects" data-tines-event="view_work_hero">
+        {copy.ctaSecondary}
+      </a>
+    </div>
+
+    <!-- Interactive Soft-Clay Penang Heritage Toybox Studio Workbench -->
+    <div class="tines-wb-wrap" id="workbench-playground">
+      <div class="tines-wb__collage-anchor" data-hero-collage>
+        <Image
+          class="tines-wb__collage"
+          src={penangToyboxCollage}
+          alt=""
+          aria-hidden="true"
+          width={360}
+          loading="eager"
+        />
+      </div>
+
+      <div class="tines-wb__collage-left-anchor" data-hero-collage-left>
+        <PenangBottomLeftCollage class="tines-wb__collage" />
+      </div>
+
+      <ToyboxShowcaseIsland client:load locale={locale} images={showcaseImages} />
+    </div>
+  </div>
+</section>
+
+<script>
+  import { animate, scroll, stagger } from 'motion';
+
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const heroSection = document.querySelector<HTMLElement>('#home');
+
+  if (!reduced && heroSection) {
+    const enterNodes = heroSection.querySelectorAll('[data-hero-enter]');
+    if (enterNodes.length) {
+      animate(
+        enterNodes,
+        { opacity: [0.01, 1], y: [14, 0] },
+        {
+          duration: 0.48,
+          delay: stagger(0.055),
+          ease: [0.16, 1, 0.3, 1],
+        }
+      );
+    }
+
+    const shophouse = heroSection.querySelector<HTMLElement>('[data-hero-shophouse]');
+    if (shophouse) {
+      animate(
+        shophouse,
+        { opacity: [0.01, 1], y: [16, 0], rotate: [-2, 0] },
+        { duration: 0.56, delay: 0.08, ease: [0.16, 1, 0.3, 1] }
+      );
+      scroll(animate(shophouse, { y: [0, -18] }), {
+        target: heroSection,
+        offset: ['start start', 'end start'],
+      });
+    }
+
+    const collage = heroSection.querySelector<HTMLElement>('[data-hero-collage]');
+    if (collage) {
+      scroll(animate(collage, { y: [-6, 22] }), {
+        target: heroSection,
+        offset: ['start start', 'end start'],
+      });
+    }
+
+    const collageLeft = heroSection.querySelector<HTMLElement>('[data-hero-collage-left]');
+    if (collageLeft) {
+      scroll(animate(collageLeft, { y: [14, -18] }), {
+        target: heroSection,
+        offset: ['start start', 'end start'],
+      });
+    }
+  }
+</script>
