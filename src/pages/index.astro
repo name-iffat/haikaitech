@@ -11,8 +11,9 @@ import IntegrationsHub from '../components/IntegrationsHub.astro';
 import PricingWorkbench from '../components/PricingWorkbench.astro';
 import OwnProducts from '../components/OwnProducts.astro';
 import InsightsNotebook from '../components/InsightsNotebook.astro';
+import HomeFaq from '../components/HomeFaq.astro';
 import ContactSection from '../../components/Sections/ContactWorkbench';
-import FooterWorkbench from '../../components/FooterWorkbench';
+import HomeFooter from '../../components/HomeFooter';
 import StickyBooking from '../../components/StickyBooking';
 import { getPublicPosts } from '../lib/content/posts';
 import MetaPixel from '../components/MetaPixel.astro';
@@ -40,10 +41,11 @@ const blogPosts = (await getPublicPosts())
       <div id="pricing" class="scroll-mt-24"><PricingWorkbench /></div>
       <OwnProducts posts={blogPosts.slice(0, 3)} />
       <InsightsNotebook posts={blogPosts} />
+      <HomeFaq />
       <div id="start" class="scroll-mt-28"><ContactSection client:load /></div>
     </main>
 
-    <FooterWorkbench client:load />
+    <HomeFooter client:load />
 
     <StickyBooking client:load />
     <LenisScroll />

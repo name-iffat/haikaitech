@@ -1,0 +1,99 @@
+---
+import type { SiteLocale } from '../utils/i18n';
+
+interface Props {
+  locale?: SiteLocale;
+}
+
+const { locale = 'en' } = Astro.props;
+const isBm = locale === 'bm';
+
+const heading = isBm ? 'Soalan lazim' : 'Frequently asked questions';
+
+const faqs = isBm
+  ? [
+      {
+        q: 'Berapakah kos untuk membina laman web perniagaan?',
+        a: 'Pakej mula Website Perniagaan satu halaman bermula daripada RM799 (sehingga 5 bahagian kandungan, paparan responsif telefon dan desktop, SEO dan AEO asas, tindakan WhatsApp, serta hosting dan domain standard tahun pertama). Kedai WooCommerce dengan produk tanpa had bermula daripada RM3,500; sistem tersuai dan automasi disebut harga mengikut skop sebelum kerja bermula.',
+      },
+      {
+        q: 'Berapa lama tempoh untuk menyiapkan satu projek?',
+        a: 'Laman web satu halaman yang fokus kebiasaannya siap dilancarkan dalam masa 1 hingga 2 minggu selepas teks dan gambar tersedia. Kedai WooCommerce lazimnya mengambil masa 2 hingga 4 minggu, manakala papan pemuka atau sistem automasi mengikut jadual fasa yang disahkan dalam sebut harga rasmi anda.',
+      },
+      {
+        q: 'Bagaimanakah kaedah bayaran dan ansuran berfungsi?',
+        a: 'Projek standard bermula dengan deposit dan diselesaikan semasa serahan akhir, manakala binaan yang lebih besar boleh dibahagikan mengikut fasa skop atau bayaran ansuran. Setiap jadual bayaran disahkan secara bertulis dalam sebut harga rasmi sebelum projek dimulakan.',
+      },
+      {
+        q: 'Adakah saya memiliki laman web, domain, dan kod sumber selepas pelancaran?',
+        a: 'Ya. Setelah bayaran penuh bagi projek sekali bayar diselesaikan, akses akaun yang dipersetujui, kawalan domain, kod sumber, dan semua hasil kerja diserahkan sepenuhnya kepada perniagaan anda, tertakluk pada terma lesen pihak ketiga.',
+      },
+      {
+        q: 'Bolehkah HaikaiTech disambungkan dengan sistem atau alat sedia ada kami?',
+        a: 'Ya. Kami menyambungkan laman web dan aliran kerja anda dengan WhatsApp, HubSpot CRM, pembayaran CHIP, penghantaran EasyParcel, Google Analytics, Meta Pixel, automasi n8n, serta hamparan atau pangkalan data sedia ada sambil mengekalkan semakan manusia.',
+      },
+      {
+        q: 'Adakah anda hanya menerima pelanggan di Pulau Pinang dan Selangor sahaja?',
+        a: 'Kami berpangkalan di Pulau Pinang dan bekerjasama rapat dengan PKS di seluruh Pulau Pinang, Selangor, Kuala Lumpur, dan seluruh Malaysia serta pelanggan luar negara. Sesi perbincangan hingga serahan dijalankan melalui WhatsApp, panggilan video, dan pautan pratonton langsung.',
+      },
+    ]
+  : [
+      {
+        q: 'How much does a business website cost?',
+        a: 'One-page Business Website starter builds begin from RM799 (up to 5 sections, mobile responsive design, basic SEO and AEO, WhatsApp enquiry actions, plus first-year hosting and a standard domain). WooCommerce storefronts with unlimited products start from RM3,500; custom systems and automations are quoted by scope before any work begins.',
+      },
+      {
+        q: 'How long does a typical build take?',
+        a: 'Focused one-page websites typically launch within 1 to 2 weeks once copy and photos are ready; WooCommerce stores usually take 2 to 4 weeks; custom dashboards or automation systems follow a milestone schedule confirmed in your quotation.',
+      },
+      {
+        q: 'How do payments and installments work?',
+        a: 'Standard projects start with a deposit and settle on handover, while larger builds can be split into scope-based milestones or installments. Every payment schedule is confirmed in writing in your formal quotation before work begins.',
+      },
+      {
+        q: 'Do I own my website, domain, and code after launch?',
+        a: 'Yes. Once final payment is completed for one-time quoted builds, agreed credentials, domain access, source files, and deliverables are handed over to your business, subject to third-party licence terms.',
+      },
+      {
+        q: 'Can HaikaiTech connect with tools we already use?',
+        a: 'Yes. We connect websites and workflows with WhatsApp, HubSpot CRM, CHIP payments, EasyParcel shipping, Google Analytics, Meta Pixel, n8n automations, and existing spreadsheets or databases while keeping human review in control.',
+      },
+      {
+        q: 'Do you only work with businesses in Penang and Selangor?',
+        a: 'We are based in Penang and regularly work with SMEs across Penang, Selangor, Kuala Lumpur, and all of Malaysia (plus remote clients overseas). Discovery through handover runs via WhatsApp, video call, and live preview links.',
+      },
+    ];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(({ q, a }) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: a,
+    },
+  })),
+};
+---
+
+<section id="faq" class="ht-faq" aria-labelledby="home-faq-title">
+  <div class="tines-container ht-faq__inner">
+    <h2 id="home-faq-title" class="ht-faq__title">{heading}</h2>
+    <div class="ht-faq__list">
+      {faqs.map(({ q, a }) => (
+        <details class="ht-faq__item">
+          <summary class="ht-faq__summary">
+            <span>{q}</span>
+            <svg class="ht-faq__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+              <path d="M8 2.5v11M2.5 8h11" />
+            </svg>
+          </summary>
+          <p class="ht-faq__answer">{a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
+</section>

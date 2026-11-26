@@ -9,8 +9,9 @@ import SelectedWorkSection from '../../components/SelectedWorkSection.astro';
 import IntegrationsHub from '../../components/IntegrationsHub.astro';
 import PricingWorkbench from '../../components/PricingWorkbench.astro';
 import InsightsNotebook from '../../components/InsightsNotebook.astro';
+import HomeFaq from '../../components/HomeFaq.astro';
 import ContactSection from '../../../components/Sections/ContactWorkbench';
-import FooterWorkbench from '../../../components/FooterWorkbench';
+import HomeFooter from '../../../components/HomeFooter';
 import StickyBooking from '../../../components/StickyBooking';
 import '../../styles/workbench.css';
 import '../../styles/tines-home.css';
@@ -42,9 +43,10 @@ const alternates = { en: 'https://haikaitech.my/', bm: 'https://haikaitech.my/bm
       <IntegrationsHub locale="bm" />
       <div id="pricing" class="scroll-mt-24"><PricingWorkbench locale="bm" /></div>
       <InsightsNotebook locale="bm" posts={blogPosts} />
+      <HomeFaq locale="bm" />
       <div id="start" class="scroll-mt-28"><ContactSection client:load locale="bm" /></div>
     </main>
-    <FooterWorkbench client:load locale="bm" />
+    <HomeFooter client:load locale="bm" />
     <StickyBooking client:load locale="bm" />
     <LenisScroll />
   </div>
