@@ -321,6 +321,11 @@ const pageDesc = isBm
         if (key) applyFilter(key);
       });
     });
+
+    const initialIndustry = new URLSearchParams(window.location.search).get('industry');
+    if (initialIndustry && filterBtns.some((btn) => btn.dataset.archiveFilter === initialIndustry)) {
+      applyFilter(initialIndustry);
+    }
   }
 
   initProjectsArchiveFilter();

@@ -9,8 +9,6 @@ interface Props {
   locale?: SiteLocale;
 }
 
-const INSPECTOR_ITEMS = ['Astro 6', 'Cloudflare', 'SEO Schema', 'WhatsApp CTA'];
-
 const DRAWER_ITEMS = [
   'Setup Guide',
   'Website',
@@ -21,8 +19,6 @@ const DRAWER_ITEMS = [
   'n8n Workflows',
   'Analytics',
 ];
-
-const SWATCH_COLORS = ['#1368E6', '#7FA4EC', '#F4B998', '#68B8A2'];
 
 export default function HomeFooter({ newsletterSource = 'footer', locale = 'en' }: Props) {
   const bm = locale === 'bm';
@@ -72,71 +68,71 @@ export default function HomeFooter({ newsletterSource = 'footer', locale = 'en' 
   return (
     <footer className="ht-footer" aria-label="HaikaiTech footer">
       <section className="ht-footer__capture" aria-labelledby="ht-footer-newsletter-title">
-        {/* Fine hairline retro-futuristic Ligne Claire sky trajectory & architectural horizon */}
+        {/* Fine hairline retro-futuristic Ligne Claire sky trajectory & horizon */}
         <svg
           className="ht-footer__orbits"
           viewBox="0 0 1440 520"
           fill="none"
           aria-hidden="true"
         >
-          {/* Delicate orbital arcs */}
           <path
-            d="M-60 390 C 310 250, 620 228, 980 284 C 1185 316, 1345 268, 1500 182"
+            d="M-60 402 C 310 264, 620 242, 980 296 C 1185 328, 1345 278, 1500 192"
             stroke="#8AA9E6"
+            strokeOpacity="0.65"
             strokeWidth="1"
             strokeDasharray="5 6"
           />
-          {/* Ligne Claire sweeping apricot/periwinkle sky-ribbon */}
           <path
-            d="M-40 432 C 280 318, 560 296, 890 340 C 1140 374, 1310 318, 1490 216"
-            stroke="#F4BE99"
-            strokeWidth="5"
+            d="M-40 444 C 280 330, 560 308, 890 352 C 1140 386, 1310 330, 1490 228"
+            stroke="#F4C5A3"
+            strokeOpacity="0.85"
+            strokeWidth="4.5"
             strokeLinecap="round"
           />
           <path
-            d="M-40 430 C 280 316, 560 294, 890 338 C 1140 372, 1310 316, 1490 214"
+            d="M-40 442 C 280 328, 560 306, 890 350 C 1140 384, 1310 328, 1490 226"
             stroke="#3B5B96"
-            strokeWidth="0.9"
+            strokeOpacity="0.55"
+            strokeWidth="0.85"
           />
           <path
-            d="M-40 434.5 C 280 320.5, 560 298.5, 890 342.5 C 1140 376.5, 1310 320.5, 1490 218.5"
+            d="M-40 446 C 280 332, 560 310, 890 354 C 1140 388, 1310 332, 1490 230"
             stroke="#3B5B96"
-            strokeWidth="0.9"
-          />
-          {/* Minimalist Ligne Claire sky gliders / gulls & geometric moons */}
-          <path
-            d="M214 134 Q222 126 230 132 Q238 125 246 133"
-            stroke="#3B5B96"
-            strokeWidth="1.1"
-            strokeLinecap="round"
+            strokeOpacity="0.55"
+            strokeWidth="0.85"
           />
           <path
-            d="M248 152 Q254 146 260 151 Q266 146 272 152"
+            d="M204 128 Q212 120 220 126 Q228 119 236 127"
             stroke="#3B5B96"
+            strokeOpacity="0.7"
             strokeWidth="1"
             strokeLinecap="round"
           />
-          <circle cx="1218" cy="118" r="14" fill="#FAD7BE" stroke="#3B5B96" strokeWidth="1" />
+          <path
+            d="M238 146 Q244 140 250 145 Q256 140 262 146"
+            stroke="#3B5B96"
+            strokeOpacity="0.55"
+            strokeWidth="0.9"
+            strokeLinecap="round"
+          />
+          <circle
+            cx="1226"
+            cy="112"
+            r="13"
+            fill="#FADCC5"
+            stroke="#3B5B96"
+            strokeOpacity="0.7"
+            strokeWidth="0.9"
+          />
           <ellipse
-            cx="1218"
-            cy="118"
-            rx="24"
-            ry="6.5"
-            transform="rotate(-22 1218 118)"
+            cx="1226"
+            cy="112"
+            rx="23"
+            ry="6"
+            transform="rotate(-22 1226 112)"
             stroke="#3B5B96"
-            strokeWidth="1"
-          />
-          <polygon
-            points="168,238 174,234 180,238 180,245 174,249 168,245"
-            fill="#DCE8FA"
-            stroke="#3B5B96"
-            strokeWidth="1"
-          />
-          <polygon
-            points="1282,232 1287,229 1292,232 1292,238 1287,241 1282,238"
-            fill="#FAD7BE"
-            stroke="#3B5B96"
-            strokeWidth="1"
+            strokeOpacity="0.65"
+            strokeWidth="0.9"
           />
         </svg>
 
@@ -211,9 +207,9 @@ export default function HomeFooter({ newsletterSource = 'footer', locale = 'en' 
             <a href="/privacy-policy/">{copy?.privacyLink ?? 'privacy policy'}</a>.
           </p>
 
-          {/* Fanned 3-Panel Pastel Retro-Futuristic Ligne Claire Showcase */}
+          {/* Composed 3-Panel Editorial Ligne Claire Triptych */}
           <div className="ht-footer__fan" aria-hidden="true">
-            {/* Back-left architectural blueprint window */}
+            {/* Panel 1: Sage & Cream Penang Studio Desk Illustration */}
             <div className="ht-footer__plate-left">
               <div className="ht-footer__win-bar">
                 <div className="ht-footer__win-dots">
@@ -221,7 +217,7 @@ export default function HomeFooter({ newsletterSource = 'footer', locale = 'en' 
                   <span />
                   <span />
                 </div>
-                <span className="ht-footer__win-label">STARTER BUILD / RM799</span>
+                <span className="ht-footer__win-label">STARTER / RM799</span>
               </div>
               <div className="ht-footer__left-body">
                 <p className="ht-footer__left-kicker">PENANG STUDIO SPEC</p>
@@ -231,42 +227,47 @@ export default function HomeFooter({ newsletterSource = 'footer', locale = 'en' 
                   for real work
                 </p>
                 <span className="ht-footer__left-pill">WhatsApp ↗</span>
-                <div className="ht-footer__left-wire">
-                  <span />
-                  <span />
-                  <span />
-                </div>
               </div>
-            </div>
-
-            <div className="ht-footer__float-badge ht-footer__float-badge--left">
-              <svg viewBox="0 0 32 32" fill="none">
-                <path
-                  d="M11.5 10.5L6.5 16L11.5 21.5M20.5 10.5L25.5 16L20.5 21.5M17.5 8.5L14.5 23.5"
-                  stroke="#174494"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
+              <svg
+                className="ht-footer__left-art"
+                viewBox="0 0 280 156"
+                fill="none"
+              >
+                {/* Warm sunlight diagonal across studio wall */}
+                <polygon points="0,12 195,12 145,156 0,156" fill="#FBF3E8" />
+                {/* Heritage Penang louvered window frame */}
+                <rect x="18" y="8" width="96" height="82" rx="4" fill="#CBE5DA" stroke="#2D527A" strokeWidth="0.95" />
+                <rect x="26" y="16" width="36" height="66" fill="#FAF8F3" stroke="#2D527A" strokeWidth="0.85" />
+                <rect x="68" y="16" width="38" height="66" fill="#E3F1EC" stroke="#2D527A" strokeWidth="0.85" />
+                <line x1="72" y1="26" x2="102" y2="26" stroke="#2D527A" strokeWidth="0.75" />
+                <line x1="72" y1="36" x2="102" y2="36" stroke="#2D527A" strokeWidth="0.75" />
+                <line x1="72" y1="46" x2="102" y2="46" stroke="#2D527A" strokeWidth="0.75" />
+                <line x1="72" y1="56" x2="102" y2="56" stroke="#2D527A" strokeWidth="0.75" />
+                <line x1="72" y1="66" x2="102" y2="66" stroke="#2D527A" strokeWidth="0.75" />
+                {/* Sun circle visible through window */}
+                <circle cx="44" cy="34" r="9" fill="#FAD6BC" stroke="#2D527A" strokeWidth="0.85" />
+                {/* Studio desk plane */}
+                <rect x="0" y="106" width="280" height="50" fill="#DFECE7" stroke="#2D527A" strokeWidth="0.95" />
+                {/* Retro-futuristic drafting monitor on desk */}
+                <rect x="78" y="42" width="112" height="68" rx="6" fill="#FAF8F3" stroke="#2D527A" strokeWidth="1" />
+                <rect x="86" y="50" width="96" height="48" rx="3" fill="#E6EFFC" stroke="#2D527A" strokeWidth="0.85" />
+                <rect x="93" y="57" width="44" height="12" rx="2" fill="#9BB6F0" stroke="#2D527A" strokeWidth="0.75" />
+                <rect x="93" y="74" width="32" height="16" rx="2" fill="#FAD6BC" stroke="#2D527A" strokeWidth="0.75" />
+                <rect x="131" y="74" width="44" height="16" rx="2" fill="#CBE5DA" stroke="#2D527A" strokeWidth="0.75" />
+                <path d="M124 110 L144 110 L148 122 L120 122 Z" fill="#C4D8F8" stroke="#2D527A" strokeWidth="0.9" />
+                {/* Potted studio plant on left */}
+                <path d="M30 100 L52 100 L48 122 L34 122 Z" fill="#F2B491" stroke="#2D527A" strokeWidth="0.9" />
+                <path d="M41 100 C33 88, 22 86, 24 76 C33 78, 39 88, 41 100 Z" fill="#89C7B0" stroke="#2D527A" strokeWidth="0.85" />
+                <path d="M41 100 C49 86, 60 85, 58 74 C49 77, 43 87, 41 100 Z" fill="#A5D8C5" stroke="#2D527A" strokeWidth="0.85" />
+                {/* Kopi cup on right of desk */}
+                <rect x="198" y="102" width="18" height="18" rx="3" fill="#FAF8F3" stroke="#2D527A" strokeWidth="0.9" />
+                <path d="M216 106 C222 106, 222 115, 216 115" stroke="#2D527A" strokeWidth="0.9" />
+                <path d="M204 97 Q206 91 204 87" stroke="#2D527A" strokeWidth="0.8" strokeLinecap="round" />
+                <path d="M210 97 Q212 91 210 87" stroke="#2D527A" strokeWidth="0.8" strokeLinecap="round" />
               </svg>
             </div>
 
-            <div className="ht-footer__float-inspector">
-              <div className="ht-footer__inspector-head">
-                <span />
-                <span>BUILD STACK</span>
-              </div>
-              <div className="ht-footer__inspector-rows">
-                {INSPECTOR_ITEMS.map((item) => (
-                  <div key={item} className="ht-footer__inspector-row">
-                    <i />
-                    <span>{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Middle ivory paper invoice & quotation window */}
+            {/* Panel 2: Editorial Ivory Invoice & Ledger Sheet */}
             <div className="ht-footer__plate-mid">
               <div className="ht-footer__win-bar ht-footer__win-bar--ivory">
                 <div className="ht-footer__win-dots">
@@ -278,174 +279,149 @@ export default function HomeFooter({ newsletterSource = 'footer', locale = 'en' 
               </div>
               <div className="ht-footer__mid-body">
                 <div className="ht-footer__mid-head">
-                  <span className="ht-footer__mid-id">QUOTATION / INV-2026</span>
+                  <div>
+                    <span className="ht-footer__mid-id">QUOTATION / INV-2026</span>
+                    <p className="ht-footer__mid-issuer">HaikaiTech Workshop &middot; Penang</p>
+                  </div>
                   <span className="ht-footer__mid-paid">PAID</span>
                 </div>
                 <div className="ht-footer__mid-card">
-                  <div className="ht-footer__mid-line ht-footer__mid-line--wide" />
-                  <div className="ht-footer__mid-line ht-footer__mid-line--short" />
                   <div className="ht-footer__mid-rows">
                     <div>
-                      <span />
+                      <span>Starter Landing Build</span>
                       <strong>RM 799</strong>
                     </div>
                     <div>
-                      <span />
+                      <span>Business Website</span>
                       <strong>RM 2,400</strong>
                     </div>
                     <div>
-                      <span />
-                      <strong>RM 0 FEE</strong>
+                      <span>Free Invoice Tool</span>
+                      <strong>RM 0</strong>
                     </div>
                   </div>
+                  <div className="ht-footer__mid-total">
+                    <span>Total due</span>
+                    <strong>RM 3,199</strong>
+                  </div>
+                </div>
+                {/* Editorial Ligne Claire illustrated summary strip */}
+                <div className="ht-footer__mid-foot">
+                  <svg viewBox="0 0 216 68" fill="none" className="ht-footer__mid-art">
+                    <rect x="1" y="1" width="214" height="66" rx="8" fill="#EEF4FD" stroke="#7E9FD9" strokeWidth="0.9" />
+                    {/* Mini bar cadence */}
+                    <rect x="14" y="34" width="12" height="20" rx="2" fill="#C4D8F8" stroke="#3B5B96" strokeWidth="0.8" />
+                    <rect x="31" y="24" width="12" height="30" rx="2" fill="#9AB6F0" stroke="#3B5B96" strokeWidth="0.8" />
+                    <rect x="48" y="30" width="12" height="24" rx="2" fill="#FAD6BC" stroke="#3B5B96" strokeWidth="0.8" />
+                    <rect x="65" y="16" width="12" height="38" rx="2" fill="#89C7B0" stroke="#3B5B96" strokeWidth="0.8" />
+                    {/* Paper-plane export trajectory */}
+                    <path d="M88 42 C108 26, 130 22, 154 28" stroke="#3B5B96" strokeWidth="0.9" strokeDasharray="3 3" />
+                    <polygon points="154,28 142,22 145,32" fill="#FAD6BC" stroke="#3B5B96" strokeWidth="0.85" strokeLinejoin="round" />
+                    {/* Stamp seal badge */}
+                    <circle cx="184" cy="34" r="18" fill="#FAF8F3" stroke="#3B5B96" strokeWidth="0.9" />
+                    <circle cx="184" cy="34" r="13" stroke="#7E9FD9" strokeWidth="0.8" strokeDasharray="2 2" />
+                    <path d="M178 34 L182 38 L191 29" stroke="#116A54" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
                 </div>
               </div>
             </div>
 
-            <div className="ht-footer__float-swatch">
-              <span className="ht-footer__swatch-title">Mineral Palette</span>
-              <div className="ht-footer__swatch-bar" />
-              <div className="ht-footer__swatch-dots">
-                {SWATCH_COLORS.map((hex) => (
-                  <span key={hex} style={{ backgroundColor: hex }} />
-                ))}
-              </div>
-              <span className="ht-footer__swatch-note">PDF Ready</span>
-            </div>
-
+            {/* Subtle orbital seal badge perched on top seam */}
             <div className="ht-footer__float-badge ht-footer__float-badge--top">
               <svg viewBox="0 0 36 36" fill="none">
-                <circle cx="18" cy="18" r="9.5" fill="#EEF4FD" stroke="#355592" strokeWidth="1.1" />
+                <circle cx="18" cy="18" r="9.5" fill="#EEF4FD" stroke="#3B5B96" strokeWidth="1" />
                 <ellipse
                   cx="18"
                   cy="18"
                   rx="14"
-                  ry="5.2"
+                  ry="5"
                   transform="rotate(-26 18 18)"
                   stroke="#1368E6"
-                  strokeWidth="1.1"
+                  strokeWidth="1"
                 />
-                <circle cx="18" cy="18" r="2.8" fill="#F4B998" stroke="#355592" strokeWidth="1" />
+                <circle cx="18" cy="18" r="2.6" fill="#F4C5A3" stroke="#3B5B96" strokeWidth="0.9" />
               </svg>
             </div>
 
-            {/* Front-right isometric retro-futuristic Ligne Claire skyline & guide window */}
+            {/* Panel 3: Full-Bleed Editorial Ligne Claire Coastal Skyline & Guide Poster */}
             <div className="ht-footer__plate-right">
+              {/* Full-bleed retro-futuristic Ligne Claire illustration canvas */}
+              <svg
+                className="ht-footer__right-scene"
+                viewBox="0 0 520 330"
+                preserveAspectRatio="xMidYMax slice"
+                fill="none"
+              >
+                {/* Layered pastel apricot sunset sky */}
+                <rect width="520" height="330" fill="#FBE5D3" />
+                <rect y="0" width="520" height="148" fill="#FDF1E6" />
+                <circle cx="332" cy="86" r="34" fill="#F7C39F" stroke="#3B5B96" strokeWidth="0.9" />
+
+                {/* Distant cable-stayed Penang bridge silhouette */}
+                <path d="M22 246 L256 246" stroke="#3B5B96" strokeWidth="1" />
+                <path d="M98 246 L98 164 M98 172 L54 246 M98 172 L72 246 M98 172 L124 246 M98 172 L144 246" stroke="#6E8ECF" strokeWidth="0.85" />
+
+                {/* Periwinkle harbour water plane */}
+                <rect y="246" width="520" height="84" fill="#C4D7F7" stroke="#3B5B96" strokeWidth="1" />
+                <line x1="28" y1="268" x2="180" y2="268" stroke="#6E8ECF" strokeWidth="0.8" />
+                <line x1="210" y1="284" x2="352" y2="284" stroke="#6E8ECF" strokeWidth="0.8" />
+                <line x1="88" y1="302" x2="246" y2="302" stroke="#6E8ECF" strokeWidth="0.8" />
+
+                {/* Iconic tall isometric Ligne Claire tower */}
+                <polygon points="366,64 404,48 404,246 366,246" fill="#9CB8F0" stroke="#3B5B96" strokeWidth="1" strokeLinejoin="round" />
+                <polygon points="404,48 434,60 434,246 404,246" fill="#F2AE8A" stroke="#3B5B96" strokeWidth="1" strokeLinejoin="round" />
+                <line x1="378" y1="62" x2="378" y2="242" stroke="#3B5B96" strokeWidth="0.75" />
+                <line x1="391" y1="56" x2="391" y2="242" stroke="#3B5B96" strokeWidth="0.75" />
+                <line x1="419" y1="58" x2="419" y2="242" stroke="#3B5B96" strokeWidth="0.75" />
+
+                {/* Curved domed retro-futuristic tower */}
+                <path d="M298 246 L298 116 Q326 86 354 112 L354 246 Z" fill="#B5CBF5" stroke="#3B5B96" strokeWidth="1" />
+                <line x1="312" y1="108" x2="312" y2="242" stroke="#3B5B96" strokeWidth="0.75" />
+                <line x1="326" y1="102" x2="326" y2="242" stroke="#3B5B96" strokeWidth="0.75" />
+                <line x1="340" y1="106" x2="340" y2="242" stroke="#3B5B96" strokeWidth="0.75" />
+
+                {/* Warm mid-ground architectural block with lit studio windows */}
+                <rect x="234" y="168" width="76" height="78" fill="#E3EEFC" stroke="#3B5B96" strokeWidth="1" />
+                <rect x="244" y="180" width="22" height="11" fill="#FAD6BC" stroke="#3B5B96" strokeWidth="0.8" />
+                <rect x="274" y="180" width="24" height="11" fill="#FAF8F3" stroke="#3B5B96" strokeWidth="0.8" />
+                <rect x="244" y="199" width="22" height="11" fill="#FAF8F3" stroke="#3B5B96" strokeWidth="0.8" />
+                <rect x="274" y="199" width="24" height="11" fill="#FAD6BC" stroke="#3B5B96" strokeWidth="0.8" />
+                <rect x="244" y="218" width="54" height="12" fill="#CBE5DA" stroke="#3B5B96" strokeWidth="0.8" />
+
+                {/* Sweeping retro-futuristic golden sky-ribbon */}
+                <path d="M-10 232 C 138 186, 286 154, 530 108" stroke="#F7D694" strokeWidth="6" strokeLinecap="round" />
+                <path d="M-10 229.4 C 138 183.4, 286 151.4, 530 105.4" stroke="#3B5B96" strokeWidth="0.9" />
+                <path d="M-10 234.6 C 138 188.6, 286 156.6, 530 110.6" stroke="#3B5B96" strokeWidth="0.9" />
+
+                {/* Harbour pier & ferry boat */}
+                <path d="M168 274 L218 274 L212 286 L174 286 Z" fill="#FAF8F3" stroke="#3B5B96" strokeWidth="0.95" strokeLinejoin="round" />
+                <rect x="184" y="264" width="20" height="10" rx="2" fill="#F2AE8A" stroke="#3B5B96" strokeWidth="0.85" />
+                <path d="M276 266 L342 266 L336 274 L276 274 Z" fill="#E3EEFC" stroke="#3B5B96" strokeWidth="0.9" />
+
+                {/* Minimalist Ligne Claire gulls */}
+                <path d="M258 92 Q265 86 272 91 Q279 85 286 91" stroke="#3B5B96" strokeWidth="1" strokeLinecap="round" />
+                <path d="M286 76 Q291 71 296 75 Q301 71 306 75" stroke="#3B5B96" strokeWidth="0.9" strokeLinecap="round" />
+              </svg>
+
               <div className="ht-footer__right-bar">
                 <span className="ht-footer__right-brand">HAIKAITECH / 2026 GUIDE</span>
                 <span className="ht-footer__right-badge">FREE PDF</span>
               </div>
-              <div className="ht-footer__right-split">
-                <div className="ht-footer__right-copy">
-                  <p className="ht-footer__right-title">
-                    A website that
-                    <br />
-                    brings leads
-                  </p>
-                  <span className="ht-footer__right-cta">Read the guide</span>
-                </div>
-                {/* Fine 1px indigo-inked isometric Ligne Claire skyline + sky monorail */}
-                <svg
-                  className="ht-footer__right-art"
-                  viewBox="0 0 196 164"
-                  fill="none"
-                >
-                  {/* Warm apricot sky plane */}
-                  <rect
-                    x="8"
-                    y="6"
-                    width="180"
-                    height="150"
-                    rx="8"
-                    fill="#FAD6BE"
-                    stroke="#355592"
-                    strokeWidth="1"
-                  />
-                  {/* Harbor water / lower horizon */}
-                  <path
-                    d="M8 122 L188 122 L188 148 Q188 156 180 156 L16 156 Q8 156 8 148 Z"
-                    fill="#B8CEF5"
-                    stroke="#355592"
-                    strokeWidth="1"
-                  />
-                  {/* Tall isometric Ligne Claire tower */}
-                  <polygon
-                    points="114,22 138,12 138,122 114,122"
-                    fill="#95B2EE"
-                    stroke="#355592"
-                    strokeWidth="1"
-                    strokeLinejoin="round"
-                  />
-                  <polygon
-                    points="138,12 156,20 156,122 138,122"
-                    fill="#F3A683"
-                    stroke="#355592"
-                    strokeWidth="1"
-                    strokeLinejoin="round"
-                  />
-                  {/* Vertical fine window lines on tall tower */}
-                  <line x1="122" y1="22" x2="122" y2="118" stroke="#355592" strokeWidth="0.8" />
-                  <line x1="130" y1="18" x2="130" y2="118" stroke="#355592" strokeWidth="0.8" />
-                  <line x1="147" y1="20" x2="147" y2="118" stroke="#355592" strokeWidth="0.8" />
 
-                  {/* Mid curved-arch architectural building */}
-                  <path
-                    d="M68 122 L68 52 Q86 34 104 48 L104 122 Z"
-                    fill="#B0C6F4"
-                    stroke="#355592"
-                    strokeWidth="1"
-                  />
-                  <line x1="77" y1="48" x2="77" y2="118" stroke="#355592" strokeWidth="0.8" />
-                  <line x1="86" y1="44" x2="86" y2="118" stroke="#355592" strokeWidth="0.8" />
-                  <line x1="95" y1="46" x2="95" y2="118" stroke="#355592" strokeWidth="0.8" />
-
-                  {/* Foreground studio shophouse / low block */}
-                  <rect
-                    x="24"
-                    y="72"
-                    width="52"
-                    height="50"
-                    fill="#DCE8FA"
-                    stroke="#355592"
-                    strokeWidth="1"
-                  />
-                  {/* Lit warm apricot studio windows */}
-                  <rect x="31" y="81" width="16" height="8" fill="#FAD6BE" stroke="#355592" strokeWidth="0.8" />
-                  <rect x="53" y="81" width="16" height="8" fill="#FAF8F3" stroke="#355592" strokeWidth="0.8" />
-                  <rect x="31" y="95" width="16" height="8" fill="#FAF8F3" stroke="#355592" strokeWidth="0.8" />
-                  <rect x="53" y="95" width="16" height="8" fill="#FAD6BE" stroke="#355592" strokeWidth="0.8" />
-
-                  {/* Sweeping retro-futuristic golden sky ribbon */}
-                  <path
-                    d="M12 108 C 58 82, 114 68, 184 44"
-                    stroke="#F7D488"
-                    strokeWidth="4.2"
-                    strokeLinecap="round"
-                  />
-                  <path
-                    d="M12 106.2 C 58 80.2, 114 66.2, 184 42.2"
-                    stroke="#355592"
-                    strokeWidth="0.9"
-                  />
-                  <path
-                    d="M12 109.8 C 58 83.8, 114 69.8, 184 45.8"
-                    stroke="#355592"
-                    strokeWidth="0.9"
-                  />
-
-                  {/* Tiny Ligne Claire sky gull & harbour pier */}
-                  <path
-                    d="M44 38 Q49 33 54 37 Q59 32 64 37"
-                    stroke="#355592"
-                    strokeWidth="1"
-                    strokeLinecap="round"
-                  />
-                  <line x1="34" y1="136" x2="148" y2="136" stroke="#355592" strokeWidth="0.9" />
-                  <rect x="116" y="139" width="22" height="6" rx="2" fill="#FAF8F3" stroke="#355592" strokeWidth="0.8" />
-                </svg>
+              <div className="ht-footer__right-overlay">
+                <p className="ht-footer__right-title">
+                  A website that
+                  <br />
+                  brings leads
+                </p>
+                <p className="ht-footer__right-sub">
+                  Pricing, structure & WhatsApp conversion notes.
+                </p>
+                <span className="ht-footer__right-cta">Read the guide</span>
               </div>
             </div>
 
+            {/* Refined vertical checklist drawer on far-right edge */}
             <div className="ht-footer__float-drawer">
               <div className="ht-footer__drawer-head">
                 <span />
@@ -490,7 +466,7 @@ export default function HomeFooter({ newsletterSource = 'footer', locale = 'en' 
                 onClick={() => track('contact_clicked', 'whatsapp')}
               >
                 <span>{bm ? 'Bincang di WhatsApp' : 'Talk on WhatsApp'}</span>
-                <ArrowUpRight aria-hidden="true" size={17} strokeWidth={2} />
+                <ArrowUpRight aria-hidden="true" size={16} strokeWidth={2} />
               </a>
             </div>
 
@@ -527,15 +503,27 @@ export default function HomeFooter({ newsletterSource = 'footer', locale = 'en' 
           <div className="ht-footer__meta-row">
             <div className="ht-footer__meta-legal">
               <span>
-                &copy; {new Date().getFullYear()} {copy?.company ?? 'HaikaiTech Solutions'} &middot;{' '}
-                {copy?.city ?? 'Penang, Malaysia'}
+                &copy; {new Date().getFullYear()} {copy?.company ?? 'HaikaiTech Solutions'}
+              </span>
+              <span className="ht-footer__meta-sep" aria-hidden="true">
+                &middot;
+              </span>
+              <span>{copy?.city ?? 'Penang, Malaysia'}</span>
+              <span className="ht-footer__meta-sep" aria-hidden="true">
+                &middot;
               </span>
               <a href="https://www.ssm-einfo.my/" target="_blank" rel="noopener noreferrer">
                 SSM 202603149868 (CA0422517-K)
               </a>
+              <span className="ht-footer__meta-sep" aria-hidden="true">
+                &middot;
+              </span>
               <a href="https://stripe.com" target="_blank" rel="noopener noreferrer">
                 {copy?.stripe ?? 'Secure payments powered by Stripe'}
               </a>
+              <span className="ht-footer__meta-sep" aria-hidden="true">
+                &middot;
+              </span>
               <span>{copy?.worldwide ?? 'Serving clients worldwide'}</span>
             </div>
 
@@ -546,7 +534,7 @@ export default function HomeFooter({ newsletterSource = 'footer', locale = 'en' 
                 rel="noopener noreferrer"
                 aria-label="GitHub"
               >
-                <Github aria-hidden="true" size={18} strokeWidth={1.75} />
+                <Github aria-hidden="true" size={17} strokeWidth={1.75} />
               </a>
               <a
                 href="https://www.linkedin.com/in/iffathaikal/"
@@ -554,7 +542,7 @@ export default function HomeFooter({ newsletterSource = 'footer', locale = 'en' 
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
               >
-                <Linkedin aria-hidden="true" size={18} strokeWidth={1.75} />
+                <Linkedin aria-hidden="true" size={17} strokeWidth={1.75} />
               </a>
               <a
                 href={whatsappHref}
@@ -563,14 +551,14 @@ export default function HomeFooter({ newsletterSource = 'footer', locale = 'en' 
                 aria-label="WhatsApp"
                 onClick={() => track('contact_clicked', 'whatsapp')}
               >
-                <MessageCircle aria-hidden="true" size={18} strokeWidth={1.75} />
+                <MessageCircle aria-hidden="true" size={17} strokeWidth={1.75} />
               </a>
               <a
                 href="mailto:hq@haikaitech.my"
                 aria-label="Email hq@haikaitech.my"
                 onClick={() => track('contact_clicked', 'email')}
               >
-                <Mail aria-hidden="true" size={18} strokeWidth={1.75} />
+                <Mail aria-hidden="true" size={17} strokeWidth={1.75} />
               </a>
             </nav>
           </div>
@@ -580,22 +568,15 @@ export default function HomeFooter({ newsletterSource = 'footer', locale = 'en' 
             <span className="ht-footer__cross ht-footer__cross--tr" aria-hidden="true" />
             <span className="ht-footer__cross ht-footer__cross--bl" aria-hidden="true" />
             <span className="ht-footer__cross ht-footer__cross--br" aria-hidden="true" />
-            <p className="ht-footer__plate-stamp">
-              {copy?.note ?? 'Built for real work.'} / PENANG, MY
-            </p>
             <a
               href={localizeHref('/#home', locale)}
               className="ht-footer__wordmark"
               aria-label={copy?.home ?? 'HaikaiTech home'}
             >
               <span className="ht-footer__emblem" aria-hidden="true">
-                <img src="/haikaitech-mark.png" width="58" height="58" alt="" aria-hidden="true" />
+                <img src="/haikaitech-mark.png" width="88" height="88" alt="" aria-hidden="true" />
               </span>
-              <span className="ht-footer__wordmark-text">
-                <span className="ht-footer__word-a">HAIKAI</span>
-                <span className="ht-footer__word-b">TECH</span>
-                <span className="ht-footer__word-c">_</span>
-              </span>
+              <span className="ht-footer__wordmark-text">HAIKAITECH_</span>
             </a>
           </div>
         </div>

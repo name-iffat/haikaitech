@@ -10,22 +10,6 @@ const homePath = isBm ? '/bm/' : '/';
 const isHome = Astro.url.pathname === '/' || Astro.url.pathname === '/bm' || Astro.url.pathname === '/bm/';
 const anchorBase = isHome ? '' : homePath;
 
-const navLinks = isBm
-  ? [
-      { label: 'Servis', href: `${anchorBase}#services`, hasCaret: true },
-      { label: 'Projek', href: isHome ? '#projects' : localizeHref('/projects/', locale), hasCaret: true },
-      { label: 'Sistem', href: localizeHref('/services/automation/', locale), hasCaret: false },
-      { label: 'Harga', href: `${anchorBase}#pricing`, hasCaret: false },
-      { label: 'Ruang Bina', href: `${anchorBase}#workbench-playground`, hasCaret: false },
-    ]
-  : [
-      { label: 'Services', href: `${anchorBase}#services`, hasCaret: true },
-      { label: 'Projects', href: isHome ? '#projects' : '/projects/', hasCaret: true },
-      { label: 'Systems', href: '/services/automation/', hasCaret: false },
-      { label: 'Pricing', href: `${anchorBase}#pricing`, hasCaret: false },
-      { label: 'Playground', href: `${anchorBase}#workbench-playground`, hasCaret: false },
-    ];
-
 const whatsappHref =
   'https://wa.me/60147533499?text=' +
   encodeURIComponent(
@@ -36,6 +20,47 @@ const whatsappHref =
 
 const switchToEnglish = localeSwitchHref(Astro.url.pathname, 'en');
 const switchToMalay = localeSwitchHref(Astro.url.pathname, 'bm');
+
+const archiveBase = localizeHref('/projects/', locale);
+const workHref = isHome ? '#projects' : archiveBase;
+const servicesHref = localizeHref('/services/', locale);
+const automationHref = localizeHref('/services/automation/', locale);
+const ecommerceHref = localizeHref('/services/ecommerce/', locale);
+const starterHref = localizeHref('/website/', locale);
+const stackHref = `${anchorBase}#stack`;
+const pricingHref = `${anchorBase}#pricing`;
+const faqHref = `${anchorBase}#faq`;
+const insightsHref = '/blog/';
+
+const workIndustryItems = isBm
+  ? [
+      { label: 'Kontraktor', href: `${archiveBase}?industry=construction`, icon: 'construction' },
+      { label: 'Umrah & Pelancongan', href: `${archiveBase}?industry=travel`, icon: 'travel' },
+      { label: 'F&B & Runcit', href: `${archiveBase}?industry=fnb-retail`, icon: 'fnb' },
+      { label: 'Servis B2B', href: `${archiveBase}?industry=b2b`, icon: 'b2b' },
+      { label: 'Klinik & Ilmu', href: `${archiveBase}?industry=clinics-edu`, icon: 'clinic' },
+      { label: 'Sistem & App', href: `${archiveBase}?industry=systems-apps`, icon: 'systems' },
+    ]
+  : [
+      { label: 'Contractors', href: `${archiveBase}?industry=construction`, icon: 'construction' },
+      { label: 'Umrah & Travel', href: `${archiveBase}?industry=travel`, icon: 'travel' },
+      { label: 'F&B & Retail', href: `${archiveBase}?industry=fnb-retail`, icon: 'fnb' },
+      { label: 'B2B Services', href: `${archiveBase}?industry=b2b`, icon: 'b2b' },
+      { label: 'Clinics & Education', href: `${archiveBase}?industry=clinics-edu`, icon: 'clinic' },
+      { label: 'Ops & Internal Apps', href: `${archiveBase}?industry=systems-apps`, icon: 'systems' },
+    ];
+
+const workFocusItems = isBm
+  ? [
+      { label: 'Laman Web Umrah', href: '/bm/umrah-website/' },
+      { label: 'Laman Satu Halaman', href: '/bm/website/' },
+      { label: 'Semua Projek', href: '/bm/projects/' },
+    ]
+  : [
+      { label: 'Web Design Penang', href: '/web-design-penang/' },
+      { label: 'Web Design Selangor', href: '/web-design-selangor/' },
+      { label: 'Full Project Archive', href: '/projects/' },
+    ];
 ---
 
 <a class="tines-skip" href="#home">{isBm ? 'Langkau ke kandungan' : 'Skip to content'}</a>
@@ -49,16 +74,605 @@ const switchToMalay = localeSwitchHref(Astro.url.pathname, 'bm');
       </a>
 
       <nav class="tines-nav" aria-label={isBm ? 'Navigasi utama' : 'Primary navigation'}>
-        {navLinks.map((item) => (
-          <a class="tines-nav__link" href={item.href}>
-            <span>{item.label}</span>
-            {item.hasCaret && (
-              <svg class="tines-nav__caret" width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
-                <path d="M2.2 3.8L5 6.6L7.8 3.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            )}
+        <!-- 1. Work Dropdown (Pattern B: Staggered Periwinkle + Mint By Industry + Apricot By Location) -->
+        <div class="tines-nav__item" data-nav-dropdown>
+          <a class="tines-nav__link" href={workHref} aria-expanded="false">
+            <span>{isBm ? 'Projek' : 'Work'}</span>
+            <svg class="tines-nav__caret" width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+              <path d="M2.2 3.8L5 6.6L7.8 3.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
           </a>
-        ))}
+          <div class="ht-mega-wrap">
+            <div class="ht-mega ht-mega--work">
+              <a class="ht-mega-card ht-mega-card--periwinkle ht-mega-card--work-lead" href={archiveBase}>
+                <div>
+                  <p class="ht-mega-card__title">{isBm ? 'Arkib Projek' : 'Shipped Work'}</p>
+                  <p class="ht-mega-card__desc">
+                    {isBm ? 'Laman web & sistem aktif di lapangan.' : 'For Malaysian SMEs & growing teams.'}
+                  </p>
+                </div>
+                <div class="ht-mega-card__foot">
+                  <svg class="ht-mega-spot" width="112" height="96" viewBox="0 0 112 96" fill="none" aria-hidden="true">
+                    <rect x="6" y="8" width="52" height="52" rx="14" fill="#DCE8FA" stroke="#2D4F8E" stroke-width="1.2" />
+                    <rect x="14" y="16" width="36" height="36" rx="8" fill="#FAF8F3" stroke="#2D4F8E" stroke-width="1" />
+                    <circle cx="26" cy="28" r="4" fill="#F4C5A3" />
+                    <circle cx="38" cy="40" r="5" fill="#9BB6F0" />
+
+                    <rect x="26" y="22" width="52" height="52" rx="14" fill="#CBE5DA" stroke="#2D4F8E" stroke-width="1.2" />
+                    <rect x="34" y="30" width="36" height="36" rx="8" fill="#153B7D" stroke="#2D4F8E" stroke-width="1" />
+                    <circle cx="46" cy="42" r="4" fill="#F4D35E" />
+                    <circle cx="58" cy="54" r="5" fill="#8CC9B2" />
+
+                    <rect x="46" y="36" width="52" height="52" rx="14" fill="#FAD6BC" stroke="#2D4F8E" stroke-width="1.2" />
+                    <rect x="54" y="44" width="36" height="36" rx="8" fill="#FAF8F3" stroke="#2D4F8E" stroke-width="1" />
+                    <rect x="60" y="51" width="24" height="7" rx="2" fill="#1368E6" />
+                    <rect x="60" y="62" width="16" height="11" rx="2" fill="#FAD6BC" stroke="#2D4F8E" stroke-width="0.8" />
+                    <circle cx="81" cy="68" r="4" fill="#8CC9B2" />
+                  </svg>
+                  <span class="ht-mega-arrow" aria-hidden="true">&rarr;</span>
+                </div>
+              </a>
+
+              <div class="ht-mega-card ht-mega-card--mint">
+                <p class="ht-mega-col-label">{isBm ? 'IKUT INDUSTRI' : 'BY INDUSTRY'}</p>
+                <ul class="ht-mega-list">
+                  {workIndustryItems.map((item) => (
+                    <li>
+                      <a href={item.href}>
+                        <span class="ht-mega-icon ht-mega-icon--mint" aria-hidden="true">
+                          {item.icon === 'construction' && (
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                              <path d="M2.2 7.5 8 2.8l5.8 4.7V13.5H2.2V7.5Z" stroke="currentColor" stroke-width="1.25" stroke-linejoin="round" />
+                              <path d="M6.2 13.5V9.5h3.6v4" stroke="currentColor" stroke-width="1.2" />
+                            </svg>
+                          )}
+                          {item.icon === 'travel' && (
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                              <path d="M3.5 13.5v-3C3.5 7.7 5.5 5.6 8 4.2c2.5 1.4 4.5 3.5 4.5 6.3v3H3.5Z" stroke="currentColor" stroke-width="1.25" stroke-linejoin="round" />
+                              <path d="M8 2v2.2M6.2 13.5v-3a1.8 1.8 0 0 1 3.6 0v3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+                            </svg>
+                          )}
+                          {item.icon === 'fnb' && (
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                              <path d="M3.2 5.5h9.6l-.8 8H4l-.8-8Z" stroke="currentColor" stroke-width="1.25" stroke-linejoin="round" />
+                              <path d="M5.8 5.5V4.4a2.2 2.2 0 0 1 4.4 0v1.1" stroke="currentColor" stroke-width="1.25" />
+                            </svg>
+                          )}
+                          {item.icon === 'b2b' && (
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                              <rect x="2.2" y="4.5" width="11.6" height="8.5" rx="1.8" stroke="currentColor" stroke-width="1.25" />
+                              <path d="M5.8 4.5V3.4a1 1 0 0 1 1-1h2.4a1 1 0 0 1 1 1v1.1M2.2 8.2h11.6" stroke="currentColor" stroke-width="1.2" />
+                            </svg>
+                          )}
+                          {item.icon === 'clinic' && (
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                              <rect x="2.4" y="2.4" width="11.2" height="11.2" rx="2.2" stroke="currentColor" stroke-width="1.25" />
+                              <path d="M8 5.2v5.6M5.2 8h5.6" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" />
+                            </svg>
+                          )}
+                          {item.icon === 'systems' && (
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                              <rect x="2" y="2.8" width="12" height="10.4" rx="2" stroke="currentColor" stroke-width="1.25" />
+                              <path d="M4.8 6.5 7 8.2 4.8 9.9M8.4 10h2.8" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                          )}
+                        </span>
+                        <span>{item.label}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div class="ht-mega-card ht-mega-card--apricot">
+                <p class="ht-mega-col-label">{isBm ? 'KHUSUS' : 'BY LOCATION'}</p>
+                <ul class="ht-mega-list">
+                  {workFocusItems.map((item) => (
+                    <li>
+                      <a href={item.href}>
+                        <span class="ht-mega-icon ht-mega-icon--apricot" aria-hidden="true">
+                          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M8 14s4.5-4.1 4.5-7.6A4.5 4.5 0 0 0 3.5 6.4C3.5 9.9 8 14 8 14Z" stroke="currentColor" stroke-width="1.25" />
+                            <circle cx="8" cy="6.4" r="1.5" fill="currentColor" />
+                          </svg>
+                        </span>
+                        <span>{item.label}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Services Dropdown (Pattern A: Full-Bleed Editorial Ligne Claire Cobalt Shell + Pale Sky Card) -->
+        <div class="tines-nav__item" data-nav-dropdown>
+          <a class="tines-nav__link" href={servicesHref} aria-expanded="false">
+            <span>{isBm ? 'Servis' : 'Services'}</span>
+            <svg class="tines-nav__caret" width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+              <path d="M2.2 3.8L5 6.6L7.8 3.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+          <div class="ht-mega-wrap">
+            <div class="ht-mega ht-mega--services">
+              <div class="ht-mega-cobalt-shell">
+                <a class="ht-mega-cobalt-hero" href={servicesHref}>
+                  <div class="ht-mega-cobalt-copy">
+                    <p class="ht-mega-cobalt-title">{isBm ? 'Laman Web & Sistem' : 'Websites & Systems'}</p>
+                    <p class="ht-mega-cobalt-desc">
+                      {isBm
+                        ? 'Satu studio untuk laman web, sistem operasi & automasi.'
+                        : 'One workshop to build websites, portals & automation.'}
+                    </p>
+                  </div>
+                  <!-- Editorial Ligne Claire Retro-Futuristic Studio Terminal in Tropical Botanical Garden -->
+                  <svg class="ht-mega-cobalt-art" viewBox="0 0 340 178" fill="none" aria-hidden="true">
+                    {/* Subtle blueprint celestial orbit & stars */}
+                    <path d="M18 42 Q170 -6 322 46" stroke="#8EB5FA" stroke-opacity="0.38" stroke-width="1" stroke-dasharray="4 5" />
+                    <path d="M46 34l1.6 3.6 3.6 1.6-3.6 1.6-1.6 3.6-1.6-3.6-3.6-1.6 3.6-1.6 1.6-3.6Z" fill="#F4D35E" />
+                    <path d="M294 30l1.3 2.8 2.8 1.3-2.8 1.3-1.3 2.8-1.3-2.8-2.8-1.3 2.8-1.3 1.3-2.8Z" fill="#FAF8F3" fill-opacity="0.85" />
+
+                    {/* Back-layer tropical foliage silhouettes */}
+                    <path d="M54 152 C28 134, 16 110, 26 94 C42 98, 56 118, 62 146 Z" fill="#6FB9A1" stroke="#0A2861" stroke-width="1.1" />
+                    <path d="M28 96 Q44 122 58 146" stroke="#0A2861" stroke-width="0.85" />
+                    <path d="M284 150 C306 132, 322 108, 314 90 C296 96, 282 116, 276 146 Z" fill="#6FB9A1" stroke="#0A2861" stroke-width="1.1" />
+                    <path d="M312 92 Q296 118 280 146" stroke="#0A2861" stroke-width="0.85" />
+                    <path d="M74 148 C62 126, 62 104, 74 92 C86 104, 88 126, 84 148 Z" fill="#89C7B0" stroke="#0A2861" stroke-width="1.05" />
+                    <path d="M262 148 C272 126, 274 102, 260 90 C248 104, 248 126, 254 148 Z" fill="#89C7B0" stroke="#0A2861" stroke-width="1.05" />
+
+                    {/* Telescopic twin antennas & signal arcs */}
+                    <line x1="214" y1="22" x2="214" y2="48" stroke="#FAF8F3" stroke-width="1.8" stroke-linecap="round" />
+                    <line x1="214" y1="48" x2="236" y2="29" stroke="#C7DCFC" stroke-width="1.4" stroke-linecap="round" />
+                    <circle cx="214" cy="19" r="4" fill="#F4D35E" stroke="#0A2861" stroke-width="1.1" />
+                    <circle cx="238" cy="27" r="2.8" fill="#FAD6BC" stroke="#0A2861" stroke-width="1" />
+                    <path d="M202 15 Q214 6 226 15" stroke="#F4D35E" stroke-width="1" stroke-linecap="round" opacity="0.85" />
+                    <path d="M196 10 Q214 -2 232 10" stroke="#FAF8F3" stroke-width="0.9" stroke-linecap="round" opacity="0.55" />
+
+                    {/* 3/4-perspective Retro-Futuristic Studio Workstation Chassis */}
+                    <rect x="82" y="48" width="176" height="100" rx="13" fill="#D5E3F9" stroke="#0A2861" stroke-width="1.35" />
+                    <rect x="78" y="45" width="174" height="98" rx="12" fill="#FAF8F3" stroke="#0A2861" stroke-width="1.35" />
+                    {/* Recessed CRT Monitor Bezel */}
+                    <rect x="90" y="57" width="88" height="74" rx="8" fill="#102C66" stroke="#0A2861" stroke-width="1.25" />
+                    {/* Subtle diagonal CRT glass glint */}
+                    <path d="M97 64 L118 64 L97 85 Z" fill="#FAF8F3" fill-opacity="0.1" />
+                    {/* Botanical garden blooming inside the CRT screen */}
+                    <path d="M104 128 C110 106, 118 96, 128 88" stroke="#7AD0B3" stroke-width="1.8" stroke-linecap="round" />
+                    <path d="M148 128 C144 110, 148 96, 158 84" stroke="#7AD0B3" stroke-width="1.8" stroke-linecap="round" />
+                    <path d="M126 128 C126 114, 134 106, 140 102" stroke="#99D8C2" stroke-width="1.5" stroke-linecap="round" />
+                    {/* Hibiscus 5-petal blossom inside CRT */}
+                    <g transform="translate(129 84)">
+                      <circle cx="0" cy="-6" r="5" fill="#F4A27E" stroke="#0A2861" stroke-width="0.8" />
+                      <circle cx="5.7" cy="-1.8" r="5" fill="#F4A27E" stroke="#0A2861" stroke-width="0.8" />
+                      <circle cx="3.5" cy="4.8" r="5" fill="#F4A27E" stroke="#0A2861" stroke-width="0.8" />
+                      <circle cx="-3.5" cy="4.8" r="5" fill="#F4A27E" stroke="#0A2861" stroke-width="0.8" />
+                      <circle cx="-5.7" cy="-1.8" r="5" fill="#F4A27E" stroke="#0A2861" stroke-width="0.8" />
+                      <circle cx="0" cy="0" r="3.4" fill="#F4D35E" stroke="#0A2861" stroke-width="0.8" />
+                    </g>
+                    {/* Small yellow & periwinkle screen buds */}
+                    <g transform="translate(158 82)">
+                      <circle cx="0" cy="-4" r="3.5" fill="#F4D35E" stroke="#0A2861" stroke-width="0.7" />
+                      <circle cx="3.8" cy="1.2" r="3.5" fill="#F4D35E" stroke="#0A2861" stroke-width="0.7" />
+                      <circle cx="-3.8" cy="1.2" r="3.5" fill="#F4D35E" stroke="#0A2861" stroke-width="0.7" />
+                      <circle cx="0" cy="0" r="2.2" fill="#C84A16" />
+                    </g>
+                    <circle cx="110" cy="98" r="3.5" fill="#9BB6F0" />
+                    <circle cx="164" cy="108" r="3" fill="#FAD6BC" />
+
+                    {/* Right Instrument Console: speaker grille + rotary dial + slider + keypad */}
+                    <line x1="188" y1="61" x2="222" y2="61" stroke="#7E9FD9" stroke-width="1.5" stroke-linecap="round" />
+                    <line x1="188" y1="67" x2="222" y2="67" stroke="#7E9FD9" stroke-width="1.5" stroke-linecap="round" />
+                    <line x1="188" y1="73" x2="222" y2="73" stroke="#7E9FD9" stroke-width="1.5" stroke-linecap="round" />
+                    <line x1="188" y1="79" x2="212" y2="79" stroke="#7E9FD9" stroke-width="1.5" stroke-linecap="round" />
+                    {/* Rotary knob with indicator needle */}
+                    <circle cx="234" cy="69" r="9.5" fill="#DCE8FA" stroke="#0A2861" stroke-width="1.1" />
+                    <circle cx="234" cy="69" r="5.5" fill="#FAF8F3" stroke="#0A2861" stroke-width="0.9" />
+                    <line x1="234" y1="69" x2="238" y2="64.5" stroke="#C84A16" stroke-width="1.4" stroke-linecap="round" />
+                    {/* Graduated slider rail */}
+                    <rect x="188" y="90" width="54" height="7" rx="3.5" fill="#DCE8FA" stroke="#0A2861" stroke-width="1" />
+                    <line x1="196" y1="86" x2="196" y2="88.5" stroke="#5B7EC2" stroke-width="0.9" />
+                    <line x1="215" y1="86" x2="215" y2="88.5" stroke="#5B7EC2" stroke-width="0.9" />
+                    <line x1="234" y1="86" x2="234" y2="88.5" stroke="#5B7EC2" stroke-width="0.9" />
+                    <rect x="206" y="87.5" width="9" height="12" rx="2.2" fill="#1368E6" stroke="#0A2861" stroke-width="1" />
+                    {/* 3x3 precision key matrix */}
+                    <rect x="188" y="106" width="12" height="9" rx="2" fill="#F4D35E" stroke="#0A2861" stroke-width="0.9" />
+                    <rect x="203" y="106" width="12" height="9" rx="2" fill="#F4B089" stroke="#0A2861" stroke-width="0.9" />
+                    <rect x="218" y="106" width="12" height="9" rx="2" fill="#89C7B0" stroke="#0A2861" stroke-width="0.9" />
+                    <rect x="233" y="106" width="9" height="9" rx="2" fill="#DCE8FA" stroke="#0A2861" stroke-width="0.9" />
+                    <rect x="188" y="119" width="12" height="9" rx="2" fill="#9BB6F0" stroke="#0A2861" stroke-width="0.9" />
+                    <rect x="203" y="119" width="12" height="9" rx="2" fill="#FAD6BC" stroke="#0A2861" stroke-width="0.9" />
+                    <rect x="218" y="119" width="24" height="9" rx="2" fill="#1368E6" stroke="#0A2861" stroke-width="0.9" />
+
+                    {/* Rich foreground Ligne Claire scalloped multi-petal floral meadow */}
+                    {/* Far-left scalloped cobalt blossom */}
+                    <g transform="translate(22 156)">
+                      <path d="M0-24 C6-24 10-19 10-14 C16-16 22-12 22-6 C22 0 18 4 13 6 C16 11 14 18 8 20 C2 22 -2 19 -5 14 C-10 18 -18 16 -20 10 C-22 4 -18 -2 -13 -4 C-17 -9 -16 -17 -10 -20 C-6 -22 -3 -24 0-24 Z" fill="#7CA7F5" stroke="#0A2861" stroke-width="1.15" />
+                      <circle cx="0" cy="-2" r="7.5" fill="#FAF8F3" stroke="#0A2861" stroke-width="1" />
+                      <circle cx="0" cy="-2" r="3" fill="#1368E6" />
+                    </g>
+                    {/* Left apricot daisy */}
+                    <g transform="translate(64 148)">
+                      <circle cx="0" cy="-12" r="7.5" fill="#F4B089" stroke="#0A2861" stroke-width="1" />
+                      <circle cx="11.4" cy="-3.7" r="7.5" fill="#F4B089" stroke="#0A2861" stroke-width="1" />
+                      <circle cx="7" cy="9.7" r="7.5" fill="#F4B089" stroke="#0A2861" stroke-width="1" />
+                      <circle cx="-7" cy="9.7" r="7.5" fill="#F4B089" stroke="#0A2861" stroke-width="1" />
+                      <circle cx="-11.4" cy="-3.7" r="7.5" fill="#F4B089" stroke="#0A2861" stroke-width="1" />
+                      <circle cx="0" cy="0" r="6.5" fill="#F4D35E" stroke="#0A2861" stroke-width="1" />
+                      <circle cx="0" cy="0" r="2.2" fill="#C84A16" />
+                    </g>
+                    {/* Mid-left cream chrysanthemum */}
+                    <g transform="translate(106 162)">
+                      <circle cx="0" cy="-11" r="7" fill="#FAF8F3" stroke="#0A2861" stroke-width="1" />
+                      <circle cx="9.5" cy="-5.5" r="7" fill="#FAF8F3" stroke="#0A2861" stroke-width="1" />
+                      <circle cx="9.5" cy="5.5" r="7" fill="#FAF8F3" stroke="#0A2861" stroke-width="1" />
+                      <circle cx="-9.5" cy="5.5" r="7" fill="#FAF8F3" stroke="#0A2861" stroke-width="1" />
+                      <circle cx="-9.5" cy="-5.5" r="7" fill="#FAF8F3" stroke="#0A2861" stroke-width="1" />
+                      <circle cx="0" cy="0" r="6" fill="#89C7B0" stroke="#0A2861" stroke-width="1" />
+                    </g>
+                    {/* Center low meadow puffs */}
+                    <ellipse cx="148" cy="170" rx="24" ry="16" fill="#8BB3F7" stroke="#0A2861" stroke-width="1.1" />
+                    <ellipse cx="188" cy="170" rx="22" ry="15" fill="#CBE5DA" stroke="#0A2861" stroke-width="1.1" />
+                    <g transform="translate(168 158)">
+                      <circle cx="0" cy="-7" r="5" fill="#F4D35E" stroke="#0A2861" stroke-width="0.95" />
+                      <circle cx="6.6" cy="-2" r="5" fill="#F4D35E" stroke="#0A2861" stroke-width="0.95" />
+                      <circle cx="4" cy="5.6" r="5" fill="#F4D35E" stroke="#0A2861" stroke-width="0.95" />
+                      <circle cx="-4" cy="5.6" r="5" fill="#F4D35E" stroke="#0A2861" stroke-width="0.95" />
+                      <circle cx="-6.6" cy="-2" r="5" fill="#F4D35E" stroke="#0A2861" stroke-width="0.95" />
+                      <circle cx="0" cy="0" r="3.8" fill="#FAF8F3" stroke="#0A2861" stroke-width="0.9" />
+                    </g>
+                    {/* Mid-right mint rosette */}
+                    <g transform="translate(232 158)">
+                      <circle cx="0" cy="-11" r="7" fill="#89C7B0" stroke="#0A2861" stroke-width="1" />
+                      <circle cx="10.4" cy="-3.4" r="7" fill="#89C7B0" stroke="#0A2861" stroke-width="1" />
+                      <circle cx="6.4" cy="8.8" r="7" fill="#89C7B0" stroke="#0A2861" stroke-width="1" />
+                      <circle cx="-6.4" cy="8.8" r="7" fill="#89C7B0" stroke="#0A2861" stroke-width="1" />
+                      <circle cx="-10.4" cy="-3.4" r="7" fill="#89C7B0" stroke="#0A2861" stroke-width="1" />
+                      <circle cx="0" cy="0" r="6" fill="#FAD6BC" stroke="#0A2861" stroke-width="1" />
+                      <circle cx="0" cy="0" r="2.2" fill="#0A2861" />
+                    </g>
+                    {/* Right butter-gold sun-blossom */}
+                    <g transform="translate(278 148)">
+                      <circle cx="0" cy="-12" r="7.5" fill="#F4D35E" stroke="#0A2861" stroke-width="1" />
+                      <circle cx="11.4" cy="-3.7" r="7.5" fill="#F4D35E" stroke="#0A2861" stroke-width="1" />
+                      <circle cx="7" cy="9.7" r="7.5" fill="#F4D35E" stroke="#0A2861" stroke-width="1" />
+                      <circle cx="-7" cy="9.7" r="7.5" fill="#F4D35E" stroke="#0A2861" stroke-width="1" />
+                      <circle cx="-11.4" cy="-3.7" r="7.5" fill="#F4D35E" stroke="#0A2861" stroke-width="1" />
+                      <circle cx="0" cy="0" r="6.5" fill="#FAF8F3" stroke="#0A2861" stroke-width="1" />
+                      <circle cx="0" cy="0" r="2.6" fill="#1368E6" />
+                    </g>
+                    {/* Far-right coral scalloped blossom */}
+                    <g transform="translate(320 160)">
+                      <circle cx="0" cy="-12" r="8" fill="#F29E78" stroke="#0A2861" stroke-width="1.05" />
+                      <circle cx="11" cy="-3" r="8" fill="#F29E78" stroke="#0A2861" stroke-width="1.05" />
+                      <circle cx="-11" cy="-3" r="8" fill="#F29E78" stroke="#0A2861" stroke-width="1.05" />
+                      <circle cx="-7" cy="9" r="8" fill="#F29E78" stroke="#0A2861" stroke-width="1.05" />
+                      <circle cx="7" cy="9" r="8" fill="#F29E78" stroke="#0A2861" stroke-width="1.05" />
+                      <circle cx="0" cy="0" r="6" fill="#DCE8FA" stroke="#0A2861" stroke-width="1" />
+                    </g>
+                  </svg>
+                </a>
+
+                <div class="ht-mega-cobalt-stack">
+                  <a class="ht-mega-cobalt-sub" href={automationHref}>
+                    <div>
+                      <p class="ht-mega-cobalt-subtitle">{isBm ? 'Automasi & Ejen AI' : 'AI & Automation'}</p>
+                      <p class="ht-mega-cobalt-subdesc">
+                        {isBm ? 'WhatsApp, n8n & aliran kerja automatik.' : 'WhatsApp, n8n & real-world workflow automation.'}
+                      </p>
+                    </div>
+                    <span class="ht-mega-arrow ht-mega-arrow--light" aria-hidden="true">&rarr;</span>
+                  </a>
+
+                  <a class="ht-mega-cobalt-sub" href={ecommerceHref}>
+                    <div>
+                      <p class="ht-mega-cobalt-subtitle">{isBm ? 'Kedai Dalam Talian' : 'Online Stores'}</p>
+                      <p class="ht-mega-cobalt-subdesc">
+                        {isBm ? 'Shopify, WooCommerce & bayaran FPX.' : 'Shopify, WooCommerce & CHIP checkout.'}
+                      </p>
+                    </div>
+                    <span class="ht-mega-arrow ht-mega-arrow--light" aria-hidden="true">&#8599;</span>
+                  </a>
+                </div>
+              </div>
+
+              <a class="ht-mega-card ht-mega-card--periwinkle ht-mega-card--companion" href={starterHref}>
+                <div>
+                  <p class="ht-mega-card__title">{isBm ? 'Laman Permulaan' : 'Starter Site (RM799)'}</p>
+                  <p class="ht-mega-card__desc">
+                    {isBm ? 'Pelancaran pantas dengan aliran pertanyaan WhatsApp.' : 'Focused one-page launch built to win inquiries.'}
+                  </p>
+                </div>
+                <div class="ht-mega-card__foot">
+                  <svg class="ht-mega-spot" width="112" height="104" viewBox="0 0 112 104" fill="none" aria-hidden="true">
+                    <rect x="20" y="10" width="66" height="74" rx="10" fill="#FAF8F3" stroke="#2D4F8E" stroke-width="1.35" />
+                    <rect x="28" y="18" width="50" height="58" rx="5" fill="#EEF4FD" stroke="#2D4F8E" stroke-width="1" />
+                    <rect x="34" y="25" width="18" height="10" rx="3" fill="#FAD6BC" stroke="#2D4F8E" stroke-width="0.9" />
+                    <rect x="56" y="25" width="16" height="10" rx="3" fill="#9BB6F0" stroke="#2D4F8E" stroke-width="0.9" />
+                    <path d="M43 35v8h12" stroke="#2D4F8E" stroke-width="1" />
+                    <rect x="40" y="43" width="32" height="12" rx="3" fill="#CBE5DA" stroke="#2D4F8E" stroke-width="0.9" />
+                    <rect x="34" y="61" width="38" height="9" rx="3" fill="#1368E6" />
+                    <rect x="74" y="28" width="24" height="24" rx="4" transform="rotate(8 74 28)" fill="#F4C5A3" stroke="#2D4F8E" stroke-width="1.1" />
+                    <path d="M10 74h24l-3 18H13l-3-18Z" fill="#C84A16" stroke="#2D4F8E" stroke-width="1.15" />
+                    <path d="M22 74c-8-10-16-10-14-18 8 1 13 9 14 18Z" fill="#89C7B0" stroke="#2D4F8E" stroke-width="1.05" />
+                    <path d="M22 74c8-11 16-11 14-20-8 2-13 10-14 20Z" fill="#A5D8C5" stroke="#2D4F8E" stroke-width="1.05" />
+                    <path d="M68 68l18 7-6 4 9 10-4 3-9-10-5 5-3-19Z" fill="#FAF8F3" stroke="#2D4F8E" stroke-width="1.15" stroke-linejoin="round" />
+                  </svg>
+                  <span class="ht-mega-arrow" aria-hidden="true">&rarr;</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Stack (Direct Anchor) -->
+        <a class="tines-nav__link" href={stackHref}>
+          <span>{isBm ? 'Teknologi' : 'Stack'}</span>
+        </a>
+
+        <!-- 4. Pricing (Direct Anchor) -->
+        <a class="tines-nav__link" href={pricingHref}>
+          <span>{isBm ? 'Harga' : 'Pricing'}</span>
+        </a>
+
+        <!-- 5. Insights Dropdown (Pattern C: Refined Editorial Ligne Claire Media + Observatory + Medallion) -->
+        <div class="tines-nav__item" data-nav-dropdown>
+          <a class="tines-nav__link" href={insightsHref} aria-expanded="false">
+            <span>{isBm ? 'Nota' : 'Insights'}</span>
+            <svg class="tines-nav__caret" width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+              <path d="M2.2 3.8L5 6.6L7.8 3.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+          <div class="ht-mega-wrap">
+            <div class="ht-mega ht-mega--insights">
+              <!-- Card 1: Nested Periwinkle Frame wrapping Editorial Penang Shophouse Blog Cover -->
+              <div class="ht-mega-frame ht-mega-frame--periwinkle">
+                <a class="ht-mega-inner-card" href={insightsHref}>
+                  <div class="ht-mega-split-cover">
+                    <div class="ht-mega-split-cover__copy">
+                      <span>{isBm ? 'HARGA & SEO' : 'PRICING & SEO'}</span>
+                      <strong>{isBm ? 'Kos bina laman web Malaysia 2026' : 'What a real SME website costs'}</strong>
+                    </div>
+                    <!-- Detailed Ligne Claire Penang Heritage Shophouse in Twilight Blueprint Sky -->
+                    <svg class="ht-mega-split-cover__art" viewBox="0 0 132 126" fill="none" aria-hidden="true">
+                      <rect width="132" height="126" fill="#1D448C" />
+                      {/* Twilight crescent moon & stars */}
+                      <path d="M28 18a9 9 0 1 0 10 12 7 7 0 0 1-10-12Z" fill="#F4D35E" stroke="#0C2558" stroke-width="0.9" />
+                      <circle cx="96" cy="20" r="1.4" fill="#FAF8F3" />
+                      <circle cx="112" cy="34" r="1.2" fill="#F4D35E" />
+                      <path d="M58 14l1 2.4 2.4 1-2.4 1-1 2.4-1-2.4-2.4-1 2.4-1 1-2.4Z" fill="#FAF8F3" />
+
+                      {/* Sweeping retro-futuristic golden orbital ribbon behind roof */}
+                      <path d="M-4 66 C 36 46, 78 40, 136 22" stroke="#F4D35E" stroke-width="3.6" stroke-linecap="round" />
+                      <path d="M-4 64.4 C 36 44.4, 78 38.4, 136 20.4" stroke="#0C2558" stroke-width="0.8" />
+                      <path d="M-4 67.6 C 36 47.6, 78 41.6, 136 23.6" stroke="#0C2558" stroke-width="0.8" />
+
+                      {/* Penang shophouse terracotta pitched roof */}
+                      <polygon points="18,62 66,42 114,62" fill="#E8926A" stroke="#0C2558" stroke-width="1.1" stroke-linejoin="round" />
+                      <line x1="34" y1="62" x2="66" y2="48" stroke="#0C2558" stroke-width="0.75" />
+                      <line x1="50" y1="62" x2="66" y2="48" stroke="#0C2558" stroke-width="0.75" />
+                      <line x1="66" y1="62" x2="66" y2="48" stroke="#0C2558" stroke-width="0.75" />
+                      <line x1="82" y1="62" x2="66" y2="48" stroke="#0C2558" stroke-width="0.75" />
+                      <line x1="98" y1="62" x2="66" y2="48" stroke="#0C2558" stroke-width="0.75" />
+
+                      {/* Cream shophouse facade */}
+                      <rect x="24" y="62" width="84" height="64" fill="#FAF8F3" stroke="#0C2558" stroke-width="1.1" />
+                      {/* Cornice molding */}
+                      <rect x="21" y="60" width="90" height="5" rx="1.5" fill="#DCE8FA" stroke="#0C2558" stroke-width="0.9" />
+                      {/* Upper floor louvered Penang shutters + glowing gold interior window */}
+                      <rect x="33" y="72" width="12" height="22" fill="#9BD1BE" stroke="#0C2558" stroke-width="0.9" />
+                      <line x1="35" y1="77" x2="43" y2="77" stroke="#0C2558" stroke-width="0.7" />
+                      <line x1="35" y1="82" x2="43" y2="82" stroke="#0C2558" stroke-width="0.7" />
+                      <line x1="35" y1="87" x2="43" y2="87" stroke="#0C2558" stroke-width="0.7" />
+
+                      <rect x="45" y="72" width="42" height="22" fill="#F4D35E" stroke="#0C2558" stroke-width="0.95" />
+                      <line x1="66" y1="72" x2="66" y2="94" stroke="#0C2558" stroke-width="0.9" />
+                      <line x1="45" y1="83" x2="87" y2="83" stroke="#0C2558" stroke-width="0.9" />
+
+                      <rect x="87" y="72" width="12" height="22" fill="#9BD1BE" stroke="#0C2558" stroke-width="0.9" />
+                      <line x1="89" y1="77" x2="97" y2="77" stroke="#0C2558" stroke-width="0.7" />
+                      <line x1="89" y1="82" x2="97" y2="82" stroke="#0C2558" stroke-width="0.7" />
+                      <line x1="89" y1="87" x2="97" y2="87" stroke="#0C2558" stroke-width="0.7" />
+
+                      {/* Ground-floor five-foot way archway */}
+                      <path d="M48 126 V109 A18 14 0 0 1 84 109 V126 Z" fill="#9BB6F0" stroke="#0C2558" stroke-width="1" />
+                      <rect x="29" y="106" width="12" height="14" rx="1.5" fill="#FAD6BC" stroke="#0C2558" stroke-width="0.85" />
+                      <rect x="91" y="106" width="12" height="14" rx="1.5" fill="#FAD6BC" stroke="#0C2558" stroke-width="0.85" />
+                    </svg>
+                  </div>
+                  <div class="ht-mega-inner-body">
+                    <p class="ht-mega-media-title">
+                      {isBm
+                        ? 'Panduan telus kos laman web, SEO & pencarian AI untuk PKS'
+                        : 'Transparent notes on website pricing, SEO & WhatsApp leads'}
+                    </p>
+                    <span class="ht-mega-media-cta">
+                      {isBm ? 'BACA ARTIKEL' : 'READ ARTICLE'} &rarr;
+                    </span>
+                  </div>
+                </a>
+                <a class="ht-mega-frame-link" href={insightsHref}>
+                  <span class="ht-mega-icon ht-mega-icon--periwinkle" aria-hidden="true">
+                    <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+                      <rect x="2.5" y="2.5" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.3" />
+                      <path d="M5 6h6M5 9h6M5 11.5h3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+                    </svg>
+                  </span>
+                  <span>{isBm ? 'Blog HaikaiTech (EN)' : 'HaikaiTech Blog'}</span>
+                </a>
+              </div>
+
+              <!-- Card 2: Nested Mint Frame wrapping Detailed Observatory Dish Guide Banner + Tool Stack -->
+              <div class="ht-mega-frame ht-mega-frame--mint">
+                <a class="ht-mega-inner-card" href="/guide/">
+                  <div class="ht-mega-promo-cover">
+                    <!-- Detailed Ligne Claire Observatory Parabolic Antenna & Signal Arcs -->
+                    <svg class="ht-mega-promo-dish" width="84" height="82" viewBox="0 0 84 82" fill="none" aria-hidden="true">
+                      {/* Signal arcs radiating toward ticket */}
+                      <path d="M56 14 A14 14 0 0 1 68 28" stroke="#F4D35E" stroke-width="1.2" stroke-linecap="round" />
+                      <path d="M60 8 A22 22 0 0 1 76 28" stroke="#FAF8F3" stroke-opacity="0.7" stroke-width="1" stroke-linecap="round" stroke-dasharray="3 3" />
+
+                      {/* Plinth & cross-braced A-frame truss tower */}
+                      <rect x="14" y="68" width="40" height="7" rx="2" fill="#DCE8FA" stroke="#0A2861" stroke-width="1.1" />
+                      <polygon points="22,68 30,44 38,44 46,68" fill="#FAD6BC" stroke="#0A2861" stroke-width="1.1" stroke-linejoin="round" />
+                      <line x1="25" y1="58" x2="43" y2="58" stroke="#0A2861" stroke-width="0.9" />
+                      <line x1="27" y1="50" x2="41" y2="66" stroke="#0A2861" stroke-width="0.85" />
+                      <line x1="41" y1="50" x2="27" y2="66" stroke="#0A2861" stroke-width="0.85" />
+                      {/* Turret swivel joint */}
+                      <circle cx="34" cy="43" r="5" fill="#9BB6F0" stroke="#0A2861" stroke-width="1.1" />
+
+                      {/* Curved parabolic reflector dish in 3/4 view */}
+                      <path d="M14 22 C10 34, 24 49, 40 46 L52 34 C40 20, 22 14, 14 22 Z" fill="#FAF8F3" stroke="#0A2861" stroke-width="1.2" stroke-linejoin="round" />
+                      <ellipse cx="33" cy="28" rx="18" ry="8.5" transform="rotate(34 33 28)" fill="#DCE8FA" stroke="#0A2861" stroke-width="1.15" />
+                      <ellipse cx="33" cy="28" rx="11" ry="4.8" transform="rotate(34 33 28)" stroke="#5B7EC2" stroke-width="0.85" />
+                      <ellipse cx="33" cy="28" rx="4.5" ry="2" transform="rotate(34 33 28)" fill="#9BB6F0" stroke="#0A2861" stroke-width="0.8" />
+
+                      {/* 3-strut feed-horn assembly + glowing gold emitter */}
+                      <line x1="24" y1="20" x2="50" y2="16" stroke="#0A2861" stroke-width="0.95" />
+                      <line x1="33" y1="28" x2="50" y2="16" stroke="#0A2861" stroke-width="1.1" />
+                      <line x1="41" y1="36" x2="50" y2="16" stroke="#0A2861" stroke-width="0.95" />
+                      <circle cx="51" cy="15" r="4" fill="#F4D35E" stroke="#0A2861" stroke-width="1.1" />
+                      <circle cx="51" cy="15" r="1.4" fill="#C84A16" />
+                    </svg>
+                    <div class="ht-mega-promo-ticket">
+                      <span>2026 EDITION · FREE PDF</span>
+                      <strong>{isBm ? 'Panduan Pelanggan 2026' : '2026 Website Lead-Gen Guide'}</strong>
+                    </div>
+                  </div>
+                  <div class="ht-mega-inner-body">
+                    <p class="ht-mega-guide-title">
+                      {isBm ? 'Panduan Lengkap Menjana Pelanggan' : 'How Malaysian SME sites win leads'}
+                    </p>
+                    <span class="ht-mega-media-cta ht-mega-media-cta--mint">
+                      {isBm ? 'MUAT TURUN PERCUMA' : 'VIEW GUIDE'} &rarr;
+                    </span>
+                  </div>
+                </a>
+
+                <ul class="ht-mega-list ht-mega-list--mint-panel">
+                  <li>
+                    <a href="/toolkit/">
+                      <span class="ht-mega-icon ht-mega-icon--mint" aria-hidden="true">
+                        <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+                          <rect x="2.5" y="4.5" width="11" height="8.5" rx="2" stroke="currentColor" stroke-width="1.3" />
+                          <path d="M5.5 4.5V3.5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v1" stroke="currentColor" stroke-width="1.3" />
+                        </svg>
+                      </span>
+                      <span>{isBm ? 'Kit Alat Perniagaan' : 'Business Toolkit'}</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://invoice.haikaitech.my/">
+                      <span class="ht-mega-icon ht-mega-icon--mint" aria-hidden="true">
+                        <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+                          <path d="M4 2.5h6l2.5 2.5v8.5H4V2.5Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" />
+                          <path d="M6 8h4M6 10.5h3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+                        </svg>
+                      </span>
+                      <span>Free Invoice Generator</span>
+                    </a>
+                  </li>
+                  {!isBm && (
+                    <li>
+                      <a href="/hermes-guide/">
+                        <span class="ht-mega-icon ht-mega-icon--mint" aria-hidden="true">
+                          <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+                            <path d="M3 3.5h4.5a1.5 1.5 0 0 1 1.5 1.5v8.5H4.5A1.5 1.5 0 0 1 3 12V3.5Z" stroke="currentColor" stroke-width="1.3" />
+                            <path d="M13 3.5H8.5A1.5 1.5 0 0 0 7 5v8.5h4.5A1.5 1.5 0 0 0 13 12V3.5Z" stroke="currentColor" stroke-width="1.3" />
+                          </svg>
+                        </span>
+                        <span>Hermes Desktop Guide</span>
+                      </a>
+                    </li>
+                  )}
+                </ul>
+              </div>
+
+              <!-- Card 3: Compact Warm Terracotta FAQ Card with Intricate Ligne Claire Medallion -->
+              <a class="ht-mega-card ht-mega-card--terracotta" href={faqHref}>
+                <div>
+                  <p class="ht-mega-terra-title">{isBm ? 'Soalan Lazim' : 'FAQ'}</p>
+                  <p class="ht-mega-terra-desc">
+                    {isBm
+                      ? 'Jawapan ringkas tentang harga, tempoh siap & hak milik.'
+                      : 'Timelines, RM pricing, ownership & revisions explained.'}
+                  </p>
+                </div>
+                <div class="ht-mega-card__foot">
+                  <!-- Intricate Clipped Botanical & Celestial Ligne Claire Medallion -->
+                  <svg width="80" height="80" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+                    <defs>
+                      <clipPath id="ht-faq-medal-clip">
+                        <circle cx="40" cy="40" r="33" />
+                      </clipPath>
+                    </defs>
+                    {/* Outer brass/ivory medallion frame */}
+                    <circle cx="40" cy="40" r="37" fill="#FAF8F3" stroke="#16202A" stroke-width="1.3" />
+                    <circle cx="40" cy="40" r="33" fill="#143B7D" stroke="#16202A" stroke-width="1.1" />
+                    <g clip-path="url(#ht-faq-medal-clip)">
+                      {/* Background foliage fronds */}
+                      <path d="M12 52 C18 36, 30 30, 38 38 C28 46, 20 56, 12 52 Z" fill="#6FB9A1" stroke="#0B224D" stroke-width="1" />
+                      <path d="M68 28 C58 34, 48 42, 46 54 C58 50, 68 42, 68 28 Z" fill="#89C7B0" stroke="#0B224D" stroke-width="1" />
+                      <path d="M22 14 C30 22, 34 32, 28 40 C20 34, 16 24, 22 14 Z" fill="#89C7B0" stroke="#0B224D" stroke-width="1" />
+                      {/* Top-left yellow 5-petal blossom */}
+                      <g transform="translate(26 24)">
+                        <circle cx="0" cy="-7" r="4.5" fill="#F4D35E" stroke="#0B224D" stroke-width="0.9" />
+                        <circle cx="6.6" cy="-2" r="4.5" fill="#F4D35E" stroke="#0B224D" stroke-width="0.9" />
+                        <circle cx="4" cy="5.6" r="4.5" fill="#F4D35E" stroke="#0B224D" stroke-width="0.9" />
+                        <circle cx="-4" cy="5.6" r="4.5" fill="#F4D35E" stroke="#0B224D" stroke-width="0.9" />
+                        <circle cx="-6.6" cy="-2" r="4.5" fill="#F4D35E" stroke="#0B224D" stroke-width="0.9" />
+                        <circle cx="0" cy="0" r="3.4" fill="#C84A16" stroke="#0B224D" stroke-width="0.8" />
+                      </g>
+                      {/* Top-right periwinkle rosette */}
+                      <g transform="translate(56 23)">
+                        <circle cx="0" cy="-6" r="4.2" fill="#9BB6F0" stroke="#0B224D" stroke-width="0.9" />
+                        <circle cx="5.8" cy="-1.8" r="4.2" fill="#9BB6F0" stroke="#0B224D" stroke-width="0.9" />
+                        <circle cx="3.5" cy="5" r="4.2" fill="#9BB6F0" stroke="#0B224D" stroke-width="0.9" />
+                        <circle cx="-3.5" cy="5" r="4.2" fill="#9BB6F0" stroke="#0B224D" stroke-width="0.9" />
+                        <circle cx="-5.8" cy="-1.8" r="4.2" fill="#9BB6F0" stroke="#0B224D" stroke-width="0.9" />
+                        <circle cx="0" cy="0" r="3" fill="#FAF8F3" stroke="#0B224D" stroke-width="0.8" />
+                      </g>
+                      {/* Bottom-left coral blossom */}
+                      <g transform="translate(24 58)">
+                        <circle cx="0" cy="-6.5" r="4.8" fill="#F29E78" stroke="#0B224D" stroke-width="0.9" />
+                        <circle cx="6.2" cy="-2" r="4.8" fill="#F29E78" stroke="#0B224D" stroke-width="0.9" />
+                        <circle cx="3.8" cy="5.2" r="4.8" fill="#F29E78" stroke="#0B224D" stroke-width="0.9" />
+                        <circle cx="-3.8" cy="5.2" r="4.8" fill="#F29E78" stroke="#0B224D" stroke-width="0.9" />
+                        <circle cx="-6.2" cy="-2" r="4.8" fill="#F29E78" stroke="#0B224D" stroke-width="0.9" />
+                        <circle cx="0" cy="0" r="3.4" fill="#F4D35E" stroke="#0B224D" stroke-width="0.8" />
+                      </g>
+                      {/* Bottom-right cream daisy */}
+                      <g transform="translate(57 57)">
+                        <circle cx="0" cy="-6.5" r="4.5" fill="#FAF8F3" stroke="#0B224D" stroke-width="0.9" />
+                        <circle cx="6.2" cy="-2" r="4.5" fill="#FAF8F3" stroke="#0B224D" stroke-width="0.9" />
+                        <circle cx="3.8" cy="5.2" r="4.5" fill="#FAF8F3" stroke="#0B224D" stroke-width="0.9" />
+                        <circle cx="-3.8" cy="5.2" r="4.5" fill="#FAF8F3" stroke="#0B224D" stroke-width="0.9" />
+                        <circle cx="-6.2" cy="-2" r="4.5" fill="#FAF8F3" stroke="#0B224D" stroke-width="0.9" />
+                        <circle cx="0" cy="0" r="3.4" fill="#1368E6" stroke="#0B224D" stroke-width="0.8" />
+                      </g>
+                      {/* Center focal compass sun flower */}
+                      <g transform="translate(40 41)">
+                        <circle cx="0" cy="-7" r="4.8" fill="#FAD6BC" stroke="#0B224D" stroke-width="0.95" />
+                        <circle cx="6.6" cy="-2" r="4.8" fill="#FAD6BC" stroke="#0B224D" stroke-width="0.95" />
+                        <circle cx="4.1" cy="5.6" r="4.8" fill="#FAD6BC" stroke="#0B224D" stroke-width="0.95" />
+                        <circle cx="-4.1" cy="5.6" r="4.8" fill="#FAD6BC" stroke="#0B224D" stroke-width="0.95" />
+                        <circle cx="-6.6" cy="-2" r="4.8" fill="#FAD6BC" stroke="#0B224D" stroke-width="0.95" />
+                        <circle cx="0" cy="0" r="4.6" fill="#1368E6" stroke="#0B224D" stroke-width="0.95" />
+                        <circle cx="0" cy="0" r="1.8" fill="#F4D35E" />
+                      </g>
+                      {/* Micro celestial stars & stipple dots */}
+                      <circle cx="40" cy="14" r="2" fill="#FAF8F3" />
+                      <circle cx="66" cy="40" r="2" fill="#F4D35E" />
+                      <circle cx="14" cy="40" r="2" fill="#F4D35E" />
+                      <circle cx="40" cy="66" r="2" fill="#FAD6BC" />
+                    </g>
+                    <circle cx="40" cy="40" r="33" stroke="#16202A" stroke-width="1.2" />
+                  </svg>
+                  <span class="ht-mega-arrow ht-mega-arrow--light" aria-hidden="true">&#8599;</span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
       </nav>
     </div>
 
@@ -69,8 +683,8 @@ const switchToMalay = localeSwitchHref(Astro.url.pathname, 'bm');
         <a href={switchToMalay} lang="ms-MY" aria-current={isBm ? 'page' : undefined}>BM</a>
       </div>
 
-      <a class="tines-header__textlink" href={`${anchorBase}#pricing`}>
-        {isBm ? 'Harga' : 'Pricing'}
+      <a class="tines-header__textlink" href={`${anchorBase}#start`}>
+        {isBm ? 'Hubungi' : 'Contact'}
       </a>
 
       <a
@@ -83,18 +697,6 @@ const switchToMalay = localeSwitchHref(Astro.url.pathname, 'bm');
         {isBm ? 'WHATSAPP KAMI' : 'CHAT ON WHATSAPP'}
       </a>
 
-      <a
-        class="tines-header__search"
-        href={isHome ? '#projects' : localizeHref('/projects/', locale)}
-        aria-label={isBm ? 'Teroka projek' : 'Explore projects'}
-        title={isBm ? 'Teroka projek' : 'Explore projects'}
-      >
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="11" cy="11" r="7.5" />
-          <path d="m20 20-3.8-3.8" />
-        </svg>
-      </a>
-
       <details class="tines-mobile-menu">
         <summary aria-label={isBm ? 'Buka menu' : 'Toggle menu'}>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
@@ -103,9 +705,41 @@ const switchToMalay = localeSwitchHref(Astro.url.pathname, 'bm');
         </summary>
         <div class="tines-mobile-drawer">
           <nav aria-label={isBm ? 'Navigasi mudah alih' : 'Mobile navigation'}>
-            {navLinks.map((item) => (
-              <a href={item.href}>{item.label}</a>
-            ))}
+            <details class="ht-mobile-group">
+              <summary>{isBm ? 'Projek' : 'Work'}</summary>
+              <div class="ht-mobile-sub">
+                <a href={archiveBase}>{isBm ? 'Semua Projek' : 'All Projects'}</a>
+                {workIndustryItems.map((item) => (
+                  <a href={item.href}>{item.label}</a>
+                ))}
+              </div>
+            </details>
+
+            <details class="ht-mobile-group">
+              <summary>{isBm ? 'Servis' : 'Services'}</summary>
+              <div class="ht-mobile-sub">
+                <a href={servicesHref}>{isBm ? 'Semua Servis' : 'All Services'}</a>
+                <a href={starterHref}>{isBm ? 'Laman Permulaan' : 'Starter Site (RM799)'}</a>
+                <a href={automationHref}>{isBm ? 'Automasi & Ejen AI' : 'AI & Automation'}</a>
+                <a href={ecommerceHref}>{isBm ? 'Kedai Dalam Talian' : 'Online Stores'}</a>
+              </div>
+            </details>
+
+            <a href={stackHref}>{isBm ? 'Teknologi' : 'Stack'}</a>
+            <a href={pricingHref}>{isBm ? 'Harga' : 'Pricing'}</a>
+
+            <details class="ht-mobile-group">
+              <summary>{isBm ? 'Nota & Sumber' : 'Insights & Tools'}</summary>
+              <div class="ht-mobile-sub">
+                <a href={insightsHref}>{isBm ? 'Nota Bengkel (EN)' : 'All Insights'}</a>
+                <a href="/guide/">{isBm ? 'Panduan Pelanggan 2026' : '2026 Lead-Gen Guide'}</a>
+                <a href="/toolkit/">{isBm ? 'Kit Alat Perniagaan' : 'Business Toolkit'}</a>
+                <a href="https://invoice.haikaitech.my/">Free Invoice Generator</a>
+                <a href={faqHref}>{isBm ? 'Soalan Lazim' : 'FAQ'}</a>
+              </div>
+            </details>
+
+            <a href={`${anchorBase}#start`}>{isBm ? 'Hubungi Kami' : 'Contact'}</a>
           </nav>
           <div class="tines-mobile-drawer__foot">
             <div class="tines-locale">
@@ -145,6 +779,46 @@ const switchToMalay = localeSwitchHref(Astro.url.pathname, 'bm');
     link.addEventListener('click', () => {
       if (mobileMenu) mobileMenu.open = false;
     });
+  });
+
+  const dropdownItems = Array.from(document.querySelectorAll<HTMLElement>('[data-nav-dropdown]'));
+  let closeTimer: number | undefined;
+
+  const setOpen = (target: HTMLElement | null) => {
+    window.clearTimeout(closeTimer);
+    dropdownItems.forEach((item) => {
+      const open = item === target;
+      item.dataset.open = open ? 'true' : 'false';
+      const trigger = item.querySelector<HTMLAnchorElement>('.tines-nav__link');
+      if (trigger) trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  };
+
+  const scheduleClose = () => {
+    window.clearTimeout(closeTimer);
+    closeTimer = window.setTimeout(() => setOpen(null), 160);
+  };
+
+  dropdownItems.forEach((item) => {
+    const panel = item.querySelector<HTMLElement>('.ht-mega-wrap');
+    item.addEventListener('mouseenter', () => setOpen(item));
+    item.addEventListener('mouseleave', scheduleClose);
+    panel?.addEventListener('mouseenter', () => setOpen(item));
+    panel?.addEventListener('mouseleave', scheduleClose);
+    item.addEventListener('focusin', () => setOpen(item));
+    item.addEventListener('focusout', (event: FocusEvent) => {
+      const next = event.relatedTarget as Node | null;
+      if (!next || !item.contains(next)) {
+        if (item.dataset.open === 'true') setOpen(null);
+      }
+    });
+  });
+
+  document.addEventListener('keydown', (event: KeyboardEvent) => {
+    if (event.key === 'Escape') {
+      setOpen(null);
+      if (mobileMenu?.open) mobileMenu.open = false;
+    }
   });
 
   document.querySelectorAll<HTMLAnchorElement>('[data-tines-event]').forEach((el) => {
